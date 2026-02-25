@@ -71,6 +71,7 @@
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerAttack.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterHealthController.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerHealth.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterControllerNew.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterAIController.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerAttackCloseRange.cs" />
@@ -80,13 +81,13 @@
     <Compile Include="Assets\!GameFiles\Scripts\Interfaces\IPlayerAttack.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerLocomotion.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\Character.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerInputController.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\ImplementedCharacter\CharacterLongRange.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\Player.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerHealthController.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterHealth.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Interfaces\ICharacter\IEnemy.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterController.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Input\InputReader.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerRotation.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerMovementController.cs" />
