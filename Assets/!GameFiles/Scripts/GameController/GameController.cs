@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
     private void OnEnable()
     {
         InitializePlayer(); //хз, как под другому, но даже если они запускаются в Awake - OnEnable запускается раньше. Мб если сериализировать эти поля, то все будет норм
-        InitializeWeapon(1f);
+        InitializeWeapon(1f); //очевидно МГ
         InitializeInputController();
 
         _inputController._attackCloseRangeButtonPressed += _player.Attack;
