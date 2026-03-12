@@ -1,0 +1,18 @@
+using UnityEngine; //нужен ли MonoBehaviour?
+
+public class PlayerLocomotion
+{
+    private float _speed;
+
+    public void Initialize(float speed)
+    {
+        _speed = speed;
+    }
+
+    public void Locomote(Transform point, Vector2 direction)
+    {
+        Vector3 directionCalibrated = new Vector3(direction.x, 0f, direction.y);
+
+        point.position += directionCalibrated * _speed * Time.deltaTime;
+    }
+}
