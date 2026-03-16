@@ -1,14 +1,15 @@
-using UnityEngine; //нужен ли MonoBehaviour?
+using UnityEngine;
 using UnityEngine.Events;
 
 public class InputController : MonoBehaviour //хз как без этого вызывать в Awake нужные мне функции из классов низкого уровня (чтобы они при этом не были монобехами). Проблема тут в том, что по-моему мы все равно можем подменить приватное поле созданного нами типа
 {
     private InputReader _reader;
 
-    private Vector2 _locomotionDirection;
+    private Vector2 _playerLocomotionDirection;
+    private Vector2 _playerDirection = new Vector2(0f, 1f);
 
-    public UnityAction<IAttack, IDamageCalculator, Weapon, Character> _attackCloseRangeButtonPressed;
-    public UnityAction<IAttack, IDamageCalculator, Weapon, Character> _attackLongRangeButtonPressed;
+    public UnityAction<Vector2> _attackCloseRangeButtonPressed;
+    public UnityAction<Vector2> _attackLongRangeButtonPressed;
 
     public UnityAction<Vector2> _locomotionDirectionDirected;
     //public UnityAction<Vector2> _locomotionDirectionUndirected;
@@ -19,11 +20,14 @@ public class InputController : MonoBehaviour //хз как без этого вызывать в Awake
     private bool isAttackingCloseRange;
     private bool isAttackingLongRange;
 
+    public Vector2 PlayerLocomotionDirection => _playerLocomotionDirection;
+    public Vector2 PlayerDirection => _playerDirection;
+
     private void Update()
     {
         if (isAttackingCloseRange == true)
         {
-            _attackCloseRangeButtonPressed.Invoke(new PlayerAttackCloseRange(), new DamageCalculatorBasic(), FindAnyObjectByType<Weapon>(), FindAnyObjectByType<Character>()); //оч плохо, передача зависимости должна быть в GameCOntroller
+            _attackCloseRangeButtonPressed.Invoke(_playerDirection);
 
             MakeIsAttackingCloseRangeFalse();
 
@@ -31,42 +35,44 @@ public class InputController : MonoBehaviour //хз как без этого вызывать в Awake
         }
         else if (isAttackingLongRange == true)
         {
-            _attackLongRangeButtonPressed.Invoke(new PlayerAttackLongRange(), new DamageCalculatorBasic(), FindAnyObjectByType<Weapon>(), FindAnyObjectByType<Character>()); //оружий может быть много на уровне (их как миниму 2 - у игрока и у персонажа)
+            _attackLongRangeButtonPressed.Invoke(_playerDirection);
 
             MakeIsAttackingLongRangeFalse();
 
             return;
         }
         //
-        _locomotionDirection = _reader.MainCharacter.Locomotion.ReadValue<Vector2>();
+        _playerLocomotionDirection = _reader.MainCharacter.Locomotion.ReadValue<Vector2>();
 
-        if (_locomotionDirection == Vector2.zero)
+        if (_playerLocomotionDirection == Vector2.zero)
         {
             if (isRunning == true)
             {
-                _runningButtonHolded.Invoke(_locomotionDirection);
+                _runningButtonHolded.Invoke(_playerLocomotionDirection);
 
                 return;
             }
             //_locomotionDirectionUndirected.Invoke(_locomotionDirection);
-            _locomotionDirectionDirected.Invoke(_locomotionDirection);
+            _locomotionDirectionDirected.Invoke(_playerLocomotionDirection);
 
             return;
         }
+        _playerDirection = _playerLocomotionDirection;
+
         if (isRunning == true)
         {
-            _runningButtonHolded.Invoke(_locomotionDirection);
+            _runningButtonHolded.Invoke(_playerLocomotionDirection);
 
             return;
         }
 
-        _locomotionDirectionDirected.Invoke(_locomotionDirection);
+        _locomotionDirectionDirected.Invoke(_playerLocomotionDirection);
     }
 
     private void OnEnable()
     {
-        InitializeReader(); //инит внутреннего содержимого в себе же - ХЗ
-        EnableReader();
+        _reader = new InputReader(); //инит внутреннего содержимого в себе же - пока делаем здесь, а не в GameController
+        _reader.Enable();
 
         _reader.MainCharacter.Running.started += context => MakeIsRunningTrue();
         _reader.MainCharacter.Running.canceled += context => MakeIsRunningFalse();
@@ -81,27 +87,13 @@ public class InputController : MonoBehaviour //хз как без этого вызывать в Awake
         _reader.MainCharacter.AttackCloseRange.performed -= context => MakeIsAttackingCloseRangeTrue();
         _reader.MainCharacter.AttackLongRange.performed -= context => MakeIsAttackingLongRangeTrue();
 
-        DisableReader();
+        _reader.Disable();
     }
 
     public void Initialize()
     {
-        //InitializeReader();
-    }
-
-    private void InitializeReader()
-    {
-        _reader = new InputReader();
-    }
-
-    private void EnableReader()
-    {
-        _reader.Enable();
-    }
-
-    private void DisableReader()
-    {
-        _reader.Disable();
+        //_reader = new InputReader();
+        //_reader.Enable();
     }
 
     private void MakeIsRunningTrue()

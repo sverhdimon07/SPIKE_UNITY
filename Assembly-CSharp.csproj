@@ -61,82 +61,157 @@
     <Analyzer Include="S:\UNITY\Unity Editor Versions\6000.3.9f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerWeapon\PlayerWeaponController\PlayerWeaponController.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterAI\CharacterAIController.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterAI\ImplementedCharacterAIState\CharacterAIStateFight.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerOffense\PlayerAttacks (All Implemented IPlayerAttack)\PlayerAttackLongRange.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityBehaviorInterfaces\IAttacker.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\EventBusGeneral\EventBusGeneral.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\ServicesGeneral\DamageCalculators (All Implemented IDamageCalculator)\DamageCalculatorBasic.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Weapon\WeaponEntity\ImplementedWeapon\Implemented WeaponCloseRange\SwordBasic.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Weapon\Weapon.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerHealth\PlayerHealth.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityAndPlayerBehaviorInterfaces\IAttacker.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityBehaviorInterfaces\IAttackerCloseRange.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityAttitudeTowardPlayerInterfaces\IEntityNeutral.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabLogger.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabBrowserManager.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerOffense\PlayerAttacks (All Implemented IPlayerAttack)\PlayerAttackCloseRange.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityBehaviorInterfaces\IAttackerLongRange.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterMovement\CharacterRotation.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerWeapon\PlayerWeapon.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Weapon\WeaponEntity\ImplementedWeapon\WeaponLongRange.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityAndPlayerBehaviorInterfaces\IDamageable.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\GameControllers\GameControllerTestScene.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerMovement\PlayerLocomotion.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterControllerNew.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityBehaviorInterfaces\IDamageable.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Weapon\Implemented Weapon\WeaponCloseRange.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerHealth\PlayerHealthController.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterOffense\CharacterAttack.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Weapon\WeaponEntity\ImplementedWeapon\WeaponCloseRange.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Interfaces\NonGameEntityInterfaces\IAttack.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\ServicesGeneral\EnvironmentAreaAnalyzer (All Implemented IEnvironmentAreaAnalyzer)\Renders\EnvironmentAreaOverlapAnalyzerRender.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerMovement\PlayerRotation.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterMovement\CharacterLocomotion.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerOffense\PlayerOffenseController.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
+    <Compile Include="Assets\Import\Scripts\DODONPA Scripts\View (UI)\Gameplay Scene View\Gameplay Scene UI\Player Health Level UI.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\ServicesGeneral\EnvironmentAreaAnalyzer (All Implemented IEnvironmentAreaAnalyzer)\EnvironmentAreaColliderAnalyzer.cs" />
+    <Compile Include="Assets\Import\Scripts\DODONPA Scripts\View (UI)\Gameplay Scene View\Gameplay Scene UI\Jetpack Fuel Level UI.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabExporter.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Character\Character.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterAI\CharacterAIState.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityAttitudeTowardPlayerInterfaces\IAlly.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Weapon\Implemented Weapon\Implemented WeaponCloseRange\SwordBasic.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabUI.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerDefense\PlayerDefenseController.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Interfaces\NonGameEntityInterfaces\IDamageCalculator.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterAI\ImplementedCharacterAIState\CharacterAIStatePatrol.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerWeapon\PlayerWeaponController.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerEntity\Player.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerOffense\PlayerAttack.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Character\ImplementedCharacter\CharacterLongRange.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerController\PlayerController.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerWeapon\PlayerWeaponLongRange.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerWeapon\PlayerWeaponCloseRange.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerMovement\PlayerCameraRotation.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Weapon\WeaponEntity\Weapon.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerAnimation\PlayerAnimator.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterEntity\ImplementedCharacter\CharacterLongRange.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterEntity\Character.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerOffense\PlayerAttacks (All Implemented PlayerAttack)\PlayerAttackLongRange.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterMovement\CharacterRunning.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerOffense\PlayerOffenseController\PlayerOffenseController.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabBrowserWindow.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Input\InputReader.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterMovement\CharacterJump.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterDefense\CharacterDefenseController.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerMovement\PlayerMovementController.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Weapon\Implemented Weapon\Implemented WeaponLongRange\RocketLauncherBasic.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\Resizer.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabApi.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabPlugin.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabImporterWindow.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterOffense\CharacterOffenseController.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\ServicesGeneral\EnvironmentAreaAnalyzer (All Implemented IEnvironmentAreaAnalyzer)\EnvironmentAreaRaycastAnalyzer.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabModelWindow.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerMovement\PlayerRunning.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Weapon\Implemented Weapon\WeaponLongRange.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterHealth\CharacterHealthController.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabImporter.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterController\CharacterControllerNew.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\EntryPoint\Bootstrap.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterMovement\CharacterMovementController.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterAI\ImplementedCharacterAIState\CharacterAIStateChasing.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterAnimation\CharacterAnimator.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterEntity\ImplementedCharacter\CharacterCloseRange.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerOffense\PlayerAttacks (All Implemented PlayerAttack)\PlayerAttackCloseRange.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityAttitudeTowardPlayerInterfaces\IEnemy.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Interfaces\NonGameEntityInterfaces\IEnvironmentAreaAnalyzer.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Input\InputController.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerMovement\PlayerJump.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\GameController\GameController.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Character\ImplementedCharacter\CharacterCloseRange.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\ServicesGeneral\EnvironmentAreaAnalyzer (All Implemented IEnvironmentAreaAnalyzer)\EnvironmentAreaOverlapAnalyzer.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterHealth\CharacterHealth.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Roboto-Bold - License.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile-2-Pass.shader" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFFlipTexture.shader" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFColorSpace.cginc" />
+    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Unity - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Roboto-Bold - AFL.txt" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFPackOccMetalRough.shader" />
+    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\SDFFunctions.hlsl" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\Newtonsoft.Json.dll" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\SketchfabPlugin.dll" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\!GameFiles\Prefabs\Raiden\license.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\Ionic.Zip.Unity.dll" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFBumpToNormal.shader" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\GLTFSerialization.dll" />
+    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1239,6 +1314,10 @@
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Splines.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Splines.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.2D.Editor.Overrides">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.2D.Editor.Overrides.dll</HintPath>
       <Private>False</Private>
@@ -1295,8 +1374,16 @@
       <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Cinemachine.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Cinemachine.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.UnifiedRayTracing.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.UnifiedRayTracing.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Cinemachine">
+      <HintPath>Library\ScriptAssemblies\Unity.Cinemachine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
@@ -1413,6 +1500,14 @@
     </Reference>
     <Reference Include="Unity.InputSystem">
       <HintPath>Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Settings.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Settings.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Splines">
+      <HintPath>Library\ScriptAssemblies\Unity.Splines.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.UI">

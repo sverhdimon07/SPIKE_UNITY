@@ -1,4 +1,4 @@
-using UnityEngine; //нужен ли MonoBehaviour?
+using UnityEngine;
 
 public class PlayerMovementController
 {
@@ -12,8 +12,8 @@ public class PlayerMovementController
 
     public void Initialize(float speed)
     {
-        InitializeLocomotion(speed);
-        InitializeRunning(speed);
+        _locomotion.Initialize(speed);
+        _running.Initialize(speed);
     }
 
     public void Rotate()
@@ -21,28 +21,18 @@ public class PlayerMovementController
 
     }
 
-    public void Locomote(Transform point, Vector2 direction)
+    public void Locomote(Transform playerPoint, Transform playerRenderAndSkeletonPoint, Vector2 locomotionDirection)
     {
-        _locomotion.Locomote(point, direction);
+        _locomotion.Locomote(playerPoint, playerRenderAndSkeletonPoint, locomotionDirection);
     }
 
-    public void Run(Transform point, Vector2 direction) //DI в Locomote и Run реализую потом
+    public void Run(Transform playerPoint, Transform playerRenderAndSkeletonPoint, Vector2 locomotionDirection) //DI в Locomote и Run реализую потом
     {
-        _running.Run(point, direction);
+        _running.Run(playerPoint, playerRenderAndSkeletonPoint, locomotionDirection);
     }
 
     public void Jump()
     {
         //
-    }
-
-    private void InitializeLocomotion(float speed)
-    {
-        _locomotion.Initialize(speed);
-    }
-
-    private void InitializeRunning(float speed)
-    {
-        _running.Initialize(speed);
     }
 }

@@ -1,4 +1,4 @@
-using UnityEngine; //нужен ли MonoBehaviour?
+using UnityEngine;
 
 public class PlayerLocomotion
 {
@@ -9,10 +9,25 @@ public class PlayerLocomotion
         _speed = speed;
     }
 
-    public void Locomote(Transform point, Vector2 direction)
+    public void Locomote(Transform playerPoint, Transform playerRenderAndSkeletonPoint, Vector2 locomotionDirection)
     {
-        Vector3 directionCalibrated = new Vector3(direction.x, 0f, direction.y);
+        //ROTATION
+        if (locomotionDirection == Vector2.zero)
+        {
+            return;
+        }
 
-        point.position += directionCalibrated * _speed * Time.deltaTime;
+        Vector3 requiredDirection = new Vector3(locomotionDirection.x, 0f, locomotionDirection.y).normalized; //МГ
+
+        //Quaternion targetRotation = transform.rotation = Quaternion.LookRotation(requiredDirection);
+
+        //transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 360f * Time.deltaTime); //МГ
+
+        playerRenderAndSkeletonPoint.rotation = Quaternion.LookRotation(requiredDirection);
+
+        //LOCOMOTION
+        Vector3 directionCalibrated = new Vector3(locomotionDirection.x, 0f, locomotionDirection.y);
+
+        playerPoint.position += directionCalibrated * _speed * Time.deltaTime;
     }
 }

@@ -1,4 +1,4 @@
-using UnityEngine; //нужен ли MonoBehaviour?
+using UnityEngine;
 
 public class PlayerAnimator
 {

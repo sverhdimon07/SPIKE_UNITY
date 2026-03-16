@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Bootstrap : MonoBehaviour //система 3х этапов (по итогу 1 обязательный, ибо Create не нужен отдельный метод И создавать самого себя НЕЛЬЗЯ, а Launch вообще по идее нигде не нужен, ибо если у нас есть предметные методы внутри класса, то их и будем запускать), так как добавились OnEnable и OnDisable) - Создание (важно что за создание самого себя ИЛИ свое время жизни класс отвечать не должен, он всегда создается снаружи), Инициализация (инициализация себя это про создание своих внутренних элементов (или поиск их на сцене) И их последующую инициализацию), Запуск
 {
-    private GameController _gameController;
+    private GameControllerTestScene _gameController;
     
     private void Awake()
     {
@@ -11,12 +11,7 @@ public class Bootstrap : MonoBehaviour //система 3х этапов (по итогу 1 обязатель
     
     private void Initialize()
     {
-        InitializeGameController();
-    }
-    
-    private void InitializeGameController()
-    {
-        _gameController = FindAnyObjectByType<GameController>();
+        _gameController = FindAnyObjectByType<GameControllerTestScene>(); //можем создавать его на сцене здесь, но я пока делаю так
 
         _gameController.Initialize();
     }
