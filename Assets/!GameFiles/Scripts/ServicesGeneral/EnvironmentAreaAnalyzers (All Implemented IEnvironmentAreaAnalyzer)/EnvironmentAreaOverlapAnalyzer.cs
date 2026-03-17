@@ -9,7 +9,7 @@ public abstract class EnvironmentAreaOverlapAnalyzer<T> : IEnvironmentAreaAnalyz
 
     private readonly float _radius = 0.25f;
 
-    public static UnityAction<Vector3, float> overlapCreated;
+    public static UnityAction<Vector3, float> OverlapCreated; //могу это переделать под нестатическую логику как в событи€х InputController, но пока удобнее сделать быстро и статически
 
     public void Initialize(Vector3 actingEntityPosition, Vector2 actingEntityDirection, float range)
     {
@@ -24,7 +24,7 @@ public abstract class EnvironmentAreaOverlapAnalyzer<T> : IEnvironmentAreaAnalyz
 
         Collider[] recievedColliders = Physics.OverlapSphere(_startPosition, _radius); //хз, есть ли разница в том, если создавать локальную переменную » если помещать полученные данные в поле; ¬озможно, получение коллайдеров стоит вынести в отдельный метод
 
-        overlapCreated.Invoke(_startPosition, _radius);
+        OverlapCreated.Invoke(_startPosition, _radius);
 
         if (recievedColliders.Length == 0) //ћ√
         {

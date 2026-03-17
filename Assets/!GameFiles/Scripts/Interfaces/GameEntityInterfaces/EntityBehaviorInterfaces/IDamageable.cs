@@ -1,4 +1,4 @@
 public interface IDamageable
 {
-    public void ApplyDamage(float damage); //хз, нужны ли входные параметры
+    public void TakeDamage(float damage); //хз, нужны ли входные параметры
 }

@@ -3,10 +3,12 @@ using UnityEngine;
 public class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу 1 обязательный, ибо Create не нужен отдельный метод И создавать самого себя НЕЛЬЗЯ, а Launch вообще по идее нигде не нужен, ибо если у нас есть предметные методы внутри класса, то их и будем запускать), так как добавились OnEnable и OnDisable) - Создание (важно что за создание самого себя ИЛИ свое время жизни класс отвечать не должен, он всегда создается снаружи), Инициализация (инициализация себя это про создание своих внутренних элементов (или поиск их на сцене) И их последующую инициализацию), Запуск
 {
     [Header("Player")]
+    [Range(1f, 100f)]
+    [SerializeField] private float _health;
     [Range(1f, 10f)] //это не инкапсуляция, нужно сделать инкапсуляцию на уровне низкоуровневых типов
-    [SerializeField] private float locomotionSpeed = 2.5f;
+    [SerializeField] private float _locomotionSpeed = 2.5f;
     [Range(2f, 10f)]
-    [SerializeField] private float runningSpeed = 6.25f;
+    [SerializeField] private float _runningSpeed = 6.25f;
 
     [Header("Weapons")] //должна быть реализована система, которая будет учитывать выбор геймдизайнера - не поставил оружие именно игроку, он заспавнится без оружия - то есть у нас тут в любом случае будет 3 графы (оружие на сцене, оружие игрока, оружие персонажа)
     [Header("PlayerWeapons")] //Я СДЕЛАЛ ТАК, ЧТОБЫ МОЖНО БЫЛО ИНИТИТЬ ОТСЮДА ДАТУ ЛЮБОГО ТИПА ОРУЖИЯ (ТО ЕСТЬ, ЛЮБОЙ СУЩНОСТИ ОРУЖИЯ), но по идее же у каждого оружия уже изначально есть какая-то дата, но при этом она и не должна быть прямо в скрипте самого оружия проиничена, она должна быть сериализована и закинута в префаб - но тут в любом случае нужно придумать методологию создания скриптов для оружия
@@ -32,18 +34,18 @@ public class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу 1 обяз
 
     private void OnEnable() 
     {
-        _inputController._attackCloseRangeButtonPressed += _player.AttackCloseRange;
-        _inputController._attackLongRangeButtonPressed += _player.AttackLongRange;
-        _inputController._locomotionDirectionDirected += _player.LocomoteInUpdate;
-        _inputController._runningButtonHolded += _player.RunInUpdate;
+        _inputController.AttackCloseRangeButtonPressed += _player.AttackCloseRange;
+        _inputController.AttackLongRangeButtonPressed += _player.AttackLongRange;
+        _inputController.LocomotionDirectionDirected += _player.LocomoteInUpdate;
+        _inputController.RunningButtonHolded += _player.RunInUpdate;
     }
 
     private void OnDisable()
     {
-        _inputController._attackCloseRangeButtonPressed -= _player.AttackCloseRange;
-        _inputController._attackLongRangeButtonPressed -= _player.AttackLongRange;
-        _inputController._locomotionDirectionDirected -= _player.LocomoteInUpdate;
-        _inputController._runningButtonHolded -= _player.RunInUpdate;
+        _inputController.AttackCloseRangeButtonPressed -= _player.AttackCloseRange;
+        _inputController.AttackLongRangeButtonPressed -= _player.AttackLongRange;
+        _inputController.LocomotionDirectionDirected -= _player.LocomoteInUpdate;
+        _inputController.RunningButtonHolded -= _player.RunInUpdate;
     }
 
     public override void Initialize() //именно в этом классе не так важно использовать такой метод, чтобы в него потом вкладывать дочерние методы. Я бы вообще так не делал, ибо не разберусь потом в большом потоке входных данных, лучше упразднить этот метод и вызывать дочерние
@@ -60,7 +62,7 @@ public class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу 1 обяз
     {
         _player = FindAnyObjectByType<Player>(); //пока что я ничего на сцене не создаю кодом, ибо не придумал архитектуру спавнеров
 
-        _player.Initialize(locomotionSpeed, runningSpeed, _inputController.PlayerDirection, _playerWeaponCloseRange, _playerWeaponLongRange); //пока в DI даем зависимость так (про speed = 2.5f вручную, new PlayerAttackCloseRange()) - типо имитируем прилет инфы с сервера/GameController'a
+        _player.Initialize(_health, _locomotionSpeed, _runningSpeed, _inputController.PlayerDirection, _playerWeaponCloseRange, _playerWeaponLongRange); //пока в DI даем зависимость так (про speed = 2.5f вручную, new PlayerAttackCloseRange()) - типо имитируем прилет инфы с сервера/GameController'a
         //в ините игрока лютая дичь в конечных параметрах - да вообще все эти параметры надо как-то через сериализованные поля прогидывать (это настраивание среды для геймдизайнера)
     }
 

@@ -25,6 +25,6 @@ public abstract class PlayerAttack
         }
         float damage = _damageCalculator.Calculate(weapon);
         
-        damageReciever.ApplyDamage(damage);
+        damageReciever.TakeDamage(damage);
     }
 }

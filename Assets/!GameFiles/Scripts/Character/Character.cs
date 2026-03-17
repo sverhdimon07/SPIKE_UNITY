@@ -9,7 +9,7 @@ public abstract class Character : MonoBehaviour, IAttacker, IDamageable //Ъ АШ Е
         //_controller.Attack(attack);
     }
 
-    public void ApplyDamage(float damage)
+    public void TakeDamage(float damage)
     {
         print("мюмеяем спнм опнрхбмхйс");
         //_playerController.PlayerHealthController...

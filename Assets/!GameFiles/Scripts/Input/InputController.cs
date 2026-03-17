@@ -8,13 +8,13 @@ public class InputController : MonoBehaviour //хз как без этого вызывать в Awake
     private Vector2 _playerLocomotionDirection;
     private Vector2 _playerDirection = new Vector2(0f, 1f);
 
-    public UnityAction<Vector2> _attackCloseRangeButtonPressed;
-    public UnityAction<Vector2> _attackLongRangeButtonPressed;
+    public UnityAction<Vector2> AttackCloseRangeButtonPressed;
+    public UnityAction<Vector2> AttackLongRangeButtonPressed;
 
-    public UnityAction<Vector2> _locomotionDirectionDirected;
-    //public UnityAction<Vector2> _locomotionDirectionUndirected;
-    public UnityAction<Vector2> _runningButtonHolded;
-    //public UnityAction<Vector2> _runningButtonUnholded;
+    public UnityAction<Vector2> LocomotionDirectionDirected;
+    //public UnityAction<Vector2> LocomotionDirectionUndirected;
+    public UnityAction<Vector2> RunningButtonHolded;
+    //public UnityAction<Vector2> RunningButtonUnholded;
 
     private bool isRunning;
     private bool isAttackingCloseRange;
@@ -27,7 +27,7 @@ public class InputController : MonoBehaviour //хз как без этого вызывать в Awake
     {
         if (isAttackingCloseRange == true)
         {
-            _attackCloseRangeButtonPressed.Invoke(_playerDirection);
+            AttackCloseRangeButtonPressed.Invoke(_playerDirection);
 
             MakeIsAttackingCloseRangeFalse();
 
@@ -35,7 +35,7 @@ public class InputController : MonoBehaviour //хз как без этого вызывать в Awake
         }
         else if (isAttackingLongRange == true)
         {
-            _attackLongRangeButtonPressed.Invoke(_playerDirection);
+            AttackLongRangeButtonPressed.Invoke(_playerDirection);
 
             MakeIsAttackingLongRangeFalse();
 
@@ -48,12 +48,12 @@ public class InputController : MonoBehaviour //хз как без этого вызывать в Awake
         {
             if (isRunning == true)
             {
-                _runningButtonHolded.Invoke(_playerLocomotionDirection);
+                RunningButtonHolded.Invoke(_playerLocomotionDirection);
 
                 return;
             }
             //_locomotionDirectionUndirected.Invoke(_locomotionDirection);
-            _locomotionDirectionDirected.Invoke(_playerLocomotionDirection);
+            LocomotionDirectionDirected.Invoke(_playerLocomotionDirection);
 
             return;
         }
@@ -61,12 +61,12 @@ public class InputController : MonoBehaviour //хз как без этого вызывать в Awake
 
         if (isRunning == true)
         {
-            _runningButtonHolded.Invoke(_playerLocomotionDirection);
+            RunningButtonHolded.Invoke(_playerLocomotionDirection);
 
             return;
         }
 
-        _locomotionDirectionDirected.Invoke(_playerLocomotionDirection);
+        LocomotionDirectionDirected.Invoke(_playerLocomotionDirection);
     }
 
     private void OnEnable()

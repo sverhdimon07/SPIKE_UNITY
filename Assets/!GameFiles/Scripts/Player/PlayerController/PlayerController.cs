@@ -4,21 +4,27 @@ public class PlayerController //опять же можно избавиться от зацепок, но в конте
 {
     private readonly PlayerAnimator _animator = new PlayerAnimator();
 
-    private readonly PlayerMovementController _movementController = new PlayerMovementController();
-
     private readonly PlayerHealthController _healthController = new PlayerHealthController();
+
+    private readonly PlayerMovementController _movementController = new PlayerMovementController();
 
     private readonly PlayerOffenceController _offenseController = new PlayerOffenceController();
 
     private readonly PlayerDefenseController _defenseController = new PlayerDefenseController();
 
-    public void Initialize(Animator animator, float locomotionSpeed, float runningSpeed, Vector3 position, Vector2 direction, WeaponCloseRange weaponCloseRange, WeaponLongRange weaponLongRange)
+    public void Initialize(Animator animator, float health, float locomotionSpeed, float runningSpeed, Vector3 position, Vector2 direction, WeaponCloseRange weaponCloseRange, WeaponLongRange weaponLongRange)
     {
         _animator.Initialize(animator);
+        _healthController.Initialize(health);
         _movementController.Initialize(locomotionSpeed, runningSpeed);
-        //_healthController.Initialize();
         _offenseController.Initialize(position, direction, weaponCloseRange, weaponLongRange);
         //_defenseController.Initialize();
+    }
+
+    public void TakeDamage(float damage)
+    {
+        _healthController.TakeDamage(damage);
+        _animator.PlayStun();
     }
 
     public void Locomote(Transform point, Transform renderAndSkeletonPoint, Vector2 locomotionDirection)
