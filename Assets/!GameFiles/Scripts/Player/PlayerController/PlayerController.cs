@@ -12,18 +12,18 @@ public class PlayerController //опять же можно избавиться от зацепок, но в конте
 
     private readonly PlayerDefenseController _defenseController = new PlayerDefenseController();
 
-    public void Initialize(Animator animator, float speed, WeaponCloseRange weaponCloseRange, WeaponLongRange weaponLongRange, Vector3 playerPosition, Vector2 playerDirection, Vector3 weaponPrefabScale, float weaponAttackRange)
+    public void Initialize(Animator animator, float locomotionSpeed, float runningSpeed, Vector3 position, Vector2 direction, WeaponCloseRange weaponCloseRange, WeaponLongRange weaponLongRange)
     {
         _animator.Initialize(animator);
-        _movementController.Initialize(speed);
+        _movementController.Initialize(locomotionSpeed, runningSpeed);
         //_healthController.Initialize();
-        _offenseController.Initialize(weaponCloseRange, weaponLongRange, playerPosition, playerDirection, weaponPrefabScale, weaponAttackRange);
+        _offenseController.Initialize(position, direction, weaponCloseRange, weaponLongRange);
         //_defenseController.Initialize();
     }
 
-    public void Locomote(Transform playerPoint, Transform playerRenderAndSkeletonPoint, Vector2 locomotionDirection)
+    public void Locomote(Transform point, Transform renderAndSkeletonPoint, Vector2 locomotionDirection)
     {
-        _movementController.Locomote(playerPoint, playerRenderAndSkeletonPoint, locomotionDirection);
+        _movementController.Locomote(point, renderAndSkeletonPoint, locomotionDirection);
 
         if (locomotionDirection == Vector2.zero)
         {
@@ -34,9 +34,9 @@ public class PlayerController //опять же можно избавиться от зацепок, но в конте
         _animator.PlayLocomotion(); //уже прям бесстыжая архитектура, надо прийти к какому то Event Bus мб, я хз. Но это очевидно событийно-ориентированная штука
     }
 
-    public void Run(Transform playerPoint, Transform playerRenderAndSkeletonPoint, Vector2 locomotionDirection)
+    public void Run(Transform point, Transform renderAndSkeletonPoint, Vector2 locomotionDirection)
     {
-        _movementController.Run(playerPoint, playerRenderAndSkeletonPoint, locomotionDirection);
+        _movementController.Run(point, renderAndSkeletonPoint, locomotionDirection);
 
         if (locomotionDirection == Vector2.zero)
         {
@@ -47,15 +47,15 @@ public class PlayerController //опять же можно избавиться от зацепок, но в конте
         _animator.PlayRunning(); //уже прям бесстыжая архитектура, надо прийти к какому то Event Bus мб, я хз. Но это очевидно событийно-ориентированная штука
     }
 
-    public void AttackCloseRange(Vector3 playerPosition, Vector2 playerDirection)
+    public void AttackCloseRange(Vector3 position, Vector2 direction)
     {
-        _offenseController.AttackCloseRange(playerPosition, playerDirection);
+        _offenseController.AttackCloseRange(position, direction);
         _animator.PlayAttackCloseRange();
     }
 
-    public void AttackLongRange(Vector3 playerPosition, Vector2 playerDirection)
+    public void AttackLongRange(Vector3 position, Vector2 direction)
     {
-        _offenseController.AttackLongRange(playerPosition, playerDirection);
+        _offenseController.AttackLongRange(position, direction);
         _animator.PlayAttackLongRange();
     }
 }

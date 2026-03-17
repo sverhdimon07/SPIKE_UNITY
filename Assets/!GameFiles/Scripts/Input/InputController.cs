@@ -71,8 +71,7 @@ public class InputController : MonoBehaviour //хз как без этого вызывать в Awake
 
     private void OnEnable()
     {
-        _reader = new InputReader(); //инит внутреннего содержимого в себе же - пока делаем здесь, а не в GameController
-        _reader.Enable();
+        Initialize(); //инит внутреннего содержимого в себе же - пока делаем здесь, а не в GameController
 
         _reader.MainCharacter.Running.started += context => MakeIsRunningTrue();
         _reader.MainCharacter.Running.canceled += context => MakeIsRunningFalse();
@@ -92,8 +91,9 @@ public class InputController : MonoBehaviour //хз как без этого вызывать в Awake
 
     public void Initialize()
     {
-        //_reader = new InputReader();
-        //_reader.Enable();
+        _reader = new InputReader();
+
+        _reader.Enable();
     }
 
     private void MakeIsRunningTrue()

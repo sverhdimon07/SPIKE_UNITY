@@ -1,7 +1,8 @@
 public class SwordBasic : WeaponCloseRange
 {
-    public override void Initialize(float damage, float range)
+    public override void Initialize(WeaponData data)
     {
-        _damage = damage;
+        _damage = data.Damage;
+        _range = data.Range;
     }
 }

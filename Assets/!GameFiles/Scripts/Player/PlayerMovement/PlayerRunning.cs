@@ -6,7 +6,7 @@ public class PlayerRunning
 
     public void Initialize(float speed)
     {
-        _speed = speed * speed;
+        _speed = speed;
     }
 
     public void Run(Transform playerPoint, Transform playerRenderAndSkeletonPoint, Vector2 locomotionDirection)

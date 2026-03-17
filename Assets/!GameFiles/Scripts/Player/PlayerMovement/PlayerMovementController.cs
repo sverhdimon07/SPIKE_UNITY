@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class PlayerMovementController
 {
-    private PlayerRotation _rotation;
+    private readonly PlayerRotation _rotation;
 
-    private PlayerLocomotion _locomotion = new PlayerLocomotion();
+    private readonly PlayerLocomotion _locomotion = new PlayerLocomotion();
 
-    private PlayerRunning _running = new PlayerRunning();
+    private readonly PlayerRunning _running = new PlayerRunning();
 
-    private PlayerJump _jump;
+    private readonly PlayerJump _jump;
 
-    public void Initialize(float speed)
+    public void Initialize(float locomotionSpeed, float runningSpeed)
     {
-        _locomotion.Initialize(speed);
-        _running.Initialize(speed);
+        _locomotion.Initialize(locomotionSpeed);
+        _running.Initialize(runningSpeed);
     }
 
     public void Rotate()

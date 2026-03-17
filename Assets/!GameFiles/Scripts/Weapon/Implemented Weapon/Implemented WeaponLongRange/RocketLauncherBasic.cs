@@ -1,15 +1,8 @@
 public class RocketLauncherBasic : WeaponLongRange
 {
-    public override void Initialize(float damage, float range)
+    public override void Initialize(WeaponData data)
     {
-        _damage = damage;
-        _range = range;
-
-        //InitializeRange(Range);
+        _damage = data.Damage;
+        _range = data.Range;
     }
-    /*
-    public override void InitializeRange(float range)
-    {
-        _range = range;
-    }*/
 }

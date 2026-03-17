@@ -13,9 +13,9 @@ public class Player : MonoBehaviour, IAttackerCloseRange, IAttackerLongRange, ID
         //возможно здесь будем корректировать то, куда смотрит ГГ (но возможно это стоит делать не здесь)
     }
 
-    public void Initialize(Animator animator, float speed, WeaponCloseRange weaponCloseRange, WeaponLongRange weaponLongRange, Vector3 playerPosition, Vector2 playerDirection, Vector3 weaponPrefabScale, float weaponAttackRange)
+    public void Initialize(float locomotionSpeed, float runningSpeed, Vector2 direction, WeaponCloseRange weaponCloseRange, WeaponLongRange weaponLongRange)
     {
-        _controller.Initialize(animator, speed, weaponCloseRange, weaponLongRange, playerPosition, playerDirection, weaponPrefabScale, weaponAttackRange);
+        _controller.Initialize(GetComponent<Animator>(), locomotionSpeed, runningSpeed, transform.position, direction, weaponCloseRange, weaponLongRange);
     }
 
     public void LocomoteInUpdate(Vector2 locomotionDirection) //сейчас архитектура такова, что это происходит в Update из-за привязки к инпут контроллеру - надо отвязать вызовы от инпут контроллера и вызывать это в FixedUpdate
@@ -28,14 +28,14 @@ public class Player : MonoBehaviour, IAttackerCloseRange, IAttackerLongRange, ID
         _controller.Run(transform, _renderAndSkeletonPoint, locomotionDirection);
     }
 
-    public void AttackCloseRange(Vector2 playerDirection)
+    public void AttackCloseRange(Vector2 direction)
     {
-        _controller.AttackCloseRange(transform.position, playerDirection);
+        _controller.AttackCloseRange(transform.position, direction);
     }
 
-    public void AttackLongRange(Vector2 playerDirection)
+    public void AttackLongRange(Vector2 direction)
     {
-        _controller.AttackLongRange(transform.position, playerDirection);
+        _controller.AttackLongRange(transform.position, direction);
     }
 
     public void ApplyDamage(float damage)
