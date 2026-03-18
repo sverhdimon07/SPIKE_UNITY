@@ -2,28 +2,42 @@ using UnityEngine;
 
 public class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу 1 обязательный, ибо Create не нужен отдельный метод И создавать самого себя НЕЛЬЗЯ, а Launch вообще по идее нигде не нужен, ибо если у нас есть предметные методы внутри класса, то их и будем запускать), так как добавились OnEnable и OnDisable) - Создание (важно что за создание самого себя ИЛИ свое время жизни класс отвечать не должен, он всегда создается снаружи), Инициализация (инициализация себя это про создание своих внутренних элементов (или поиск их на сцене) И их последующую инициализацию), Запуск
 {
-    [Header("Player")]
-    [Range(1f, 100f)]
-    [SerializeField] private float _health;
-    [Range(1f, 10f)] //это не инкапсуляция, нужно сделать инкапсуляцию на уровне низкоуровневых типов
-    [SerializeField] private float _locomotionSpeed = 2.5f;
-    [Range(2f, 10f)]
-    [SerializeField] private float _runningSpeed = 6.25f;
-
     [Header("Weapons")] //должна быть реализована система, которая будет учитывать выбор геймдизайнера - не поставил оружие именно игроку, он заспавнится без оружия - то есть у нас тут в любом случае будет 3 графы (оружие на сцене, оружие игрока, оружие персонажа)
     [Header("PlayerWeapons")] //Я СДЕЛАЛ ТАК, ЧТОБЫ МОЖНО БЫЛО ИНИТИТЬ ОТСЮДА ДАТУ ЛЮБОГО ТИПА ОРУЖИЯ (ТО ЕСТЬ, ЛЮБОЙ СУЩНОСТИ ОРУЖИЯ), но по идее же у каждого оружия уже изначально есть какая-то дата, но при этом она и не должна быть прямо в скрипте самого оружия проиничена, она должна быть сериализована и закинута в префаб - но тут в любом случае нужно придумать методологию создания скриптов для оружия
     [SerializeField] private WeaponCloseRange _playerWeaponCloseRange;
-    [SerializeField] private WeaponData _playerWeaponCloseRangeData; //ПРОВЕРКА НА ОТСУТСТВИЕ ПАРАМЕТРОВ В ИНСПЕКТОРЕ
+    [SerializeField] private WeaponData _playerWeaponCloseRangeData; //ПРОВЕРКА НА ОТСУТСТВИЕ ПАРАМЕТРОВ В ИНСПЕКТОРЕ (КАК ЭТО СДЕЛАНО СО ЗДОРОВЬЕМ (ИНКАПСУЛЯЦИЯ))
     [SerializeField] private WeaponLongRange _playerWeaponLongRange;
     [SerializeField] private WeaponData _playerWeaponLongRangeData;
-    //[Header("CharacterWeapons")] // не придумал, как реализовать правильно (пока у каждого персонажа ровно по одному оружию - все вроде норм, но при расширении - уже проблема, поэтому скорее всего надо отдельно каждого персонажа инитить)
+    [Header("CharacterWeapons")] // не придумал, как реализовать правильно (пока у каждого персонажа ровно по одному оружию - все вроде норм, но при расширении - уже проблема, поэтому скорее всего надо отдельно каждого персонажа инитить)
+    [SerializeField] private WeaponCloseRange _characterWeaponCloseRange;
+    [SerializeField] private WeaponData _characterWeaponCloseRangeData; //ПРОВЕРКА НА ОТСУТСТВИЕ ПАРАМЕТРОВ В ИНСПЕКТОРЕ (КАК ЭТО СДЕЛАНО СО ЗДОРОВЬЕМ (ИНКАПСУЛЯЦИЯ))
+    [SerializeField] private WeaponLongRange _characterWeaponLongRange;
+    [SerializeField] private WeaponData _characterWeaponLongRangeData;
     //[SerializeField] private Weapon[] weaponsCharacter;
     //[Header("WeaponsOnScene")]
     //[SerializeField] private Weapon[] weaponsOnScene;
 
+    [Header("Player")]
+    [Range(1f, 100f)]
+    [SerializeField] private float _playerHealth = 100f;
+    [Range(1f, 10f)] //это не инкапсуляция, нужно сделать инкапсуляцию на уровне низкоуровневых типов
+    [SerializeField] private float _playerLocomotionSpeed = 2.5f;
+    [Range(2f, 10f)]
+    [SerializeField] private float _playerRunningSpeed = 6.25f;
+
+    [Header("Character")] //ПОКА ОДИН
+    [Range(1f, 100f)]
+    [SerializeField] private float _characterHealth = 100f;
+    [Range(1f, 10f)]
+    [SerializeField] private float _characterLocomotionSpeed = 2.5f;
+    [Range(2f, 10f)]
+    [SerializeField] private float _characterRunningSpeed = 6.25f;
+
     private InputController _inputController;
 
     private Player _player;
+
+    private Character _character;
 
     //private readonly Weapon[] weaponsPlayer = new Weapon[2]; //Нужно защитить массив от изменения элементов или подмены, не помню (видик Сакутина)
 
@@ -56,14 +70,22 @@ public class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу 1 обяз
         //InitializeSwordBasic(2f, 0f);
         //InitializeRocketLauncherBasic(1f, 10f);
         InitializePlayer(); //хз, как под другому, но даже если они запускаются в Awake - OnEnable запускается раньше. Мб если сериализировать эти поля, то все будет норм
+        InitializeCharacter();
     }
 
     private void InitializePlayer() //пока что я делаю поля с игроком и оружием, возможно это излишне и можно создавать сущности в локальных переменных, НО Я НЕ ДУМАЮ ТАК (но при этом дочерний монобех PlayerInputController у Player создается в локальной переменной, так как он нам тут не нужен, этот класс не имеет такой ответственности)
     {
         _player = FindAnyObjectByType<Player>(); //пока что я ничего на сцене не создаю кодом, ибо не придумал архитектуру спавнеров
 
-        _player.Initialize(_health, _locomotionSpeed, _runningSpeed, _inputController.PlayerDirection, _playerWeaponCloseRange, _playerWeaponLongRange); //пока в DI даем зависимость так (про speed = 2.5f вручную, new PlayerAttackCloseRange()) - типо имитируем прилет инфы с сервера/GameController'a
+        _player.Initialize(_playerHealth, _playerLocomotionSpeed, _playerRunningSpeed, _inputController.PlayerDirection, _playerWeaponCloseRange, _playerWeaponLongRange); //пока в DI даем зависимость так (про speed = 2.5f вручную, new PlayerAttackCloseRange()) - типо имитируем прилет инфы с сервера/GameController'a
         //в ините игрока лютая дичь в конечных параметрах - да вообще все эти параметры надо как-то через сериализованные поля прогидывать (это настраивание среды для геймдизайнера)
+    }
+
+    private void InitializeCharacter()
+    {
+        _character = FindAnyObjectByType<Character>();
+
+        _character.Initialize(_characterHealth, _characterLocomotionSpeed, _characterRunningSpeed, new Vector2(0f, 1f), _characterWeaponCloseRange, _characterWeaponLongRange);
     }
 
     private void InitializeWeapons()
@@ -79,11 +101,6 @@ public class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу 1 обяз
         _playerWeaponLongRange.Initialize(_playerWeaponLongRangeData);
         //weaponsPlayer[0] = _playerWeaponCloseRange; //МГ и решение какое-то неэлегантное
         //weaponsPlayer[1] = _playerWeaponLongRange;
-    }
-
-    private void InitializeCharacterPlayer()
-    {
-        //
     }
 
     private void InitializeWeaponsOnScene()

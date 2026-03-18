@@ -1,16 +1,37 @@
 using UnityEngine;
 
-public class CharacterMovementController : MonoBehaviour
+public class CharacterMovementController
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private readonly CharacterRotation _rotation;
+
+    private readonly CharacterLocomotion _locomotion = new CharacterLocomotion();
+
+    private readonly CharacterRunning _running = new CharacterRunning();
+
+    private readonly CharacterJump _jump;
+
+    public void Initialize(float locomotionSpeed, float runningSpeed)
     {
-        
+        _locomotion.Initialize(locomotionSpeed);
+        _running.Initialize(runningSpeed);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Rotate()
     {
-        
+
+    }
+
+    public void Locomote(Transform playerPoint, Transform playerRenderAndSkeletonPoint, Vector2 locomotionDirection)
+    {
+        _locomotion.Locomote(playerPoint, playerRenderAndSkeletonPoint, locomotionDirection);
+    }
+
+    public void Run(Transform playerPoint, Transform playerRenderAndSkeletonPoint, Vector2 locomotionDirection) //DI в Locomote и Run реализую потом
+    {
+        _running.Run(playerPoint, playerRenderAndSkeletonPoint, locomotionDirection);
+    }
+    public void Jump()
+    {
+        //
     }
 }

@@ -1,11 +1,13 @@
 using System;
+using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth 
 {
     private float _health;//потом мб переведем поля здоровья и демеджа на int везде (надо понять, насколько это оправдано и что стоит ставить); подумать про семантику названия этого поля (можно оставить, а можно назвать это поле value)
 
-    public UnityAction DamageApplied;
+    public UnityAction DamageTaken;
     public UnityAction Died;
 
     public float Health => _health;
@@ -29,17 +31,21 @@ public class PlayerHealth
         {
             _health = 0;
 
-            Died.Invoke();
+            Died?.Invoke();
+            int activeSceneIndex = SceneManager.GetActiveScene().buildIndex; //понимаю, что дубляж и не следование SRP - потом переделаю
+            SceneManager.LoadScene(activeSceneIndex);
         }
         else if ((_health -= damage) == 0)
         {
-            Died.Invoke();
+            Died?.Invoke();
+            int activeSceneIndex = SceneManager.GetActiveScene().buildIndex; //понимаю, что дубляж и не следование SRP - потом переделаю
+            SceneManager.LoadScene(activeSceneIndex);
         }
         else
         {
             _health -= damage;
 
-            DamageApplied.Invoke();
+            DamageTaken?.Invoke();
         }
     }
 }

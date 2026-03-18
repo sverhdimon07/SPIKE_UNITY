@@ -1,16 +1,35 @@
 using UnityEngine;
 
-public class CharacterRunning : MonoBehaviour
+public class CharacterRunning 
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private float _speed;
+
+    public void Initialize(float speed)
     {
-        
+        _speed = speed;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Run(Transform characterPoint, Transform characterRenderAndSkeletonPoint, Vector2 locomotionDirection)
     {
-        
+        /*
+        //ROTATION
+        if (locomotionDirection == Vector2.zero)
+        {
+            return;
+        }
+
+        Vector3 requiredDirection = new Vector3(locomotionDirection.x, 0f, locomotionDirection.y).normalized; //Ã√
+
+        //Quaternion targetRotation = transform.rotation = Quaternion.LookRotation(requiredDirection);
+
+        //transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 360f * Time.deltaTime); //Ã√
+
+        characterRenderAndSkeletonPoint.rotation = Quaternion.LookRotation(requiredDirection);
+        */
+
+        //LOCOMOTION
+        Vector3 directionCalibrated = new Vector3(locomotionDirection.x, 0f, locomotionDirection.y);
+
+        characterPoint.position += directionCalibrated * _speed * Time.deltaTime;
     }
 }

@@ -11,4 +11,9 @@ public class PlayerHealthController
     {
         _health.TakeDamage(damage);
     }
+
+    public float GetHealth()
+    {
+        return _health.Health;
+    }
 }

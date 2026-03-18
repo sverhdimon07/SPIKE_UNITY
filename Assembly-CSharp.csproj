@@ -68,6 +68,7 @@
     <Compile Include="Assets\!GameFiles\Scripts\GameControllerScenes\GameController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityBehaviorInterfaces\IAttacker.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterWeapon\CharacterWeaponCloseRange.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\EventBusGeneral\EventBusGeneral.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\ServicesGeneral\DamageCalculators (All Implemented IDamageCalculator)\DamageCalculatorBasic.cs" />
@@ -81,13 +82,14 @@
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabBrowserManager.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\EntryPointScenes\Implemented GameController\BootstrapTestScene.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityBehaviorInterfaces\IAttackerLongRange.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterWeapon\CharacterWeaponController\CharacterWeaponController.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterMovement\CharacterRotation.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterWeapon\CharacterWeaponLongRange.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\EntryPointScenes\Bootstrap.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerMovement\PlayerLocomotion.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityBehaviorInterfaces\IDamageable.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Weapon\Implemented Weapon\WeaponCloseRange.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
@@ -99,6 +101,8 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterOffense\CharacterAttack.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterHealth\CharacterHealthController\CharacterHealthController.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterUI\CharacterUI.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\ServicesGeneral\EnvironmentAreaAnalyzers (All Implemented IEnvironmentAreaAnalyzer)\EnvironmentAreaColliderAnalyzer.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerMovement\PlayerRotation.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
@@ -131,8 +135,11 @@
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerUI\PlayerUI.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerAnimation\PlayerAnimator.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityBehaviorInterfaces\IDamageableCharacter.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerOffense\PlayerAttacks (All Implemented PlayerAttack)\PlayerAttackLongRange.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\ServicesGeneral\EnvironmentAreaAnalyzers (All Implemented IEnvironmentAreaAnalyzer)\Implemented EnvironmentAreaOverlapAnalyzer\EnvironmentAreaOverlapAnalyzerDamageablePlayer.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterMovement\CharacterRunning.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerOffense\PlayerOffenseController\PlayerOffenseController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
@@ -148,13 +155,11 @@
     <Compile Include="Assets\!GameFiles\Scripts\Weapon\WeaponData\WeaponData.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabPlugin.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabImporterWindow.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterOffense\CharacterOffenseController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabModelWindow.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerMovement\PlayerRunning.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Weapon\Implemented Weapon\WeaponLongRange.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterHealth\CharacterHealthController.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabImporter.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
@@ -168,12 +173,16 @@
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerOffense\PlayerAttacks (All Implemented PlayerAttack)\PlayerAttackCloseRange.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\ServicesGeneral\EnvironmentAreaAnalyzers (All Implemented IEnvironmentAreaAnalyzer)\EnvironmentAreaOverlapAnalyzer.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityAttitudeTowardPlayerInterfaces\IEnemy.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\ServicesGeneral\EnvironmentAreaAnalyzers (All Implemented IEnvironmentAreaAnalyzer)\Implemented EnvironmentAreaOverlapAnalyzer\EnvironmentAreaOverlapAnalyzerDamageable.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterOffense\CharacterAttacks\CharacterAttackLongRange.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterOffense\CharacterAttacks\CharacterAttackCloseRange.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Interfaces\NonGameEntityInterfaces\IEnvironmentAreaAnalyzer.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Input\InputController.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterOffense\CharacterOffenseController\CharacterOffenseController.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerMovement\PlayerJump.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityBehaviorInterfaces\IDamageablePlayer.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\ImplementedCharacter\CharacterCloseRange.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\ServicesGeneral\EnvironmentAreaAnalyzers (All Implemented IEnvironmentAreaAnalyzer)\Implemented EnvironmentAreaOverlapAnalyzer\EnvironmentAreaOverlapAnalyzerDamageableCharacter.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterHealth\CharacterHealth.cs" />
   </ItemGroup>
   <ItemGroup>

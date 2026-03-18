@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(Animator))]
-public class Player : MonoBehaviour, IAttackerCloseRange, IAttackerLongRange, IDamageable //€ бы еще накидал контрактов на управл€емое перемещение
+public class Player : MonoBehaviour, IAttackerCloseRange, IAttackerLongRange, IDamageableCharacter //€ бы еще накидал контрактов на управл€емое перемещение
 {
+    [SerializeField] private Image _uiBar;
     [SerializeField] private Transform _renderAndSkeletonPoint;
 
     private readonly PlayerController _controller = new PlayerController(); //можно использовать DI, но пока что это излишн€€ гибкость
@@ -15,12 +17,17 @@ public class Player : MonoBehaviour, IAttackerCloseRange, IAttackerLongRange, ID
 
     public void Initialize(float health, float locomotionSpeed, float runningSpeed, Vector2 direction, WeaponCloseRange weaponCloseRange, WeaponLongRange weaponLongRange)
     {
-        _controller.Initialize(GetComponent<Animator>(), health, locomotionSpeed, runningSpeed, transform.position, direction, weaponCloseRange, weaponLongRange);
+        _controller.Initialize(_uiBar, GetComponent<Animator>(), health, locomotionSpeed, runningSpeed, transform.position, direction, weaponCloseRange, weaponLongRange);
     }
 
     public void TakeDamage(float damage)
     {
         _controller.TakeDamage(damage);
+    }
+
+    public void PlayIdleAnimation() //¬–≈ћ≈ЌЌјя ћ≈–ј (пока нет FSM)
+    {
+        _controller.PlayIdleAnimation();
     }
 
     public void LocomoteInUpdate(Vector2 locomotionDirection) //сейчас архитектура такова, что это происходит в Update из-за прив€зки к инпут контроллеру - надо отв€зать вызовы от инпут контроллера и вызывать это в FixedUpdate

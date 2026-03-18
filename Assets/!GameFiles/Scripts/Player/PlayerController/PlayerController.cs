@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController //оп€ть же можно избавитьс€ от зацепок, но в контексте нашего проекта пока что это излишн€€ гибкость
 {
+    private readonly PlayerUI _ui = new PlayerUI();
+
     private readonly PlayerAnimator _animator = new PlayerAnimator();
 
     private readonly PlayerHealthController _healthController = new PlayerHealthController();
@@ -12,8 +15,9 @@ public class PlayerController //оп€ть же можно избавитьс€ от зацепок, но в конте
 
     private readonly PlayerDefenseController _defenseController = new PlayerDefenseController();
 
-    public void Initialize(Animator animator, float health, float locomotionSpeed, float runningSpeed, Vector3 position, Vector2 direction, WeaponCloseRange weaponCloseRange, WeaponLongRange weaponLongRange)
+    public void Initialize(Image uiBar, Animator animator, float health, float locomotionSpeed, float runningSpeed, Vector3 position, Vector2 direction, WeaponCloseRange weaponCloseRange, WeaponLongRange weaponLongRange)
     {
+        _ui.Initialize(uiBar);
         _animator.Initialize(animator);
         _healthController.Initialize(health);
         _movementController.Initialize(locomotionSpeed, runningSpeed);
@@ -24,7 +28,14 @@ public class PlayerController //оп€ть же можно избавитьс€ от зацепок, но в конте
     public void TakeDamage(float damage)
     {
         _healthController.TakeDamage(damage);
+        _ui.Refresh(_healthController.GetHealth()); //не Observer, но тоже неплохо
         _animator.PlayStun();
+        //_animator.PlayIdle(); //хз, почему не робит (по идее должно было быть элегантнейшим решением)
+    }
+
+    public void PlayIdleAnimation() //¬–≈ћ≈ЌЌјя ћ≈–ј (пока нет FSM)
+    {
+        _animator.PlayIdle();
     }
 
     public void Locomote(Transform point, Transform renderAndSkeletonPoint, Vector2 locomotionDirection)

@@ -8,12 +8,12 @@ public class EnvironmentAreaOverlapAnalyzerRender : MonoBehaviour
 
     private void OnEnable()
     {
-        EnvironmentAreaOverlapAnalyzerDamageable.OverlapCreated += Initialize; //прям совсем хардкод, работает с конкретной реализацией
+        EnvironmentAreaOverlapAnalyzerDamageableCharacter.OverlapCreated += Initialize; //прям совсем хардкод, работает с конкретной реализацией
     }
 
     private void OnDisable()
     {
-        EnvironmentAreaOverlapAnalyzerDamageable.OverlapCreated -= Initialize;
+        EnvironmentAreaOverlapAnalyzerDamageableCharacter.OverlapCreated -= Initialize;
     }
 
     private void Initialize(Vector3 startPosition, float raduis)
