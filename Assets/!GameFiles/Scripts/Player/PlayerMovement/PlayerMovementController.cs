@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMovementController
+public sealed class PlayerMovementController
 {
     private readonly PlayerRotation _rotation;
 
@@ -21,14 +21,14 @@ public class PlayerMovementController
 
     }
 
-    public void Locomote(Transform playerPoint, Transform playerRenderAndSkeletonPoint, Vector2 locomotionDirection)
+    public void LocomoteWithinFrame(Transform playerPoint, Transform playerRenderAndSkeletonPoint, Vector2 locomotionDirection, Transform cameraPoint)
     {
-        _locomotion.Locomote(playerPoint, playerRenderAndSkeletonPoint, locomotionDirection);
+        _locomotion.LocomoteWithinFrame(playerPoint, playerRenderAndSkeletonPoint, locomotionDirection, cameraPoint);
     }
 
-    public void Run(Transform playerPoint, Transform playerRenderAndSkeletonPoint, Vector2 locomotionDirection) //DI в Locomote и Run реализую потом
+    public void RunWithinFrame(Transform playerPoint, Transform playerRenderAndSkeletonPoint, Vector2 locomotionDirection, Transform cameraPoint) //DI в Locomote и Run реализую потом
     {
-        _running.Run(playerPoint, playerRenderAndSkeletonPoint, locomotionDirection);
+        _running.RunWithinFrame(playerPoint, playerRenderAndSkeletonPoint, locomotionDirection, cameraPoint);
     }
 
     public void Jump()

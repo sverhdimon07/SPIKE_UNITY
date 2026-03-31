@@ -1,4 +1,4 @@
-public class PlayerWeaponLongRange
+public sealed class PlayerWeaponLongRange
 {
     private WeaponLongRange _weapon;
 

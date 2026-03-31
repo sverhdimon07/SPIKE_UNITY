@@ -1,8 +1,7 @@
 using System;
 using UnityEngine.Events;
-using UnityEngine;
 
-public class CharacterHealth
+public sealed class CharacterHealth //Ёта реализаци€ буквально дублируетс€ в Character, то есть, это сервис, который можно –≈ё«ј“№ » ѕќƒћ≈Ќя“№ (ѕ≈–≈ƒ≈Ћј“№);
 {
     private float _health;//потом мб переведем пол€ здоровь€ и демеджа на int везде (надо пон€ть, насколько это оправдано и что стоит ставить); подумать про семантику названи€ этого пол€ (можно оставить, а можно назвать это поле value)
 
@@ -30,17 +29,22 @@ public class CharacterHealth
         {
             _health = 0;
 
-            Died?.Invoke();
+            Die();
         }
         else if ((_health -= damage) == 0)
         {
-            Died?.Invoke();
+            Die();
         }
         else
         {
             _health -= damage;
 
-            DamageTaken?.Invoke(); //
+            DamageTaken.Invoke();
         }
+    }
+
+    public void Die()
+    {
+        Died.Invoke();
     }
 }

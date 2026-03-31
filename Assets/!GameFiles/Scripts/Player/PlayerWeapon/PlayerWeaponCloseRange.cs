@@ -1,4 +1,4 @@
-public class PlayerWeaponCloseRange
+public sealed class PlayerWeaponCloseRange
 {
     private WeaponCloseRange _weapon;
 

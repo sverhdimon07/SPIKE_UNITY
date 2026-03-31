@@ -2,14 +2,14 @@ using UnityEngine;
 
 public abstract class CharacterAttack
 {
-    private IEnvironmentAreaAnalyzer<IDamageablePlayer> _environmentAreaAnalyzer;
+    private IEnvironmentAreaAnalyzer<IDamageable, Character> _environmentAreaAnalyzer;
 
     private IDamageCalculator _damageCalculator;
 
-    public void Initialize(IEnvironmentAreaAnalyzer<IDamageablePlayer> environmentAreaAnalyzer, Vector3 position, Vector2 direction, float range, IDamageCalculator damageCalculator)
+    public void Initialize(IEnvironmentAreaAnalyzer<IDamageable, Character> environmentAreaAnalyzer, Vector3 position, Vector2 direction, float environmentAreaAnalyzerToolDistanceToCharacter, float environmentAreaAnalyzerToolLength, float environmentAreaAnalyzerToolHeight, IDamageCalculator damageCalculator)
     {
         _environmentAreaAnalyzer = environmentAreaAnalyzer;
-        _environmentAreaAnalyzer.Initialize(position, direction, range);
+        _environmentAreaAnalyzer.Initialize(position, direction, environmentAreaAnalyzerToolDistanceToCharacter, environmentAreaAnalyzerToolLength, environmentAreaAnalyzerToolHeight);
 
         _damageCalculator = damageCalculator;
         //_damageCalculator.Initialize(); хз, всегда ли надо инитить, если внутри класса одна более-менее проста€ функци€
@@ -17,7 +17,7 @@ public abstract class CharacterAttack
 
     public void Attack(Weapon weapon, Vector3 position, Vector2 direction)
     {
-        IDamageablePlayer damageReciever = _environmentAreaAnalyzer.Analyze(position, direction); //возможно стоит все подобные Character'у игровые сущности наследовать от единого Entity, но у нас же есть IDamageable (√≈Ќ»јЋ№Ќќ)
+        IDamageable damageReciever = _environmentAreaAnalyzer.Analyze(position, direction); //возможно стоит все подобные Character'у игровые сущности наследовать от единого Entity, но у нас же есть IDamageable (√≈Ќ»јЋ№Ќќ)
 
         if (damageReciever == null)
         {

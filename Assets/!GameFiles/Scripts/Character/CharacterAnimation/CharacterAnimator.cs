@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CharacterAnimator //работа этого класса - идиотия, но хз как сделать по-другому
+public sealed class CharacterAnimator //работа этого класса - идиотия, но хз как сделать по-другому
 {
     private const string IDLE = "Idle"; //знаю, что с литералами не работаем - пока не знаю другого способа (хотя от литералов тут как раз таки уходят через константы)
     private const string STUN = "Stun";

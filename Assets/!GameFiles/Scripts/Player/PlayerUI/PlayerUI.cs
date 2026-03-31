@@ -2,7 +2,7 @@
 //using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerUI
+public sealed class PlayerUI
 {
     private Image _bar;
 

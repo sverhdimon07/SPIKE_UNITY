@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class PlayerController //опять же можно избавиться от зацепок, но в контексте нашего проекта пока что это излишняя гибкость
+public sealed class PlayerController //опять же можно избавиться от зацепок, но в контексте нашего проекта пока что это излишняя гибкость
 {
-    private readonly PlayerUI _ui = new PlayerUI();
+    private readonly PlayerUI _ui = new PlayerUI(); //ПОДКЛЮЧИТЬ UI ТУТ, А НЕ В EVENT BUS
 
     private readonly PlayerAnimator _animator = new PlayerAnimator();
 
@@ -15,6 +16,16 @@ public class PlayerController //опять же можно избавиться от зацепок, но в конте
 
     private readonly PlayerDefenseController _defenseController = new PlayerDefenseController();
 
+    ~PlayerController()
+    {
+        _healthController.DamageTaken -= delegate () { DamageTaken.Invoke(); };
+        _healthController.DamageTaken -= RefreshUI;
+        _healthController.Died -= delegate () { Died.Invoke(); };
+    }
+
+    public UnityAction DamageTaken;
+    public UnityAction Died;
+
     public void Initialize(Image uiBar, Animator animator, float health, float locomotionSpeed, float runningSpeed, Vector3 position, Vector2 direction, WeaponCloseRange weaponCloseRange, WeaponLongRange weaponLongRange)
     {
         _ui.Initialize(uiBar);
@@ -23,14 +34,15 @@ public class PlayerController //опять же можно избавиться от зацепок, но в конте
         _movementController.Initialize(locomotionSpeed, runningSpeed);
         _offenseController.Initialize(position, direction, weaponCloseRange, weaponLongRange);
         //_defenseController.Initialize();
+
+        _healthController.DamageTaken += delegate () { DamageTaken.Invoke(); };
+        _healthController.DamageTaken += RefreshUI;
+        _healthController.Died += delegate () { Died.Invoke(); };
     }
 
-    public void TakeDamage(float damage)
+    public void RefreshUI()
     {
-        _healthController.TakeDamage(damage);
         _ui.Refresh(_healthController.GetHealth()); //не Observer, но тоже неплохо
-        _animator.PlayStun();
-        //_animator.PlayIdle(); //хз, почему не робит (по идее должно было быть элегантнейшим решением)
     }
 
     public void PlayIdleAnimation() //ВРЕМЕННАЯ МЕРА (пока нет FSM)
@@ -38,9 +50,21 @@ public class PlayerController //опять же можно избавиться от зацепок, но в конте
         _animator.PlayIdle();
     }
 
-    public void Locomote(Transform point, Transform renderAndSkeletonPoint, Vector2 locomotionDirection)
+    public void TakeDamage(float damage)
     {
-        _movementController.Locomote(point, renderAndSkeletonPoint, locomotionDirection);
+        _healthController.TakeDamage(damage);
+        _animator.PlayStun(); // ТАКИЕ СЕРВИСЫ БУДЕМ ПОДКЛЮЧАТЬ ЧЕРЕЗ СОБЫТИЯ (ПЕРЕПИСАТЬ ПО АНАЛОГИИ С UI)
+        //_animator.PlayIdle(); //хз, почему не робит (по идее должно было быть элегантнейшим решением)
+    }
+
+    public void Die()
+    {
+        _healthController.Die();
+    }
+
+    public void LocomoteWithinFrame(Transform point, Transform renderAndSkeletonPoint, Vector2 locomotionDirection, Transform cameraPoint)
+    {
+        _movementController.LocomoteWithinFrame(point, renderAndSkeletonPoint, locomotionDirection, cameraPoint);
 
         if (locomotionDirection == Vector2.zero)
         {
@@ -51,9 +75,9 @@ public class PlayerController //опять же можно избавиться от зацепок, но в конте
         _animator.PlayLocomotion(); //уже прям бесстыжая архитектура, надо прийти к какому то Event Bus мб, я хз. Но это очевидно событийно-ориентированная штука
     }
 
-    public void Run(Transform point, Transform renderAndSkeletonPoint, Vector2 locomotionDirection)
+    public void RunWithinFrame(Transform point, Transform renderAndSkeletonPoint, Vector2 locomotionDirection, Transform cameraPoint)
     {
-        _movementController.Run(point, renderAndSkeletonPoint, locomotionDirection);
+        _movementController.RunWithinFrame(point, renderAndSkeletonPoint, locomotionDirection, cameraPoint);
 
         if (locomotionDirection == Vector2.zero)
         {

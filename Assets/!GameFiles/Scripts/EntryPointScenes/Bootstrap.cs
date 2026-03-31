@@ -1,9 +1,8 @@
 using UnityEngine;
 
-[RequireComponent(typeof(InputController))]
-public abstract class Bootstrap : MonoBehaviour
+//[RequireComponent(typeof(InputController))] //хз, можно поставить интерфейс сюда, но € пока не понимаю, что он тогда будет создавать на сцене
+public abstract class Bootstrap : MonoBehaviour //как создать контракт на об€зательность пол€ типа Player (мб через свойство здесь)? - ’ќ„≈“—я —ƒ≈Ћј“№ »Ќ“≈–‘≈…— ƒЋя —≈–¬»—ќ¬ Ѕ”“—“–јѕ, ј Ќ≈ ј , но при этом хочетс€ где-то прописать контракт на Player
 {
-    public abstract void Initialize(); //
+    public abstract void Initialize();
 }
-
 //инкапсул€ци€ ли это, если € пишу методы загрузки конкретных сцен, а не позвол€ю это делать в "свободном" режиме через локальную переменную?

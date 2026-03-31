@@ -127,6 +127,15 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpeningGameplayMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""cab56388-b94f-4e8c-abe2-492a387150fa"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -294,6 +303,39 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
                     ""action"": ""Running"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""92239c21-9707-48e3-9091-c18069557987"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Running"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""625ffd89-e4cb-43b2-92c1-41bd96bc7a8a"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";KeyboardAndMouse"",
+                    ""action"": ""OpeningGameplayMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""23257776-5b73-4823-9eab-69f3cb7ca823"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""OpeningGameplayMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -340,6 +382,7 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
         m_MainCharacter_Running = m_MainCharacter.FindAction("Running", throwIfNotFound: true);
         m_MainCharacter_AttackCloseRange = m_MainCharacter.FindAction("AttackCloseRange", throwIfNotFound: true);
         m_MainCharacter_AttackLongRange = m_MainCharacter.FindAction("AttackLongRange", throwIfNotFound: true);
+        m_MainCharacter_OpeningGameplayMenu = m_MainCharacter.FindAction("OpeningGameplayMenu", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
     }
@@ -427,6 +470,7 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
     private readonly InputAction m_MainCharacter_Running;
     private readonly InputAction m_MainCharacter_AttackCloseRange;
     private readonly InputAction m_MainCharacter_AttackLongRange;
+    private readonly InputAction m_MainCharacter_OpeningGameplayMenu;
     /// <summary>
     /// Provides access to input actions defined in input action map "MainCharacter".
     /// </summary>
@@ -454,6 +498,10 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "MainCharacter/AttackLongRange".
         /// </summary>
         public InputAction @AttackLongRange => m_Wrapper.m_MainCharacter_AttackLongRange;
+        /// <summary>
+        /// Provides access to the underlying input action "MainCharacter/OpeningGameplayMenu".
+        /// </summary>
+        public InputAction @OpeningGameplayMenu => m_Wrapper.m_MainCharacter_OpeningGameplayMenu;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -492,6 +540,9 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
             @AttackLongRange.started += instance.OnAttackLongRange;
             @AttackLongRange.performed += instance.OnAttackLongRange;
             @AttackLongRange.canceled += instance.OnAttackLongRange;
+            @OpeningGameplayMenu.started += instance.OnOpeningGameplayMenu;
+            @OpeningGameplayMenu.performed += instance.OnOpeningGameplayMenu;
+            @OpeningGameplayMenu.canceled += instance.OnOpeningGameplayMenu;
         }
 
         /// <summary>
@@ -515,6 +566,9 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
             @AttackLongRange.started -= instance.OnAttackLongRange;
             @AttackLongRange.performed -= instance.OnAttackLongRange;
             @AttackLongRange.canceled -= instance.OnAttackLongRange;
+            @OpeningGameplayMenu.started -= instance.OnOpeningGameplayMenu;
+            @OpeningGameplayMenu.performed -= instance.OnOpeningGameplayMenu;
+            @OpeningGameplayMenu.canceled -= instance.OnOpeningGameplayMenu;
         }
 
         /// <summary>
@@ -694,6 +748,13 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAttackLongRange(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "OpeningGameplayMenu" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnOpeningGameplayMenu(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

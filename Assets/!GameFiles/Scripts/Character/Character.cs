@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(Animator))]
-public /*abstract*/ class Character : MonoBehaviour, IAttacker, IDamageableCharacter //я бы еще накидал контрактов на неуправляемое перемещение
+[RequireComponent(typeof(CapsuleCollider))]
+public /*sealed*/ /*abstract*/ class Character : MonoBehaviour, IAttacker, IDamageable //я бы еще накидал контрактов на неуправляемое перемещение
 {
     [SerializeField] private Image _uiBar;
     [SerializeField] private Transform _renderAndSkeletonPoint;
@@ -11,21 +12,35 @@ public /*abstract*/ class Character : MonoBehaviour, IAttacker, IDamageableChara
 
     private readonly CharacterControllerNew _controller = new CharacterControllerNew(); //можно использовать DI, но пока что это излишняя гибкость
 
+    private int counter;
+
     private bool _isCloseToPlayer;
+
+    public UnityAction DamageTaken; //под расширение (мб замедление времени во время стана делать, и возможно это делается при помощи заморозки сцены)
+    public UnityAction Died;
 
     private void Update() //возможно здесь будем корректировать то, куда смотрит ГГ (но возможно это стоит делать не здесь)
     {
         transform.LookAt(_playerPoint.position);
 
-        if (Vector3.Distance(transform.position, _playerPoint.position) > 0.4f)
+        if (Vector3.Distance(transform.position, _playerPoint.position) > 1.1f) //МГ
         {
             _isCloseToPlayer = false;
+
+            counter = 0;
 
             return;
         }
         _isCloseToPlayer = true;
 
-        Attack(new Vector2(transform.forward.x, transform.forward.z));
+        PlayIdleAnimation();
+
+        if (counter == 0)
+        {
+            Attack();
+
+            counter += 1;
+        }
     }
 
     private void FixedUpdate()
@@ -37,14 +52,31 @@ public /*abstract*/ class Character : MonoBehaviour, IAttacker, IDamageableChara
         LocomoteInFixedUpdate(new Vector2(transform.forward.x, transform.forward.z));
     }
 
-    public void Initialize(float health, float locomotionSpeed, float runningSpeed, Vector2 direction, WeaponCloseRange weaponCloseRange, WeaponLongRange weaponLongRange)
+    private void OnEnable()
     {
-        _controller.Initialize(_uiBar, GetComponent<Animator>(), health, locomotionSpeed, runningSpeed, transform.position, direction, weaponCloseRange, weaponLongRange);
+        _controller.DamageTaken += delegate () { DamageTaken?.Invoke(); };
+        _controller.Died += delegate () { Died?.Invoke(); };
+    }
+
+    private void OnDisable()
+    {
+        _controller.DamageTaken -= delegate () { DamageTaken?.Invoke(); };
+        _controller.Died -= delegate () { Died?.Invoke(); };
+    }
+
+    public void Initialize(float health, float locomotionSpeed, float runningSpeed, WeaponCloseRange weaponCloseRange, WeaponLongRange weaponLongRange)
+    {
+        _controller.Initialize(_uiBar, GetComponent<Animator>(), health, locomotionSpeed, runningSpeed, transform.position, new Vector2(_renderAndSkeletonPoint.forward.x, _renderAndSkeletonPoint.forward.z), weaponCloseRange, weaponLongRange);
     }
 
     public void TakeDamage(float damage)
     {
         _controller.TakeDamage(damage);
+    }
+
+    public void Die()
+    {
+        _controller.Die();
     }
 
     public void PlayIdleAnimation() //ВРЕМЕННАЯ МЕРА (пока нет FSM)
@@ -62,9 +94,9 @@ public /*abstract*/ class Character : MonoBehaviour, IAttacker, IDamageableChara
         _controller.Run(transform, _renderAndSkeletonPoint, locomotionDirection);
     }
 
-    public void Attack(Vector2 direction)
+    public void Attack()
     {
-        _controller.Attack(transform.position, direction);
+        _controller.Attack(transform.position, new Vector2(_renderAndSkeletonPoint.forward.x, _renderAndSkeletonPoint.forward.z));
     }
 
     /*

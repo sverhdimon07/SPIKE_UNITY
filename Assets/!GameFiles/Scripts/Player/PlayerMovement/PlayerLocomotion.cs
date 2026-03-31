@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerLocomotion
+public sealed class PlayerLocomotion
 {
     private float _speed;
 
@@ -9,25 +9,21 @@ public class PlayerLocomotion
         _speed = speed;
     }
 
-    public void Locomote(Transform playerPoint, Transform playerRenderAndSkeletonPoint, Vector2 locomotionDirection)
+    public void LocomoteWithinFrame(Transform playerPoint, Transform playerRenderAndSkeletonPoint, Vector2 locomotionDirection, Transform cameraPoint) //ВЫНЕСТИ НУЖНЫЕ БЛОКИ КОДА В ОТДЕЛЬНЫЕ МЕТОДЫ ДЛЯ ЧИТАЕМОСТИ КОДА И ЕГО ЧИСТОТЫ
     {
-        //ROTATION
-        if (locomotionDirection == Vector2.zero)
+        if (locomotionDirection == Vector2.zero) //возможно перенести на уровень инпут контроллера
         {
             return;
         }
 
-        Vector3 requiredDirection = new Vector3(locomotionDirection.x, 0f, locomotionDirection.y).normalized; //МГ
-
-        //Quaternion targetRotation = transform.rotation = Quaternion.LookRotation(requiredDirection);
-
-        //transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 360f * Time.deltaTime); //МГ
-
-        playerRenderAndSkeletonPoint.rotation = Quaternion.LookRotation(requiredDirection);
-
         //LOCOMOTION
-        Vector3 directionCalibrated = new Vector3(locomotionDirection.x, 0f, locomotionDirection.y);
+        Vector3 cameraForward = new Vector3(cameraPoint.forward.x, 0f, cameraPoint.forward.z).normalized; //МГ
+        Vector3 cameraRight = new Vector3(cameraPoint.right.x, 0f, cameraPoint.right.z).normalized; //МГ
+        Vector3 requiredDirection = (cameraForward * locomotionDirection.y + cameraRight * locomotionDirection.x).normalized;
 
-        playerPoint.position += directionCalibrated * _speed * Time.deltaTime;
+        playerPoint.position += requiredDirection * _speed * Time.deltaTime;
+
+        //ROTATION
+        playerRenderAndSkeletonPoint.rotation = Quaternion.LookRotation(requiredDirection); //СДЕЛАТЬ ПОВОРОТЫ ПЛАВНЫМИ
     }
 }

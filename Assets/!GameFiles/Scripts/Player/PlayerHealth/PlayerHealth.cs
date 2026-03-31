@@ -1,9 +1,7 @@
 using System;
-using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
-public class PlayerHealth 
+public sealed class PlayerHealth //Ёта реализаци€ буквально дублируетс€ в Character, то есть, это сервис, который можно –≈ё«ј“№ » ѕќƒћ≈Ќя“№ (ѕ≈–≈ƒ≈Ћј“№);
 {
     private float _health;//потом мб переведем пол€ здоровь€ и демеджа на int везде (надо пон€ть, насколько это оправдано и что стоит ставить); подумать про семантику названи€ этого пол€ (можно оставить, а можно назвать это поле value)
 
@@ -31,21 +29,22 @@ public class PlayerHealth
         {
             _health = 0;
 
-            Died?.Invoke();
-            int activeSceneIndex = SceneManager.GetActiveScene().buildIndex; //понимаю, что дубл€ж и не следование SRP - потом переделаю
-            SceneManager.LoadScene(activeSceneIndex);
+            Die();
         }
         else if ((_health -= damage) == 0)
         {
-            Died?.Invoke();
-            int activeSceneIndex = SceneManager.GetActiveScene().buildIndex; //понимаю, что дубл€ж и не следование SRP - потом переделаю
-            SceneManager.LoadScene(activeSceneIndex);
+            Die();
         }
         else
         {
             _health -= damage;
 
-            DamageTaken?.Invoke();
+            DamageTaken.Invoke();
         }
+    }
+
+    public void Die()
+    {
+        Died.Invoke();
     }
 }

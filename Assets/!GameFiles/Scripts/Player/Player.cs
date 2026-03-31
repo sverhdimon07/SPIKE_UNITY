@@ -1,23 +1,40 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(Animator))]
-public class Player : MonoBehaviour, IAttackerCloseRange, IAttackerLongRange, IDamageableCharacter //я бы еще накидал контрактов на управляемое перемещение
+[RequireComponent(typeof(CapsuleCollider))]
+public sealed class Player : MonoBehaviour, IAttackerCloseRange, IAttackerLongRange, IDamageable //я бы еще накидал контрактов на управляемое перемещение
 {
-    [SerializeField] private Image _uiBar;
-    [SerializeField] private Transform _renderAndSkeletonPoint;
+    [SerializeField] private Image _uiBar; //ПЕРЕНЕСТИ ВСЕ ЭТИ ШТУКИ В БУТСТРАП
+    [SerializeField] private Transform _renderAndSkeletonPoint; //ПЕРЕНЕСТИ ВСЕ ЭТИ ШТУКИ В БУТСТРАП
+    [SerializeField] private Transform _thirdPersonCameraControllerPoint; //ПЕРЕНЕСТИ ВСЕ ЭТИ ШТУКИ В БУТСТРАП
 
     private readonly PlayerController _controller = new PlayerController(); //можно использовать DI, но пока что это излишняя гибкость
+
+    public UnityAction DamageTaken; //под расширение (мб замедление времени во время стана делать, и возможно это делается при помощи заморозки сцены)
+    public UnityAction Died;
 
     private void Update()
     {
         //возможно здесь будем корректировать то, куда смотрит ГГ (но возможно это стоит делать не здесь)
     }
 
-    public void Initialize(float health, float locomotionSpeed, float runningSpeed, Vector2 direction, WeaponCloseRange weaponCloseRange, WeaponLongRange weaponLongRange)
+    private void OnEnable()
     {
-        _controller.Initialize(_uiBar, GetComponent<Animator>(), health, locomotionSpeed, runningSpeed, transform.position, direction, weaponCloseRange, weaponLongRange);
+        _controller.DamageTaken += delegate () { DamageTaken?.Invoke(); };
+        _controller.Died += delegate () { Died?.Invoke(); };
+    }
+
+    private void OnDisable()
+    {
+        _controller.DamageTaken -= delegate () { DamageTaken?.Invoke(); };
+        _controller.Died -= delegate () { Died?.Invoke(); };
+    }
+
+    public void Initialize(float health, float locomotionSpeed, float runningSpeed, WeaponCloseRange weaponCloseRange, WeaponLongRange weaponLongRange)
+    {
+        _controller.Initialize(_uiBar, GetComponent<Animator>(), health, locomotionSpeed, runningSpeed, transform.position, new Vector2(_renderAndSkeletonPoint.forward.x, _renderAndSkeletonPoint.forward.z), weaponCloseRange, weaponLongRange);
     }
 
     public void TakeDamage(float damage)
@@ -25,28 +42,33 @@ public class Player : MonoBehaviour, IAttackerCloseRange, IAttackerLongRange, ID
         _controller.TakeDamage(damage);
     }
 
-    public void PlayIdleAnimation() //ВРЕМЕННАЯ МЕРА (пока нет FSM)
+    public void Die()
+    {
+        _controller.Die();
+    }
+
+    public void PlayIdleAnimation() //это нужно, чтобы вернуться в Idle состояния из стана; ВРЕМЕННАЯ МЕРА (пока нет FSM);
     {
         _controller.PlayIdleAnimation();
     }
 
-    public void LocomoteInUpdate(Vector2 locomotionDirection) //сейчас архитектура такова, что это происходит в Update из-за привязки к инпут контроллеру - надо отвязать вызовы от инпут контроллера и вызывать это в FixedUpdate
+    public void LocomoteWithinFrame(Vector2 locomotionDirection) //сейчас архитектура такова, что это происходит в Update из-за привязки к инпут контроллеру - надо отвязать вызовы от инпут контроллера и вызывать это в FixedUpdate
     {
-        _controller.Locomote(transform, _renderAndSkeletonPoint, locomotionDirection);
+        _controller.LocomoteWithinFrame(transform, _renderAndSkeletonPoint, locomotionDirection, _thirdPersonCameraControllerPoint);
     }
 
-    public void RunInUpdate(Vector2 locomotionDirection) //переписать, ибо это дубляж механики Locomotion
+    public void RunWithinFrame(Vector2 locomotionDirection) //переписать, ибо это дубляж механики Locomotion
     {
-        _controller.Run(transform, _renderAndSkeletonPoint, locomotionDirection);
+        _controller.RunWithinFrame(transform, _renderAndSkeletonPoint, locomotionDirection, _thirdPersonCameraControllerPoint);
     }
 
-    public void AttackCloseRange(Vector2 direction)
+    public void AttackCloseRange()
     {
-        _controller.AttackCloseRange(transform.position, direction);
+        _controller.AttackCloseRange(transform.position, new Vector2(_renderAndSkeletonPoint.forward.x, _renderAndSkeletonPoint.forward.z));
     }
 
-    public void AttackLongRange(Vector2 direction)
+    public void AttackLongRange()
     {
-        _controller.AttackLongRange(transform.position, direction);
+        _controller.AttackLongRange(transform.position, new Vector2(_renderAndSkeletonPoint.forward.x, _renderAndSkeletonPoint.forward.z));
     }
 }

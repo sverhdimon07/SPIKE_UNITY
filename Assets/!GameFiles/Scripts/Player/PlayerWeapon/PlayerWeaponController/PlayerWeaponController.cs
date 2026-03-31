@@ -1,4 +1,4 @@
-public class PlayerWeaponController
+public sealed class PlayerWeaponController
 {
     private readonly PlayerWeaponCloseRange _weaponCloseRange = new PlayerWeaponCloseRange();
 

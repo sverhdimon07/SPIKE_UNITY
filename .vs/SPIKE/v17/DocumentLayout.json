@@ -3,112 +3,88 @@
   "WorkspaceRootPath": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\character\\characteroffense\\characteroffensecontroller\\characteroffensecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\character\\characteroffense\\characteroffensecontroller\\characteroffensecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\entrypointscenes\\bootstrap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\entrypointscenes\\bootstrap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\character\\characteroffense\\characterattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\character\\characteroffense\\characterattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\uigeneral\\mainmenuui\\mainmenuui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\uigeneral\\mainmenuui\\mainmenuui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\interfaces\\gameentityinterfaces\\entitybehaviorinterfaces\\idamageablecharacter.cs||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\interfaces\\gameentityinterfaces\\entitybehaviorinterfaces\\idamageablecharacter.cs||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\entrypointscenes\\implemented bootstrap\\bootstraptestscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\entrypointscenes\\implemented bootstrap\\bootstraptestscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\interfaces\\gameentityinterfaces\\entitybehaviorinterfaces\\idamageableplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\interfaces\\gameentityinterfaces\\entitybehaviorinterfaces\\idamageableplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\character\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\character\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|s:\\unity\\unity backup\\spike\\assets\\!gamefiles\\scripts\\servicesgeneral\\environmentareaanalyzers (all implemented ienvironmentareaanalyzer)\\environmentareaanalyzerrenders\\environmentareaoverlapanalyzerrender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\servicesgeneral\\environmentareaanalyzers (all implemented ienvironmentareaanalyzer)\\environmentareaanalyzerrenders\\environmentareaoverlapanalyzerrender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\player\\playeroffense\\playeroffensecontroller\\playeroffensecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playeroffense\\playeroffensecontroller\\playeroffensecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\player\\playercontroller\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playercontroller\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\player\\playeroffense\\playerattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playeroffense\\playerattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|s:\\unity\\unity backup\\spike\\assets\\!gamefiles\\scripts\\servicesgeneral\\environmentareaanalyzers (all implemented ienvironmentareaanalyzer)\\implemented environmentareaoverlapanalyzer\\environmentareaoverlapanalyzerdamageablecharacter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\servicesgeneral\\environmentareaanalyzers (all implemented ienvironmentareaanalyzer)\\implemented environmentareaoverlapanalyzer\\environmentareaoverlapanalyzerdamageablecharacter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|s:\\unity\\unity backup\\spike\\assets\\!gamefiles\\scripts\\servicesgeneral\\environmentareaanalyzers (all implemented ienvironmentareaanalyzer)\\implemented environmentareaoverlapanalyzer\\environmentareaoverlapanalyzerdamageableplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\servicesgeneral\\environmentareaanalyzers (all implemented ienvironmentareaanalyzer)\\implemented environmentareaoverlapanalyzer\\environmentareaoverlapanalyzerdamageableplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\input\\inputcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\input\\inputcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\character\\charactercontroller\\charactercontrollernew.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\character\\charactercontroller\\charactercontrollernew.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\character\\characterui\\characterui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\character\\characterui\\characterui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\player\\playerhealth\\playerhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playerhealth\\playerhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\entrypointscenes\\implemented bootstrap\\bootstrapmainmenuscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\entrypointscenes\\implemented bootstrap\\bootstrapmainmenuscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\player\\playerui\\playerui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playerui\\playerui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\player\\playerhealth\\playerhealthcontroller\\playerhealthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playerhealth\\playerhealthcontroller\\playerhealthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\character\\charactercontroller\\charactercontrollernew.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\character\\charactercontroller\\charactercontrollernew.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\character\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\character\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\character\\characteroffense\\characteroffensecontroller\\characteroffensecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\character\\characteroffense\\characteroffensecontroller\\characteroffensecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|s:\\unity\\unity backup\\spike\\assets\\!gamefiles\\scripts\\uigeneral\\gameplaymenuui\\gameplaymenuui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\uigeneral\\gameplaymenuui\\gameplaymenuui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|s:\\unity\\unity backup\\spike\\assets\\!gamefiles\\scripts\\servicesgeneral\\scenepausing\\scenepausing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\servicesgeneral\\scenepausing\\scenepausing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\servicesgeneral\\sceneloading\\sceneloading.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\servicesgeneral\\sceneloading\\sceneloading.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\player\\playercontroller\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playercontroller\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\character\\characterhealth\\characterhealthcontroller\\characterhealthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\character\\characterhealth\\characterhealthcontroller\\characterhealthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\entrypointscenes\\implemented gamecontroller\\bootstraptestscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\entrypointscenes\\implemented gamecontroller\\bootstraptestscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\player\\playerhealth\\playerhealthcontroller\\playerhealthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playerhealth\\playerhealthcontroller\\playerhealthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\entrypointscenes\\bootstrap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\entrypointscenes\\bootstrap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\player\\playerhealth\\playerhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playerhealth\\playerhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\character\\characterhealth\\characterhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\character\\characterhealth\\characterhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\player\\playeroffense\\playerattacks (all implemented playerattack)\\playerattacklongrange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playeroffense\\playerattacks (all implemented playerattack)\\playerattacklongrange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\player\\playermovement\\playerlocomotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playermovement\\playerlocomotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\input\\inputcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\input\\inputcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|s:\\unity\\unity backup\\spike\\assets\\!gamefiles\\scripts\\character\\implementedcharacter\\characterlongrange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\character\\implementedcharacter\\characterlongrange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\weapon\\implemented weapon\\implemented weaponcloserange\\swordbasic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\weapon\\implemented weapon\\implemented weaponcloserange\\swordbasic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\servicesgeneral\\environmentareaanalyzers (all implemented ienvironmentareaanalyzer)\\environmentareaoverlapanalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\servicesgeneral\\environmentareaanalyzers (all implemented ienvironmentareaanalyzer)\\environmentareaoverlapanalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\weapon\\weapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\weapon\\weapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\weapon\\weapondata\\weapondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\weapon\\weapondata\\weapondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\weapon\\implemented weapon\\weaponcloserange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -119,28 +95,88 @@
       "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\weapon\\implemented weapon\\weaponlongrange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\interfaces\\nongameentityinterfaces\\ienvironmentareaanalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\interfaces\\nongameentityinterfaces\\ienvironmentareaanalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\weapon\\weapondata\\weapondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\weapon\\weapondata\\weapondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\weapon\\weapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\weapon\\weapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\character\\characterui\\characterui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\character\\characterui\\characterui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\character\\characteranimation\\characteranimator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\character\\characteranimation\\characteranimator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\character\\characteroffense\\characterattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\character\\characteroffense\\characterattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\player\\playermovement\\playerrunning.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playermovement\\playerrunning.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\player\\playermovement\\playermovementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playermovement\\playermovementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\player\\playerweapon\\playerweaponcontroller\\playerweaponcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playerweapon\\playerweaponcontroller\\playerweaponcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\player\\playerweapon\\playerweaponlongrange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playerweapon\\playerweaponlongrange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\player\\playerweapon\\playerweaponcloserange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playerweapon\\playerweaponcloserange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\player\\playerweapon\\playerweaponlongrange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playerweapon\\playerweaponlongrange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\player\\playerweapon\\playerweaponcontroller\\playerweaponcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playerweapon\\playerweaponcontroller\\playerweaponcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|s:\\unity\\unity backup\\spike\\assets\\!gamefiles\\scripts\\servicesgeneral\\environmentareaanalyzers (all implemented ienvironmentareaanalyzer)\\implemented environmentareaoverlapanalyzer\\environmentareaoverlapanalyzerdamageable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:assets\\!gamefiles\\scripts\\servicesgeneral\\environmentareaanalyzers (all implemented ienvironmentareaanalyzer)\\implemented environmentareaoverlapanalyzer\\environmentareaoverlapanalyzerdamageable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\servicesgeneral\\environmentareaanalyzers\\environmentareaanalyzerrenders\\environmentareaoverlapanalyzerrender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\servicesgeneral\\environmentareaanalyzers\\environmentareaanalyzerrenders\\environmentareaoverlapanalyzerrender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\servicesgeneral\\environmentareaanalyzers\\environmentareacollideranalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\servicesgeneral\\environmentareaanalyzers\\environmentareacollideranalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\servicesgeneral\\environmentareaanalyzers\\environmentarearaycastanalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\servicesgeneral\\environmentareaanalyzers\\environmentarearaycastanalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\servicesgeneral\\environmentareaanalyzers\\environmentareaoverlapanalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\servicesgeneral\\environmentareaanalyzers\\environmentareaoverlapanalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\interfaces\\nongameentityinterfaces\\ienvironmentareaanalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\interfaces\\nongameentityinterfaces\\ienvironmentareaanalyzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\player\\playeroffense\\playerattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playeroffense\\playerattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\interfaces\\gameentityinterfaces\\entitybehaviorinterfaces\\iattacker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\interfaces\\gameentityinterfaces\\entitybehaviorinterfaces\\iattacker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\player\\playeroffense\\playeroffensecontroller\\playeroffensecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playeroffense\\playeroffensecontroller\\playeroffensecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\interfaces\\gameentityinterfaces\\entitybehaviorinterfaces\\iattackerlongrange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\interfaces\\gameentityinterfaces\\entitybehaviorinterfaces\\iattackerlongrange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\interfaces\\gameentityinterfaces\\entitybehaviorinterfaces\\iattackercloserange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\interfaces\\gameentityinterfaces\\entitybehaviorinterfaces\\iattackercloserange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|S:\\UNITY\\UNITY BACKUP\\SPIKE\\assets\\!gamefiles\\scripts\\interfaces\\gameentityinterfaces\\entitybehaviorinterfaces\\idamageable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\interfaces\\gameentityinterfaces\\entitybehaviorinterfaces\\idamageable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -150,43 +186,87 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 0,
               "Title": "Bootstrap.cs",
               "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\EntryPointScenes\\Bootstrap.cs",
               "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\EntryPointScenes\\Bootstrap.cs",
               "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\EntryPointScenes\\Bootstrap.cs",
               "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\EntryPointScenes\\Bootstrap.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAACNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-16T19:58:45.194Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "BootstrapTestScene.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\EntryPointScenes\\Implemented GameController\\BootstrapTestScene.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\EntryPointScenes\\Implemented GameController\\BootstrapTestScene.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\EntryPointScenes\\Implemented GameController\\BootstrapTestScene.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\EntryPointScenes\\Implemented GameController\\BootstrapTestScene.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAG4AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "BootstrapMainMenuScene.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\EntryPointScenes\\Implemented Bootstrap\\BootstrapMainMenuScene.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\EntryPointScenes\\Implemented Bootstrap\\BootstrapMainMenuScene.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\EntryPointScenes\\Implemented Bootstrap\\BootstrapMainMenuScene.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\EntryPointScenes\\Implemented Bootstrap\\BootstrapMainMenuScene.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-16T19:59:00.682Z",
-              "IsPinned": true
+              "WhenOpened": "2026-03-30T19:11:15.4Z",
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 1,
+              "Title": "MainMenuUI.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\UIGeneral\\MainMenuUI\\MainMenuUI.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\UIGeneral\\MainMenuUI\\MainMenuUI.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\UIGeneral\\MainMenuUI\\MainMenuUI.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\UIGeneral\\MainMenuUI\\MainMenuUI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-30T22:23:53.794Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BootstrapTestScene.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\EntryPointScenes\\Implemented Bootstrap\\BootstrapTestScene.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\EntryPointScenes\\Implemented Bootstrap\\BootstrapTestScene.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\EntryPointScenes\\Implemented Bootstrap\\BootstrapTestScene.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\EntryPointScenes\\Implemented Bootstrap\\BootstrapTestScene.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-30T17:11:35.396Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GameplayMenuUI.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\UIGeneral\\GameplayMenuUI\\GameplayMenuUI.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\UIGeneral\\GameplayMenuUI\\GameplayMenuUI.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\UIGeneral\\GameplayMenuUI\\GameplayMenuUI.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\UIGeneral\\GameplayMenuUI\\GameplayMenuUI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T00:15:49.356Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
               "Title": "InputController.cs",
               "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Input\\InputController.cs",
               "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Input\\InputController.cs",
               "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Input\\InputController.cs",
               "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Input\\InputController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAABDAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T21:48:32.48Z",
               "IsPinned": true,
@@ -194,149 +274,121 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "EnvironmentAreaOverlapAnalyzerRender.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers (All Implemented IEnvironmentAreaAnalyzer)\\EnvironmentAreaAnalyzerRenders\\EnvironmentAreaOverlapAnalyzerRender.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers (All Implemented IEnvironmentAreaAnalyzer)\\EnvironmentAreaAnalyzerRenders\\EnvironmentAreaOverlapAnalyzerRender.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers (All Implemented IEnvironmentAreaAnalyzer)\\EnvironmentAreaAnalyzerRenders\\EnvironmentAreaOverlapAnalyzerRender.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers (All Implemented IEnvironmentAreaAnalyzer)\\EnvironmentAreaAnalyzerRenders\\EnvironmentAreaOverlapAnalyzerRender.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 19,
+              "Title": "CharacterLongRange.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\ImplementedCharacter\\CharacterLongRange.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Character\\ImplementedCharacter\\CharacterLongRange.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\ImplementedCharacter\\CharacterLongRange.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Character\\ImplementedCharacter\\CharacterLongRange.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T04:20:29.769Z",
+              "WhenOpened": "2026-03-31T12:01:08.869Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "EnvironmentAreaOverlapAnalyzerDamageableCharacter.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers (All Implemented IEnvironmentAreaAnalyzer)\\Implemented EnvironmentAreaOverlapAnalyzer\\EnvironmentAreaOverlapAnalyzerDamageableCharacter.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers (All Implemented IEnvironmentAreaAnalyzer)\\Implemented EnvironmentAreaOverlapAnalyzer\\EnvironmentAreaOverlapAnalyzerDamageableCharacter.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers (All Implemented IEnvironmentAreaAnalyzer)\\Implemented EnvironmentAreaOverlapAnalyzer\\EnvironmentAreaOverlapAnalyzerDamageableCharacter.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers (All Implemented IEnvironmentAreaAnalyzer)\\Implemented EnvironmentAreaOverlapAnalyzer\\EnvironmentAreaOverlapAnalyzerDamageableCharacter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Title": "ScenePausing.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\ServicesGeneral\\ScenePausing\\ScenePausing.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\ServicesGeneral\\ScenePausing\\ScenePausing.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\ServicesGeneral\\ScenePausing\\ScenePausing.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\ServicesGeneral\\ScenePausing\\ScenePausing.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T04:18:44.387Z",
+              "WhenOpened": "2026-03-31T00:29:43.057Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "EnvironmentAreaOverlapAnalyzerDamageablePlayer.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers (All Implemented IEnvironmentAreaAnalyzer)\\Implemented EnvironmentAreaOverlapAnalyzer\\EnvironmentAreaOverlapAnalyzerDamageablePlayer.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers (All Implemented IEnvironmentAreaAnalyzer)\\Implemented EnvironmentAreaOverlapAnalyzer\\EnvironmentAreaOverlapAnalyzerDamageablePlayer.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers (All Implemented IEnvironmentAreaAnalyzer)\\Implemented EnvironmentAreaOverlapAnalyzer\\EnvironmentAreaOverlapAnalyzerDamageablePlayer.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers (All Implemented IEnvironmentAreaAnalyzer)\\Implemented EnvironmentAreaOverlapAnalyzer\\EnvironmentAreaOverlapAnalyzerDamageablePlayer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Title": "SceneLoading.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\ServicesGeneral\\SceneLoading\\SceneLoading.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\ServicesGeneral\\SceneLoading\\SceneLoading.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\ServicesGeneral\\SceneLoading\\SceneLoading.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\ServicesGeneral\\SceneLoading\\SceneLoading.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T04:18:25.172Z",
+              "WhenOpened": "2026-03-31T00:20:46.106Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CharacterOffenseController.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterOffense\\CharacterOffenseController\\CharacterOffenseController.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Character\\CharacterOffense\\CharacterOffenseController\\CharacterOffenseController.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterOffense\\CharacterOffenseController\\CharacterOffenseController.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Character\\CharacterOffense\\CharacterOffenseController\\CharacterOffenseController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 11,
+              "Title": "Player.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\Player.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\Player.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\Player.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\Player.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T04:17:12.282Z",
+              "WhenOpened": "2026-03-14T10:36:33.409Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IDamageablePlayer.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Interfaces\\GameEntityInterfaces\\EntityBehaviorInterfaces\\IDamageablePlayer.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Interfaces\\GameEntityInterfaces\\EntityBehaviorInterfaces\\IDamageablePlayer.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Interfaces\\GameEntityInterfaces\\EntityBehaviorInterfaces\\IDamageablePlayer.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Interfaces\\GameEntityInterfaces\\EntityBehaviorInterfaces\\IDamageablePlayer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAQAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 39,
+              "Title": "IAttacker.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Interfaces\\GameEntityInterfaces\\EntityBehaviorInterfaces\\IAttacker.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Interfaces\\GameEntityInterfaces\\EntityBehaviorInterfaces\\IAttacker.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Interfaces\\GameEntityInterfaces\\EntityBehaviorInterfaces\\IAttacker.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Interfaces\\GameEntityInterfaces\\EntityBehaviorInterfaces\\IAttacker.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T04:16:12.62Z",
+              "WhenOpened": "2026-03-28T21:32:42.265Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IDamageableCharacter.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Interfaces\\GameEntityInterfaces\\EntityBehaviorInterfaces\\IDamageableCharacter.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Interfaces\\GameEntityInterfaces\\EntityBehaviorInterfaces\\IDamageableCharacter.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Interfaces\\GameEntityInterfaces\\EntityBehaviorInterfaces\\IDamageableCharacter.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Interfaces\\GameEntityInterfaces\\EntityBehaviorInterfaces\\IDamageableCharacter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAQAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 42,
+              "Title": "IAttackerCloseRange.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Interfaces\\GameEntityInterfaces\\EntityBehaviorInterfaces\\IAttackerCloseRange.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Interfaces\\GameEntityInterfaces\\EntityBehaviorInterfaces\\IAttackerCloseRange.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Interfaces\\GameEntityInterfaces\\EntityBehaviorInterfaces\\IAttackerCloseRange.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Interfaces\\GameEntityInterfaces\\EntityBehaviorInterfaces\\IAttackerCloseRange.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T04:15:06.587Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-28T21:33:05.594Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CharacterAttack.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterOffense\\CharacterAttack.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Character\\CharacterOffense\\CharacterAttack.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterOffense\\CharacterAttack.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Character\\CharacterOffense\\CharacterAttack.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 41,
+              "Title": "IAttackerLongRange.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Interfaces\\GameEntityInterfaces\\EntityBehaviorInterfaces\\IAttackerLongRange.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Interfaces\\GameEntityInterfaces\\EntityBehaviorInterfaces\\IAttackerLongRange.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Interfaces\\GameEntityInterfaces\\EntityBehaviorInterfaces\\IAttackerLongRange.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Interfaces\\GameEntityInterfaces\\EntityBehaviorInterfaces\\IAttackerLongRange.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T04:06:44.533Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-28T21:33:19.267Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "PlayerAttack.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerOffense\\PlayerAttack.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerOffense\\PlayerAttack.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerOffense\\PlayerAttack.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerOffense\\PlayerAttack.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAUwAQAAAA5AAAAAAAAAA==",
+              "DocumentIndex": 43,
+              "Title": "IDamageable.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Interfaces\\GameEntityInterfaces\\EntityBehaviorInterfaces\\IDamageable.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Interfaces\\GameEntityInterfaces\\EntityBehaviorInterfaces\\IDamageable.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Interfaces\\GameEntityInterfaces\\EntityBehaviorInterfaces\\IDamageable.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Interfaces\\GameEntityInterfaces\\EntityBehaviorInterfaces\\IDamageable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T22:12:41.471Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-28T19:42:47.869Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": "PlayerController.cs",
               "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerController\\PlayerController.cs",
               "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerController\\PlayerController.cs",
               "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerController\\PlayerController.cs",
               "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerController\\PlayerController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-14T18:07:41.105Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Character.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\Character.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Character\\Character.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\Character.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Character\\Character.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAABGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-15T16:46:35.453Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "PlayerHealth.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerHealth\\PlayerHealth.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerHealth\\PlayerHealth.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerHealth\\PlayerHealth.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerHealth\\PlayerHealth.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwDMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T20:35:31.23Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 40,
               "Title": "PlayerOffenseController.cs",
               "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerOffense\\PlayerOffenseController\\PlayerOffenseController.cs",
               "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerOffense\\PlayerOffenseController\\PlayerOffenseController.cs",
@@ -349,211 +401,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "PlayerHealthController.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerHealth\\PlayerHealthController\\PlayerHealthController.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerHealth\\PlayerHealthController\\PlayerHealthController.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerHealth\\PlayerHealthController\\PlayerHealthController.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerHealth\\PlayerHealthController\\PlayerHealthController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 38,
+              "Title": "PlayerAttack.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerOffense\\PlayerAttack.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerOffense\\PlayerAttack.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerOffense\\PlayerAttack.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerOffense\\PlayerAttack.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T20:35:40.915Z"
+              "WhenOpened": "2026-03-17T22:12:41.471Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "CharacterUI.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterUI\\CharacterUI.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Character\\CharacterUI\\CharacterUI.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterUI\\CharacterUI.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Character\\CharacterUI\\CharacterUI.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T00:51:13.533Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "EnvironmentAreaOverlapAnalyzerDamageable.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers (All Implemented IEnvironmentAreaAnalyzer)\\Implemented EnvironmentAreaOverlapAnalyzer\\EnvironmentAreaOverlapAnalyzerDamageable.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers (All Implemented IEnvironmentAreaAnalyzer)\\Implemented EnvironmentAreaOverlapAnalyzer\\EnvironmentAreaOverlapAnalyzerDamageable.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers (All Implemented IEnvironmentAreaAnalyzer)\\Implemented EnvironmentAreaOverlapAnalyzer\\EnvironmentAreaOverlapAnalyzerDamageable.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers (All Implemented IEnvironmentAreaAnalyzer)\\Implemented EnvironmentAreaOverlapAnalyzer\\EnvironmentAreaOverlapAnalyzerDamageable.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T13:10:45.185Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Player.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\Player.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\Player.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\Player.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\Player.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-14T10:36:33.409Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "PlayerUI.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerUI\\PlayerUI.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerUI\\PlayerUI.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerUI\\PlayerUI.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerUI\\PlayerUI.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T03:39:31.621Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "CharacterControllerNew.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterController\\CharacterControllerNew.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Character\\CharacterController\\CharacterControllerNew.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterController\\CharacterControllerNew.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Character\\CharacterController\\CharacterControllerNew.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T23:53:26.09Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "CharacterHealthController.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterHealth\\CharacterHealthController\\CharacterHealthController.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Character\\CharacterHealth\\CharacterHealthController\\CharacterHealthController.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterHealth\\CharacterHealthController\\CharacterHealthController.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Character\\CharacterHealth\\CharacterHealthController\\CharacterHealthController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T01:45:34.847Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "PlayerWeaponCloseRange.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerWeapon\\PlayerWeaponCloseRange.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerWeapon\\PlayerWeaponCloseRange.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerWeapon\\PlayerWeaponCloseRange.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerWeapon\\PlayerWeaponCloseRange.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-14T13:19:06.539Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "CharacterHealth.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterHealth\\CharacterHealth.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Character\\CharacterHealth\\CharacterHealth.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterHealth\\CharacterHealth.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Character\\CharacterHealth\\CharacterHealth.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T00:44:06.303Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "SwordBasic.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Weapon\\Implemented Weapon\\Implemented WeaponCloseRange\\SwordBasic.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Weapon\\Implemented Weapon\\Implemented WeaponCloseRange\\SwordBasic.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Weapon\\Implemented Weapon\\Implemented WeaponCloseRange\\SwordBasic.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Weapon\\Implemented Weapon\\Implemented WeaponCloseRange\\SwordBasic.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T14:24:29.338Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "PlayerAttackLongRange.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerOffense\\PlayerAttacks (All Implemented PlayerAttack)\\PlayerAttackLongRange.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerOffense\\PlayerAttacks (All Implemented PlayerAttack)\\PlayerAttackLongRange.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerOffense\\PlayerAttacks (All Implemented PlayerAttack)\\PlayerAttackLongRange.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerOffense\\PlayerAttacks (All Implemented PlayerAttack)\\PlayerAttackLongRange.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-14T20:19:43.953Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "PlayerWeaponLongRange.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerWeapon\\PlayerWeaponLongRange.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerWeapon\\PlayerWeaponLongRange.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerWeapon\\PlayerWeaponLongRange.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerWeapon\\PlayerWeaponLongRange.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-14T13:19:21.502Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "EnvironmentAreaOverlapAnalyzer.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers (All Implemented IEnvironmentAreaAnalyzer)\\EnvironmentAreaOverlapAnalyzer.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers (All Implemented IEnvironmentAreaAnalyzer)\\EnvironmentAreaOverlapAnalyzer.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers (All Implemented IEnvironmentAreaAnalyzer)\\EnvironmentAreaOverlapAnalyzer.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers (All Implemented IEnvironmentAreaAnalyzer)\\EnvironmentAreaOverlapAnalyzer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T13:00:36.889Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "Weapon.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Weapon\\Weapon.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Weapon\\Weapon.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Weapon\\Weapon.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Weapon\\Weapon.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-16T20:44:33.24Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "WeaponCloseRange.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Weapon\\Implemented Weapon\\WeaponCloseRange.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Weapon\\Implemented Weapon\\WeaponCloseRange.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Weapon\\Implemented Weapon\\WeaponCloseRange.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Weapon\\Implemented Weapon\\WeaponCloseRange.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-16T20:44:44.199Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "WeaponData.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Weapon\\WeaponData\\WeaponData.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Weapon\\WeaponData\\WeaponData.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Weapon\\WeaponData\\WeaponData.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Weapon\\WeaponData\\WeaponData.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T10:43:53.982Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "WeaponLongRange.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Weapon\\Implemented Weapon\\WeaponLongRange.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Weapon\\Implemented Weapon\\WeaponLongRange.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Weapon\\Implemented Weapon\\WeaponLongRange.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Weapon\\Implemented Weapon\\WeaponLongRange.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-16T20:44:46.416Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 37,
               "Title": "IEnvironmentAreaAnalyzer.cs",
               "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Interfaces\\NonGameEntityInterfaces\\IEnvironmentAreaAnalyzer.cs",
               "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Interfaces\\NonGameEntityInterfaces\\IEnvironmentAreaAnalyzer.cs",
@@ -561,23 +422,64 @@
               "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Interfaces\\NonGameEntityInterfaces\\IEnvironmentAreaAnalyzer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-16T22:54:12.971Z"
+              "WhenOpened": "2026-03-16T22:54:12.971Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "PlayerMovementController.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerMovementController.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerMovementController.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerMovementController.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerMovementController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 36,
+              "Title": "EnvironmentAreaOverlapAnalyzer.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers\\EnvironmentAreaOverlapAnalyzer.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers\\EnvironmentAreaOverlapAnalyzer.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers\\EnvironmentAreaOverlapAnalyzer.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers\\EnvironmentAreaOverlapAnalyzer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-16T08:55:46.276Z"
+              "WhenOpened": "2026-03-29T13:58:10.352Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 35,
+              "Title": "EnvironmentAreaRaycastAnalyzer.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers\\EnvironmentAreaRaycastAnalyzer.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers\\EnvironmentAreaRaycastAnalyzer.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers\\EnvironmentAreaRaycastAnalyzer.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers\\EnvironmentAreaRaycastAnalyzer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T13:58:08.313Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "EnvironmentAreaColliderAnalyzer.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers\\EnvironmentAreaColliderAnalyzer.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers\\EnvironmentAreaColliderAnalyzer.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers\\EnvironmentAreaColliderAnalyzer.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers\\EnvironmentAreaColliderAnalyzer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T13:58:15.482Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "EnvironmentAreaOverlapAnalyzerRender.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers\\EnvironmentAreaAnalyzerRenders\\EnvironmentAreaOverlapAnalyzerRender.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers\\EnvironmentAreaAnalyzerRenders\\EnvironmentAreaOverlapAnalyzerRender.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers\\EnvironmentAreaAnalyzerRenders\\EnvironmentAreaOverlapAnalyzerRender.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\ServicesGeneral\\EnvironmentAreaAnalyzers\\EnvironmentAreaAnalyzerRenders\\EnvironmentAreaOverlapAnalyzerRender.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T13:58:17.98Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
               "Title": "PlayerWeaponController.cs",
               "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerWeapon\\PlayerWeaponController\\PlayerWeaponController.cs",
               "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerWeapon\\PlayerWeaponController\\PlayerWeaponController.cs",
@@ -585,7 +487,281 @@
               "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerWeapon\\PlayerWeaponController\\PlayerWeaponController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-14T13:18:59.473Z"
+              "WhenOpened": "2026-03-14T13:18:59.473Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "PlayerWeaponCloseRange.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerWeapon\\PlayerWeaponCloseRange.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerWeapon\\PlayerWeaponCloseRange.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerWeapon\\PlayerWeaponCloseRange.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerWeapon\\PlayerWeaponCloseRange.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-14T13:19:06.539Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "PlayerWeaponLongRange.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerWeapon\\PlayerWeaponLongRange.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerWeapon\\PlayerWeaponLongRange.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerWeapon\\PlayerWeaponLongRange.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerWeapon\\PlayerWeaponLongRange.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-14T13:19:21.502Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "PlayerMovementController.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerMovementController.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerMovementController.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerMovementController.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerMovementController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-16T08:55:46.276Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "PlayerRunning.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerRunning.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerRunning.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerRunning.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerRunning.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T22:11:02.702Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "PlayerLocomotion.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerLocomotion.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerLocomotion.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerLocomotion.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerLocomotion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T16:14:35.27Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "PlayerHealthController.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerHealth\\PlayerHealthController\\PlayerHealthController.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerHealth\\PlayerHealthController\\PlayerHealthController.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerHealth\\PlayerHealthController\\PlayerHealthController.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerHealth\\PlayerHealthController\\PlayerHealthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T20:35:40.915Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "PlayerHealth.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerHealth\\PlayerHealth.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerHealth\\PlayerHealth.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerHealth\\PlayerHealth.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerHealth\\PlayerHealth.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T20:35:31.23Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PlayerUI.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerUI\\PlayerUI.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerUI\\PlayerUI.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Player\\PlayerUI\\PlayerUI.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerUI\\PlayerUI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T03:39:31.621Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Character.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\Character.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Character\\Character.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\Character.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Character\\Character.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T16:46:35.453Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CharacterControllerNew.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterController\\CharacterControllerNew.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Character\\CharacterController\\CharacterControllerNew.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterController\\CharacterControllerNew.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Character\\CharacterController\\CharacterControllerNew.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAG0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T23:53:26.09Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CharacterOffenseController.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterOffense\\CharacterOffenseController\\CharacterOffenseController.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Character\\CharacterOffense\\CharacterOffenseController\\CharacterOffenseController.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterOffense\\CharacterOffenseController\\CharacterOffenseController.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Character\\CharacterOffense\\CharacterOffenseController\\CharacterOffenseController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T04:17:12.282Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "CharacterAttack.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterOffense\\CharacterAttack.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Character\\CharacterOffense\\CharacterAttack.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterOffense\\CharacterAttack.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Character\\CharacterOffense\\CharacterAttack.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T04:06:44.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "CharacterHealthController.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterHealth\\CharacterHealthController\\CharacterHealthController.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Character\\CharacterHealth\\CharacterHealthController\\CharacterHealthController.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterHealth\\CharacterHealthController\\CharacterHealthController.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Character\\CharacterHealth\\CharacterHealthController\\CharacterHealthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T01:45:34.847Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "CharacterHealth.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterHealth\\CharacterHealth.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Character\\CharacterHealth\\CharacterHealth.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterHealth\\CharacterHealth.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Character\\CharacterHealth\\CharacterHealth.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T00:44:06.303Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "CharacterAnimator.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterAnimation\\CharacterAnimator.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Character\\CharacterAnimation\\CharacterAnimator.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterAnimation\\CharacterAnimator.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Character\\CharacterAnimation\\CharacterAnimator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-30T13:45:02.029Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "CharacterUI.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterUI\\CharacterUI.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Character\\CharacterUI\\CharacterUI.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Character\\CharacterUI\\CharacterUI.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Character\\CharacterUI\\CharacterUI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T00:51:13.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Weapon.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Weapon\\Weapon.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Weapon\\Weapon.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Weapon\\Weapon.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Weapon\\Weapon.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-16T20:44:33.24Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "WeaponData.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Weapon\\WeaponData\\WeaponData.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Weapon\\WeaponData\\WeaponData.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Weapon\\WeaponData\\WeaponData.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Weapon\\WeaponData\\WeaponData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T10:43:53.982Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "WeaponLongRange.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Weapon\\Implemented Weapon\\WeaponLongRange.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Weapon\\Implemented Weapon\\WeaponLongRange.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Weapon\\Implemented Weapon\\WeaponLongRange.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Weapon\\Implemented Weapon\\WeaponLongRange.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-16T20:44:46.416Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "WeaponCloseRange.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Weapon\\Implemented Weapon\\WeaponCloseRange.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Weapon\\Implemented Weapon\\WeaponCloseRange.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Weapon\\Implemented Weapon\\WeaponCloseRange.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Weapon\\Implemented Weapon\\WeaponCloseRange.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-16T20:44:44.199Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "SwordBasic.cs",
+              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Weapon\\Implemented Weapon\\Implemented WeaponCloseRange\\SwordBasic.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Weapon\\Implemented Weapon\\Implemented WeaponCloseRange\\SwordBasic.cs",
+              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\Assets\\!GameFiles\\Scripts\\Weapon\\Implemented Weapon\\Implemented WeaponCloseRange\\SwordBasic.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Weapon\\Implemented Weapon\\Implemented WeaponCloseRange\\SwordBasic.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T14:24:29.338Z",
+              "EditorCaption": ""
             }
           ]
         }

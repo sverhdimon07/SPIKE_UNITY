@@ -1,7 +1,8 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class CharacterControllerNew
+public sealed class CharacterControllerNew
 {
     private readonly CharacterUI _ui = new CharacterUI();
 
@@ -15,6 +16,16 @@ public class CharacterControllerNew
 
     private readonly CharacterDefenseController _defenseController = new CharacterDefenseController();
 
+    ~CharacterControllerNew()
+    {
+        _healthController.DamageTaken -= delegate () { DamageTaken.Invoke(); };
+        _healthController.DamageTaken -= RefreshUI;
+        _healthController.Died -= delegate () { Died.Invoke(); };
+    }
+
+    public UnityAction DamageTaken;
+    public UnityAction Died;
+
     public void Initialize(Image uiBar, Animator animator, float health, float locomotionSpeed, float runningSpeed, Vector3 position, Vector2 direction, WeaponCloseRange weaponCloseRange, WeaponLongRange weaponLongRange)
     {
         _ui.Initialize(uiBar);
@@ -23,14 +34,15 @@ public class CharacterControllerNew
         _movementController.Initialize(locomotionSpeed, runningSpeed);
         _offenseController.Initialize(position, direction, weaponCloseRange, weaponLongRange);
         //_defenseController.Initialize();
+
+        _healthController.DamageTaken += delegate () { DamageTaken.Invoke(); };
+        _healthController.DamageTaken += RefreshUI;
+        _healthController.Died += delegate () { Died.Invoke(); };
     }
 
-    public void TakeDamage(float damage)
+    public void RefreshUI()
     {
-        _healthController.TakeDamage(damage);
         _ui.Refresh(_healthController.GetHealth()); //не Observer, но тоже неплохо
-        _animator.PlayStun();
-        //_animator.PlayIdle(); //хз, почему не робит (по идее должно было быть элегантнейшим решением)
     }
 
     public void PlayIdleAnimation() //¬–≈ћ≈ЌЌјя ћ≈–ј (пока нет FSM)
@@ -38,6 +50,17 @@ public class CharacterControllerNew
         _animator.PlayIdle();
     }
 
+    public void TakeDamage(float damage)
+    {
+        _healthController.TakeDamage(damage);
+        _animator.PlayStun(); // “ј »≈ —≈–¬»—џ Ѕ”ƒ≈ћ ѕќƒ Ћё„ј“№ „≈–≈« —ќЅџ“»я (ѕ≈–≈ѕ»—ј“№ ѕќ јЌјЋќ√»» — UI)
+        //_animator.PlayIdle(); //хз, почему не робит (по идее должно было быть элегантнейшим решением)
+    }
+
+    public void Die()
+    {
+        _healthController.Die();
+    }
 
     public void Locomote(Transform point, Transform renderAndSkeletonPoint, Vector2 locomotionDirection)
     {
