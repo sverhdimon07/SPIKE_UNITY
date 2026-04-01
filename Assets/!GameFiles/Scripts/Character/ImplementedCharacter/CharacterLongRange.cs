@@ -1,4 +1,7 @@
-public class CharacterLongRange : Character //не sealed
+public class CharacterLongRange : Character, IAttackerCloseRange //не sealed
 {
+    public void AttackCloseRange()
+    {
 
+    }
 }

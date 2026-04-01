@@ -1,0 +1,8 @@
+Model Information:
+* title:	Metal Gear Rising (Murasama)
+* source:	https://sketchfab.com/3d-models/metal-gear-rising-murasama-b8e83ddefd6048c8890db55e0f68f4b2
+* author:	KytoNotKyoto (https://sketchfab.com/kytonotkyoto)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

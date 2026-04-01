@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{F7537D83-BC72-507F-B5F5-55600BF7BE4D}</ProjectGuid>
+    <ProjectGuid>{ED093E77-7447-F5DC-F6EE-BE1DA526D9B1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>FastScriptReload.Runtime</AssemblyName>

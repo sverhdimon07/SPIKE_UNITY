@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{E8E4D461-E305-A119-BC30-F4EC3A12A9CE}</ProjectGuid>
+    <ProjectGuid>{2D701E92-5F2F-8686-6091-6413C18585D5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>FastScriptReload.Editor</AssemblyName>
@@ -1208,7 +1208,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="FastScriptReload.Runtime.csproj">
-      <Project>{F7537D83-BC72-507F-B5F5-55600BF7BE4D}</Project>
+      <Project>{ED093E77-7447-F5DC-F6EE-BE1DA526D9B1}</Project>
       <Name>FastScriptReload.Runtime</Name>
     </ProjectReference>
   </ItemGroup>

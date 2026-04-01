@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(CapsuleCollider))]
-public /*sealed*/ /*abstract*/ class Character : MonoBehaviour, /*IAttacker,*/ IDamageable //я бы еще накидал контрактов на неуправляемое перемещение
+public /*abstract*/ class Character : MonoBehaviour, IDamageable //я бы еще накидал контрактов на неуправляемое перемещение
 {
     [SerializeField] private Image _uiBar;
     [SerializeField] private Transform _renderAndSkeletonPoint;
@@ -27,6 +27,8 @@ public /*sealed*/ /*abstract*/ class Character : MonoBehaviour, /*IAttacker,*/ I
         {
             _isCloseToPlayer = false;
 
+            LocomoteWithinFrame(new Vector2(transform.forward.x, transform.forward.z));
+
             counter = 0;
 
             return;
@@ -37,19 +39,11 @@ public /*sealed*/ /*abstract*/ class Character : MonoBehaviour, /*IAttacker,*/ I
 
         if (counter == 0)
         {
+            if (gameObject.name == "CharacterL")
             Attack();
 
             counter += 1;
         }
-    }
-
-    private void FixedUpdate()
-    {
-        if (_isCloseToPlayer == true)
-        {
-            return;
-        }
-        LocomoteWithinFrame(new Vector2(transform.forward.x, transform.forward.z));
     }
 
     private void OnEnable()
@@ -84,6 +78,7 @@ public /*sealed*/ /*abstract*/ class Character : MonoBehaviour, /*IAttacker,*/ I
         _controller.PlayIdleAnimation();
     }
 
+    /*
     public void LocomoteWithinFrame(Vector2 locomotionDirection) //сейчас архитектура такова, что это происходит в Update из-за привязки к инпут контроллеру - надо отвязать вызовы от инпут контроллера и вызывать это в FixedUpdate
     {
         _controller.Locomote(transform, _renderAndSkeletonPoint, locomotionDirection);
@@ -92,21 +87,15 @@ public /*sealed*/ /*abstract*/ class Character : MonoBehaviour, /*IAttacker,*/ I
     public void RunWithinFrame(Vector2 locomotionDirection) //переписать, ибо это дубляж механики Locomotion
     {
         _controller.Run(transform, _renderAndSkeletonPoint, locomotionDirection);
-    }
-
-    public void Attack()
-    {
-        _controller.Attack(transform.position, new Vector2(_renderAndSkeletonPoint.forward.x, _renderAndSkeletonPoint.forward.z));
-    }
-
-    /*
-    public void AttackCloseRange(Vector2 direction)
-    {
-        _controller.AttackCloseRange(transform.position, direction);
-    }
-
-    public void AttackLongRange(Vector2 direction)
-    {
-        _controller.AttackLongRange(transform.position, direction);
     }*/
+
+    public void AttackCloseRange()
+    {
+        _controller.AttackCloseRange(transform.position, new Vector2(_renderAndSkeletonPoint.forward.x, _renderAndSkeletonPoint.forward.z));
+    }
+
+    public void AttackLongRange()
+    {
+        _controller.AttackLongRange(transform.position, new Vector2(_renderAndSkeletonPoint.forward.x, _renderAndSkeletonPoint.forward.z));
+    }
 }

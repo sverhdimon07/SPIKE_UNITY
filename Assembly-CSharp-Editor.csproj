@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{581B33C6-788B-B14A-CB7E-349A13B9BA88}</ProjectGuid>
+    <ProjectGuid>{2060CD2E-42C6-F495-EB1E-8D9FDC0C0D59}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -1439,19 +1439,19 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{DCCDE506-22A7-C62E-A021-DCDBEF4EBADA}</Project>
+      <Project>{366759DD-16C7-B262-ECA6-0B3F42A0A83A}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
     <ProjectReference Include="AstarPathfindingProject.csproj">
-      <Project>{5FB2521C-D212-6EEC-B1F4-6C0AD70484C7}</Project>
+      <Project>{76A06181-B513-73DA-B133-8B6443DC2361}</Project>
       <Name>AstarPathfindingProject</Name>
     </ProjectReference>
     <ProjectReference Include="PackageToolsEditor.csproj">
-      <Project>{5B10EA46-F86E-20C3-BDD2-402E2FC328E0}</Project>
+      <Project>{458F5442-A29B-DC0F-4B76-9C00415D9ADE}</Project>
       <Name>PackageToolsEditor</Name>
     </ProjectReference>
     <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
-      <Project>{478965F3-D2D5-9C7B-8A42-1A2E1A4ADC28}</Project>
+      <Project>{E14AF6A7-6FAE-0073-E420-F7638ED1846C}</Project>
       <Name>AstarPathfindingProjectEditor</Name>
     </ProjectReference>
   </ItemGroup>
