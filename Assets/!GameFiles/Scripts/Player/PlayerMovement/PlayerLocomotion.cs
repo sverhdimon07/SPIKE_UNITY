@@ -2,28 +2,22 @@ using UnityEngine;
 
 public sealed class PlayerLocomotion
 {
-    private float _speed;
+    private float _locomotionSpeed;
+    private float _runningSpeed;
 
-    public void Initialize(float speed)
+    public void Initialize(float locomotionSpeed, float runningSpeed)
     {
-        _speed = speed;
+        _locomotionSpeed = locomotionSpeed;
+        _runningSpeed = runningSpeed;
     }
 
-    public void LocomoteWithinFrame(Transform playerPoint, Transform playerRenderAndSkeletonPoint, Vector2 locomotionDirection, Transform cameraPoint) //ВЫНЕСТИ НУЖНЫЕ БЛОКИ КОДА В ОТДЕЛЬНЫЕ МЕТОДЫ ДЛЯ ЧИТАЕМОСТИ КОДА И ЕГО ЧИСТОТЫ
+    public void LocomoteWithinFrame(Transform point, Vector3 requiredActualDirection)
     {
-        if (locomotionDirection == Vector2.zero) //возможно перенести на уровень инпут контроллера
-        {
-            return;
-        }
+        point.position += requiredActualDirection * _locomotionSpeed * Time.deltaTime;
+    }
 
-        //LOCOMOTION
-        Vector3 cameraForward = new Vector3(cameraPoint.forward.x, 0f, cameraPoint.forward.z).normalized; //МГ
-        Vector3 cameraRight = new Vector3(cameraPoint.right.x, 0f, cameraPoint.right.z).normalized; //МГ
-        Vector3 requiredDirection = (cameraForward * locomotionDirection.y + cameraRight * locomotionDirection.x).normalized;
-
-        playerPoint.position += requiredDirection * _speed * Time.deltaTime;
-
-        //ROTATION
-        playerRenderAndSkeletonPoint.rotation = Quaternion.LookRotation(requiredDirection); //СДЕЛАТЬ ПОВОРОТЫ ПЛАВНЫМИ
+    public void RunWithinFrame(Transform point, Vector3 requiredActualDirection)
+    {
+        point.position += requiredActualDirection * _runningSpeed * Time.deltaTime;
     }
 }

@@ -1,24 +1,20 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public sealed class InputController : MonoBehaviour //хз как без этого вызывать в Awake нужные мне функции из классов низкого уровня (чтобы они при этом не были монобехами). Проблема тут в том, что по-моему мы все равно можем подменить приватное поле созданного нами типа
+public sealed class InputController : MonoBehaviour
 {
-    private InputReader _reader;
+    private InputReader _reader; //можем ли мы подменить приватное поле созданного нами типа?
 
     private Vector2 _locomotionDirection;
 
-    private bool isRunning;
-
+    public UnityAction LocomotionDirectionUndirected;
+    public UnityAction RunningButtonHolded;
+    public UnityAction RunningButtonUnholded;
     public UnityAction AttackCloseRangeButtonPressed;
     public UnityAction AttackLongRangeButtonPressed;
     public UnityAction OpeningGameplayeMenuButtonPressed;
 
     public UnityAction<Vector2> LocomotionDirectionDirected;
-    //public UnityAction<Vector2> LocomotionDirectionUndirected;
-    public UnityAction<Vector2> RunningButtonHolded;
-    //public UnityAction<Vector2> RunningButtonUnholded;
-
-    public Vector2 LocomotionDirection => _locomotionDirection;
 
     private void Update()
     {
@@ -26,25 +22,10 @@ public sealed class InputController : MonoBehaviour //хз как без этого вызывать 
 
         if (_locomotionDirection == Vector2.zero)
         {
-            if (isRunning == true)
-            {
-                RunningButtonHolded.Invoke(_locomotionDirection);
-
-                return;
-            }
-            //_locomotionDirectionUndirected.Invoke(_locomotionDirection);
-            LocomotionDirectionDirected.Invoke(_locomotionDirection);
+            LocomotionDirectionUndirected.Invoke(); //тут бесконечно происходит вызов, мб добавить счетчик, НО некритично
 
             return;
         }
-
-        if (isRunning == true)
-        {
-            RunningButtonHolded.Invoke(_locomotionDirection);
-
-            return;
-        }
-
         LocomotionDirectionDirected.Invoke(_locomotionDirection);
     }
 
@@ -52,8 +33,8 @@ public sealed class InputController : MonoBehaviour //хз как без этого вызывать 
     {
         _reader.Enable();
 
-        _reader.MainCharacter.Running.started += context => MakeIsRunningTrue();
-        _reader.MainCharacter.Running.canceled += context => MakeIsRunningFalse();
+        _reader.MainCharacter.Running.started += context => RunningButtonHolded.Invoke();
+        _reader.MainCharacter.Running.canceled += context => RunningButtonUnholded.Invoke();
         _reader.MainCharacter.AttackCloseRange.performed += context => AttackCloseRangeButtonPressed.Invoke();
         _reader.MainCharacter.AttackLongRange.performed += context => AttackLongRangeButtonPressed.Invoke();
         _reader.MainCharacter.OpeningGameplayMenu.performed += context => OpeningGameplayeMenuButtonPressed.Invoke();
@@ -61,8 +42,8 @@ public sealed class InputController : MonoBehaviour //хз как без этого вызывать 
 
     private void OnDisable()
     {
-        _reader.MainCharacter.Running.started -= context => MakeIsRunningTrue();
-        _reader.MainCharacter.Running.canceled -= context => MakeIsRunningFalse();
+        _reader.MainCharacter.Running.started -= context => RunningButtonHolded.Invoke();
+        _reader.MainCharacter.Running.canceled -= context => RunningButtonUnholded.Invoke();
         _reader.MainCharacter.AttackCloseRange.performed -= context => AttackCloseRangeButtonPressed.Invoke();
         _reader.MainCharacter.AttackLongRange.performed -= context => AttackLongRangeButtonPressed.Invoke();
         _reader.MainCharacter.OpeningGameplayMenu.performed -= context => OpeningGameplayeMenuButtonPressed.Invoke();
@@ -70,18 +51,8 @@ public sealed class InputController : MonoBehaviour //хз как без этого вызывать 
         _reader.Disable();
     }
 
-    public void Initialize()
+    public void Initialize(InputReader reader)
     {
-        _reader = new InputReader();
-    }
-
-    private void MakeIsRunningTrue()
-    {
-        isRunning = true;
-    }
-
-    private void MakeIsRunningFalse()
-    {
-        isRunning = false;
+        _reader = reader;
     }
 }

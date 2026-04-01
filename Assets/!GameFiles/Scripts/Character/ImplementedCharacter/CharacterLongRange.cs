@@ -1,4 +1,4 @@
-public class CharacterLongRange : Character
+public class CharacterLongRange : Character //не sealed
 {
 
 }

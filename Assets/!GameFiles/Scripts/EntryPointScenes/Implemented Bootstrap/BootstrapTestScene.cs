@@ -36,7 +36,7 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
 
     private ScenePausing _scenePausing;
 
-    private SceneLoading _sceneLoading;
+    //private SceneLoading _sceneLoading;
 
     private GameplayMenuUI _gameplayMenuUI;
 
@@ -62,14 +62,18 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
 
         _gameplayMenuUI.ContinueButton.onClick.AddListener(_scenePausing.PauseOrResume);
         _gameplayMenuUI.ContinueButton.onClick.AddListener(_gameplayMenuUI.OpenOrClose);
-        _gameplayMenuUI.ExitButton.onClick.AddListener(_sceneLoading.LoadMainMenuScene);
+        _gameplayMenuUI.ExitButton.onClick.AddListener(SceneLoading.LoadMainMenuScene);
+
+        _inputController.LocomotionDirectionDirected += _player.RotateWithinFrame;
         _inputController.LocomotionDirectionDirected += _player.LocomoteWithinFrame;
-        _inputController.RunningButtonHolded += _player.RunWithinFrame;
+        _inputController.LocomotionDirectionUndirected += _player.Idle;
+        _inputController.RunningButtonHolded += _player.SwitchLocomotionType;
+        _inputController.RunningButtonUnholded += _player.SwitchLocomotionType;
         _inputController.AttackCloseRangeButtonPressed += _player.AttackCloseRange;
         _inputController.AttackLongRangeButtonPressed += _player.AttackLongRange;
         _inputController.OpeningGameplayeMenuButtonPressed += _scenePausing.PauseOrResume;
         _inputController.OpeningGameplayeMenuButtonPressed += _gameplayMenuUI.OpenOrClose;
-        _player.Died += _sceneLoading.LoadTestScene;
+        _player.Died += SceneLoading.LoadTestScene;
 
         foreach (Character character in _characters)
         {
@@ -86,14 +90,18 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
 
         _gameplayMenuUI.ContinueButton.onClick.RemoveListener(_scenePausing.PauseOrResume);
         _gameplayMenuUI.ContinueButton.onClick.RemoveListener(_gameplayMenuUI.OpenOrClose);
-        _gameplayMenuUI.ExitButton.onClick.RemoveListener(_sceneLoading.LoadMainMenuScene);
+        _gameplayMenuUI.ExitButton.onClick.RemoveListener(SceneLoading.LoadMainMenuScene);
+
+        _inputController.LocomotionDirectionDirected -= _player.RotateWithinFrame;
         _inputController.LocomotionDirectionDirected -= _player.LocomoteWithinFrame;
-        _inputController.RunningButtonHolded -= _player.RunWithinFrame;
+        _inputController.LocomotionDirectionUndirected -= _player.Idle;
+        _inputController.RunningButtonHolded -= _player.SwitchLocomotionType;
+        _inputController.RunningButtonUnholded -= _player.SwitchLocomotionType;
         _inputController.AttackCloseRangeButtonPressed -= _player.AttackCloseRange;
         _inputController.AttackLongRangeButtonPressed -= _player.AttackLongRange;
         _inputController.OpeningGameplayeMenuButtonPressed -= _scenePausing.PauseOrResume;
         _inputController.OpeningGameplayeMenuButtonPressed -= _gameplayMenuUI.OpenOrClose;
-        _player.Died += _sceneLoading.LoadTestScene;
+        _player.Died -= SceneLoading.LoadTestScene;
 
         foreach (Character character in _characters)
         {
@@ -104,17 +112,28 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
     public override void Initialize() //именно в этом классе не так важно использовать такой метод, чтобы в него потом вкладывать дочерние методы. Я бы вообще так не делал, ибо не разберусь потом в большом потоке входных данных, лучше упразднить этот метод и вызывать дочерние
     {
         _scenePausing = new ScenePausing();
-        _sceneLoading = new SceneLoading();
+        //_sceneLoading = new SceneLoading(); //НЕ ИНИЧУ ПОКА ЧТО
         _gameplayMenuUI = FindAnyObjectByType<GameplayMenuUI>();
         _inputController = GetComponent<InputController>(); //_inputController.Initialize(); //он инитится сам в себе, наверное плохо, но ничего сделать не могу
 
+        InstantiateMigratingBetweenSceneObjects(); //ВРЕМЕННО
         _gameplayMenuUI.Initialize();
-        _inputController.Initialize();
+        _inputController.Initialize(new InputReader());
         InitializePlayerWeapons();
         InitializeCharacterWeapons();
         InitializeRestSceneWeapons();
         InitializePlayer(); //хз, как под другому, но даже если они запускаются в Awake - OnEnable запускается раньше. Мб если сериализировать эти поля, то все будет норм
         InitializeCharacter();
+    }
+
+    private void InstantiateMigratingBetweenSceneObjects()
+    {
+        /*
+        foreach (GameObject obj in _sceneLoading.GetMigratingBetweenSceneObjects())
+        {
+            Instantiate(obj);
+        }*/
+        //Instantiate(SceneLoading.GetMigratingBetweenSceneObject());
     }
 
     private void InitializePlayer() //пока что я делаю поля с игроком и оружием, возможно это излишне и можно создавать сущности в локальных переменных, НО Я НЕ ДУМАЮ ТАК (но при этом дочерний монобех PlayerInputController у Player создается в локальной переменной, так как он нам тут не нужен, этот класс не имеет такой ответственности)

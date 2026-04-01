@@ -72,6 +72,7 @@
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterWeapon\CharacterWeaponCloseRange.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\EventBusGeneral\EventBusGeneral.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterMovement\CharacterMovementController\CharacterMovementController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Weapon\Weapon.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerHealth\PlayerHealth.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterOffense\CharacterAttack.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterHealth\CharacterHealthController\CharacterHealthController.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerMovement\PlayerMovementController\PlayerMovementController.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterUI\CharacterUI.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\ServicesGeneral\EnvironmentAreaAnalyzers\EnvironmentAreaAnalyzerRenders\EnvironmentAreaOverlapAnalyzerRender.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerMovement\PlayerRotation.cs" />
@@ -115,6 +117,7 @@
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterAI\CharacterAIState.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityAttitudeTowardPlayerInterfaces\IAlly.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\ServicesGeneral\SoundPlayer.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Weapon\Implemented Weapon\Implemented WeaponCloseRange\SwordBasic.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabUI.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerDefense\PlayerDefenseController.cs" />
@@ -135,14 +138,12 @@
     <Compile Include="Assets\!GameFiles\Scripts\EntryPointScenes\Implemented Bootstrap\BootstrapMainMenuScene.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerMovement\PlayerCameraRotation.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerOffense\Implemented PlayerAttack\PlayerAttackLongRange.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerUI\PlayerUI.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerAnimation\PlayerAnimator.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterMovement\CharacterRunning.cs" />
     <Compile Include="Assets\FastScriptReload\Examples\Scripts\Graph.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerOffense\PlayerOffenseController\PlayerOffenseController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
@@ -152,7 +153,6 @@
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterMovement\CharacterJump.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterDefense\CharacterDefenseController.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerMovement\PlayerMovementController.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\ServicesGeneral\SceneLoading\SceneLoading.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Weapon\Implemented Weapon\Implemented WeaponLongRange\RocketLauncherBasic.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\Resizer.cs" />
@@ -165,13 +165,11 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabModelWindow.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\UIGeneral\MainMenuUI\MainMenuUI.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerMovement\PlayerRunning.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Weapon\Implemented Weapon\WeaponLongRange.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabImporter.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterController\CharacterControllerNew.cs" />
-    <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterMovement\CharacterMovementController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
@@ -241,7 +239,7 @@
     <None Include="Assets\FastScriptReload\Plugins\Roslyn\System.Reflection.Metadata.dll" />
     <None Include="Assets\FastScriptReload\Plugins\Roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-    <None Include="Assets\!GameFiles\Prefabs\Raiden\license.txt" />
+    <None Include="Assets\Import\Models\Characters\Raiden\license.txt" />
     <None Include="Assets\FastScriptReload\Plugins\Roslyn\RoslynLicense.txt" />
     <None Include="Assets\FastScriptReload\Plugins\Roslyn\System.Threading.Tasks.Extensions.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />

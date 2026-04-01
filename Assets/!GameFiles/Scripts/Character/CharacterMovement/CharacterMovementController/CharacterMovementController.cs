@@ -2,18 +2,16 @@ using UnityEngine;
 
 public class CharacterMovementController
 {
-    private readonly CharacterRotation _rotation;
+    private readonly CharacterRotation _rotation = new CharacterRotation();
 
     private readonly CharacterLocomotion _locomotion = new CharacterLocomotion();
-
-    private readonly CharacterRunning _running = new CharacterRunning();
 
     private readonly CharacterJump _jump;
 
     public void Initialize(float locomotionSpeed, float runningSpeed)
     {
         _locomotion.Initialize(locomotionSpeed);
-        _running.Initialize(runningSpeed);
+        //_running.Initialize(runningSpeed);
     }
 
     public void Rotate()
@@ -28,8 +26,9 @@ public class CharacterMovementController
 
     public void Run(Transform playerPoint, Transform playerRenderAndSkeletonPoint, Vector2 locomotionDirection) //DI в Locomote и Run реализую потом
     {
-        _running.Run(playerPoint, playerRenderAndSkeletonPoint, locomotionDirection);
+        //_running.Run(playerPoint, playerRenderAndSkeletonPoint, locomotionDirection);
     }
+
     public void Jump()
     {
         //

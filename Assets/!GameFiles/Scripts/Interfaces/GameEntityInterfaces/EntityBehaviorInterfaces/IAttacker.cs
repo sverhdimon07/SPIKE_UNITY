@@ -1,4 +1,1 @@
-public interface IAttacker
-{
-    public void Attack();
-}
+public interface IAttacker : IAttackerCloseRange, IAttackerLongRange { }

@@ -1,16 +1,11 @@
 using UnityEngine;
 
-public class PlayerRotation : MonoBehaviour
+public sealed class PlayerRotation
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Initialize() { } //
+    
+    public void RotateWithinFrame(Transform renderAndSkeletonPoint, Vector3 requiredActualDirection)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        renderAndSkeletonPoint.rotation = Quaternion.LookRotation(requiredActualDirection); //ядекюрэ онбнпнрш окюбмшлх
     }
 }

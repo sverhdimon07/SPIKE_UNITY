@@ -45,15 +45,15 @@ public sealed class PlayerController //опять же можно избавиться от зацепок, но 
         _ui.Refresh(_healthController.GetHealth()); //не Observer, но тоже неплохо
     }
 
-    public void PlayIdleAnimation() //ВРЕМЕННАЯ МЕРА (пока нет FSM)
+    public void Idle() //Изначально был метод PlayIdleAnimation, который вызывался на концах стана, НО ЭТО ВСЕ - ВРЕМЕННАЯ МЕРА (пока нет FSM)
     {
-        _animator.PlayIdle();
+        _animator.PlayIdleAnimation();
     }
 
     public void TakeDamage(float damage)
     {
         _healthController.TakeDamage(damage);
-        _animator.PlayStun(); // ТАКИЕ СЕРВИСЫ БУДЕМ ПОДКЛЮЧАТЬ ЧЕРЕЗ СОБЫТИЯ (ПЕРЕПИСАТЬ ПО АНАЛОГИИ С UI)
+        _animator.PlayStunAnimation(); // ТАКИЕ СЕРВИСЫ БУДЕМ ПОДКЛЮЧАТЬ ЧЕРЕЗ СОБЫТИЯ (ПЕРЕПИСАТЬ ПО АНАЛОГИИ С UI)
         //_animator.PlayIdle(); //хз, почему не робит (по идее должно было быть элегантнейшим решением)
     }
 
@@ -62,41 +62,34 @@ public sealed class PlayerController //опять же можно избавиться от зацепок, но 
         _healthController.Die();
     }
 
-    public void LocomoteWithinFrame(Transform point, Transform renderAndSkeletonPoint, Vector2 locomotionDirection, Transform cameraPoint)
+    public void RotateWithinFrame(Transform renderAndSkeletonPoint, Transform cameraPoint, Vector2 inputDirection)
     {
-        _movementController.LocomoteWithinFrame(point, renderAndSkeletonPoint, locomotionDirection, cameraPoint);
-
-        if (locomotionDirection == Vector2.zero)
-        {
-            _animator.PlayIdle();
-
-            return;
-        }
-        _animator.PlayLocomotion(); //уже прям бесстыжая архитектура, надо прийти к какому то Event Bus мб, я хз. Но это очевидно событийно-ориентированная штука
+        _movementController.RotateWithinFrame(renderAndSkeletonPoint, cameraPoint, inputDirection);
     }
 
-    public void RunWithinFrame(Transform point, Transform renderAndSkeletonPoint, Vector2 locomotionDirection, Transform cameraPoint)
+    public void LocomoteWithinFrame(Transform point, Transform cameraPoint, Vector2 inputLocomotionDirection, bool isRunning)
     {
-        _movementController.RunWithinFrame(point, renderAndSkeletonPoint, locomotionDirection, cameraPoint);
+        _movementController.LocomoteWithinFrame(point, cameraPoint, inputLocomotionDirection, isRunning);
 
-        if (locomotionDirection == Vector2.zero)
+        if (isRunning == false) //из-за отсутствия MVC и событий - тут остается проверка на раннинг, хотя если бы анимации вызывались из PlayerLocomotion, проблемы бы не было
         {
-            _animator.PlayIdle();
-
-            return;
+            _animator.PlayLocomotionAnimation(); //это очевидно событийно-ориентированная штука, хотя и так мне тоже нравится. НО скорее всего нужно сделать по MVC как UI
         }
-        _animator.PlayRunning(); //уже прям бесстыжая архитектура, надо прийти к какому то Event Bus мб, я хз. Но это очевидно событийно-ориентированная штука
+        else if (isRunning == true)
+        {
+            _animator.PlayRunningAnimation();
+        }
     }
 
     public void AttackCloseRange(Vector3 position, Vector2 direction)
     {
         _offenseController.AttackCloseRange(position, direction);
-        _animator.PlayAttackCloseRange();
+        _animator.PlayAttackCloseRangeAnimation();
     }
 
     public void AttackLongRange(Vector3 position, Vector2 direction)
     {
         _offenseController.AttackLongRange(position, direction);
-        _animator.PlayAttackLongRange();
+        _animator.PlayAttackLongRangeAnimation();
     }
 }

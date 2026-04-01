@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(CapsuleCollider))]
-public /*sealed*/ /*abstract*/ class Character : MonoBehaviour, IAttacker, IDamageable //я бы еще накидал контрактов на неуправляемое перемещение
+public /*sealed*/ /*abstract*/ class Character : MonoBehaviour, /*IAttacker,*/ IDamageable //я бы еще накидал контрактов на неуправляемое перемещение
 {
     [SerializeField] private Image _uiBar;
     [SerializeField] private Transform _renderAndSkeletonPoint;
@@ -33,7 +33,7 @@ public /*sealed*/ /*abstract*/ class Character : MonoBehaviour, IAttacker, IDama
         }
         _isCloseToPlayer = true;
 
-        PlayIdleAnimation();
+        Idle();
 
         if (counter == 0)
         {
@@ -49,7 +49,7 @@ public /*sealed*/ /*abstract*/ class Character : MonoBehaviour, IAttacker, IDama
         {
             return;
         }
-        LocomoteInFixedUpdate(new Vector2(transform.forward.x, transform.forward.z));
+        LocomoteWithinFrame(new Vector2(transform.forward.x, transform.forward.z));
     }
 
     private void OnEnable()
@@ -79,17 +79,17 @@ public /*sealed*/ /*abstract*/ class Character : MonoBehaviour, IAttacker, IDama
         _controller.Die();
     }
 
-    public void PlayIdleAnimation() //ВРЕМЕННАЯ МЕРА (пока нет FSM)
+    public void Idle() //ВРЕМЕННАЯ МЕРА (пока нет FSM)
     {
         _controller.PlayIdleAnimation();
     }
 
-    public void LocomoteInFixedUpdate(Vector2 locomotionDirection) //сейчас архитектура такова, что это происходит в Update из-за привязки к инпут контроллеру - надо отвязать вызовы от инпут контроллера и вызывать это в FixedUpdate
+    public void LocomoteWithinFrame(Vector2 locomotionDirection) //сейчас архитектура такова, что это происходит в Update из-за привязки к инпут контроллеру - надо отвязать вызовы от инпут контроллера и вызывать это в FixedUpdate
     {
         _controller.Locomote(transform, _renderAndSkeletonPoint, locomotionDirection);
     }
 
-    public void RunInFixedUpdate(Vector2 locomotionDirection) //переписать, ибо это дубляж механики Locomotion
+    public void RunWithinFrame(Vector2 locomotionDirection) //переписать, ибо это дубляж механики Locomotion
     {
         _controller.Run(transform, _renderAndSkeletonPoint, locomotionDirection);
     }

@@ -2,7 +2,11 @@ using UnityEngine;
 
 public sealed class BootstrapMainMenuScene : Bootstrap
 {
-    private SceneLoading _sceneLoading;
+    [SerializeField] private GameObject _soundDesignObject; //название
+
+    //private GameObject[] _migratingBetweenSceneObjects = new GameObject[1]; //название
+
+    //private SceneLoading _sceneLoading;
 
     private AudioSource _musicLayerAudioSource; //ПОКА БЕЗ ВЫДЕЛЕННОГО ДЛЯ ЭТОЙ ЗАДАЧИ СЕРВИСА (ПЕРЕДАЛАТЬ)
 
@@ -31,16 +35,28 @@ public sealed class BootstrapMainMenuScene : Bootstrap
 
     public override void Initialize()
     {
-        _sceneLoading = new SceneLoading();
+        //_migratingBetweenSceneObjects[0] = _soundDesignObject;
+        //_sceneLoading = new SceneLoading();
         _musicLayerAudioSource = FindAnyObjectByType<AudioSource>();
         _ui = FindAnyObjectByType<MainMenuUI>();
 
+        SceneLoading.Initialize(_soundDesignObject); // НЕ СОЗДАЮ В ЭТОЙ СЦЕНЕ МИГРИРУЮЩИЕ ОБЪЕКТЫ
         _ui.Initialize(0.1f); //пока вместо полноценного инита через сервис (я пиал это к тому, когда у нас слайдер детерминировался тем, что стоит в инспекторе) - НАДО ПОНЯТЬ, КТО КОГО ДЕТЕРМИНИРУЕТ
+    }
+
+    private void InstantiateMigratingBetweenSceneObjects()
+    {
+        /*
+        foreach (GameObject obj in _sceneLoading.GetMigratingBetweenSceneObjects())
+        {
+            Instantiate(obj);
+        }*/
+        //Instantiate(_sceneLoading.GetMigratingBetweenSceneObject());
     }
 
     private void LoadTestScene()
     {
-        _sceneLoading.LoadTestScene();
+        SceneLoading.LoadTestScene();
     }
 
     private void RefreshMusicLayerAudioSourceVolume(float volume)
