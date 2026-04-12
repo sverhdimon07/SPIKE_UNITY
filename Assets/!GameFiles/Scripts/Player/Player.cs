@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -6,7 +7,9 @@ using UnityEngine.UI;
 [RequireComponent(typeof(CapsuleCollider))]
 public sealed class Player : MonoBehaviour, IAttacker, IDamageable
 {
-    [SerializeField] private Image _uiBar; //хотел переносить эти пол€ в бутстрап, Ќќ почему-бы все пол€, не отвечающие за геймплейную логику, не хранить именно здесь (ибо бутстрап должен инитить √≈…ћƒ»«ј…Ќ≈–— »≈ ƒјЌЌџ≈, зачем их мешать с ссылками на вспомогательные классы?)?
+    [SerializeField] private Image _healthBar; //хотел переносить эти пол€ в бутстрап, Ќќ почему-бы все пол€, не отвечающие за геймплейную логику, не хранить именно здесь (ибо бутстрап должен инитить √≈…ћƒ»«ј…Ќ≈–— »≈ ƒјЌЌџ≈, зачем их мешать с ссылками на вспомогательные классы?)?
+    [SerializeField] private Image _weaponLongRangeCooldownBar;
+    [SerializeField] private TMP_Text _dealthMessageText;
     [SerializeField] private Transform _renderAndSkeletonPoint;
     [SerializeField] private Transform _thirdPersonCameraControllerPoint;
 
@@ -31,7 +34,12 @@ public sealed class Player : MonoBehaviour, IAttacker, IDamageable
 
     public void Initialize(float health, float locomotionSpeed, float runningSpeed, WeaponCloseRange weaponCloseRange, WeaponLongRange weaponLongRange)
     {
-        _controller.Initialize(_uiBar, GetComponent<Animator>(), health, locomotionSpeed, runningSpeed, transform.position, new Vector2(_renderAndSkeletonPoint.forward.x, _renderAndSkeletonPoint.forward.z), weaponCloseRange, weaponLongRange);
+        _controller.Initialize(_healthBar, _weaponLongRangeCooldownBar, _dealthMessageText,GetComponent<Animator>(), health, locomotionSpeed, runningSpeed, transform.position, new Vector2(_renderAndSkeletonPoint.forward.x, _renderAndSkeletonPoint.forward.z), weaponCloseRange, weaponLongRange);
+    }
+
+    public void RefreshWeaponLongRangeCooldownBar()
+    {
+        _controller.RefreshWeaponLongRangeCooldownBar();
     }
 
     public void Idle() //это нужно, чтобы вернутьс€ в Idle состо€ни€ из стана; Ќќ–ћјЋ№Ќјя, Ќќ ¬–≈ћ≈ЌЌјя ћ≈–ј (пока нет FSM);

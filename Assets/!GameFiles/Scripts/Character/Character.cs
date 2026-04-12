@@ -9,6 +9,7 @@ public /*abstract*/ class Character : MonoBehaviour, IDamageable //я бы еще наки
     [SerializeField] private Image _uiBar;
     [SerializeField] private Transform _renderAndSkeletonPoint;
     [SerializeField] private Transform _playerPoint; //НЕНУЖНАЯ ПРИВЯЗКА - УДАЛЮ ПОТОМ (когда будет FSM)
+    [SerializeField] private Transform _lookAndLocomotionPoint;
 
     private readonly CharacterControllerNew _controller = new CharacterControllerNew(); //можно использовать DI, но пока что это излишняя гибкость
 
@@ -21,28 +22,57 @@ public /*abstract*/ class Character : MonoBehaviour, IDamageable //я бы еще наки
 
     private void Update() //возможно здесь будем корректировать то, куда смотрит ГГ (но возможно это стоит делать не здесь)
     {
-        transform.LookAt(_playerPoint.position);
-
-        if (Vector3.Distance(transform.position, _playerPoint.position) > 1.1f) //МГ
+        if (gameObject.name == "CharacterCloseRange")
         {
-            _isCloseToPlayer = false;
+            transform.LookAt(_playerPoint.position);
 
-            LocomoteWithinFrame(new Vector2(transform.forward.x, transform.forward.z));
+            if (Vector3.Distance(transform.position, _playerPoint.position) > 1.1f) //МГ
+            {
+                _isCloseToPlayer = false;
 
-            counter = 0;
+                LocomoteWithinFrame(new Vector2(transform.forward.x, transform.forward.z));
 
-            return;
+                counter = 0;
+
+                return;
+            }
+            _isCloseToPlayer = true;
+
+            Idle();
+
+            if (counter == 0)
+            {
+                AttackCloseRange();
+
+                counter += 1;
+            }
         }
-        _isCloseToPlayer = true;
-
-        Idle();
-
-        if (counter == 0)
+        else if (gameObject.name == "CharacterLongRange")
         {
-            if (gameObject.name == "CharacterL")
-            Attack();
+            if (Vector3.Distance(transform.position, _playerPoint.position) < 3f) //МГ
+            {
+                _renderAndSkeletonPoint.LookAt(_lookAndLocomotionPoint);
 
-            counter += 1;
+                _isCloseToPlayer = false;
+
+                LocomoteWithinFrame(new Vector2(_lookAndLocomotionPoint.forward.x, _lookAndLocomotionPoint.forward.z));
+
+                counter = 0;
+
+                return;
+            }
+            _renderAndSkeletonPoint.LookAt(_playerPoint.position);
+
+            _isCloseToPlayer = true;
+
+            Idle();
+
+            if (counter == 0)
+            {
+                AttackLongRange();
+
+                counter += 1;
+            }
         }
     }
 
@@ -78,12 +108,12 @@ public /*abstract*/ class Character : MonoBehaviour, IDamageable //я бы еще наки
         _controller.PlayIdleAnimation();
     }
 
-    /*
     public void LocomoteWithinFrame(Vector2 locomotionDirection) //сейчас архитектура такова, что это происходит в Update из-за привязки к инпут контроллеру - надо отвязать вызовы от инпут контроллера и вызывать это в FixedUpdate
     {
-        _controller.Locomote(transform, _renderAndSkeletonPoint, locomotionDirection);
+        _controller.LocomoteWithinFrame(transform, locomotionDirection);
     }
 
+    /*
     public void RunWithinFrame(Vector2 locomotionDirection) //переписать, ибо это дубляж механики Locomotion
     {
         _controller.Run(transform, _renderAndSkeletonPoint, locomotionDirection);

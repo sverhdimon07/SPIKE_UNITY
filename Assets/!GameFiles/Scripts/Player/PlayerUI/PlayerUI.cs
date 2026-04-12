@@ -1,10 +1,14 @@
-//using System.Collections;
-//using UnityEngine;
+using System.Collections;
+using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
+using System.Threading.Tasks;
 
 public sealed class PlayerUI
 {
-    private Image _bar;
+    private Image _healthBar;
+    private Image _weaponLongRangeCooldownBar;
+    private TMP_Text _deathMessageText;
 
     //private Coroutine _firstCoroutine;
 
@@ -13,16 +17,48 @@ public sealed class PlayerUI
     //private readonly float _fillSpeed = 0.1f;
     //private readonly float _delayBetweenSmoothRefreshStages = 0.005f;
 
-    public void Initialize(Image bar)
+    public void Initialize(Image healthBar, Image weaponLongRangeCooldownBar, TMP_Text deathMessageText)
     {
-        _bar = bar;
+        _healthBar = healthBar;
+        _weaponLongRangeCooldownBar = weaponLongRangeCooldownBar;
+        _deathMessageText = deathMessageText;
     }
 
-    public void Refresh(float valueLevel)
+    public void RefreshHealthBar(float valueLevel)
     {
         float barFullness = valueLevel / _externalDataScale;
 
-        _bar.fillAmount = barFullness;
+        _healthBar.fillAmount = barFullness;
+    }
+
+    public void RefreshWeaponLongRangeCooldownBar()
+    {
+        if (_weaponLongRangeCooldownBar.fillAmount == 1f)
+        {
+            _weaponLongRangeCooldownBar.fillAmount = 0f;
+
+            WeaponLongRangeCooldownBarCoroutine();
+        }
+    }
+
+    public void RefreshDeathMessageText()
+    {
+        if (_deathMessageText.enabled == true)
+        {
+            _deathMessageText.enabled = false;
+        }
+        else if (_deathMessageText.enabled == false)
+        {
+            _deathMessageText.enabled = true;
+        }
+    }
+
+    private async Task WeaponLongRangeCooldownBarCoroutine()
+    {
+        //yield return new WaitForSeconds(2.34f);
+        await Task.Delay(2340);
+
+        _weaponLongRangeCooldownBar.fillAmount = 1f;
     }
 
     /*

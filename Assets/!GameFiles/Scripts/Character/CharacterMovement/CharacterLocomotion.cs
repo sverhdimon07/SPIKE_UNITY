@@ -9,7 +9,7 @@ public class CharacterLocomotion
         _speed = speed;
     }
 
-    public void Locomote(Transform characterPoint, Transform characterRenderAndSkeletonPoint, Vector2 locomotionDirection)
+    public void LocomoteWithinFrame(Transform characterPoint, Vector2 locomotionDirection)
     {
         Vector3 directionCalibrated = new Vector3(locomotionDirection.x, 0f, locomotionDirection.y);
 

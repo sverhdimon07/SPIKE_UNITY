@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -19,16 +20,16 @@ public sealed class PlayerController //опять же можно избавиться от зацепок, но 
     ~PlayerController()
     {
         _healthController.DamageTaken -= delegate () { DamageTaken.Invoke(); };
-        _healthController.DamageTaken -= RefreshUI;
+        _healthController.DamageTaken -= delegate () { _ui.RefreshHealthBar(_healthController.GetHealth()); };
         _healthController.Died -= delegate () { Died.Invoke(); };
     }
 
     public UnityAction DamageTaken;
     public UnityAction Died;
 
-    public void Initialize(Image uiBar, Animator animator, float health, float locomotionSpeed, float runningSpeed, Vector3 position, Vector2 direction, WeaponCloseRange weaponCloseRange, WeaponLongRange weaponLongRange)
+    public void Initialize(Image healthBar, Image weaponLongRangeCooldownBar, TMP_Text deathMessageText, Animator animator, float health, float locomotionSpeed, float runningSpeed, Vector3 position, Vector2 direction, WeaponCloseRange weaponCloseRange, WeaponLongRange weaponLongRange)
     {
-        _ui.Initialize(uiBar);
+        _ui.Initialize(healthBar, weaponLongRangeCooldownBar, deathMessageText);
         _animator.Initialize(animator);
         _healthController.Initialize(health);
         _movementController.Initialize(locomotionSpeed, runningSpeed);
@@ -36,13 +37,19 @@ public sealed class PlayerController //опять же можно избавиться от зацепок, но 
         //_defenseController.Initialize();
 
         _healthController.DamageTaken += delegate () { DamageTaken.Invoke(); };
-        _healthController.DamageTaken += RefreshUI;
+        _healthController.DamageTaken += delegate () { _ui.RefreshHealthBar(_healthController.GetHealth()); };
         _healthController.Died += delegate () { Died.Invoke(); };
+        _healthController.Died += delegate () { _ui.RefreshDeathMessageText(); }; //надо дописать где-то вызов на выключение на старте, и включить объект в сцене
     }
 
-    public void RefreshUI()
+    public void RefreshDeathMessageText() //под коммент выше
     {
-        _ui.Refresh(_healthController.GetHealth()); //не Observer, но тоже неплохо
+        //
+    }
+
+    public void RefreshWeaponLongRangeCooldownBar()
+    {
+        _ui.RefreshWeaponLongRangeCooldownBar();
     }
 
     public void Idle() //Изначально был метод PlayIdleAnimation, который вызывался на концах стана, НО ЭТО ВСЕ - ВРЕМЕННАЯ МЕРА (пока нет FSM)
@@ -91,5 +98,6 @@ public sealed class PlayerController //опять же можно избавиться от зацепок, но 
     {
         _offenseController.AttackLongRange(position, direction);
         _animator.PlayAttackLongRangeAnimation();
+        _ui.RefreshWeaponLongRangeCooldownBar(); //переписать на Observer, как это работает выше
     }
 }

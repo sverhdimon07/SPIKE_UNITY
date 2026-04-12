@@ -1,11 +1,11 @@
 [Licensing::Module] Trying to connect to existing licensing client channel...
 Built from '6000.3/staging' branch; Version is '6000.3.9f1 (7a9955a4f2fa) revision 8034645'; Using compiler version '194234433'; Build Type 'Release'
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Дмитрий" at "2026-03-31T19:19:00.2681979Z"
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Дмитрий" at "2026-04-01T02:42:20.8994407Z"
 OS: 'Windows 10  (10.0.19045) 64bit CoreSingleLanguage' Language: 'ru' Physical Memory: 16318 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
 System  architecture: x64
 Process architecture: x64
-Date: 2026-03-31T19:19:00Z
+Date: 2026-04-01T02:42:20Z
 
 COMMAND LINE ARGUMENTS:
 S:\UNITY\Unity Editor Versions\6000.3.9f1\Editor\Unity.exe
@@ -15,11 +15,11 @@ S:\UNITY\Unity Editor Versions\6000.3.9f1\Editor\Unity.exe
 -name
 AssetImportWorker4
 -projectPath
-S:/UNITY/UNITY BACKUP/SPIKE
+S:/UNITY/UNITY BACKUP/SPIKE/SPIKE_UNITY
 -logFile
 Logs/AssetImportWorker4.log
 -srvPort
-54929
+58055
 -licensingIpc
 LicenseClient-Дмитрий
 -job-worker-count
@@ -30,8 +30,8 @@ LicenseClient-Дмитрий
 1
 -name
 AssetImport
-Successfully changed project path to: S:/UNITY/UNITY BACKUP/SPIKE
-S:/UNITY/UNITY BACKUP/SPIKE
+Successfully changed project path to: S:/UNITY/UNITY BACKUP/SPIKE/SPIKE_UNITY
+S:/UNITY/UNITY BACKUP/SPIKE/SPIKE_UNITY
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
     "memorysetup-temp-allocator-size-audio-worker=65536"
@@ -67,12 +67,12 @@ S:/UNITY/UNITY BACKUP/SPIKE
     "memorysetup-job-temp-allocator-block-size-background=1048576"
     "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
     "memorysetup-temp-allocator-size-cloud-worker=32768"
-Player connection [8816]  Target information:
+Player connection [34268]  Target information:
 
-Player connection [8816]  * "[IP] 192.168.1.39 [Port] 0 [Flags] 2 [Guid] 7283493 [EditorId] 7283493 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-KK1P2OH) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [34268]  * "[IP] 192.168.1.39 [Port] 0 [Flags] 2 [Guid] 3896019077 [EditorId] 3896019077 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-KK1P2OH) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [8816] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [8816] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [34268] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [34268] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 7
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
@@ -84,11 +84,11 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 4.43 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 4.64 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.3.9f1 (7a9955a4f2fa)
 [Subsystems] Discovering subsystems at path S:/UNITY/Unity Editor Versions/6000.3.9f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path S:/UNITY/UNITY BACKUP/SPIKE/Assets
+[Subsystems] Discovering subsystems at path S:/UNITY/UNITY BACKUP/SPIKE/SPIKE_UNITY/Assets
 GfxDevice: creating device client; kGfxThreadingModeNonThreaded
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
@@ -100,21 +100,21 @@ Initialize mono
 Mono path[0] = 'S:/UNITY/Unity Editor Versions/6000.3.9f1/Editor/Data/Managed'
 Mono path[1] = 'S:/UNITY/Unity Editor Versions/6000.3.9f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'S:/UNITY/Unity Editor Versions/6000.3.9f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56128
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56040
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: S:/UNITY/Unity Editor Versions/6000.3.9f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 [Licensing::Module] Licensing is not yet initialized.
 [Licensing::Client] Handshaking with LicensingClient:
   Version:                 1.17.4+4293ba1
-  Session Id:              2b3bf4091a2146b398a03318891f37bb
+  Session Id:              99af0be510134bbb81087e968e451c64
   Correlation Id:          5482b27508508e261325e7b2fece287e
-  External correlation Id: 4238528413737831472
+  External correlation Id: 1353267469536256170
   Machine Id:              BSinU4MsdP07HGNxKH7k4gB1okk=
-[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Дмитрий" (connect: 0.00s, validation: 0.00s, handshake: 2.85s)
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Дмитрий-notifications" at "2026-03-31T19:19:03.1160031Z"
-[Licensing::Module] Licensing Background thread has ended after 2.85s
-[Licensing::Module] Licensing is initialized (took 0.88s).
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Дмитрий" (connect: 0.00s, validation: 0.00s, handshake: 2.54s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Дмитрий-notifications" at "2026-04-01T02:42:23.4463979Z"
+[Licensing::Module] Licensing Background thread has ended after 2.55s
+[Licensing::Module] Licensing is initialized (took 0.77s).
 [Licensing::Client] Successfully resolved entitlement details
 [Licensing::Module] License group:
   Id: 10170697332008-UnityPersXXXX
@@ -122,41 +122,41 @@ Register platform support module: S:/UNITY/Unity Editor Versions/6000.3.9f1/Edit
   Type: Assigned
   Expiration: Unlimited
 Register platform support module: S:/UNITY/Unity Editor Versions/6000.3.9f1/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.UWP.Extensions.dll
-Registered in 0.893107 seconds.
-- Loaded All Assemblies, in  1.877 seconds
+Registered in 0.780899 seconds.
+- Loaded All Assemblies, in  1.679 seconds
 Native extension for UWP target not found
 Native extension for WindowsStandalone target not found
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.734 seconds
-Domain Reload Profiling: 2609ms
-	BeginReloadAssembly (333ms)
+- Finished resetting the current domain, in  0.804 seconds
+Domain Reload Profiling: 2480ms
+	BeginReloadAssembly (337ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (164ms)
-	RebuildNativeTypeToScriptingClass (42ms)
-	initialDomainReloadingComplete (1017ms)
-	LoadAllAssembliesAndSetupDomain (319ms)
-		LoadAssemblies (331ms)
+	RebuildCommonClasses (91ms)
+	RebuildNativeTypeToScriptingClass (34ms)
+	initialDomainReloadingComplete (864ms)
+	LoadAllAssembliesAndSetupDomain (350ms)
+		LoadAssemblies (335ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (314ms)
-			TypeCache.Refresh (311ms)
-				TypeCache.ScanAssembly (291ms)
+		AnalyzeDomain (343ms)
+			TypeCache.Refresh (340ms)
+				TypeCache.ScanAssembly (314ms)
 			BuildScriptInfoCaches (0ms)
 			ResolveRequiredComponents (1ms)
-	FinalizeReload (734ms)
+	FinalizeReload (804ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (652ms)
+		SetupLoadedEditorAssemblies (709ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (77ms)
-			SetLoadedEditorAssemblies (5ms)
-			BeforeProcessingInitializeOnLoad (145ms)
-			ProcessInitializeOnLoadAttributes (293ms)
-			ProcessInitializeOnLoadMethodAttributes (131ms)
+			InitializePlatformSupportModulesInManaged (91ms)
+			SetLoadedEditorAssemblies (7ms)
+			BeforeProcessingInitializeOnLoad (162ms)
+			ProcessInitializeOnLoadAttributes (309ms)
+			ProcessInitializeOnLoadMethodAttributes (139ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -169,11 +169,11 @@ Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInter
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
 Begin MonoManager ReloadAssembly
 [Licensing::Client] Successfully resolved entitlement details
-Duplicate assembly 'System.Collections.Immutable.FSR.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Collections.Immutable.FSR.dll, AssemblyName=System.Collections.Immutable, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/System.Collections.Immutable.dll, AssemblyName=System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Duplicate assembly 'System.Collections.Immutable.FSR.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Collections.Immutable.FSR.dll, AssemblyName=System.Collections.Immutable, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Collections.Immutable.dll, AssemblyName=System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Duplicate assembly 'Microsoft.CodeAnalysis.CSharp.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/Microsoft.CodeAnalysis.CSharp.dll, AssemblyName=Microsoft.CodeAnalysis.CSharp, Version=4.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/Microsoft.CodeAnalysis.CSharp.dll, AssemblyName=Microsoft.CodeAnalysis.CSharp, Version=2.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35'.Duplicate assembly 'System.Reflection.Metadata.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Reflection.Metadata.dll, AssemblyName=System.Reflection.Metadata, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/System.Reflection.Metadata.dll, AssemblyName=System.Reflection.Metadata, Version=1.4.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Duplicate assembly 'Microsoft.CodeAnalysis.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/Microsoft.CodeAnalysis.dll, AssemblyName=Microsoft.CodeAnalysis, Version=4.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/Microsoft.CodeAnalysis.dll, AssemblyName=Microsoft.CodeAnalysis, Version=2.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35'.- Loaded All Assemblies, in  1.655 seconds
+Duplicate assembly 'System.Collections.Immutable.FSR.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Collections.Immutable.FSR.dll, AssemblyName=System.Collections.Immutable, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/System.Collections.Immutable.dll, AssemblyName=System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Duplicate assembly 'System.Collections.Immutable.FSR.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Collections.Immutable.FSR.dll, AssemblyName=System.Collections.Immutable, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Collections.Immutable.dll, AssemblyName=System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Duplicate assembly 'Microsoft.CodeAnalysis.CSharp.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/Microsoft.CodeAnalysis.CSharp.dll, AssemblyName=Microsoft.CodeAnalysis.CSharp, Version=4.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/Microsoft.CodeAnalysis.CSharp.dll, AssemblyName=Microsoft.CodeAnalysis.CSharp, Version=2.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35'.Duplicate assembly 'System.Reflection.Metadata.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Reflection.Metadata.dll, AssemblyName=System.Reflection.Metadata, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/System.Reflection.Metadata.dll, AssemblyName=System.Reflection.Metadata, Version=1.4.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Duplicate assembly 'Microsoft.CodeAnalysis.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/Microsoft.CodeAnalysis.dll, AssemblyName=Microsoft.CodeAnalysis, Version=4.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/Microsoft.CodeAnalysis.dll, AssemblyName=Microsoft.CodeAnalysis, Version=2.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35'.- Loaded All Assemblies, in  2.130 seconds
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
 'Packages/com.unity.cinemachine/Editor/Obsolete/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
 'Packages/com.unity.cinemachine/Editor/Editors/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
-Refreshing native plugins compatible for Editor in 1.56 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 1.72 ms, found 3 plugins.
 Native extension for UWP target not found
 Native extension for WindowsStandalone target not found
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
@@ -203,442 +203,46 @@ Package Manager log level set to [2]
 [Package Manager] Cannot connect to Unity Package Manager local server
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  3.280 seconds
-Domain Reload Profiling: 4931ms
-	BeginReloadAssembly (340ms)
+- Finished resetting the current domain, in  3.684 seconds
+Domain Reload Profiling: 5809ms
+	BeginReloadAssembly (391ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (11ms)
+		DisableScriptedObjects (10ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (45ms)
-	RebuildCommonClasses (69ms)
-	RebuildNativeTypeToScriptingClass (26ms)
-	initialDomainReloadingComplete (119ms)
-	LoadAllAssembliesAndSetupDomain (1097ms)
-		LoadAssemblies (685ms)
+		CreateAndSetChildDomain (55ms)
+	RebuildCommonClasses (86ms)
+	RebuildNativeTypeToScriptingClass (35ms)
+	initialDomainReloadingComplete (151ms)
+	LoadAllAssembliesAndSetupDomain (1462ms)
+		LoadAssemblies (882ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (627ms)
-			TypeCache.Refresh (488ms)
-				TypeCache.ScanAssembly (463ms)
-			BuildScriptInfoCaches (109ms)
-			ResolveRequiredComponents (23ms)
-	FinalizeReload (3281ms)
+		AnalyzeDomain (826ms)
+			TypeCache.Refresh (639ms)
+				TypeCache.ScanAssembly (610ms)
+			BuildScriptInfoCaches (145ms)
+			ResolveRequiredComponents (33ms)
+	FinalizeReload (3685ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2922ms)
+		SetupLoadedEditorAssemblies (3280ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (2ms)
-			SetLoadedEditorAssemblies (6ms)
-			BeforeProcessingInitializeOnLoad (245ms)
-			ProcessInitializeOnLoadAttributes (2556ms)
-			ProcessInitializeOnLoadMethodAttributes (106ms)
-			AfterProcessingInitializeOnLoad (5ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (11ms)
+			BeforeProcessingInitializeOnLoad (289ms)
+			ProcessInitializeOnLoadAttributes (2839ms)
+			ProcessInitializeOnLoadMethodAttributes (130ms)
+			AfterProcessingInitializeOnLoad (7ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (12ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
-Refreshing native plugins compatible for Editor in 1.66 ms, found 3 plugins.
+		AwakeInstancesAfterBackupRestoration (14ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.02 seconds
+Refreshing native plugins compatible for Editor in 1.87 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 17 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6984 unused Assets / (4.7 MB). Loaded Objects now: 7821.
-Memory consumption went from 155.4 MB to 150.7 MB.
-Total: 13.263700 ms (FindLiveObjects: 1.176300 ms CreateObjectMapping: 0.842500 ms MarkObjects: 8.212600 ms  DeleteObjects: 3.031100 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 120539.374061 seconds.
-  path: Assets/!GameFiles/Prefabs/Players
-  artifactKey: Guid(8bc00a5bc56d1b84b85bc83e8f792b88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/!GameFiles/Prefabs/Players using Guid(8bc00a5bc56d1b84b85bc83e8f792b88) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'aca5ee7993545735bb124005d4982a0c') in 0.0081482 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.869529 seconds.
-  path: Assets/!GameFiles/Prefabs/Players
-  artifactKey: Guid(8bc00a5bc56d1b84b85bc83e8f792b88) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/!GameFiles/Prefabs/Players using Guid(8bc00a5bc56d1b84b85bc83e8f792b88) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0d9e45bd28f792b68dd3388000b22882') in 0.056693 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 8.495494 seconds.
-  path: Assets/!GameFiles/Prefabs/UI
-  artifactKey: Guid(336a1ddce6ed19f4eb6c17db6259ef88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/!GameFiles/Prefabs/UI using Guid(336a1ddce6ed19f4eb6c17db6259ef88) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2dad8b53037a23c679e50cdf5281c630') in 0.000723 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.873123 seconds.
-  path: Assets/!GameFiles/Prefabs/UI
-  artifactKey: Guid(336a1ddce6ed19f4eb6c17db6259ef88) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/!GameFiles/Prefabs/UI using Guid(336a1ddce6ed19f4eb6c17db6259ef88) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '22d49e454c36ed5a9e66ff00a552bd0e') in 0.0059855 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 7.123084 seconds.
-  path: Assets/!GameFiles/Prefabs/UI/New Folder
-  artifactKey: Guid(4c3753387623d8245a9eea455062e862) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/!GameFiles/Prefabs/UI/New Folder using Guid(4c3753387623d8245a9eea455062e862) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '4d48dfced8db17cf8f6bf3b9f01052e5') in 0.000717 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.878720 seconds.
-  path: Assets/!GameFiles/Prefabs/UI/New Folder
-  artifactKey: Guid(4c3753387623d8245a9eea455062e862) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/!GameFiles/Prefabs/UI/New Folder using Guid(4c3753387623d8245a9eea455062e862) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f8d968e5f567dfbac6fc7996ed1b0017') in 0.0061574 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Prepare
-'Packages/com.unity.cinemachine/Editor/Obsolete/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
-'Packages/com.unity.cinemachine/Editor/Editors/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
-Refreshing native plugins compatible for Editor in 1.57 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 17 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6975 unused Assets / (4.6 MB). Loaded Objects now: 7823.
-Memory consumption went from 153.7 MB to 149.1 MB.
-Total: 16.670700 ms (FindLiveObjects: 1.179400 ms CreateObjectMapping: 1.458000 ms MarkObjects: 9.784200 ms  DeleteObjects: 4.247400 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 7.177658 seconds.
-  path: Assets/!GameFiles/Scripts/Input/InputController.cs
-  artifactKey: Guid(86d2295b2fa0c924481cdfb528ee4031) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/!GameFiles/Scripts/Input/InputController.cs using Guid(86d2295b2fa0c924481cdfb528ee4031) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '4209aec5ff1da812067260f9d2ea4ba2') in 0.0741417 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 48.274016 seconds.
-  path: Assets/!GameFiles/Prefabs/UI/UIButtons
-  artifactKey: Guid(4e3a0f3baaa842543a8c68c6aa796fcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/!GameFiles/Prefabs/UI/UIButtons using Guid(4e3a0f3baaa842543a8c68c6aa796fcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '065214b992924e23311fa8ec87ba4a6a') in 0.0015893 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.875021 seconds.
-  path: Assets/!GameFiles/Prefabs/UI/UIButtons
-  artifactKey: Guid(4e3a0f3baaa842543a8c68c6aa796fcd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/!GameFiles/Prefabs/UI/UIButtons using Guid(4e3a0f3baaa842543a8c68c6aa796fcd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c091dcde48498e3024c5df31e8fa3a45') in 0.0061906 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 7.408996 seconds.
-  path: Assets/!GameFiles/Prefabs/UI/UISliders
-  artifactKey: Guid(fee4bf7b976b3da4d822709ed8db864b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/!GameFiles/Prefabs/UI/UISliders using Guid(fee4bf7b976b3da4d822709ed8db864b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'bbcd4626be589d36e14b0c562937f0e3') in 0.0014029 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.870949 seconds.
-  path: Assets/!GameFiles/Prefabs/UI/UISliders
-  artifactKey: Guid(fee4bf7b976b3da4d822709ed8db864b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/!GameFiles/Prefabs/UI/UISliders using Guid(fee4bf7b976b3da4d822709ed8db864b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '365707313300168fe76870441b7d9524') in 0.0064213 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 51.556265 seconds.
-  path: Assets/!GameFiles/Prefabs/UI/UIButtons/PlayButton.prefab
-  artifactKey: Guid(954d37eac2e1a994ea6775ae45978271) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/!GameFiles/Prefabs/UI/UIButtons/PlayButton.prefab using Guid(954d37eac2e1a994ea6775ae45978271) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '35385a6223f6b23a743880fa4b73bcf6') in 0.0858549 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 19
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.819174 seconds.
-  path: Assets/!GameFiles/Prefabs/UI/UIButtons/PlayButton.prefab
-  artifactKey: Guid(954d37eac2e1a994ea6775ae45978271) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/!GameFiles/Prefabs/UI/UIButtons/PlayButton.prefab using Guid(954d37eac2e1a994ea6775ae45978271) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'edceeee0d9cf224a8cffbf1c542c1b4d') in 0.1085769 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 19
-
-========================================================================
-Received Import Request.
-  Time since last request: 11.274889 seconds.
-  path: Assets/!GameFiles/Prefabs/UI/UIButtons/RedButton.prefab
-  artifactKey: Guid(954d37eac2e1a994ea6775ae45978271) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/!GameFiles/Prefabs/UI/UIButtons/RedButton.prefab using Guid(954d37eac2e1a994ea6775ae45978271) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '5d2b981cd4626ba4a1bc0bcaf42f8ea4') in 0.0212163 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 19
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.848648 seconds.
-  path: Assets/!GameFiles/Prefabs/UI/UIButtons/RedButton.prefab
-  artifactKey: Guid(954d37eac2e1a994ea6775ae45978271) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/!GameFiles/Prefabs/UI/UIButtons/RedButton.prefab using Guid(954d37eac2e1a994ea6775ae45978271) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e523ed2baf6f5e914780d570eef78cb3') in 0.0311839 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 19
-
-========================================================================
-Received Import Request.
-  Time since last request: 114.200177 seconds.
-  path: Assets/!GameFiles/Prefabs/UI/UIButtons/CrimsonButton.prefab
-  artifactKey: Guid(954d37eac2e1a994ea6775ae45978271) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/!GameFiles/Prefabs/UI/UIButtons/CrimsonButton.prefab using Guid(954d37eac2e1a994ea6775ae45978271) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '280a8c3c1466122cab048e56b2979a3e') in 0.0257281 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 19
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.835405 seconds.
-  path: Assets/!GameFiles/Prefabs/UI/UIButtons/CrimsonButton.prefab
-  artifactKey: Guid(954d37eac2e1a994ea6775ae45978271) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/!GameFiles/Prefabs/UI/UIButtons/CrimsonButton.prefab using Guid(954d37eac2e1a994ea6775ae45978271) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '229658cb574117ea07d48638884c5aab') in 0.0360056 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 19
-
-========================================================================
-Received Import Request.
-  Time since last request: 474.300979 seconds.
-  path: Assets/!GameFiles/Scripts/Player/PlayerMovement/PlayerCameraRotation.cs
-  artifactKey: Guid(10b8b2a2e3d956a40a0257ac3ddf5603) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/!GameFiles/Scripts/Player/PlayerMovement/PlayerCameraRotation.cs using Guid(10b8b2a2e3d956a40a0257ac3ddf5603) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c48380be9a67589c1bc709c9d9e627e6') in 0.0007672 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-'Packages/com.unity.cinemachine/Editor/Obsolete/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
-'Packages/com.unity.cinemachine/Editor/Editors/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
-Refreshing native plugins compatible for Editor in 2.08 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 17 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6975 unused Assets / (4.6 MB). Loaded Objects now: 7823.
-Memory consumption went from 154.0 MB to 149.5 MB.
-Total: 20.616300 ms (FindLiveObjects: 1.213800 ms CreateObjectMapping: 1.550900 ms MarkObjects: 12.838200 ms  DeleteObjects: 5.011900 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 67.718503 seconds.
-  path: Assets/!GameFiles/Scripts/Player/PlayerMovement/PlayerRunning.cs
-  artifactKey: Guid(351aa6f5b1207f045ad4a65f954665a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/!GameFiles/Scripts/Player/PlayerMovement/PlayerRunning.cs using Guid(351aa6f5b1207f045ad4a65f954665a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'bc972838b2e4f5d4909ffff23771c374') in 0.0095155 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-'Packages/com.unity.cinemachine/Editor/Obsolete/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
-'Packages/com.unity.cinemachine/Editor/Editors/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
-Refreshing native plugins compatible for Editor in 2.17 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 17 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6973 unused Assets / (4.5 MB). Loaded Objects now: 7822.
-Memory consumption went from 154.0 MB to 149.5 MB.
-Total: 21.913300 ms (FindLiveObjects: 1.367400 ms CreateObjectMapping: 1.978400 ms MarkObjects: 13.398400 ms  DeleteObjects: 5.166700 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 157.330982 seconds.
-  path: Assets/!GameFiles/Scripts/Character/CharacterMovement/CharacterRunning.cs
-  artifactKey: Guid(b19ea1d325a48264888959a80079e04e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/!GameFiles/Scripts/Character/CharacterMovement/CharacterRunning.cs using Guid(b19ea1d325a48264888959a80079e04e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c376f82850096469d72baa61120c968e') in 0.0078073 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-'Packages/com.unity.cinemachine/Editor/Obsolete/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
-'Packages/com.unity.cinemachine/Editor/Editors/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
-Refreshing native plugins compatible for Editor in 2.00 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 17 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6972 unused Assets / (3.9 MB). Loaded Objects now: 7821.
-Memory consumption went from 154.0 MB to 150.1 MB.
-Total: 16.971300 ms (FindLiveObjects: 1.212400 ms CreateObjectMapping: 1.160500 ms MarkObjects: 10.678700 ms  DeleteObjects: 3.918300 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 74.856827 seconds.
-  path: Assets/!GameFiles/Scripts/Character/CharacterMovement
-  artifactKey: Guid(b4a85a43413a43844996abdbd7c55ce7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/!GameFiles/Scripts/Character/CharacterMovement using Guid(b4a85a43413a43844996abdbd7c55ce7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'fcdd5e3cf6574fa47d267bc0a4b9a2c7') in 0.0075283 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.602331 seconds.
-  path: Assets/!GameFiles/Scripts/Character/CharacterMovement/CharacterLocomotion.cs
-  artifactKey: Guid(1ab433c2f3602aa49b211ebb1320ef97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/!GameFiles/Scripts/Character/CharacterMovement/CharacterLocomotion.cs using Guid(1ab433c2f3602aa49b211ebb1320ef97) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e03c219c5eb3b64a78618706719130de') in 0.0007659 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 40.995995 seconds.
-  path: Assets/!GameFiles/Scripts/Player/PlayerMovement
-  artifactKey: Guid(f2d7cdfde2cafb2449a58588f240b839) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/!GameFiles/Scripts/Player/PlayerMovement using Guid(f2d7cdfde2cafb2449a58588f240b839) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e138b53881be8b77d063c4f3c4247711') in 0.0007208 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.279075 seconds.
-  path: Assets/!GameFiles/Scripts/Player/PlayerMovement/PlayerMovementController.cs
-  artifactKey: Guid(6019ba17f0ef03f4096b2ec6d7c193c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/!GameFiles/Scripts/Player/PlayerMovement/PlayerMovementController.cs using Guid(6019ba17f0ef03f4096b2ec6d7c193c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '50ac0e4f7752464528964bc444d07b8c') in 0.0007896 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 21.705038 seconds.
-  path: Assets/!GameFiles/Scripts/Player/PlayerMovement/PlayerMovementController
-  artifactKey: Guid(3ffefe53ca88b254787e5f791f0bb13c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/!GameFiles/Scripts/Player/PlayerMovement/PlayerMovementController using Guid(3ffefe53ca88b254787e5f791f0bb13c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7710d48905f2d4fa4ba0d9f35bf890e0') in 0.0007105 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.864490 seconds.
-  path: Assets/!GameFiles/Scripts/Player/PlayerMovement/PlayerMovementController
-  artifactKey: Guid(3ffefe53ca88b254787e5f791f0bb13c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/!GameFiles/Scripts/Player/PlayerMovement/PlayerMovementController using Guid(3ffefe53ca88b254787e5f791f0bb13c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e0d1072ff7a9c665b6f17019d01c6eeb') in 0.0057268 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Prepare
-'Packages/com.unity.cinemachine/Editor/Obsolete/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
-'Packages/com.unity.cinemachine/Editor/Editors/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
-Refreshing native plugins compatible for Editor in 1.67 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 17 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6972 unused Assets / (4.3 MB). Loaded Objects now: 7821.
-Memory consumption went from 154.0 MB to 149.8 MB.
-Total: 15.221800 ms (FindLiveObjects: 1.144000 ms CreateObjectMapping: 1.138900 ms MarkObjects: 9.936200 ms  DeleteObjects: 3.001100 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 4.060912 seconds.
-  path: Assets/!GameFiles/Scripts/Player/PlayerMovement/PlayerMovementController/PlayerMovementController.cs
-  artifactKey: Guid(6019ba17f0ef03f4096b2ec6d7c193c9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/!GameFiles/Scripts/Player/PlayerMovement/PlayerMovementController/PlayerMovementController.cs using Guid(6019ba17f0ef03f4096b2ec6d7c193c9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '1e7a9e38e43d4f0ec1608b843694759a') in 0.0126794 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 40.425451 seconds.
-  path: Assets/!GameFiles/Scripts/Character/CharacterMovement/CharacterMovementController
-  artifactKey: Guid(f91a53a9bbacdfd4fb738465d680ec59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/!GameFiles/Scripts/Character/CharacterMovement/CharacterMovementController using Guid(f91a53a9bbacdfd4fb738465d680ec59) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e4f09990062ce7b885907a8682dd2da2') in 0.000696 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.874285 seconds.
-  path: Assets/!GameFiles/Scripts/Character/CharacterMovement/CharacterMovementController
-  artifactKey: Guid(f91a53a9bbacdfd4fb738465d680ec59) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/!GameFiles/Scripts/Character/CharacterMovement/CharacterMovementController using Guid(f91a53a9bbacdfd4fb738465d680ec59) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'a186a55adbd7c1548236239dfc6557a0') in 0.0058899 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.672157 seconds.
-  path: Assets/!GameFiles/Scripts/Character/CharacterMovement/CharacterMovementController.cs
-  artifactKey: Guid(e4c88ad9f23e9df4a835fdc900538c7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/!GameFiles/Scripts/Character/CharacterMovement/CharacterMovementController.cs using Guid(e4c88ad9f23e9df4a835fdc900538c7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '395a436eab1c295098e413aa88d4cac7') in 0.0007429 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-'Packages/com.unity.cinemachine/Editor/Obsolete/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
-'Packages/com.unity.cinemachine/Editor/Editors/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
-Refreshing native plugins compatible for Editor in 1.97 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 17 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6972 unused Assets / (4.4 MB). Loaded Objects now: 7821.
-Memory consumption went from 154.0 MB to 149.6 MB.
-Total: 20.172400 ms (FindLiveObjects: 1.264900 ms CreateObjectMapping: 1.079200 ms MarkObjects: 12.969700 ms  DeleteObjects: 4.856800 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 2.816894 seconds.
-  path: Assets/!GameFiles/Scripts/Character/CharacterMovement/CharacterMovementController/CharacterMovementController.cs
-  artifactKey: Guid(e4c88ad9f23e9df4a835fdc900538c7d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/!GameFiles/Scripts/Character/CharacterMovement/CharacterMovementController/CharacterMovementController.cs using Guid(e4c88ad9f23e9df4a835fdc900538c7d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '42728e8c1397c159ef03148614173167') in 0.0120379 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-'Packages/com.unity.cinemachine/Editor/Obsolete/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
-'Packages/com.unity.cinemachine/Editor/Editors/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
-Refreshing native plugins compatible for Editor in 1.73 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 17 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6972 unused Assets / (4.5 MB). Loaded Objects now: 7821.
-Memory consumption went from 154.0 MB to 149.6 MB.
-Total: 19.278500 ms (FindLiveObjects: 1.219900 ms CreateObjectMapping: 1.550500 ms MarkObjects: 11.155200 ms  DeleteObjects: 5.351200 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 12440.039084 seconds.
-  path: Assets/!GameFiles/Scripts/Player/PlayerMovement/PlayerRotation.cs
-  artifactKey: Guid(9ff97bdb34cc3b6499d9b14e33cb4e2d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/!GameFiles/Scripts/Player/PlayerMovement/PlayerRotation.cs using Guid(9ff97bdb34cc3b6499d9b14e33cb4e2d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'a86ec9b20866afb36fd1e33e428157fd') in 0.0147389 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.102198 seconds.
-  path: Assets/!GameFiles/Scripts/Player/Player.cs
-  artifactKey: Guid(d53aebcbbf7e5934e9bc24f4deba9dcd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/!GameFiles/Scripts/Player/Player.cs using Guid(d53aebcbbf7e5934e9bc24f4deba9dcd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '06d000e3e3fdbd086661a947ec28ad54') in 0.0071101 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Assets/!GameFiles/Scripts/Character/ImplementedCharacter/CharacterLongRange.cs
-  artifactKey: Guid(8632295813530ae4691fe4a2f108dd67) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/!GameFiles/Scripts/Character/ImplementedCharacter/CharacterLongRange.cs using Guid(8632295813530ae4691fe4a2f108dd67) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '15a267c10c8b3a0319ef2cdeb6ef658c') in 0.0087438 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000028 seconds.
-  path: Assets/!GameFiles/Scripts/Input/InputController.cs
-  artifactKey: Guid(86d2295b2fa0c924481cdfb528ee4031) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/!GameFiles/Scripts/Input/InputController.cs using Guid(86d2295b2fa0c924481cdfb528ee4031) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '8522db2c12337303e754554c608892a8') in 0.0075608 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.335947 seconds.
-  path: Assets/!GameFiles/Scripts/Character/CharacterMovement/CharacterMovementController/CharacterMovementController.cs
-  artifactKey: Guid(e4c88ad9f23e9df4a835fdc900538c7d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/!GameFiles/Scripts/Character/CharacterMovement/CharacterMovementController/CharacterMovementController.cs using Guid(e4c88ad9f23e9df4a835fdc900538c7d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'debf1b03bcbc0fc8bd2e2bc4f18bf334') in 0.0093924 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.009220 seconds.
-  path: Assets/!GameFiles/Scripts/Player/PlayerMovement/PlayerMovementController/PlayerMovementController.cs
-  artifactKey: Guid(6019ba17f0ef03f4096b2ec6d7c193c9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/!GameFiles/Scripts/Player/PlayerMovement/PlayerMovementController/PlayerMovementController.cs using Guid(6019ba17f0ef03f4096b2ec6d7c193c9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '6245f75c261d5aae1e12986b15e8c395') in 0.0158989 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Assets/!GameFiles/Scripts/Player/PlayerController/PlayerController.cs
-  artifactKey: Guid(5d4cbd3b8e00fc94bb975625b813180f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/!GameFiles/Scripts/Player/PlayerController/PlayerController.cs using Guid(5d4cbd3b8e00fc94bb975625b813180f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'a1897d478b195fab4814b7162ce83cd8') in 0.0087179 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Assets/!GameFiles/Scripts/Interfaces/GameEntityInterfaces/EntityBehaviorInterfaces/IAttacker.cs
-  artifactKey: Guid(1b96f1f33e6abd64db158dc5bff86f0b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/!GameFiles/Scripts/Interfaces/GameEntityInterfaces/EntityBehaviorInterfaces/IAttacker.cs using Guid(1b96f1f33e6abd64db158dc5bff86f0b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '92e1dae8612ee12dd4a290c30fdf9520') in 0.0080638 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+Unloading 6982 unused Assets / (4.6 MB). Loaded Objects now: 7819.
+Memory consumption went from 153.4 MB to 148.7 MB.
+Total: 14.777400 ms (FindLiveObjects: 1.130600 ms CreateObjectMapping: 0.647300 ms MarkObjects: 8.400300 ms  DeleteObjects: 4.597600 ms)
 
 Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
 AssetImportWorker is now disconnected from the server
