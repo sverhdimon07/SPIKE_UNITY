@@ -45,6 +45,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+<<<<<<< Updated upstream
+=======
+  - {fileID: 0}
+>>>>>>> Stashed changes
   exportNames: 1
   exportFullPath: 0
   EditorExportTransformMode: 0

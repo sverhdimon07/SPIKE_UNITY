@@ -3,8 +3,73 @@
   "WorkspaceRootPath": "D:\\GitRepos\\SPIKE_UNITY\\",
   "Documents": [
     {
+<<<<<<< Updated upstream
       "AbsoluteMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|d:\\gitrepos\\spike_unity\\assets\\sketchfab for unity\\dependencies\\libraries\\gltfserialization.dll||{177559E0-D141-11D0-92DF-00A0C9138C45}",
       "RelativeMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|solutionrelative:assets\\sketchfab for unity\\dependencies\\libraries\\gltfserialization.dll||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+=======
+      "AbsoluteMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|D:\\GitRepos\\SPIKE_UNITY\\assets\\!gamefiles\\scripts\\player\\playerdefense\\playerdefensecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playerdefense\\playerdefensecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|D:\\GitRepos\\SPIKE_UNITY\\assets\\!gamefiles\\scripts\\player\\playerhealth\\playerhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playerhealth\\playerhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|d:\\gitrepos\\spike_unity\\assets\\!gamefiles\\scripts\\player\\playerhealth\\playerhealthcontroller\\playerhealthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playerhealth\\playerhealthcontroller\\playerhealthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|d:\\gitrepos\\spike_unity\\assets\\!gamefiles\\scripts\\player\\playerdefense\\playerdefense\\playerdefense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playerdefense\\playerdefense\\playerdefense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|D:\\GitRepos\\SPIKE_UNITY\\assets\\!gamefiles\\scripts\\character\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\character\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|D:\\GitRepos\\SPIKE_UNITY\\assets\\!gamefiles\\scripts\\character\\charactercontroller\\charactercontrollernew.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\character\\charactercontroller\\charactercontrollernew.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|D:\\GitRepos\\SPIKE_UNITY\\assets\\!gamefiles\\scripts\\character\\implementedcharacter\\charactercloserange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\character\\implementedcharacter\\charactercloserange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|D:\\GitRepos\\SPIKE_UNITY\\assets\\!gamefiles\\scripts\\character\\implementedcharacter\\characterlongrange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\character\\implementedcharacter\\characterlongrange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|D:\\GitRepos\\SPIKE_UNITY\\assets\\!gamefiles\\scripts\\character\\charactermovement\\characterrotation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\character\\charactermovement\\characterrotation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|D:\\GitRepos\\SPIKE_UNITY\\assets\\!gamefiles\\scripts\\character\\charactermovement\\characterlocomotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\character\\charactermovement\\characterlocomotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|D:\\GitRepos\\SPIKE_UNITY\\assets\\!gamefiles\\scripts\\character\\charactermovement\\charactermovementcontroller\\charactermovementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\character\\charactermovement\\charactermovementcontroller\\charactermovementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|D:\\GitRepos\\SPIKE_UNITY\\assets\\!gamefiles\\scripts\\player\\playermovement\\playermovementcontroller\\playermovementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playermovement\\playermovementcontroller\\playermovementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|D:\\GitRepos\\SPIKE_UNITY\\assets\\!gamefiles\\scripts\\player\\playercontroller\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playercontroller\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|D:\\GitRepos\\SPIKE_UNITY\\assets\\!gamefiles\\scripts\\player\\playermovement\\playerrotation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playermovement\\playerrotation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|D:\\GitRepos\\SPIKE_UNITY\\assets\\!gamefiles\\scripts\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|D:\\GitRepos\\SPIKE_UNITY\\assets\\!gamefiles\\scripts\\player\\playermovement\\playerlocomotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{366759DD-16C7-B262-ECA6-0B3F42A0A83A}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\playermovement\\playerlocomotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> Stashed changes
     }
   ],
   "DocumentGroupContainers": [
@@ -14,6 +79,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+<<<<<<< Updated upstream
           "SelectedChildIndex": 0,
           "Children": [
             {
@@ -26,6 +92,205 @@
               "RelativeToolTip": "Assets\\Sketchfab For Unity\\Dependencies\\Libraries\\GLTFSerialization.dll",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001697|",
               "WhenOpened": "2026-03-31T20:50:40.88Z"
+=======
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PlayerDefense.cs",
+              "DocumentMoniker": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Player\\PlayerDefense\\PlayerDefense\\PlayerDefense.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerDefense\\PlayerDefense\\PlayerDefense.cs",
+              "ToolTip": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Player\\PlayerDefense\\PlayerDefense\\PlayerDefense.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerDefense\\PlayerDefense\\PlayerDefense.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-14T11:53:14.761Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PlayerHealthController.cs",
+              "DocumentMoniker": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Player\\PlayerHealth\\PlayerHealthController\\PlayerHealthController.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerHealth\\PlayerHealthController\\PlayerHealthController.cs",
+              "ToolTip": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Player\\PlayerHealth\\PlayerHealthController\\PlayerHealthController.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerHealth\\PlayerHealthController\\PlayerHealthController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-14T11:41:31.692Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PlayerHealth.cs",
+              "DocumentMoniker": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Player\\PlayerHealth\\PlayerHealth.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerHealth\\PlayerHealth.cs",
+              "ToolTip": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Player\\PlayerHealth\\PlayerHealth.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerHealth\\PlayerHealth.cs",
+              "ViewState": "AQIAABoAAAAAAAAAAAAwwBMAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-14T11:41:21.228Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PlayerDefenseController.cs",
+              "DocumentMoniker": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Player\\PlayerDefense\\PlayerDefenseController.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerDefense\\PlayerDefenseController.cs",
+              "ToolTip": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Player\\PlayerDefense\\PlayerDefenseController.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerDefense\\PlayerDefenseController.cs",
+              "ViewState": "AQIAADkAAAAAAAAAAAA4wEYAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-14T11:37:56.038Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CharacterCloseRange.cs",
+              "DocumentMoniker": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Character\\ImplementedCharacter\\CharacterCloseRange.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Character\\ImplementedCharacter\\CharacterCloseRange.cs",
+              "ToolTip": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Character\\ImplementedCharacter\\CharacterCloseRange.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Character\\ImplementedCharacter\\CharacterCloseRange.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T03:02:18.547Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CharacterLongRange.cs",
+              "DocumentMoniker": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Character\\ImplementedCharacter\\CharacterLongRange.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Character\\ImplementedCharacter\\CharacterLongRange.cs",
+              "ToolTip": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Character\\ImplementedCharacter\\CharacterLongRange.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Character\\ImplementedCharacter\\CharacterLongRange.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T03:02:15.741Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Character.cs",
+              "DocumentMoniker": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Character\\Character.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Character\\Character.cs",
+              "ToolTip": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Character\\Character.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Character\\Character.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T03:01:46.567Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Player.cs",
+              "DocumentMoniker": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Player\\Player.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\Player.cs",
+              "ToolTip": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Player\\Player.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\Player.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T03:02:56.908Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CharacterControllerNew.cs",
+              "DocumentMoniker": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Character\\CharacterController\\CharacterControllerNew.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Character\\CharacterController\\CharacterControllerNew.cs",
+              "ToolTip": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Character\\CharacterController\\CharacterControllerNew.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Character\\CharacterController\\CharacterControllerNew.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAuwG0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T03:02:04.365Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Player\\PlayerController\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerController\\PlayerController.cs",
+              "ToolTip": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Player\\PlayerController\\PlayerController.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerController\\PlayerController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T03:03:04.643Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CharacterMovementController.cs",
+              "DocumentMoniker": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Character\\CharacterMovement\\CharacterMovementController\\CharacterMovementController.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Character\\CharacterMovement\\CharacterMovementController\\CharacterMovementController.cs",
+              "ToolTip": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Character\\CharacterMovement\\CharacterMovementController\\CharacterMovementController.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Character\\CharacterMovement\\CharacterMovementController\\CharacterMovementController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T03:02:29.963Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "PlayerMovementController.cs",
+              "DocumentMoniker": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerMovementController\\PlayerMovementController.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerMovementController\\PlayerMovementController.cs",
+              "ToolTip": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerMovementController\\PlayerMovementController.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerMovementController\\PlayerMovementController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T03:03:09.21Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CharacterLocomotion.cs",
+              "DocumentMoniker": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Character\\CharacterMovement\\CharacterLocomotion.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Character\\CharacterMovement\\CharacterLocomotion.cs",
+              "ToolTip": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Character\\CharacterMovement\\CharacterLocomotion.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Character\\CharacterMovement\\CharacterLocomotion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T03:02:33.572Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "PlayerLocomotion.cs",
+              "DocumentMoniker": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerLocomotion.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerLocomotion.cs",
+              "ToolTip": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerLocomotion.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerLocomotion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T03:03:14.971Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CharacterRotation.cs",
+              "DocumentMoniker": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Character\\CharacterMovement\\CharacterRotation.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Character\\CharacterMovement\\CharacterRotation.cs",
+              "ToolTip": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Character\\CharacterMovement\\CharacterRotation.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Character\\CharacterMovement\\CharacterRotation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T03:02:36.095Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "PlayerRotation.cs",
+              "DocumentMoniker": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerRotation.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerRotation.cs",
+              "ToolTip": "D:\\GitRepos\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerRotation.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\PlayerMovement\\PlayerRotation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T03:03:13.279Z"
+>>>>>>> Stashed changes
             }
           ]
         }

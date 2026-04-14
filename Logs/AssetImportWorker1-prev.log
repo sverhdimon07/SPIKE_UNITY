@@ -15,7 +15,11 @@ D:/GitRepos/SPIKE_UNITY
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
+<<<<<<< Updated upstream
 59965
+=======
+49360
+>>>>>>> Stashed changes
 -job-worker-count
 5
 -background-job-worker-count
@@ -59,6 +63,7 @@ D:/GitRepos/SPIKE_UNITY
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
+<<<<<<< Updated upstream
 Player connection [21944]  Target information:
 
 Player connection [21944]  * "[IP] 192.168.0.175 [Port] 0 [Flags] 2 [Guid] 2831855524 [EditorId] 2831855524 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-O4PUG39) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
@@ -69,6 +74,18 @@ Player connection [21944]  * "[IP] 10.8.1.7 [Port] 0 [Flags] 2 [Guid] 2831855524
 
 Player connection [21944] Host joined multi-casting on [225.0.0.222:54997]...
 Player connection [21944] Host joined alternative multi-casting on [225.0.0.222:34997]...
+=======
+Player connection [15592]  Target information:
+
+Player connection [15592]  * "[IP] 192.168.0.175 [Port] 0 [Flags] 2 [Guid] 3698746376 [EditorId] 3698746376 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-O4PUG39) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [15592]  * "[IP] 26.82.251.164 [Port] 0 [Flags] 2 [Guid] 3698746376 [EditorId] 3698746376 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-O4PUG39) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [15592]  * "[IP] 10.8.1.7 [Port] 0 [Flags] 2 [Guid] 3698746376 [EditorId] 3698746376 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-O4PUG39) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [15592] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [15592] Host joined alternative multi-casting on [225.0.0.222:34997]...
+>>>>>>> Stashed changes
 JobSystem: Creating JobQueue using job-worker-count value 5
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
@@ -80,7 +97,11 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
+<<<<<<< Updated upstream
 Refreshing native plugins compatible for Editor in 56.59 ms, found 3 plugins.
+=======
+Refreshing native plugins compatible for Editor in 1.47 ms, found 3 plugins.
+>>>>>>> Stashed changes
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.0.43f1 (97272b72f107)
 [Subsystems] Discovering subsystems at path E:/UNITY/HMM/6000.0.43f1/Editor/Data/Resources/UnitySubsystems
@@ -96,12 +117,17 @@ Initialize mono
 Mono path[0] = 'E:/UNITY/HMM/6000.0.43f1/Editor/Data/Managed'
 Mono path[1] = 'E:/UNITY/HMM/6000.0.43f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'E:/UNITY/HMM/6000.0.43f1/Editor/Data/MonoBleedingEdge/etc'
+<<<<<<< Updated upstream
 Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56260
+=======
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56632
+>>>>>>> Stashed changes
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: E:/UNITY/HMM/6000.0.43f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: E:/UNITY/HMM/6000.0.43f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Register platform support module: E:/UNITY/HMM/6000.0.43f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+<<<<<<< Updated upstream
 Registered in 0.129010 seconds.
 - Loaded All Assemblies, in  2.924 seconds
 Native extension for Android target not found
@@ -112,11 +138,24 @@ Mono: successfully reloaded assembly
 - Finished resetting the current domain, in  3.126 seconds
 Domain Reload Profiling: 6050ms
 	BeginReloadAssembly (149ms)
+=======
+Registered in 0.003250 seconds.
+- Loaded All Assemblies, in  0.428 seconds
+Native extension for Android target not found
+Android Extension - Scanning For ADB Devices 316 ms
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.715 seconds
+Domain Reload Profiling: 1142ms
+	BeginReloadAssembly (136ms)
+>>>>>>> Stashed changes
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
+<<<<<<< Updated upstream
 	RebuildCommonClasses (130ms)
 	RebuildNativeTypeToScriptingClass (53ms)
 	initialDomainReloadingComplete (195ms)
@@ -138,6 +177,29 @@ Domain Reload Profiling: 6050ms
 			BeforeProcessingInitializeOnLoad (172ms)
 			ProcessInitializeOnLoadAttributes (1174ms)
 			ProcessInitializeOnLoadMethodAttributes (112ms)
+=======
+	RebuildCommonClasses (42ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (49ms)
+	LoadAllAssembliesAndSetupDomain (186ms)
+		LoadAssemblies (136ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (182ms)
+			TypeCache.Refresh (181ms)
+				TypeCache.ScanAssembly (166ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (715ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (657ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (406ms)
+			SetLoadedEditorAssemblies (4ms)
+			BeforeProcessingInitializeOnLoad (57ms)
+			ProcessInitializeOnLoadAttributes (126ms)
+			ProcessInitializeOnLoadMethodAttributes (65ms)
+>>>>>>> Stashed changes
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -150,11 +212,19 @@ Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInter
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
 Begin MonoManager ReloadAssembly
 Duplicate assembly 'System.Collections.Immutable.FSR.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Collections.Immutable.FSR.dll, AssemblyName=System.Collections.Immutable, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/System.Collections.Immutable.dll, AssemblyName=System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Duplicate assembly 'System.Collections.Immutable.FSR.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Collections.Immutable.FSR.dll, AssemblyName=System.Collections.Immutable, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Collections.Immutable.dll, AssemblyName=System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Duplicate assembly 'Microsoft.CodeAnalysis.CSharp.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/Microsoft.CodeAnalysis.CSharp.dll, AssemblyName=Microsoft.CodeAnalysis.CSharp, Version=4.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/Microsoft.CodeAnalysis.CSharp.dll, AssemblyName=Microsoft.CodeAnalysis.CSharp, Version=2.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35'.Duplicate assembly 'System.Reflection.Metadata.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Reflection.Metadata.dll, AssemblyName=System.Reflection.Metadata, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/System.Reflection.Metadata.dll, AssemblyName=System.Reflection.Metadata, Version=1.4.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Duplicate assembly 'Microsoft.CodeAnalysis.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/Microsoft.CodeAnalysis.dll, AssemblyName=Microsoft.CodeAnalysis, Version=4.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/Microsoft.CodeAnalysis.dll, AssemblyName=Microsoft.CodeAnalysis, Version=2.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35'.Symbol file LoadedFromMemory is not a mono symbol file
+<<<<<<< Updated upstream
 - Loaded All Assemblies, in  2.494 seconds
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
 'Packages/com.unity.cinemachine/Editor/Obsolete/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
 'Packages/com.unity.cinemachine/Editor/Editors/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
 Refreshing native plugins compatible for Editor in 0.66 ms, found 3 plugins.
+=======
+- Loaded All Assemblies, in  2.521 seconds
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+'Packages/com.unity.cinemachine/Editor/Obsolete/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+'Packages/com.unity.cinemachine/Editor/Editors/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+Refreshing native plugins compatible for Editor in 0.64 ms, found 3 plugins.
+>>>>>>> Stashed changes
 Native extension for Android target not found
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
@@ -195,6 +265,7 @@ Missing types referenced from component UniversalRenderPipelineGlobalSettings on
 	UnityEngine.Rendering.Universal.UniversalRenderPipelineRuntimeTerrainShaders, Unity.RenderPipelines.Universal.Runtime (1 object)
 	UnityEngine.Rendering.VrsRenderPipelineRuntimeResources, Unity.RenderPipelines.Core.Runtime (1 object)
 Mono: successfully reloaded assembly
+<<<<<<< Updated upstream
 - Finished resetting the current domain, in 21.624 seconds
 Domain Reload Profiling: 24109ms
 	BeginReloadAssembly (204ms)
@@ -224,10 +295,42 @@ Domain Reload Profiling: 24109ms
 			BeforeProcessingInitializeOnLoad (127ms)
 			ProcessInitializeOnLoadAttributes (20735ms)
 			ProcessInitializeOnLoadMethodAttributes (415ms)
+=======
+- Finished resetting the current domain, in  2.521 seconds
+Domain Reload Profiling: 5041ms
+	BeginReloadAssembly (189ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (36ms)
+	RebuildCommonClasses (40ms)
+	RebuildNativeTypeToScriptingClass (15ms)
+	initialDomainReloadingComplete (78ms)
+	LoadAllAssembliesAndSetupDomain (2197ms)
+		LoadAssemblies (1856ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (454ms)
+			TypeCache.Refresh (363ms)
+				TypeCache.ScanAssembly (339ms)
+			BuildScriptInfoCaches (69ms)
+			ResolveRequiredComponents (16ms)
+	FinalizeReload (2522ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2337ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (13ms)
+			SetLoadedEditorAssemblies (5ms)
+			BeforeProcessingInitializeOnLoad (116ms)
+			ProcessInitializeOnLoadAttributes (2066ms)
+			ProcessInitializeOnLoadMethodAttributes (135ms)
+>>>>>>> Stashed changes
 			AfterProcessingInitializeOnLoad (2ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (5ms)
+<<<<<<< Updated upstream
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.15 seconds
 Refreshing native plugins compatible for Editor in 52.32 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
@@ -329,3 +432,13 @@ Memory consumption went from 155.0 MB to 152.2 MB.
 Total: 116.547400 ms (FindLiveObjects: 1.142000 ms CreateObjectMapping: 0.431500 ms MarkObjects: 112.376200 ms  DeleteObjects: 2.596200 ms)
 
 Prepare: number of updated asset objects reloaded= 0
+=======
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+Refreshing native plugins compatible for Editor in 0.82 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 227 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7325 unused Assets / (5.0 MB). Loaded Objects now: 8062.
+Memory consumption went from 177.9 MB to 172.9 MB.
+Total: 9.677800 ms (FindLiveObjects: 0.958900 ms CreateObjectMapping: 0.363700 ms MarkObjects: 5.394000 ms  DeleteObjects: 2.959800 ms)
+
+>>>>>>> Stashed changes

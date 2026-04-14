@@ -569,10 +569,13 @@
       <HintPath>Library\PackageCache\com.unity.ext.nunit@60ef35ffd3cd\net40\unity-custom\nunit.framework.dll</HintPath>
       <Private>False</Private>
     </Reference>
+<<<<<<< Updated upstream
     <Reference Include="GLTFSerialization">
       <HintPath>Assets\Sketchfab For Unity\Dependencies\Libraries\GLTFSerialization.dll</HintPath>
       <Private>False</Private>
     </Reference>
+=======
+>>>>>>> Stashed changes
     <Reference Include="Unity.Android.Types">
       <HintPath>E:\UNITY\HMM\6000.0.43f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
       <Private>False</Private>

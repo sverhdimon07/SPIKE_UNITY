@@ -77,11 +77,9 @@
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerHealth\PlayerHealth.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityBehaviorInterfaces\IAttackerCloseRange.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityAttitudeTowardPlayerInterfaces\IEntityNeutral.cs" />
-    <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabLogger.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\ServicesGeneral\DamageCalculators\DamageCalculatorBasic.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\EntryPointScenes\Implemented Bootstrap\BootstrapTestScene.cs" />
-    <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabBrowserManager.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityBehaviorInterfaces\IAttackerLongRange.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterWeapon\CharacterWeaponController\CharacterWeaponController.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterMovement\CharacterRotation.cs" />
@@ -110,13 +108,11 @@
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerMovement\PlayerRotation.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterMovement\CharacterLocomotion.cs" />
-    <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabExporter.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\Character.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterAI\CharacterAIState.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityAttitudeTowardPlayerInterfaces\IAlly.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Weapon\Implemented Weapon\Implemented WeaponCloseRange\SwordBasic.cs" />
-    <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabUI.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerDefense\PlayerDefenseController.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Interfaces\NonGameEntityInterfaces\IDamageCalculator.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\ServicesGeneral\EnvironmentAreaAnalyzers\EnvironmentAreaColliderAnalyzer.cs" />
@@ -147,7 +143,6 @@
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerOffense\PlayerOffenseController\PlayerOffenseController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerOffense\Implemented PlayerAttack\PlayerAttackCloseRange.cs" />
-    <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabBrowserWindow.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Input\InputReader.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterMovement\CharacterJump.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
@@ -155,19 +150,21 @@
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerMovement\PlayerMovementController.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\ServicesGeneral\SceneLoading\SceneLoading.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Weapon\Implemented Weapon\Implemented WeaponLongRange\RocketLauncherBasic.cs" />
-    <Compile Include="Assets\Sketchfab For Unity\Scripts\Resizer.cs" />
-    <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabApi.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Weapon\WeaponData\WeaponData.cs" />
     <Compile Include="Assets\Import\DODONPAScripts\Jetpack Fuel Level UI.cs" />
+<<<<<<< Updated upstream
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabPlugin.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabImporterWindow.cs" />
+=======
+    <Compile Include="Assets\SciFi Warehouse Kit\Demo\Scripts\LightFlicker.cs" />
+    <Compile Include="Assets\SciFi Warehouse Kit\Demo\Scripts\PlayerMovement.cs" />
+>>>>>>> Stashed changes
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
-    <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabModelWindow.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\UIGeneral\MainMenuUI\MainMenuUI.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerMovement\PlayerRunning.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Weapon\Implemented Weapon\WeaponLongRange.cs" />
-    <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabImporter.cs" />
+    <Compile Include="Assets\!GameFiles\Scripts\Player\PlayerDefense\PlayerDefense\PlayerDefense.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\!GameFiles\Scripts\Character\CharacterController\CharacterControllerNew.cs" />
@@ -195,9 +192,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Roboto-Bold - License.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile-2-Pass.shader" />
-    <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFFlipTexture.shader" />
     <None Include="Assets\FastScriptReload\Plugins\Roslyn\2021+\System.Collections.Immutable.FSR.dll" />
-    <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFColorSpace.cginc" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Unity - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\FastScriptReload\Plugins\Harmony\HarmonyLicense.txt" />
@@ -206,7 +201,6 @@
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Roboto-Bold - AFL.txt" />
     <None Include="Assets\FastScriptReload\Plugins\Roslyn\2021+\Microsoft.CodeAnalysis.CSharp.dll" />
     <None Include="Assets\FastScriptReload\Plugins\Roslyn\2021+\System.Threading.Tasks.Extensions.dll" />
-    <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFPackOccMetalRough.shader" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\FastScriptReload\Plugins\Roslyn\2019+\System.Reflection.Metadata.dll" />
@@ -220,7 +214,6 @@
     <None Include="Assets\FastScriptReload\Examples\Point\Point Surface.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\SDFFunctions.hlsl" />
     <None Include="Assets\FastScriptReload\Plugins\Roslyn\2019+\Microsoft.CodeAnalysis.dll" />
-    <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\Newtonsoft.Json.dll" />
     <None Include="Assets\FastScriptReload\Plugins\Roslyn\2021+\System.Runtime.CompilerServices.Unsafe.xml" />
     <None Include="Assets\FastScriptReload\Plugins\Roslyn\2021+\RoslynLicense.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
@@ -235,7 +228,6 @@
     <None Include="Assets\FastScriptReload\Plugins\Harmony\net48\0Harmony.xml" />
     <None Include="Assets\FastScriptReload\Plugins\Roslyn\2019+\System.Threading.Tasks.Extensions.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
-    <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\SketchfabPlugin.dll" />
     <None Include="Assets\FastScriptReload\Plugins\Roslyn\2019+\Microsoft.CodeAnalysis.CSharp.dll" />
     <None Include="Assets\FastScriptReload\Plugins\Roslyn\2021+\Microsoft.CodeAnalysis.dll" />
     <None Include="Assets\FastScriptReload\Plugins\Roslyn\System.Reflection.Metadata.dll" />
@@ -245,11 +237,14 @@
     <None Include="Assets\FastScriptReload\Plugins\Roslyn\RoslynLicense.txt" />
     <None Include="Assets\FastScriptReload\Plugins\Roslyn\System.Threading.Tasks.Extensions.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+<<<<<<< Updated upstream
     <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\Ionic.Zip.Unity.dll" />
+=======
+    <None Include="Assets\Import\Models\Weapons\RaidenSword\license.txt" />
+>>>>>>> Stashed changes
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\FastScriptReload\Plugins\Roslyn\Microsoft.CodeAnalysis.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
-    <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFBumpToNormal.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\FastScriptReload\Plugins\Roslyn\2021+\System.Runtime.CompilerServices.Unsafe.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
@@ -257,7 +252,6 @@
     <None Include="Assets\FastScriptReload\Plugins\Roslyn\Microsoft.CSharp.dll" />
     <None Include="Assets\FastScriptReload\Plugins\Roslyn\2021+\System.Collections.Immutable.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
-    <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\GLTFSerialization.dll" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
     <None Include="Assets\FastScriptReload\Plugins\Roslyn\2019+\System.Collections.Immutable.dll" />
   </ItemGroup>
@@ -736,10 +730,13 @@
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@60ef35ffd3cd\net40\unity-custom\nunit.framework.dll</HintPath>
+<<<<<<< Updated upstream
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@74deb55db2a0\Runtime\Newtonsoft.Json.dll</HintPath>
+=======
+>>>>>>> Stashed changes
       <Private>False</Private>
     </Reference>
     <Reference Include="Pathfinding.ClipperLib">
@@ -750,16 +747,19 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="SketchfabPlugin">
-      <HintPath>Assets\Sketchfab For Unity\Dependencies\Libraries\SketchfabPlugin.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@74deb55db2a0\Runtime\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@d6f9955a5d5f\Mono.Cecil.dll</HintPath>
+<<<<<<< Updated upstream
       <Private>False</Private>
     </Reference>
     <Reference Include="Ionic.Zip.Unity">
       <HintPath>Assets\Sketchfab For Unity\Dependencies\Libraries\Ionic.Zip.Unity.dll</HintPath>
+=======
+>>>>>>> Stashed changes
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
@@ -770,8 +770,12 @@
       <HintPath>Assets\AstarPathfindingProject\Plugins\DotNetZip\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="GLTFSerialization">
-      <HintPath>Assets\Sketchfab For Unity\Dependencies\Libraries\GLTFSerialization.dll</HintPath>
+    <Reference Include="Unity.Android.Types">
+      <HintPath>E:\UNITY\HMM\6000.0.43f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Android.Gradle">
+      <HintPath>E:\UNITY\HMM\6000.0.43f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Gradle.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">

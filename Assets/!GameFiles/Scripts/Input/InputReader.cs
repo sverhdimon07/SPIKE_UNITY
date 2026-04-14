@@ -136,6 +136,15 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Defense"",
+                    ""type"": ""Button"",
+                    ""id"": ""870c303a-8f50-411e-84f2-68aef50fb450"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -336,6 +345,17 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
                     ""action"": ""OpeningGameplayMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1706f633-ff10-4afd-bb5c-d7bb48ae6826"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Defense"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -383,6 +403,7 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
         m_MainCharacter_AttackCloseRange = m_MainCharacter.FindAction("AttackCloseRange", throwIfNotFound: true);
         m_MainCharacter_AttackLongRange = m_MainCharacter.FindAction("AttackLongRange", throwIfNotFound: true);
         m_MainCharacter_OpeningGameplayMenu = m_MainCharacter.FindAction("OpeningGameplayMenu", throwIfNotFound: true);
+        m_MainCharacter_Defense = m_MainCharacter.FindAction("Defense", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
     }
@@ -471,6 +492,7 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
     private readonly InputAction m_MainCharacter_AttackCloseRange;
     private readonly InputAction m_MainCharacter_AttackLongRange;
     private readonly InputAction m_MainCharacter_OpeningGameplayMenu;
+    private readonly InputAction m_MainCharacter_Defense;
     /// <summary>
     /// Provides access to input actions defined in input action map "MainCharacter".
     /// </summary>
@@ -502,6 +524,10 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "MainCharacter/OpeningGameplayMenu".
         /// </summary>
         public InputAction @OpeningGameplayMenu => m_Wrapper.m_MainCharacter_OpeningGameplayMenu;
+        /// <summary>
+        /// Provides access to the underlying input action "MainCharacter/Defense".
+        /// </summary>
+        public InputAction @Defense => m_Wrapper.m_MainCharacter_Defense;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -543,6 +569,9 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
             @OpeningGameplayMenu.started += instance.OnOpeningGameplayMenu;
             @OpeningGameplayMenu.performed += instance.OnOpeningGameplayMenu;
             @OpeningGameplayMenu.canceled += instance.OnOpeningGameplayMenu;
+            @Defense.started += instance.OnDefense;
+            @Defense.performed += instance.OnDefense;
+            @Defense.canceled += instance.OnDefense;
         }
 
         /// <summary>
@@ -569,6 +598,9 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
             @OpeningGameplayMenu.started -= instance.OnOpeningGameplayMenu;
             @OpeningGameplayMenu.performed -= instance.OnOpeningGameplayMenu;
             @OpeningGameplayMenu.canceled -= instance.OnOpeningGameplayMenu;
+            @Defense.started -= instance.OnDefense;
+            @Defense.performed -= instance.OnDefense;
+            @Defense.canceled -= instance.OnDefense;
         }
 
         /// <summary>
@@ -755,6 +787,13 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnOpeningGameplayMenu(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Defense" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDefense(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

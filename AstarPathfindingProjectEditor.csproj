@@ -634,8 +634,8 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@191c0d7e3b69\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="SketchfabPlugin">
-      <HintPath>Assets\Sketchfab For Unity\Dependencies\Libraries\SketchfabPlugin.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@74deb55db2a0\Runtime\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
@@ -644,10 +644,13 @@
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@d6f9955a5d5f\Mono.Cecil.dll</HintPath>
+<<<<<<< Updated upstream
       <Private>False</Private>
     </Reference>
     <Reference Include="Ionic.Zip.Unity">
       <HintPath>Assets\Sketchfab For Unity\Dependencies\Libraries\Ionic.Zip.Unity.dll</HintPath>
+=======
+>>>>>>> Stashed changes
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
@@ -658,8 +661,12 @@
       <HintPath>Assets\AstarPathfindingProject\Plugins\DotNetZip\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="GLTFSerialization">
-      <HintPath>Assets\Sketchfab For Unity\Dependencies\Libraries\GLTFSerialization.dll</HintPath>
+    <Reference Include="Unity.Android.Types">
+      <HintPath>E:\UNITY\HMM\6000.0.43f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Android.Gradle">
+      <HintPath>E:\UNITY\HMM\6000.0.43f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Gradle.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">
