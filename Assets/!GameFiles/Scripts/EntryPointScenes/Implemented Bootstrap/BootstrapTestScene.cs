@@ -38,6 +38,8 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
 
     //private SceneLoading _sceneLoading;
 
+    private SavingLoadingPlayerInteractor _savingLoadingPlayerInteractor;
+
     private GameplayMenuUI _gameplayMenuUI;
 
     private InputController _inputController;
@@ -60,9 +62,17 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
             return;
         }
 
+        _savingLoadingPlayerInteractor = GetComponent<SavingLoadingPlayerInteractor>(); //ПОКА БЕЗ КОНТРАКТА, ИБО НЕ ЗАВЕРШИЛ ПРОЕКТИРОВАНИЕ
+
+        _savingLoadingPlayerInteractor.Initialize(new SavingLoadingJSONRepository<Vector3, Quaternion>(), "SavingLoadingPayerData.json", _player);
+
         _gameplayMenuUI.ContinueButton.onClick.AddListener(_scenePausing.PauseOrResume);
         _gameplayMenuUI.ContinueButton.onClick.AddListener(_gameplayMenuUI.OpenOrClose);
         _gameplayMenuUI.ExitButton.onClick.AddListener(SceneLoading.LoadMainMenuScene);
+        _gameplayMenuUI.SaveButton.onClick.AddListener(delegate () { _savingLoadingPlayerInteractor.SaveData(_player); });
+        _gameplayMenuUI.LoadSavingButton.onClick.AddListener(_scenePausing.PauseOrResume);
+        _gameplayMenuUI.LoadSavingButton.onClick.AddListener(_gameplayMenuUI.OpenOrClose);
+        _gameplayMenuUI.LoadSavingButton.onClick.AddListener(delegate () { _savingLoadingPlayerInteractor.LoadData(_player); });
 
         _inputController.LocomotionDirectionDirected += _player.RotateWithinFrame;
         _inputController.LocomotionDirectionDirected += _player.LocomoteWithinFrame;
@@ -73,6 +83,7 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         _inputController.AttackLongRangeButtonPressed += _player.AttackLongRange;
         _inputController.OpeningGameplayeMenuButtonPressed += _scenePausing.PauseOrResume;
         _inputController.OpeningGameplayeMenuButtonPressed += _gameplayMenuUI.OpenOrClose;
+
         _player.Died += SceneLoading.LoadTestScene;
 
         foreach (Character character in _characters)
@@ -91,6 +102,10 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         _gameplayMenuUI.ContinueButton.onClick.RemoveListener(_scenePausing.PauseOrResume);
         _gameplayMenuUI.ContinueButton.onClick.RemoveListener(_gameplayMenuUI.OpenOrClose);
         _gameplayMenuUI.ExitButton.onClick.RemoveListener(SceneLoading.LoadMainMenuScene);
+        _gameplayMenuUI.SaveButton.onClick.RemoveListener(delegate () { _savingLoadingPlayerInteractor.SaveData(_player); });
+        _gameplayMenuUI.LoadSavingButton.onClick.RemoveListener(_scenePausing.PauseOrResume);
+        _gameplayMenuUI.LoadSavingButton.onClick.RemoveListener(_gameplayMenuUI.OpenOrClose);
+        _gameplayMenuUI.LoadSavingButton.onClick.RemoveListener(delegate () { _savingLoadingPlayerInteractor.LoadData(_player); });
 
         _inputController.LocomotionDirectionDirected -= _player.RotateWithinFrame;
         _inputController.LocomotionDirectionDirected -= _player.LocomoteWithinFrame;

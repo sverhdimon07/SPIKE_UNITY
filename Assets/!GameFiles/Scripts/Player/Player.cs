@@ -20,6 +20,13 @@ public sealed class Player : MonoBehaviour, IAttacker, IDamageable
     public UnityAction DamageTaken; //под расширение (мб замедление времени во время стана делать, и возможно это делается при помощи заморозки сцены)
     public UnityAction Died;
 
+    public Transform RenderAndSkeletonPoint => _renderAndSkeletonPoint; //ВРЕМЕННАЯ МЕРА; хз порядок свойств (до или после событий);
+
+    public void SetRenderAndSkeletonPoint(Quaternion rotation)
+    {
+        _renderAndSkeletonPoint.rotation = rotation;
+    }
+
     private void OnEnable()
     {
         _controller.DamageTaken += delegate () { DamageTaken?.Invoke(); };

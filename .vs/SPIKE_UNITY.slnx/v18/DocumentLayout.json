@@ -1,26 +1,34 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\SPIKE_UNITY\\",
+  "WorkspaceRootPath": "D:\\UNITY\\UNITY BACKUP\\SPIKE_UNITY\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|s:\\unity\\unity backup\\spike\\spike_unity\\assets\\!gamefiles\\scripts\\saveloadsystem\\interactors\\savingloadingplayerinteractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|d:\\unity\\unity backup\\spike_unity\\assets\\!gamefiles\\scripts\\servicesgeneral\\soundplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\servicesgeneral\\soundplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|d:\\unity\\unity backup\\spike_unity\\assets\\!gamefiles\\scripts\\saveloadsystem\\interactors\\savingloadingplayerinteractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\saveloadsystem\\interactors\\savingloadingplayerinteractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|s:\\unity\\unity backup\\spike\\spike_unity\\assets\\!gamefiles\\scripts\\saveloadsystem\\repositories\\savingloadingjsonrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|d:\\unity\\unity backup\\spike_unity\\assets\\!gamefiles\\scripts\\entrypointscenes\\implemented bootstrap\\bootstraptestscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\entrypointscenes\\implemented bootstrap\\bootstraptestscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|d:\\unity\\unity backup\\spike_unity\\assets\\!gamefiles\\scripts\\saveloadsystem\\repositories\\savingloadingjsonrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\saveloadsystem\\repositories\\savingloadingjsonrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|s:\\unity\\unity backup\\spike\\spike_unity\\assets\\!gamefiles\\scripts\\interfaces\\nongameentityinterfaces\\isavingloadingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\interfaces\\nongameentityinterfaces\\isavingloadingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|s:\\unity\\unity backup\\spike\\spike_unity\\assets\\!gamefiles\\scripts\\interfaces\\nongameentityinterfaces\\isavingloadinginteractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|d:\\unity\\unity backup\\spike_unity\\assets\\!gamefiles\\scripts\\interfaces\\nongameentityinterfaces\\isavingloadinginteractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\interfaces\\nongameentityinterfaces\\isavingloadinginteractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|s:\\unity\\unity backup\\spike\\spike_unity\\assets\\!gamefiles\\scripts\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|d:\\unity\\unity backup\\spike_unity\\assets\\!gamefiles\\scripts\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|d:\\unity\\unity backup\\spike_unity\\assets\\!gamefiles\\scripts\\interfaces\\nongameentityinterfaces\\isavingloadingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\!gamefiles\\scripts\\interfaces\\nongameentityinterfaces\\isavingloadingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,15 +38,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Player.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Player\\Player.cs",
+              "DocumentMoniker": "D:\\UNITY\\UNITY BACKUP\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Player\\Player.cs",
               "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Player\\Player.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Player\\Player.cs",
+              "ToolTip": "D:\\UNITY\\UNITY BACKUP\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Player\\Player.cs",
               "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Player\\Player.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAFsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -48,24 +56,49 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ISavingLoadingRepository.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Interfaces\\NonGameEntityInterfaces\\ISavingLoadingRepository.cs",
-              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Interfaces\\NonGameEntityInterfaces\\ISavingLoadingRepository.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Interfaces\\NonGameEntityInterfaces\\ISavingLoadingRepository.cs",
-              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Interfaces\\NonGameEntityInterfaces\\ISavingLoadingRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "SoundPlayer.cs",
+              "DocumentMoniker": "D:\\UNITY\\UNITY BACKUP\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\ServicesGeneral\\SoundPlayer.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\ServicesGeneral\\SoundPlayer.cs",
+              "ToolTip": "D:\\UNITY\\UNITY BACKUP\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\ServicesGeneral\\SoundPlayer.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\ServicesGeneral\\SoundPlayer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-15T01:52:12.588Z",
+              "WhenOpened": "2026-04-16T17:01:22.738Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "BootstrapTestScene.cs",
+              "DocumentMoniker": "D:\\UNITY\\UNITY BACKUP\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\EntryPointScenes\\Implemented Bootstrap\\BootstrapTestScene.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\EntryPointScenes\\Implemented Bootstrap\\BootstrapTestScene.cs",
+              "ToolTip": "D:\\UNITY\\UNITY BACKUP\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\EntryPointScenes\\Implemented Bootstrap\\BootstrapTestScene.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\EntryPointScenes\\Implemented Bootstrap\\BootstrapTestScene.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAAwEAAAACMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-16T16:34:52.748Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ISavingLoadingRepository.cs",
+              "DocumentMoniker": "D:\\UNITY\\UNITY BACKUP\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Interfaces\\NonGameEntityInterfaces\\ISavingLoadingRepository.cs",
+              "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Interfaces\\NonGameEntityInterfaces\\ISavingLoadingRepository.cs",
+              "ToolTip": "D:\\UNITY\\UNITY BACKUP\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Interfaces\\NonGameEntityInterfaces\\ISavingLoadingRepository.cs",
+              "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Interfaces\\NonGameEntityInterfaces\\ISavingLoadingRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-15T01:52:12.588Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "SavingLoadingJSONRepository.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\SaveLoadSystem\\Repositories\\SavingLoadingJSONRepository.cs",
+              "DocumentMoniker": "D:\\UNITY\\UNITY BACKUP\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\SaveLoadSystem\\Repositories\\SavingLoadingJSONRepository.cs",
               "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\SaveLoadSystem\\Repositories\\SavingLoadingJSONRepository.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\SaveLoadSystem\\Repositories\\SavingLoadingJSONRepository.cs",
+              "ToolTip": "D:\\UNITY\\UNITY BACKUP\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\SaveLoadSystem\\Repositories\\SavingLoadingJSONRepository.cs",
               "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\SaveLoadSystem\\Repositories\\SavingLoadingJSONRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -74,11 +107,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "ISavingLoadingInteractor.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Interfaces\\NonGameEntityInterfaces\\ISavingLoadingInteractor.cs",
+              "DocumentMoniker": "D:\\UNITY\\UNITY BACKUP\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Interfaces\\NonGameEntityInterfaces\\ISavingLoadingInteractor.cs",
               "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\Interfaces\\NonGameEntityInterfaces\\ISavingLoadingInteractor.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Interfaces\\NonGameEntityInterfaces\\ISavingLoadingInteractor.cs",
+              "ToolTip": "D:\\UNITY\\UNITY BACKUP\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\Interfaces\\NonGameEntityInterfaces\\ISavingLoadingInteractor.cs",
               "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\Interfaces\\NonGameEntityInterfaces\\ISavingLoadingInteractor.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -87,13 +120,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "SavingLoadingPlayerInteractor.cs",
-              "DocumentMoniker": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\SaveLoadSystem\\Interactors\\SavingLoadingPlayerInteractor.cs",
+              "DocumentMoniker": "D:\\UNITY\\UNITY BACKUP\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\SaveLoadSystem\\Interactors\\SavingLoadingPlayerInteractor.cs",
               "RelativeDocumentMoniker": "Assets\\!GameFiles\\Scripts\\SaveLoadSystem\\Interactors\\SavingLoadingPlayerInteractor.cs",
-              "ToolTip": "S:\\UNITY\\UNITY BACKUP\\SPIKE\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\SaveLoadSystem\\Interactors\\SavingLoadingPlayerInteractor.cs",
+              "ToolTip": "D:\\UNITY\\UNITY BACKUP\\SPIKE_UNITY\\Assets\\!GameFiles\\Scripts\\SaveLoadSystem\\Interactors\\SavingLoadingPlayerInteractor.cs",
               "RelativeToolTip": "Assets\\!GameFiles\\Scripts\\SaveLoadSystem\\Interactors\\SavingLoadingPlayerInteractor.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-15T02:56:14.975Z",
               "EditorCaption": ""

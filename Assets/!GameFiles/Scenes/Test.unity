@@ -1372,7 +1372,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 37609288}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1466154763}
+        m_TargetAssemblyTypeName: SavingLoadingPlayerInteractor, Assembly-CSharp
+        m_MethodName: SaveData
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5688760110951858509}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &37609288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29302,7 +29314,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 975332344}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1466154763}
+        m_TargetAssemblyTypeName: SavingLoadingPlayerInteractor, Assembly-CSharp
+        m_MethodName: LoadData
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5688760110951858509}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &975332344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43245,6 +43269,7 @@ GameObject:
   - component: {fileID: 1466154760}
   - component: {fileID: 1466154762}
   - component: {fileID: 1466154761}
+  - component: {fileID: 1466154763}
   m_Layer: 0
   m_Name: Bootstrap
   m_TagString: Untagged
@@ -43325,6 +43350,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86d2295b2fa0c924481cdfb528ee4031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputController
+--- !u!114 &1466154763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466154757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0440843cfe84284696432b6c34bfc49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SavingLoadingPlayerInteractor
+  _player: {fileID: 5688760110951858509}
 --- !u!1001 &1466859552
 PrefabInstance:
   m_ObjectHideFlags: 0
