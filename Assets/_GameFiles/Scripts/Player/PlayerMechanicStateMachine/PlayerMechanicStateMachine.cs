@@ -1,26 +1,23 @@
-public class PlayerMechanicStateMachine
+public sealed class PlayerMechanicStateMachine
 {
-    private Player _player;
-
     private PlayerMechanicState _state; //по идее, я могу прописать вызов метода Enter в сеттере свойства, но пока хз, нормальная ли это практика
 
     public PlayerMechanicState State => _state;
 
-    public PlayerMechanicStateMachine(Player player)
+    public PlayerMechanicStateMachine(Player player, PlayerMechanicState startState)
     {
-        _player = player;
+        _state = startState;
 
-        _state = new PlayerIdleMechanicState(); //
-
-        _state.Enter(); //
+        _state.Enter(player);
     }
 
-    public void SwitchState(PlayerMechanicState newState) //интересный момент с тем, что вроде бы делать подобные методы - соблюдение OSP, но и при этом любой сможет закинуть сюда что он захочет (ВИДИК САКУТИНА)
+    public void SwitchState(Player player, PlayerMechanicState nextState) //интересный момент с тем, что вроде бы делать подобные методы - соблюдение OSP, но и при этом любой сможет закинуть сюда что он захочет (ВИДИК САКУТИНА)
     {
-        _state.Exit();
+        //ИНКАПСУЛЯЦИЯ НА СТЕЙТ, КОТОРЫЙ УЖЕ АКТИВЕН
+        _state.Exit(player);
 
-        _state = newState;
+        _state = nextState;
 
-        _state.Enter(); //интересный момент с тем, у кого этот метод вызывать - у обновившегося поля ИЛИ у локальной переменной (посмотреть ссылочные типы и типы значения)
-    }
+        _state.Enter(player); //интересный момент с тем, у кого этот метод вызывать - у обновившегося поля ИЛИ у локальной переменной (посмотреть ссылочные типы и типы значения)
+    }//ИНТЕРЕСНОЕ ЗАМЕЧАНИЕ ПО ПОВОДУ ИНКАПСУЛЯЦИИ ЗДЕСЬ - раньше я никак не проверял входящий стейт на правильность (типо, не засунули ли нам сюда стейт, который уже активен)
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public sealed class PlayerOffenceController
+public sealed class PlayerOffenseController
 {
     private readonly PlayerWeaponController _weaponController = new PlayerWeaponController();
     
@@ -8,7 +8,7 @@ public sealed class PlayerOffenceController
 
     private readonly PlayerAttackLongRange _attackLongRange = new PlayerAttackLongRange();
 
-    public void Initialize(Vector3 position, Vector2 direction, WeaponCloseRange weaponCloseRange, WeaponLongRange weaponLongRange)
+    public PlayerOffenseController(Vector3 position, Vector2 direction, WeaponCloseRange weaponCloseRange, WeaponLongRange weaponLongRange)
     {
         _weaponController.Initialize(weaponCloseRange, weaponLongRange);
         _attackCloseRange.Initialize(new EnvironmentAreaOverlapAnalyzer<IDamageable, Player>(), position, direction, 0.15f, weaponCloseRange.Range, 1.25f, new DamageCalculatorBasic()); //работа с конретной реализацией должна проводитьс€ наверху, но с другой стороны мы создаем крепкий контрактна то, что в €чейку ближней атаки не заинититс€ дальн€€ атака (что по идее может прилететь с сервера спокойно)

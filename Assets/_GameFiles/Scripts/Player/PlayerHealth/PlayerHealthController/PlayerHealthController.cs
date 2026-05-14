@@ -2,8 +2,16 @@ using UnityEngine.Events;
 
 public sealed class PlayerHealthController
 {
-    private readonly PlayerHealth _health = new PlayerHealth();
+    private readonly PlayerHealth _health;
     
+    public PlayerHealthController(PlayerHealth health)
+    {
+        _health = health;
+
+        _health.DamageTaken += delegate () { DamageTaken.Invoke(); };
+        _health.Died += delegate () { Died.Invoke(); };
+    }
+
     ~ PlayerHealthController()
     {
         _health.DamageTaken -= delegate () { DamageTaken.Invoke(); };
@@ -12,14 +20,6 @@ public sealed class PlayerHealthController
 
     public UnityAction DamageTaken;
     public UnityAction Died;
-
-    public void Initialize(float health)
-    {
-        _health.Initialize(health);
-
-        _health.DamageTaken += delegate () { DamageTaken.Invoke(); };
-        _health.Died += delegate () { Died.Invoke(); };
-    }
 
     public void TakeDamage(float damage)
     {

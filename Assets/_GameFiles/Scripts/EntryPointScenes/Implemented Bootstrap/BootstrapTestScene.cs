@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 //в бутстрапе нам не нужно инитить данными наши зависимые монобехи - они это сделают сами. Бутстрап должен иметь в виду все классы высокого уровня - и контроллеры игровых сущностей, и контроллеры неигровых сущностей (только игровые создаются геймдизом на сцене и инитят себя сами, а неигровые создаются тут в бутстрапе и инитятся здесь)!
 public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу 1 обязательный, ибо Create не нужен отдельный метод И создавать самого себя НЕЛЬЗЯ, а Launch вообще по идее нигде не нужен, ибо если у нас есть предметные методы внутри класса, то их и будем запускать), так как добавились OnEnable и OnDisable) - Создание (важно что за создание самого себя ИЛИ свое время жизни класс отвечать не должен, он всегда создается снаружи), Инициализация (инициализация себя это про создание своих внутренних элементов (или поиск их на сцене) И их последующую инициализацию), Запуск
 {
@@ -17,14 +18,6 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
     //[SerializeField] private Weapon[] weaponsCharacter;
     //[Header("WeaponsOnScene")]
     //[SerializeField] private Weapon[] weaponsOnScene;
-
-    [Header("Player")]
-    [Range(1f, 100f)]
-    [SerializeField] private float _playerHealth = 100f;
-    [Range(1f, 10f)] //это не инкапсуляция, нужно сделать инкапсуляцию на уровне низкоуровневых типов
-    [SerializeField] private float _playerLocomotionSpeed = 2.5f;
-    [Range(2f, 10f)]
-    [SerializeField] private float _playerRunningSpeed = 6.25f;
 
     [Header("Character")] //ПОКА ОДИН
     [Range(1f, 100f)]
@@ -44,19 +37,38 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
 
     private InputController _inputController;
 
-    private Player _player;
+    private Player _player;//?; пока хз, какой именно прослойкой соединять инпут и игрока - бутстрапом или другой какой-то, так что пусть пока лежит тут;
 
     private Character[] _characters;
 
     //private readonly Weapon[] weaponsPlayer = new Weapon[2]; //Нужно защитить массив от изменения элементов или подмены, не помню (видик Сакутина)
 
+    private UnityAction _saveButtonForDataSaveHandler;
+    private UnityAction _loadSavingButtonForDataLoadHandler;
+    private UnityAction _runningButtonHoldedStateSwitch;
+    private UnityAction _runningButtonUnholdedStateSwitch;
+    private UnityAction _attackCloseRangeButtonPressedForCloseRangeAttackHandler;
+    private UnityAction _attackLongRangeButtonPressedForLongRangeAttackHandler;
+
+    private UnityAction<Vector2> _locomotionDirectionDirectedForLocomotionHandler;
+    private UnityAction<Vector2> _locomotionDirectionDirectedForRotationHandler;
+
     public override void Awake() //тут метод Awake публичный - хз //можно сделать абстрактным в родительском классе, типо чтобы у нас был контракт на обязательность реализации, но хз, насколько это правильно и насколько правильно оставлять этот метод публичным
     {
+        _player = PlayerController.Model; //
         _scenePausing = new ScenePausing();
         //_sceneLoading = new SceneLoading(); //НЕ ИНИЧУ ПОКА ЧТО
         _gameplayMenuUI = FindAnyObjectByType<GameplayMenuUI>();
-        _inputController = GetComponent<InputController>(); //_inputController.Initialize(); //он инитится сам в себе, наверное плохо, но ничего сделать не могу
+        _inputController = GetComponent<InputController>(); //_inputController.Initialize(); //он инитится сам в себе, наверное плохо, но ничего сделать не могу; дает подсказку, ибо это надо переносить в абстрактный бутстрап;
 
+        _saveButtonForDataSaveHandler = delegate () { _savingLoadingPlayerInteractor.SaveData(PlayerController); };
+        _loadSavingButtonForDataLoadHandler = delegate () { _savingLoadingPlayerInteractor.LoadData(PlayerController); };
+
+        _attackCloseRangeButtonPressedForCloseRangeAttackHandler = () => _player.AttackCloseRange(PlayerController.GameObjectPivot.position, new Vector2(PlayerController.GameObjectPivot.forward.x, PlayerController.GameObjectPivot.forward.z));
+        _attackLongRangeButtonPressedForLongRangeAttackHandler = () => _player.AttackLongRange(PlayerController.GameObjectPivot.position, new Vector2(PlayerController.GameObjectPivot.forward.x, PlayerController.GameObjectPivot.forward.z));
+        _locomotionDirectionDirectedForLocomotionHandler = (locomotionDirection) => _player.Locomote(PlayerController.ThirdPersonCameraControllerPivot, locomotionDirection);
+        _locomotionDirectionDirectedForRotationHandler = (locomotionDirection) => _player.Rotate(PlayerController.ThirdPersonCameraControllerPivot, locomotionDirection);
+        //_runningButtonHoldedStateSwitch = ЗАКОНЧИТЬ
         InstantiateMigratingBetweenSceneObjects(); //ВРЕМЕННО
         _gameplayMenuUI.Initialize();
         _inputController.Initialize(new InputReader());
@@ -76,23 +88,23 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
 
         _savingLoadingPlayerInteractor = GetComponent<SavingLoadingPlayerInteractor>(); //ПОКА БЕЗ КОНТРАКТА, ИБО НЕ ЗАВЕРШИЛ ПРОЕКТИРОВАНИЕ
 
-        _savingLoadingPlayerInteractor.Initialize(new SavingLoadingJSONRepository<Vector3, Quaternion>(), "SavingLoadingPayerData.json", _player);
+        _savingLoadingPlayerInteractor.Initialize(new SavingLoadingJSONRepository<Vector3, Quaternion>(), "SavingLoadingPayerData.json", PlayerController);
 
         _gameplayMenuUI.ContinueButton.onClick.AddListener(_scenePausing.PauseOrResume);
         _gameplayMenuUI.ContinueButton.onClick.AddListener(_gameplayMenuUI.OpenOrClose);
         _gameplayMenuUI.ExitButton.onClick.AddListener(SceneLoading.LoadMainMenuScene);
-        _gameplayMenuUI.SaveButton.onClick.AddListener(delegate () { _savingLoadingPlayerInteractor.SaveData(_player); });
+        _gameplayMenuUI.SaveButton.onClick.AddListener(_saveButtonForDataSaveHandler);
         _gameplayMenuUI.LoadSavingButton.onClick.AddListener(_scenePausing.PauseOrResume);
         _gameplayMenuUI.LoadSavingButton.onClick.AddListener(_gameplayMenuUI.OpenOrClose);
-        _gameplayMenuUI.LoadSavingButton.onClick.AddListener(delegate () { _savingLoadingPlayerInteractor.LoadData(_player); });
+        _gameplayMenuUI.LoadSavingButton.onClick.AddListener(_loadSavingButtonForDataLoadHandler);
 
-        _inputController.LocomotionDirectionDirected += _player.RotateWithinFrame;
-        _inputController.LocomotionDirectionDirected += _player.LocomoteWithinFrame;
+        _inputController.LocomotionDirectionDirected += _locomotionDirectionDirectedForLocomotionHandler;
+        _inputController.LocomotionDirectionDirected += _locomotionDirectionDirectedForRotationHandler;
         _inputController.LocomotionDirectionUndirected += _player.Idle;
-        _inputController.RunningButtonHolded += _player.SwitchLocomotionType;
+        //_inputController.RunningButtonHolded += _player.MechanicStateMachine.SwitchState(_player, new PlayerMechanicRunState());ЗАКОНЧИТЬ
         _inputController.RunningButtonUnholded += _player.SwitchLocomotionType;
-        _inputController.AttackCloseRangeButtonPressed += _player.AttackCloseRange;
-        _inputController.AttackLongRangeButtonPressed += _player.AttackLongRange;
+        _inputController.AttackCloseRangeButtonPressed += _attackCloseRangeButtonPressedForCloseRangeAttackHandler;
+        _inputController.AttackLongRangeButtonPressed += _attackLongRangeButtonPressedForLongRangeAttackHandler;
         _inputController.OpeningGameplayeMenuButtonPressed += _scenePausing.PauseOrResume;
         _inputController.OpeningGameplayeMenuButtonPressed += _gameplayMenuUI.OpenOrClose;
 
@@ -114,18 +126,18 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         _gameplayMenuUI.ContinueButton.onClick.RemoveListener(_scenePausing.PauseOrResume);
         _gameplayMenuUI.ContinueButton.onClick.RemoveListener(_gameplayMenuUI.OpenOrClose);
         _gameplayMenuUI.ExitButton.onClick.RemoveListener(SceneLoading.LoadMainMenuScene);
-        _gameplayMenuUI.SaveButton.onClick.RemoveListener(delegate () { _savingLoadingPlayerInteractor.SaveData(_player); });
+        _gameplayMenuUI.SaveButton.onClick.RemoveListener(_saveButtonForDataSaveHandler);
         _gameplayMenuUI.LoadSavingButton.onClick.RemoveListener(_scenePausing.PauseOrResume);
         _gameplayMenuUI.LoadSavingButton.onClick.RemoveListener(_gameplayMenuUI.OpenOrClose);
-        _gameplayMenuUI.LoadSavingButton.onClick.RemoveListener(delegate () { _savingLoadingPlayerInteractor.LoadData(_player); });
+        _gameplayMenuUI.LoadSavingButton.onClick.RemoveListener(_loadSavingButtonForDataLoadHandler);
 
-        _inputController.LocomotionDirectionDirected -= _player.RotateWithinFrame;
-        _inputController.LocomotionDirectionDirected -= _player.LocomoteWithinFrame;
+        _inputController.LocomotionDirectionDirected -= _locomotionDirectionDirectedForLocomotionHandler;
+        _inputController.LocomotionDirectionDirected -= _locomotionDirectionDirectedForRotationHandler;
         _inputController.LocomotionDirectionUndirected -= _player.Idle;
         _inputController.RunningButtonHolded -= _player.SwitchLocomotionType;
         _inputController.RunningButtonUnholded -= _player.SwitchLocomotionType;
-        _inputController.AttackCloseRangeButtonPressed -= _player.AttackCloseRange;
-        _inputController.AttackLongRangeButtonPressed -= _player.AttackLongRange;
+        _inputController.AttackCloseRangeButtonPressed -= _attackCloseRangeButtonPressedForCloseRangeAttackHandler;
+        _inputController.AttackLongRangeButtonPressed -= _attackLongRangeButtonPressedForLongRangeAttackHandler;
         _inputController.OpeningGameplayeMenuButtonPressed -= _scenePausing.PauseOrResume;
         _inputController.OpeningGameplayeMenuButtonPressed -= _gameplayMenuUI.OpenOrClose;
         _player.Died -= SceneLoading.LoadTestScene;
@@ -148,9 +160,7 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
 
     private void InitPlayer() //пока что я делаю поля с игроком и оружием, возможно это излишне и можно создавать сущности в локальных переменных, НО Я НЕ ДУМАЮ ТАК (но при этом дочерний монобех PlayerInputController у Player создается в локальной переменной, так как он нам тут не нужен, этот класс не имеет такой ответственности)
     {
-
-        _player.Initialize(new PlayerController(), _playerHealth, _playerLocomotionSpeed, _playerRunningSpeed, _playerWeaponCloseRange, _playerWeaponLongRange); //пока в DI даем зависимость так (про speed = 2.5f вручную, new PlayerAttackCloseRange()) - типо имитируем прилет инфы с сервера/GameController'a
-        //в ините игрока лютая дичь в конечных параметрах - да вообще все эти параметры надо как-то через сериализованные поля прогидывать (это настраивание среды для геймдизайнера)
+        //коммент выше - изучить
     }
 
     private void InitCharacter() //ПЕРЕДЕЛАЛ ЛОГИКУ ДЛЯ БОЛЬШЕЙ ОРИЕНТИРОВАННОСТИ ПОД ГЕЙМДИЗАЙНЕРА, НО ИНИТ ПРОИСХОДИТ НЕПРАВИЛЬНО (надо понять, можно ли как-то искать объекты в объектной иерархии на сцене)

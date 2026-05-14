@@ -72,6 +72,7 @@
     <Compile Include="Assets\_GameFiles\Scripts\Weapon\WeaponData\WeaponData.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\Character.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\ImplementedCharacter\CharacterCloseRange.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMechanicStateMachine\PlayerMechanicStates\Implemented PlayerMechanicState\PlayerMechanicLocomotionState.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMovement\PlayerJump.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabBrowserManager.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\EntryPointScenes\Bootstrap.cs" />
@@ -86,11 +87,9 @@
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerOffense\Implemented PlayerAttack\PlayerAttackCloseRange.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerController.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityBehaviorInterfaces\IAttackerLongRange.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\SoundPlayer.cs" />
     <Compile Include="Assets\Import\Models\Locations\SciFi Warehouse Kit\Demo\Scripts\MouseComponent.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Weapon\Weapon.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMechanicStateMachine\PlayerMechanicStates\Implemented PlayerMechanicState\PlayerRunMechanicState.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerHealth\PlayerHealthController\PlayerHealthController.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerHealth\PlayerHealth.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
@@ -98,15 +97,18 @@
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterWeapon\CharacterWeaponLongRange.cs" />
     <Compile Include="Assets\Import\Models\Locations\SciFi Warehouse Kit\Demo\Scripts\PushPhysics.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Weapon\Implemented Weapon\WeaponCloseRange.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityBehaviorInterfaces\ILongRangeAttacker.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Input\InputReader.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\EntryPointScenes\Implemented Bootstrap\BootstrapMainMenuScene.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
     <Compile Include="Assets\FastScriptReload\Examples\Scripts\FunctionLibrary.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityBehaviorInterfaces\ICloseRangeAttacker.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Interfaces\NonGameEntityInterfaces\ISavingLoadingInteractor.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityBehaviorInterfaces\IAllRangesAttacker.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\EventBusGeneral\EventBusGeneral.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterOffense\Implemented CharacterAttack\CharacterAttackLongRange.cs" />
@@ -133,7 +135,6 @@
     <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\Interactors\SavingLoadingPlayerInteractor.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterMovement\CharacterJump.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMechanicStateMachine\PlayerMechanicStates\Implemented PlayerMechanicState\PlayerIdleMechanicState.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\GameControllerScenes\GameController.cs" />
@@ -141,6 +142,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Weapon\Implemented Weapon\Implemented WeaponLongRange\RocketLauncherBasic.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\EnvironmentAreaAnalyzers\EnvironmentAreaRaycastAnalyzer.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMechanicStateMachine\PlayerMechanicStates\Implemented PlayerMechanicState\PlayerMechanicIdleState.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityBehaviorInterfaces\IDamageable.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterHealth\CharacterHealthController\CharacterHealthController.cs" />
     <Compile Include="Assets\FastScriptReload\Examples\Scripts\Graph.cs" />
@@ -165,7 +167,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabModelWindow.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Input\InputController.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMechanicStateMachine\PlayerMechanicStates\Implemented PlayerMechanicState\PlayerLocomotionMechanicState.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMovement\PlayerLocomotion.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Enums\SavingLoadingRepositoryTypes.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityAttitudeTowardPlayerInterfaces\IEnemy.cs" />
@@ -182,12 +183,11 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Interfaces\NonGameEntityInterfaces\ISavingLoadingRepository.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMechanicStateMachine\PlayerMechanicStates\Implemented PlayerMechanicState\PlayerMechanicRunState.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMovement\PlayerRotation.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerUI\PlayerUI.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\EnvironmentAreaAnalyzers\EnvironmentAreaOverlapAnalyzer.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityBehaviorInterfaces\IAttacker.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityBehaviorInterfaces\IAttackerCloseRange.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Weapon\Implemented Weapon\WeaponLongRange.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMechanicStateMachine\PlayerMechanicStateMachine.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\UIGeneral\GameplayMenuUI\GameplayMenuUI.cs" />

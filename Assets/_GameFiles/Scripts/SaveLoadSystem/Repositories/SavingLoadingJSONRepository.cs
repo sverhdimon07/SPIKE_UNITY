@@ -1,7 +1,7 @@
 using System.IO;
 using UnityEngine;
 
-public class SavingLoadingJSONRepository<P, R> : ISavingLoadingRepository<P, R> where P : struct where R : struct
+public sealed class SavingLoadingJSONRepository<P, R> : ISavingLoadingRepository<P, R> where P : struct where R : struct
 {
     private string _filePath;
 

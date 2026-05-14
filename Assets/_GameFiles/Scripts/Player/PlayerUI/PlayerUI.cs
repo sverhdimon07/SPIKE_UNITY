@@ -1,14 +1,12 @@
-using System.Collections;
-using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Threading.Tasks;
 
 public sealed class PlayerUI
 {
-    private Image _healthBar;
-    private Image _weaponLongRangeCooldownBar;
-    private TMP_Text _deathMessageText;
+    private readonly Image _healthBar;
+    private readonly Image _weaponLongRangeCooldownBar;
+    private readonly TMP_Text _deathMessageText;
 
     //private Coroutine _firstCoroutine;
 
@@ -17,7 +15,7 @@ public sealed class PlayerUI
     //private readonly float _fillSpeed = 0.1f;
     //private readonly float _delayBetweenSmoothRefreshStages = 0.005f;
 
-    public void Initialize(Image healthBar, Image weaponLongRangeCooldownBar, TMP_Text deathMessageText)
+    public PlayerUI(Image healthBar, Image weaponLongRangeCooldownBar, TMP_Text deathMessageText)
     {
         _healthBar = healthBar;
         _weaponLongRangeCooldownBar = weaponLongRangeCooldownBar;

@@ -1,72 +1,67 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
-public sealed class Player : IAttacker, IDamageable //я думаю, что если подобных интерфейсов для контракта какого-либо поведения страновится больше 3х, то уже нужно сделать контракт, включающий все нужные интерфейсы в себя. НО нужно понимать, обязаны ли мы при этом начинять новый единый большой интерфейс новыми методами или свойствами ИЛИ не обязаны (я думаю, что не обязаны) И также нужно понимать, какие ограничения на нас накладываются (к примеру, сможем ли мы работать с объектом на уровне его внутреннего интерфейса - ВОЗМОЖНО ЭТО КАК РАЗ КЛЮЧЕВАЯ ДЕТАТЬ, которая дает нам понять, использовать нам единый интерфейс или несколько)
+public sealed class Player : IDamageable, IAllRangesAttacker //я думаю, что если подобных интерфейсов для контракта какого-либо поведения страновится больше 3х, то уже нужно сделать контракт, включающий все нужные интерфейсы в себя. НО нужно понимать, обязаны ли мы при этом начинять новый единый большой интерфейс новыми методами или свойствами ИЛИ не обязаны (я думаю, что не обязаны) И также нужно понимать, какие ограничения на нас накладываются (к примеру, сможем ли мы работать с объектом на уровне его внутреннего интерфейса - ВОЗМОЖНО ЭТО КАК РАЗ КЛЮЧЕВАЯ ДЕТАТЬ, которая дает нам понять, использовать нам единый интерфейс или несколько)
 {
-    private PlayerMechanicStateMachine _mechanicStateMachine;
+    private readonly PlayerMechanicStateMachine _mechanicStateMachine;
 
-    private PlayerHealthController _healthController;
+    private readonly PlayerHealthController _healthController;
 
-    private PlayerMovementController _movementController;
+    private readonly PlayerMovementController _movementController;
 
-    private PlayerOffenceController _offenseController;
+    private readonly PlayerOffenseController _offenseController;
 
-    private PlayerDefenseController _defenseController;
+    private readonly PlayerDefenseController _defenseController;
 
     private bool _isRunning; //управляющие фраги - ВРЕМЕННАЯ МЕРА(пока нет FSM);
 
-    public Player(PlayerMechanicStateMachine mechanicStateMachine, PlayerUI ui, PlayerAnimator animator, PlayerHealthController healthController, PlayerMovementController movementController, PlayerOffenceController offenseController, PlayerDefenseController defenseController, Image healthBar, Image weaponLongRangeCooldownBar, TMP_Text deathMessageText, float health, float locomotionSpeed, float runningSpeed, Vector3 position, Vector2 direction, WeaponCloseRange weaponCloseRange, WeaponLongRange weaponLongRange)
+    public Player(PlayerMechanicStateMachine mechanicStateMachine, PlayerHealthController healthController, PlayerMovementController movementController, PlayerOffenseController offenseController, PlayerDefenseController defenseController)
     {
-        //_controller.Initialize(_healthBar, _weaponLongRangeCooldownBar, _dealthMessageText, GetComponent<Animator>(), health, locomotionSpeed, runningSpeed, transform.position, new Vector2(_renderAndSkeletonPivot.forward.x, _renderAndSkeletonPivot.forward.z), weaponCloseRange, weaponLongRange);
+        _mechanicStateMachine = mechanicStateMachine;
+        _healthController = healthController;
+        _movementController = movementController;
+        _offenseController = offenseController;
+        _defenseController = defenseController;
 
-        _ui.Initialize(healthBar, weaponLongRangeCooldownBar, deathMessageText);
-        _animator.Initialize(animator);
-        _healthController.Initialize(health);
-        _movementController.Initialize(locomotionSpeed, runningSpeed);
-        _offenseController.Initialize(position, direction, weaponCloseRange, weaponLongRange);
-        //_defenseController.Initialize();
-
-        _healthController.DamageTaken += delegate () { DamageTaken.Invoke(); };
-        _healthController.DamageTaken += delegate () { _ui.RefreshHealthBar(_healthController.GetHealth()); };
-        _healthController.Died += delegate () { Died.Invoke(); };
-        _healthController.Died += delegate () { _ui.RefreshDeathMessageText(); }; //надо дописать где-то вызов на выключение на старте, и включить объект в сцене
+        _healthController.DamageTaken += DamageTaken;
+        _healthController.Died += Died;
+        _movementController.Locomoted += Locomoted;
+        _movementController.Rotated += Rotated;
     }
 
     ~Player()
     {
-        _healthController.DamageTaken -= delegate () { DamageTaken.Invoke(); };
-        _healthController.DamageTaken -= delegate () { _ui.RefreshHealthBar(_healthController.GetHealth()); };
-        _healthController.Died -= delegate () { Died.Invoke(); };
+        _healthController.DamageTaken -= DamageTaken;
+        _healthController.Died -= Died;
+        _movementController.Locomoted -= Locomoted;
+        _movementController.Rotated -= Rotated;
     }
 
+    public UnityAction StartedToIdle;
     public UnityAction DamageTaken; //под расширение (мб замедление времени во время стана делать, и возможно это делается при помощи заморозки сцены)
     public UnityAction Died;
 
-    public float Health { get; set; }
-    public float MaxHealth { get; set; }
+    public UnityAction<Quaternion> Rotated;
 
-    private void RefreshDeathMessageText() //под коммент: _healthController.Died += delegate () { _ui.RefreshDeathMessageText(); }; //надо дописать где-то вызов на выключение на старте, и включить объект в сцене
-    {
-        //
-    }
+    public UnityAction<Vector3> Locomoted;
 
-    public void RefreshWeaponLongRangeCooldownBar()
-    {
-        _ui.RefreshWeaponLongRangeCooldownBar();
-    }
+    public Transform ThirdPersonCameraControllerPivot { get; set; }
+
+    public Vector2 InputDirection { get; set; }
+
+    public float Health { get; set; } //РЕАЛИЗОВАТЬ ГЕТТЕР И СЕТТЕР
+    public float MaxHealth { get; set; } //РЕАЛИЗОВАТЬ ГЕТТЕР И СЕТТЕР
+
+    public PlayerMechanicStateMachine MechanicStateMachine => _mechanicStateMachine;
 
     public void Idle() //это нужно, чтобы вернуться в Idle состояния из стана; НОРМАЛЬНАЯ, НО ВРЕМЕННАЯ МЕРА (пока нет FSM); //Изначально был метод PlayIdleAnimation, который вызывался на концах стана, НО ЭТО ВСЕ - ВРЕМЕННАЯ МЕРА (пока нет FSM)
     {
-        _animator.PlayIdleAnimation();
+        //_animator.PlayIdleAnimation(); //изнутри вызвать события, поднять вызов сюда, а анимацию мы делаем уже в контроллере
     }
 
     public void TakeDamage(float damage)
     {
         _healthController.TakeDamage(damage);
-        _animator.PlayStunAnimation(); // ТАКИЕ СЕРВИСЫ БУДЕМ ПОДКЛЮЧАТЬ ЧЕРЕЗ СОБЫТИЯ (ПЕРЕПИСАТЬ ПО АНАЛОГИИ С UI)
-        //_animator.PlayIdle(); //хз, почему не робит (по идее должно было быть элегантнейшим решением)
     }
 
     public void Die()
@@ -74,21 +69,22 @@ public sealed class Player : IAttacker, IDamageable //я думаю, что если подобных
         _healthController.Die();
     }
 
-    public void RotateWithinFrame(Vector2 inputDirection)
+    public void Locomote(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection) //пропал публичный метод для бега, а я хотел дописывать контракты на ходьбу, на бег (НО МБ С FSM ВСЕ НАЛАДИТСЯ)
     {
-        _movementController.RotateWithinFrame(_renderAndSkeletonPivot, _thirdPersonCameraControllerPivot, inputDirection);
-    }
+        _mechanicStateMachine.SwitchState(this, new PlayerMechanicLocomotionState());
 
-    public void LocomoteWithinFrame(Vector2 inputLocomotionDirection) //пропал публичный метод для бега, а я хотел дописывать контракты на ходьбу, на бег (НО МБ С FSM ВСЕ НАЛАДИТСЯ)
-    {
         if (_mechanicStateMachine.State.GetType() != typeof(PlayerLocomotion))
         {
             return;
         }
-        _mechanicStateMachine.DoDomainLogic();
+        ThirdPersonCameraControllerPivot = thirdPersonCameraControllerPivot;
+        InputDirection = inputDirection;
 
-        _movementController.LocomoteWithinFrame(transform, _thirdPersonCameraControllerPivot, inputLocomotionDirection, _isRunning);
+        _mechanicStateMachine.State.DoLogic(this);
 
+        //_movementController.Locomote(thirdPersonCameraControllerPivot, inputDirection, _isRunning);
+
+        /*
         if (_isRunning == false) //из-за отсутствия MVC и событий - тут остается проверка на раннинг, хотя если бы анимации вызывались из PlayerLocomotion, проблемы бы не было
         {
             _animator.PlayLocomotionAnimation(); //это очевидно событийно-ориентированная штука, хотя и так мне тоже нравится. НО скорее всего нужно сделать по MVC как UI
@@ -96,7 +92,25 @@ public sealed class Player : IAttacker, IDamageable //я думаю, что если подобных
         else if (_isRunning == true)
         {
             _animator.PlayRunningAnimation();
+        }*/
+    }
+
+    public void Run(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection) //пропал публичный метод для бега, а я хотел дописывать контракты на ходьбу, на бег (НО МБ С FSM ВСЕ НАЛАДИТСЯ)
+    {
+        //подумать про расширение - например, мне нужно будет добавить передвижение пешком, смогу ли я добавить это, соблюдая OCP?
+        if (_mechanicStateMachine.State.GetType() != typeof(PlayerLocomotion))
+        {
+            return;
         }
+        ThirdPersonCameraControllerPivot = thirdPersonCameraControllerPivot;
+        InputDirection = inputDirection;
+
+        _mechanicStateMachine.State.DoLogic(this);
+    }
+
+    public void Rotate(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection) //(Transform renderAndSkeletonPivot, Transform thirdPersonCameraControllerPivot, Vector2 inputDirection)
+    {
+        _movementController.Rotate(thirdPersonCameraControllerPivot, inputDirection);
     }
 
     public void SwitchLocomotionType() //хотя вот он, своеобразный контракт для бега (ответ на коммент выше)
@@ -111,16 +125,13 @@ public sealed class Player : IAttacker, IDamageable //я думаю, что если подобных
         }
     }
 
-    public void AttackCloseRange()
+    public void AttackCloseRange(Vector3 gameObjectPosition, Vector2 gameObjectDirection) //подумать над названием ЛК тут, ибо нам нужна семантика реальной позиции (то есть, gameObjectPosition) ИЛИ нам нужна семантика позиции для атаки (startPosition). (пример я привел неудачный, ибо тут все равно gameObjectPosition, лучше посмотреть на inputDirection сверху, где я долго писал приписку locomotion) Я ДУМАЮ ВТОРОЕ, ибо все-таки привязка к названию метода ДОЛЖНА БЫТЬ;
     {
-        _offenseController.AttackCloseRange(transform.position, new Vector2(_renderAndSkeletonPivot.forward.x, _renderAndSkeletonPivot.forward.z));
-        _animator.PlayAttackCloseRangeAnimation();
+        _offenseController.AttackCloseRange(gameObjectPosition, gameObjectDirection);
     }
-
-    public void AttackLongRange()
+    //transform.position, new Vector2(_renderAndSkeletonPivot.forward.x, _renderAndSkeletonPivot.forward.z)
+    public void AttackLongRange(Vector3 gameObjectPosition, Vector2 gameObjectDirection)
     {
-        _offenseController.AttackLongRange(transform.position, new Vector2(_renderAndSkeletonPivot.forward.x, _renderAndSkeletonPivot.forward.z)); //поработать над именованием локальных переменных внутри
-        _animator.PlayAttackLongRangeAnimation();
-        _ui.RefreshWeaponLongRangeCooldownBar(); //переписать на Observer, как это работает выше
+        _offenseController.AttackLongRange(gameObjectPosition, gameObjectDirection);
     }
 }

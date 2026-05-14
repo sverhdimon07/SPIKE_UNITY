@@ -12,9 +12,15 @@ public sealed class BootstrapMainMenuScene : Bootstrap
 
     private MainMenuUI _ui;
 
-    private void Awake()
+    public override void Awake()
     {
-        Initialize();
+        //_migratingBetweenSceneObjects[0] = _soundDesignObject;
+        //_sceneLoading = new SceneLoading();
+        _musicLayerAudioSource = FindAnyObjectByType<AudioSource>();
+        _ui = FindAnyObjectByType<MainMenuUI>();
+
+        SceneLoading.Initialize(_soundDesignObject); // НЕ СОЗДАЮ В ЭТОЙ СЦЕНЕ МИГРИРУЮЩИЕ ОБЪЕКТЫ
+        _ui.Initialize(0.1f); //пока вместо полноценного инита через сервис (я пиал это к тому, когда у нас слайдер детерминировался тем, что стоит в инспекторе) - НАДО ПОНЯТЬ, КТО КОГО ДЕТЕРМИНИРУЕТ
     }
 
     private void OnEnable()
@@ -31,17 +37,6 @@ public sealed class BootstrapMainMenuScene : Bootstrap
         _ui.SettingsButton.onClick.RemoveListener(_ui.OpenSettingsWindowCanvas);
         _ui.SettingsExitButton.onClick.RemoveListener(_ui.CloseSettingsWindowCanvas);
         _ui.MusicVolumeSlider.onValueChanged.RemoveListener(delegate (float value) { RefreshMusicLayerAudioSourceVolume(_ui.MusicVolumeSlider.value); });
-    }
-
-    public override void Initialize()
-    {
-        //_migratingBetweenSceneObjects[0] = _soundDesignObject;
-        //_sceneLoading = new SceneLoading();
-        _musicLayerAudioSource = FindAnyObjectByType<AudioSource>();
-        _ui = FindAnyObjectByType<MainMenuUI>();
-
-        SceneLoading.Initialize(_soundDesignObject); // НЕ СОЗДАЮ В ЭТОЙ СЦЕНЕ МИГРИРУЮЩИЕ ОБЪЕКТЫ
-        _ui.Initialize(0.1f); //пока вместо полноценного инита через сервис (я пиал это к тому, когда у нас слайдер детерминировался тем, что стоит в инспекторе) - НАДО ПОНЯТЬ, КТО КОГО ДЕТЕРМИНИРУЕТ
     }
 
     private void InstantiateMigratingBetweenSceneObjects()

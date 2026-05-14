@@ -1,23 +1,33 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public sealed class PlayerLocomotion
 {
-    private float _locomotionSpeed;
-    private float _runningSpeed;
+    private readonly float _locomotionSpeed;
+    private readonly float _runningSpeed;
 
-    public void Initialize(float locomotionSpeed, float runningSpeed)
+    private Vector3 _lastPosition;
+
+    public PlayerLocomotion(float locomotionSpeed, float runningSpeed, Vector3 lastPosition)
     {
         _locomotionSpeed = locomotionSpeed;
         _runningSpeed = runningSpeed;
+        _lastPosition = lastPosition;
     }
 
-    public void LocomoteWithinFrame(Transform point, Vector3 requiredActualDirection)
+    public UnityAction<Vector3> Locomoted;
+
+    public void Locomote(Vector3 direction) //ИНКАПУСЛЯЦИЯ
     {
-        point.position += requiredActualDirection * _locomotionSpeed * Time.deltaTime;
+        Vector3 nextPosition = _lastPosition += direction * _locomotionSpeed * Time.deltaTime;
+
+        Locomoted.Invoke(nextPosition);
     }
 
-    public void RunWithinFrame(Transform point, Vector3 requiredActualDirection)
+    public void Run(Vector3 direction) //ИНКАПУСЛЯЦИЯ
     {
-        point.position += requiredActualDirection * _runningSpeed * Time.deltaTime;
+        Vector3 nextPosition = _lastPosition += direction * _runningSpeed * Time.deltaTime;
+
+        Locomoted.Invoke(nextPosition);
     }
 }

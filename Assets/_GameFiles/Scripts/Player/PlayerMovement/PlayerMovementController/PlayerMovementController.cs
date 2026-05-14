@@ -1,46 +1,61 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public sealed class PlayerMovementController
 {
-    private readonly PlayerRotation _rotation = new PlayerRotation();
+    private readonly PlayerLocomotion _locomotion;
 
-    private readonly PlayerLocomotion _locomotion = new PlayerLocomotion();
+    private readonly PlayerRotation _rotation;
 
     private readonly PlayerJump _jump;
 
-    public void Initialize(float locomotionSpeed, float runningSpeed)
+    public PlayerMovementController(PlayerLocomotion locomotion, PlayerRotation rotation)
     {
-        _locomotion.Initialize(locomotionSpeed, runningSpeed);
+        _locomotion = locomotion;
+        _rotation = rotation;
+
+        _locomotion.Locomoted += Locomoted;
+        _rotation.Rotated += Rotated;
     }
 
-    public void RotateWithinFrame(Transform renderAndSkeletonPoint, Transform cameraPoint, Vector2 inputDirection)
+    ~PlayerMovementController()
     {
-        _rotation.RotateWithinFrame(renderAndSkeletonPoint, CalculateRequiredActualDirection(cameraPoint, inputDirection));
+        _locomotion.Locomoted -= Locomoted;
+        _rotation.Rotated -= Rotated;
     }
 
-    public void LocomoteWithinFrame(Transform point, Transform cameraPoint, Vector2 inputLocomotionDirection, bool isRunning)
+    public UnityAction<Vector3> Locomoted;
+
+    public UnityAction<Quaternion> Rotated;
+
+    public void Locomote(Transform cameraPoint, Vector2 inputDirection, bool isRunning)
     {
         if (isRunning == false)
         {
-            _locomotion.LocomoteWithinFrame(point, CalculateRequiredActualDirection(cameraPoint, inputLocomotionDirection));
+            _locomotion.Locomote(CalculateWorldDirection(cameraPoint, inputDirection));
         }
         else if (isRunning == true)
         {
-            _locomotion.RunWithinFrame(point, CalculateRequiredActualDirection(cameraPoint, inputLocomotionDirection));
+            _locomotion.Run(CalculateWorldDirection(cameraPoint, inputDirection));
         }
     }
-    
+
+    public void Rotate(Transform cameraPoint, Vector2 inputDirection)
+    {
+        _rotation.Rotate(CalculateWorldDirection(cameraPoint, inputDirection));
+    }
+
     public void Jump()
     {
         //
     }
 
-    private Vector3 CalculateRequiredActualDirection(Transform cameraPoint, Vector2 inputDirection)
+    private Vector3 CalculateWorldDirection(Transform cameraPoint, Vector2 inputDirection)
     {
         Vector3 cameraForward = new Vector3(cameraPoint.forward.x, 0f, cameraPoint.forward.z).normalized; //Ã√
         Vector3 cameraRight = new Vector3(cameraPoint.right.x, 0f, cameraPoint.right.z).normalized; //Ã√
-        Vector3 requiredActualDirection = (cameraForward * inputDirection.y + cameraRight * inputDirection.x).normalized;
+        Vector3 worldDirection = (cameraForward * inputDirection.y + cameraRight * inputDirection.x).normalized;
 
-        return requiredActualDirection;
+        return worldDirection;
     }
 }

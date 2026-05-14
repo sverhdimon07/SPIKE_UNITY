@@ -1,12 +1,10 @@
 public abstract class PlayerMechanicState
 {
-    public PlayerMechanicStateMachine StateMachine;
-    
-    public abstract void Enter();
+    public abstract void Enter(Player player);
 
-    public abstract void DoDomainLogic();
+    public abstract void DoLogic(Player player);
 
-    public abstract void DoDomainLogicWithinFrame();
+    public abstract void DoLogicWithinFrame(Player player);
 
-    public abstract void Exit();
+    public abstract void Exit(Player player);
 }

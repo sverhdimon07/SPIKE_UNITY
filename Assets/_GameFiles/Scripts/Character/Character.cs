@@ -20,6 +20,9 @@ public /*abstract*/ class Character : MonoBehaviour, IDamageable //я бы еще наки
     public UnityAction DamageTaken; //под расширение (мб замедление времени во время стана делать, и возможно это делается при помощи заморозки сцены)
     public UnityAction Died;
 
+    public float Health { get; set; }
+    public float MaxHealth { get; set; }
+
     private void Update() //возможно здесь будем корректировать то, куда смотрит ГГ (но возможно это стоит делать не здесь)
     {
         if (gameObject.name == "CharacterCloseRange")

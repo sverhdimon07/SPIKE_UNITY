@@ -1,7 +1,7 @@
 using System.IO;
 using UnityEngine;
 
-public class SavingLoadingPlayerInteractor : MonoBehaviour, ISavingLoadingInteractor
+public sealed class SavingLoadingPlayerInteractor : MonoBehaviour, ISavingLoadingInteractor
 {
     private ISavingLoadingRepository<Vector3, Quaternion> _savingLoadingRepository;
 
@@ -26,7 +26,7 @@ public class SavingLoadingPlayerInteractor : MonoBehaviour, ISavingLoadingIntera
         //Player player = FindAnyObjectByType<Player>(); //ХАРДКОД
         //Player player = (Player)playerMono; //ДАУНКАСТ - исправить обощенныйм типом
         Vector3 position = playerController.transform.position;
-        Quaternion rotation = playerController.RenderAndSkeletonPivot.rotation;
+        Quaternion rotation = playerController.GameObjectPivot.rotation;
         //List<Vector3, Quaternion> savingObjects = new List<Vector3, Quaternion>();
         //SavingLoadingPlayerData _savingLoadingPlayerData = new SavingLoadingPlayerData();
         //_savingLoadingPlayerData.Position = position;

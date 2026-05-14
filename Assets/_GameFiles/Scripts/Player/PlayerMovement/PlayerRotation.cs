@@ -1,11 +1,22 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public sealed class PlayerRotation
 {
-    public void Initialize() { } //
-    
-    public void RotateWithinFrame(Transform renderAndSkeletonPoint, Vector3 requiredActualDirection)
+    /*
+    private Quaternion _lastRotation; //дкъ окюбмшу онбнпнрнб
+
+    public PlayerRotation(Quaternion lastRotation)
     {
-        renderAndSkeletonPoint.rotation = Quaternion.LookRotation(requiredActualDirection); //ядекюрэ онбнпнрш окюбмшлх
+        _lastRotation = lastRotation;
+    }*/
+
+    public UnityAction<Quaternion> Rotated;
+
+    public void Rotate(Vector3 direction) //хмйюосякъжхъ
+    {
+        Quaternion nextRotation = Quaternion.LookRotation(direction); //ядекюрэ онбнпнрш окюбмшлх
+
+        Rotated(nextRotation);
     }
 }
