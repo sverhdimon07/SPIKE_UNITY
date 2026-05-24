@@ -14,30 +14,28 @@ public sealed class PlayerMovementController
         _locomotion = locomotion;
         _rotation = rotation;
 
-        _locomotion.Locomoted += Locomoted;
-        _rotation.Rotated += Rotated;
+        //_locomotion.Locomoted += Locomoted;
+        //_rotation.Rotated += Rotated;
     }
 
     ~PlayerMovementController()
     {
-        _locomotion.Locomoted -= Locomoted;
-        _rotation.Rotated -= Rotated;
+        //_locomotion.Locomoted -= Locomoted;
+        //_rotation.Rotated -= Rotated;
     }
 
     public UnityAction<Vector3> Locomoted;
 
     public UnityAction<Quaternion> Rotated;
 
-    public void Locomote(Transform cameraPoint, Vector2 inputDirection, bool isRunning)
+    public void Locomote(Transform cameraPoint, Vector2 inputDirection)
     {
-        if (isRunning == false)
-        {
-            _locomotion.Locomote(CalculateWorldDirection(cameraPoint, inputDirection));
-        }
-        else if (isRunning == true)
-        {
-            _locomotion.Run(CalculateWorldDirection(cameraPoint, inputDirection));
-        }
+        _locomotion.Locomote(CalculateWorldDirection(cameraPoint, inputDirection)); //吓信先牙臆
+    }
+
+    public void Run(Transform cameraPoint, Vector2 inputDirection)
+    {
+        _locomotion.Run(CalculateWorldDirection(cameraPoint, inputDirection)); //吓信先牙臆
     }
 
     public void Rotate(Transform cameraPoint, Vector2 inputDirection)

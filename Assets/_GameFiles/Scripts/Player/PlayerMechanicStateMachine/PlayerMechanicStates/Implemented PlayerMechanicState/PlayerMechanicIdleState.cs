@@ -1,18 +1,13 @@
 public sealed class PlayerMechanicIdleState : PlayerMechanicState
 {
-    public void RefreshData() //в параметре пока данные не нужны для этого стейта
-    {
-        //
-    }
-
     public override void Enter(Player player)
     {
-        player.Idle();
+        //
     }
 
     public override void DoLogic(Player player)
     {
-        //
+        player.StartedToIdle.Invoke();
     }
 
     public override void DoLogicWithinFrame(Player player)

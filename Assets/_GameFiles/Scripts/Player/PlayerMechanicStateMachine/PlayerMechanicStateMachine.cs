@@ -13,7 +13,10 @@ public sealed class PlayerMechanicStateMachine
 
     public void SwitchState(Player player, PlayerMechanicState nextState) //интересный момент с тем, что вроде бы делать подобные методы - соблюдение OSP, но и при этом любой сможет закинуть сюда что он захочет (ВИДИК САКУТИНА)
     {
-        //ИНКАПСУЛЯЦИЯ НА СТЕЙТ, КОТОРЫЙ УЖЕ АКТИВЕН
+        if (nextState == _state)
+        {
+            return;
+        }
         _state.Exit(player);
 
         _state = nextState;

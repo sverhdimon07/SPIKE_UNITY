@@ -3887,7 +3887,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 565703495}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4226,7 +4226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &625006686
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9076,7 +9076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ed0bf8e04e97e47954275a340bf5e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameController
-  <_playerController>k__BackingField: {fileID: 0}
+  <PlayerController>k__BackingField: {fileID: 5688760110951858511}
   _playerWeaponCloseRange: {fileID: 2065284798}
   _playerWeaponCloseRangeData:
     _damage: 2
@@ -15229,21 +15229,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d4cbd3b8e00fc94bb975625b813180f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  _healthBar: {fileID: 0}
-  _weaponLongRangeCooldownBar: {fileID: 0}
-  _deathMessageText: {fileID: 0}
-  _animator: {fileID: 0}
-  _gameObjectPivot: {fileID: 0}
-  _thirdPersonCameraControllerPivot: {fileID: 0}
-  _maxHealth: 100
-  _health: 100
-  _locomotionSpeed: 2.5
-  _runningSpeed: 6.25
-  _weaponCloseRange: {fileID: 0}
+  _healthBar: {fileID: 3641271200012123197}
+  _weaponLongRangeCooldownBar: {fileID: 7244159918285255771}
+  _deathMessageText: {fileID: 94095517}
+  _animator: {fileID: 5688760110951858508}
+  _gameObjectPivot: {fileID: 1734631302819175222}
+  _renderAndSkeletonPivot: {fileID: 1544787508}
+  _thirdPersonCameraControllerPivot: {fileID: 2044222773}
+  _maxHealth: 99
+  _health: 99
+  _locomotionSpeed: 2.4
+  _runningSpeed: 6.24
+  _weaponCloseRange: {fileID: 2065284798}
   _weaponCloseRangeData:
     _damage: 0
     _range: 0
-  _weaponLongRange: {fileID: 0}
+  _weaponLongRange: {fileID: 378193475}
   _weaponLongRangeData:
     _damage: 0
     _range: 0

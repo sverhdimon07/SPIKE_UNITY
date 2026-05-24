@@ -13,6 +13,7 @@ public sealed class PlayerController : MonoBehaviour
     [SerializeField] private TMP_Text _deathMessageText;
     [SerializeField] private Animator _animator;
     [SerializeField] private Transform _gameObjectPivot;
+    [SerializeField] private Transform _renderAndSkeletonPivot;
     [SerializeField] private Transform _thirdPersonCameraControllerPivot;
 
     [Header("Model References")]
@@ -38,17 +39,17 @@ public sealed class PlayerController : MonoBehaviour
 
     public UnityAction<Vector3> Locomoted;
 
-    public Player Model { get; private set; } //не уверен, что так правильно; вообще есть 2 варика - ЛИБО сделать так, как здесь, с публичной для вызова публичных методов моделью и подписками вьюшки здесь, ЛИБО сделать модель приватной И соединять модель и вьюшку напрямую публичными методами. Мне впринципе 2й варик больше нравится;
-
     private PlayerView View { get; set; } //вот та разница между моделью и представлением. Просто если бы это свойство было публичным, то его методами можно было бы пользоваться в классе более высокого уровня
+
+    public Player Model { get; private set; } //не уверен, что так правильно; вообще есть 2 варика - ЛИБО сделать так, как здесь, с публичной для вызова публичных методов моделью и подписками вьюшки здесь, ЛИБО сделать модель приватной И соединять модель и вьюшку напрямую публичными методами. Мне впринципе 2й варик больше нравится;
 
     public Transform GameObjectPivot => _gameObjectPivot; //ВРЕМЕННАЯ МЕРА
     public Transform ThirdPersonCameraControllerPivot => _thirdPersonCameraControllerPivot; //ВРЕМЕННАЯ МЕРА
 
     private void Awake() //чекнуть конструкторы и деструкторы в монобехах
     {
+        View = new PlayerView(new PlayerUI(_healthBar, _weaponLongRangeCooldownBar, _deathMessageText), new PlayerAnimator(_animator), _gameObjectPivot, _renderAndSkeletonPivot);
         Model = new Player(new PlayerMechanicStateMachine(Model, new PlayerMechanicIdleState()), new PlayerHealthController(new PlayerHealth(_maxHealth, _health)), new PlayerMovementController(new PlayerLocomotion(_locomotionSpeed, _runningSpeed, transform.position), new PlayerRotation()), new PlayerOffenseController(transform.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z), _weaponCloseRange, _weaponLongRange), new PlayerDefenseController()); //тут такой прикол, что любой человек сможет создавать объект этого класса в любой части программы, но как бы и работать он с ним не сможет без верхнеуровнего монобеховского слоя. Тут все норм, я бы только засинглтонил PlayerController и Player (про PlayerView - хз)
-        View = new PlayerView(new PlayerUI(_healthBar, _weaponLongRangeCooldownBar, _deathMessageText), new PlayerAnimator(_animator), _gameObjectPivot);
     }
 
     private void Update()
@@ -62,8 +63,11 @@ public sealed class PlayerController : MonoBehaviour
         Model.DamageTaken += delegate () { View.PresentDamageTake(Model.Health); };
         Model.DamageTaken += DamageTaken;
         Model.Died += View.PresentDeath; //надо дописать где-то вызов на выключение на старте, и включить объект в сцене
-        Model.Rotated += View.TurnCharacterModel;
-        Model.Locomoted += View.MoveCharacterModel;
+        //Model.Locomoted += View.MoveCharacterModel;
+        PlayerLocomotion.Locomoted += View.MoveCharacterModelInLocomotionForm;
+        PlayerLocomotion.Runned += View.MoveCharacterModelInRunForm;
+        //Model.Rotated += View.TurnCharacterModel;
+        PlayerRotation.Rotated += View.TurnCharacterModel;
     }
 
     private void OnDisable()
@@ -72,8 +76,17 @@ public sealed class PlayerController : MonoBehaviour
         Model.DamageTaken -= delegate () { View.PresentDamageTake(Model.Health); };
         Model.DamageTaken -= DamageTaken;
         Model.Died -= View.PresentDeath;
-        Model.Rotated += View.TurnCharacterModel;
-        Model.Locomoted += View.MoveCharacterModel;
+        //Model.Locomoted -= View.MoveCharacterModel;
+        PlayerLocomotion.Locomoted -= View.MoveCharacterModelInLocomotionForm;
+        PlayerLocomotion.Runned -= View.MoveCharacterModelInRunForm;
+        //Model.Rotated -= View.TurnCharacterModel;
+        PlayerRotation.Rotated -= View.TurnCharacterModel;
+    }
+
+    public void Idle()
+    {
+        View.PresentIdle();
+        //Модель пока не пишу, ибо там логики нет
     }
 
     public void SetRenderAndSkeletonPivot(Quaternion rotation) //?

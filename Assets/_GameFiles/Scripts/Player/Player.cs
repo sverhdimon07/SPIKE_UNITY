@@ -13,8 +13,6 @@ public sealed class Player : IDamageable, IAllRangesAttacker //я думаю, что если
 
     private readonly PlayerDefenseController _defenseController;
 
-    private bool _isRunning; //управляющие фраги - ВРЕМЕННАЯ МЕРА(пока нет FSM);
-
     public Player(PlayerMechanicStateMachine mechanicStateMachine, PlayerHealthController healthController, PlayerMovementController movementController, PlayerOffenseController offenseController, PlayerDefenseController defenseController)
     {
         _mechanicStateMachine = mechanicStateMachine;
@@ -45,17 +43,30 @@ public sealed class Player : IDamageable, IAllRangesAttacker //я думаю, что если
 
     public UnityAction<Vector3> Locomoted;
 
+    public PlayerMechanicStateMachine MechanicStateMachine => _mechanicStateMachine;
+
+    public PlayerHealthController HealthController => _healthController;
+
+    public PlayerMovementController MovementController => _movementController;
+
+    public PlayerOffenseController OffenseController => _offenseController;
+
+    public PlayerDefenseController DefenseController => _defenseController;
+
     public Transform ThirdPersonCameraControllerPivot { get; set; }
 
+    public Vector3 GameObjectPosition { get; set; }
+
     public Vector2 InputDirection { get; set; }
+    public Vector2 RenderAndSkeletonDirectionXZ { get; set; }
 
     public float Health { get; set; } //РЕАЛИЗОВАТЬ ГЕТТЕР И СЕТТЕР
     public float MaxHealth { get; set; } //РЕАЛИЗОВАТЬ ГЕТТЕР И СЕТТЕР
 
-    public PlayerMechanicStateMachine MechanicStateMachine => _mechanicStateMachine;
-
     public void Idle() //это нужно, чтобы вернуться в Idle состояния из стана; НОРМАЛЬНАЯ, НО ВРЕМЕННАЯ МЕРА (пока нет FSM); //Изначально был метод PlayIdleAnimation, который вызывался на концах стана, НО ЭТО ВСЕ - ВРЕМЕННАЯ МЕРА (пока нет FSM)
     {
+        _mechanicStateMachine.SwitchState(this, new PlayerMechanicIdleState());
+        _mechanicStateMachine.State.DoLogic(this);
         //_animator.PlayIdleAnimation(); //изнутри вызвать события, поднять вызов сюда, а анимацию мы делаем уже в контроллере
     }
 
@@ -73,35 +84,17 @@ public sealed class Player : IDamageable, IAllRangesAttacker //я думаю, что если
     {
         _mechanicStateMachine.SwitchState(this, new PlayerMechanicLocomotionState());
 
-        if (_mechanicStateMachine.State.GetType() != typeof(PlayerLocomotion))
-        {
-            return;
-        }
         ThirdPersonCameraControllerPivot = thirdPersonCameraControllerPivot;
         InputDirection = inputDirection;
 
         _mechanicStateMachine.State.DoLogic(this);
-
-        //_movementController.Locomote(thirdPersonCameraControllerPivot, inputDirection, _isRunning);
-
-        /*
-        if (_isRunning == false) //из-за отсутствия MVC и событий - тут остается проверка на раннинг, хотя если бы анимации вызывались из PlayerLocomotion, проблемы бы не было
-        {
-            _animator.PlayLocomotionAnimation(); //это очевидно событийно-ориентированная штука, хотя и так мне тоже нравится. НО скорее всего нужно сделать по MVC как UI
-        }
-        else if (_isRunning == true)
-        {
-            _animator.PlayRunningAnimation();
-        }*/
     }
 
     public void Run(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection) //пропал публичный метод для бега, а я хотел дописывать контракты на ходьбу, на бег (НО МБ С FSM ВСЕ НАЛАДИТСЯ)
     {
         //подумать про расширение - например, мне нужно будет добавить передвижение пешком, смогу ли я добавить это, соблюдая OCP?
-        if (_mechanicStateMachine.State.GetType() != typeof(PlayerLocomotion))
-        {
-            return;
-        }
+        _mechanicStateMachine.SwitchState(this, new PlayerMechanicRunState());
+
         ThirdPersonCameraControllerPivot = thirdPersonCameraControllerPivot;
         InputDirection = inputDirection;
 
@@ -113,25 +106,23 @@ public sealed class Player : IDamageable, IAllRangesAttacker //я думаю, что если
         _movementController.Rotate(thirdPersonCameraControllerPivot, inputDirection);
     }
 
-    public void SwitchLocomotionType() //хотя вот он, своеобразный контракт для бега (ответ на коммент выше)
+    public void AttackCloseRange(Vector3 gameObjectPosition, Vector2 renderAndSkeletonDirectionXZ) //подумать над названием ЛК тут, ибо нам нужна семантика реальной позиции (то есть, gameObjectPosition) ИЛИ нам нужна семантика позиции для атаки (startPosition). (пример я привел неудачный, ибо тут все равно gameObjectPosition, лучше посмотреть на inputDirection сверху, где я долго писал приписку locomotion) Я ДУМАЮ ВТОРОЕ, ибо все-таки привязка к названию метода ДОЛЖНА БЫТЬ;
     {
-        if (_isRunning == false)
-        {
-            _isRunning = true;
-        }
-        else if (_isRunning == true)
-        {
-            _isRunning = false;
-        }
-    }
+        _mechanicStateMachine.SwitchState(this, new PlayerMachanicAttackCloseRangeState());
 
-    public void AttackCloseRange(Vector3 gameObjectPosition, Vector2 gameObjectDirection) //подумать над названием ЛК тут, ибо нам нужна семантика реальной позиции (то есть, gameObjectPosition) ИЛИ нам нужна семантика позиции для атаки (startPosition). (пример я привел неудачный, ибо тут все равно gameObjectPosition, лучше посмотреть на inputDirection сверху, где я долго писал приписку locomotion) Я ДУМАЮ ВТОРОЕ, ибо все-таки привязка к названию метода ДОЛЖНА БЫТЬ;
-    {
-        _offenseController.AttackCloseRange(gameObjectPosition, gameObjectDirection);
+        GameObjectPosition = gameObjectPosition;
+        RenderAndSkeletonDirectionXZ = renderAndSkeletonDirectionXZ;
+
+        _mechanicStateMachine.State.DoLogic(this);
     }
     //transform.position, new Vector2(_renderAndSkeletonPivot.forward.x, _renderAndSkeletonPivot.forward.z)
-    public void AttackLongRange(Vector3 gameObjectPosition, Vector2 gameObjectDirection)
+    public void AttackLongRange(Vector3 gameObjectPosition, Vector2 renderAndSkeletonDirectionXZ)
     {
-        _offenseController.AttackLongRange(gameObjectPosition, gameObjectDirection);
+        _mechanicStateMachine.SwitchState(this, new PlayerMachanicAttackCloseRangeState());
+
+        GameObjectPosition = gameObjectPosition;
+        RenderAndSkeletonDirectionXZ = renderAndSkeletonDirectionXZ;
+
+        _mechanicStateMachine.State.DoLogic(this);
     }
 }

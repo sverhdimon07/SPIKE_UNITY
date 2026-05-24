@@ -9,7 +9,7 @@ public sealed class PlayerMechanicRunState : PlayerMechanicState
 
     public override void DoLogic(Player player)
     {
-        //player.Locomote(player.ThirdPersonCameraControllerPivot, player.InputDirection);
+        player.MovementController.Run(player.ThirdPersonCameraControllerPivot, player.InputDirection);
     }
 
     public override void DoLogicWithinFrame(Player player)

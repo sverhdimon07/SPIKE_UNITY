@@ -11,7 +11,7 @@ public sealed class PlayerRotation
         _lastRotation = lastRotation;
     }*/
 
-    public UnityAction<Quaternion> Rotated;
+    public static UnityAction<Quaternion> Rotated;
 
     public void Rotate(Vector3 direction) //»Õ ¿œ”—Àﬂ÷»ﬂ
     {

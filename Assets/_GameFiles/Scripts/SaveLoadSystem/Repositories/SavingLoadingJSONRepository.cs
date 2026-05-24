@@ -26,6 +26,7 @@ public sealed class SavingLoadingJSONRepository<P, R> : ISavingLoadingRepository
         string jsonFile = File.ReadAllText(_filePath); //хз, есть ли проверка на существование файла
         string separator = "\n===\n";
         var allData = jsonFile.Split(new[] { separator }, System.StringSplitOptions.None);
+        Debug.Log(allData[1]);
         string firstJSONFile = allData[0];
         string secondJSONFile = allData[1];
 

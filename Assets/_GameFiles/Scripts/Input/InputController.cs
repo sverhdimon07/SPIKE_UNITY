@@ -16,17 +16,9 @@ public sealed class InputController : MonoBehaviour
 
     public UnityAction<Vector2> LocomotionDirectionDirected;
 
-    private void Update()
+    private void Awake()
     {
-        _locomotionDirection = _reader.MainCharacter.Locomotion.ReadValue<Vector2>();
-
-        if (_locomotionDirection == Vector2.zero)
-        {
-            LocomotionDirectionUndirected.Invoke(); //тут бесконечно происходит вызов, мб добавить счетчик, НО некритично
-
-            return;
-        }
-        LocomotionDirectionDirected.Invoke(_locomotionDirection);
+        _reader = new InputReader();
     }
 
     private void OnEnable()
@@ -51,8 +43,16 @@ public sealed class InputController : MonoBehaviour
         _reader.Disable();
     }
 
-    public void Initialize(InputReader reader)
+    private void Update()
     {
-        _reader = reader;
+        _locomotionDirection = _reader.MainCharacter.Locomotion.ReadValue<Vector2>();
+
+        if (_locomotionDirection == Vector2.zero)
+        {
+            LocomotionDirectionUndirected.Invoke(); //тут бесконечно происходит вызов, мб добавить счетчик, НО некритично
+
+            return;
+        }
+        LocomotionDirectionDirected.Invoke(_locomotionDirection);
     }
 }

@@ -6,13 +6,16 @@ public sealed class PlayerView //контракты на обновление UI
 
     private readonly PlayerAnimator _animator;
 
-    private readonly Transform _characterModel;
+    private readonly Transform _gameObjectPivot;
 
-    public PlayerView(PlayerUI ui, PlayerAnimator animator, Transform characterModel) //тут слишком конкретные классы лежат, надо их сделать общими сервисами для всех - и игрока, и врагов
+    private readonly Transform _renderAndSkeletonPivot;
+
+    public PlayerView(PlayerUI ui, PlayerAnimator animator, Transform gameObjectPivot, Transform renderAndSkeletonPivot) //тут слишком конкретные классы лежат, надо их сделать общими сервисами для всех - и игрока, и врагов
     {
         _ui = ui;
         _animator = animator;
-        _characterModel = characterModel;
+        _gameObjectPivot = gameObjectPivot;
+        _renderAndSkeletonPivot = renderAndSkeletonPivot;
     }
 
     public void PresentIdle()
@@ -40,14 +43,21 @@ public sealed class PlayerView //контракты на обновление UI
         //
     }
 
-    public void TurnCharacterModel(Quaternion requiredWorldRotation) //ИНКАПСУЛЯЦИЯ - нужна ли, ибо у нас значения уже верные приходят. Но по правилам - да, надо. Но по логике - хз, ибо этот класс изменяется исключительно после изменения модели
+    public void MoveCharacterModelInLocomotionForm(Vector3 requiredWorldPosition)
     {
-        _characterModel.rotation = requiredWorldRotation;
+        _gameObjectPivot.position = requiredWorldPosition;
+        _animator.PlayLocomotion();
     }
 
-    public void MoveCharacterModel(Vector3 requiredWorldPosition)
+    public void MoveCharacterModelInRunForm(Vector3 requiredWorldPosition)
     {
-        _characterModel.position = requiredWorldPosition;
+        _gameObjectPivot.position = requiredWorldPosition;
+        _animator.PlayRun();
+    }
+
+    public void TurnCharacterModel(Quaternion requiredWorldRotation) //ИНКАПСУЛЯЦИЯ - нужна ли, ибо у нас значения уже верные приходят. Но по правилам - да, надо. Но по логике - хз, ибо этот класс изменяется исключительно после изменения модели
+    {
+        _renderAndSkeletonPivot.rotation = requiredWorldRotation;
     }
 
     public void PresentCloseRangeAttack()

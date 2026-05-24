@@ -2,11 +2,11 @@ using UnityEngine;
 
 public abstract class PlayerAttack
 {
-    private IEnvironmentAreaAnalyzer<IDamageable, Player> _environmentAreaAnalyzer;
+    private IEnvironmentAreaAnalyzer<IDamageable, PlayerController> _environmentAreaAnalyzer;
 
     private IDamageCalculator _damageCalculator;
 
-    public void Initialize(IEnvironmentAreaAnalyzer<IDamageable, Player> environmentAreaAnalyzer, Vector3 position, Vector2 direction, float environmentAreaAnalyzerToolDistanceToPlayer, float environmentAreaAnalyzerToolLength, float environmentAreaAnalyzerToolHeight, IDamageCalculator damageCalculator)
+    public void Initialize(IEnvironmentAreaAnalyzer<IDamageable, PlayerController> environmentAreaAnalyzer, Vector3 position, Vector2 direction, float environmentAreaAnalyzerToolDistanceToPlayer, float environmentAreaAnalyzerToolLength, float environmentAreaAnalyzerToolHeight, IDamageCalculator damageCalculator)
     {
         _environmentAreaAnalyzer = environmentAreaAnalyzer;
         _environmentAreaAnalyzer.Initialize(position, direction, environmentAreaAnalyzerToolDistanceToPlayer, environmentAreaAnalyzerToolLength, environmentAreaAnalyzerToolHeight);

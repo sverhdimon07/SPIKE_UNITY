@@ -647,6 +647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d4448b4c2d60b34b87c895a2fd6583e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BootstrapMainMenuScene
+  <PlayerController>k__BackingField: {fileID: 0}
   _soundDesignObject: {fileID: 1592387157}
 --- !u!1 &474919944
 GameObject:

@@ -15,19 +15,21 @@ public sealed class PlayerLocomotion
         _lastPosition = lastPosition;
     }
 
-    public UnityAction<Vector3> Locomoted;
+    public static UnityAction<Vector3> Locomoted;
+    public static UnityAction<Vector3> Runned;
 
     public void Locomote(Vector3 direction) //ИНКАПУСЛЯЦИЯ
     {
         Vector3 nextPosition = _lastPosition += direction * _locomotionSpeed * Time.deltaTime;
-
+        //Debug.Log(Locomoted.GetInvocationList());
         Locomoted.Invoke(nextPosition);
+        //Debug.Log("AAAAAAA");
     }
 
     public void Run(Vector3 direction) //ИНКАПУСЛЯЦИЯ
     {
         Vector3 nextPosition = _lastPosition += direction * _runningSpeed * Time.deltaTime;
 
-        Locomoted.Invoke(nextPosition);
+        Runned.Invoke(nextPosition);
     }
 }

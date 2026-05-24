@@ -6,7 +6,7 @@ public sealed class CharacterAnimator //работа этого класса - идиотия, но хз как
     private const string STUN = "Stun";
     private const string DEATH = "Death";
     private const string LOCOMOTION = "Locomotion";
-    private const string RUNNING = "Running";
+    private const string RUN = "Run";
     private const string ATTACK_CLOSE_RANGE = "AttackCloseRange";
     private const string ATTACK_LONG_RANGE = "AttackLongRange";
 
@@ -22,7 +22,7 @@ public sealed class CharacterAnimator //работа этого класса - идиотия, но хз как
         _animator.SetBool(IDLE, false);
         _animator.SetBool(DEATH, false);
         _animator.SetBool(LOCOMOTION, false);
-        _animator.SetBool(RUNNING, false);
+        _animator.SetBool(RUN, false);
         _animator.SetBool(STUN, true);
     }
 
@@ -31,7 +31,7 @@ public sealed class CharacterAnimator //работа этого класса - идиотия, но хз как
         _animator.SetBool(IDLE, false);
         _animator.SetBool(STUN, false);
         _animator.SetBool(LOCOMOTION, false);
-        _animator.SetBool(RUNNING, false);
+        _animator.SetBool(RUN, false);
         _animator.SetBool(DEATH, true);
     }
 
@@ -40,7 +40,7 @@ public sealed class CharacterAnimator //работа этого класса - идиотия, но хз как
         _animator.SetBool(STUN, false);
         _animator.SetBool(DEATH, false); //понятно, что нелогично то, что у нас здесь есть эти строчки во всех методах, но под возможное расширение - почему бы и нет (возможно говорю бессмыслицу)
         _animator.SetBool(LOCOMOTION, false);
-        _animator.SetBool(RUNNING, false);
+        _animator.SetBool(RUN, false);
         _animator.SetBool(IDLE, true);
     }
 
@@ -49,7 +49,7 @@ public sealed class CharacterAnimator //работа этого класса - идиотия, но хз как
         _animator.SetBool(IDLE, false);
         _animator.SetBool(STUN, false);
         _animator.SetBool(DEATH, false);
-        _animator.SetBool(RUNNING, false);
+        _animator.SetBool(RUN, false);
         _animator.SetBool(LOCOMOTION, true);
     }
 
@@ -59,7 +59,7 @@ public sealed class CharacterAnimator //работа этого класса - идиотия, но хз как
         _animator.SetBool(STUN, false);
         _animator.SetBool(DEATH, false);
         _animator.SetBool(LOCOMOTION, false);
-        _animator.SetBool(RUNNING, true);
+        _animator.SetBool(RUN, true);
     }
 
     public void PlayAttackCloseRange()
