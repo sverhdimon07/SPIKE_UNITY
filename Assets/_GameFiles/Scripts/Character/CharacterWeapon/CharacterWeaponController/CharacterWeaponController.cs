@@ -1,8 +1,6 @@
-using UnityEngine;
-
-public class CharacterWeaponController
+public sealed class CharacterWeaponController
 {
-    private readonly CharacterWeaponCloseRange _weaponCloseRange = new CharacterWeaponCloseRange();
+    private readonly CharacterWeaponCloseRange _weaponCloseRange = new CharacterWeaponCloseRange(); //тут тоже надо зависеть от абстракции, как и в PlayerOffenseController
 
     private readonly CharacterWeaponLongRange _weaponLongRange = new CharacterWeaponLongRange();
 
@@ -13,16 +11,16 @@ public class CharacterWeaponController
 
     public void Initialize(WeaponCloseRange weaponCloseRange, WeaponLongRange weaponLongRange)
     {
-        InitializeCharacterWeaponCloseRange(weaponCloseRange);
-        InitializeCharacterWeaponLongRange(weaponLongRange);
+        InitializePlayerWeaponCloseRange(weaponCloseRange);
+        InitializePlayerWeaponLongRange(weaponLongRange);
     }
 
-    private void InitializeCharacterWeaponCloseRange(WeaponCloseRange weapon)
+    private void InitializePlayerWeaponCloseRange(WeaponCloseRange weapon)
     {
         _weaponCloseRange.Initialize(weapon);
     }
 
-    private void InitializeCharacterWeaponLongRange(WeaponLongRange weapon)
+    private void InitializePlayerWeaponLongRange(WeaponLongRange weapon)
     {
         _weaponLongRange.Initialize(weapon);
     }

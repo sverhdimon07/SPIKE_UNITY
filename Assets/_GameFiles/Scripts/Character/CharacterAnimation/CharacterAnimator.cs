@@ -1,20 +1,29 @@
 using UnityEngine;
 
-public sealed class CharacterAnimator //работа этого класса - идиотия, но хз как сделать по-другому
+public class CharacterAnimator //работа этого класса - идиотия, но хз как сделать по-другому
 {
     private const string IDLE = "Idle"; //знаю, что с литералами не работаем - пока не знаю другого способа (хотя от литералов тут как раз таки уходят через константы)
-    private const string STUN = "Stun";
+    private const string STUN = "Stun"; //к коменту выше - можно делать ссылки на сами AnimationClip'ы, провидывая их сюда через конструктор, а снизу где у нас дебильные сеты булов - можно плеить анимацию по ссылке на AnimationClip, но тут встает вопрос о то, насколько важно нам потерять условия переходов между анимациями (эти правила перехода у нас уже учтены в нашей стейт машине, так что эти условия нужны ваще для мега простых проектов)
     private const string DEATH = "Death";
     private const string LOCOMOTION = "Locomotion";
     private const string RUN = "Run";
     private const string ATTACK_CLOSE_RANGE = "AttackCloseRange";
     private const string ATTACK_LONG_RANGE = "AttackLongRange";
 
-    private Animator _animator;
+    private readonly Animator _animator;
 
-    public void Initialize(Animator animator)
+    public CharacterAnimator(Animator animator)
     {
         _animator = animator;
+    }
+
+    public void PlayIdle()
+    {
+        _animator.SetBool(STUN, false);
+        _animator.SetBool(DEATH, false); //понятно, что нелогично то, что у нас здесь есть эти строчки во всех методах, но под возможное расширение - почему бы и нет (возможно говорю бессмыслицу)
+        _animator.SetBool(LOCOMOTION, false);
+        _animator.SetBool(RUN, false);
+        _animator.SetBool(IDLE, true);
     }
 
     public void PlayStun()
@@ -35,15 +44,6 @@ public sealed class CharacterAnimator //работа этого класса - идиотия, но хз как
         _animator.SetBool(DEATH, true);
     }
 
-    public void PlayIdle()
-    {
-        _animator.SetBool(STUN, false);
-        _animator.SetBool(DEATH, false); //понятно, что нелогично то, что у нас здесь есть эти строчки во всех методах, но под возможное расширение - почему бы и нет (возможно говорю бессмыслицу)
-        _animator.SetBool(LOCOMOTION, false);
-        _animator.SetBool(RUN, false);
-        _animator.SetBool(IDLE, true);
-    }
-
     public void PlayLocomotion()
     {
         _animator.SetBool(IDLE, false);
@@ -53,7 +53,7 @@ public sealed class CharacterAnimator //работа этого класса - идиотия, но хз как
         _animator.SetBool(LOCOMOTION, true);
     }
 
-    public void PlayRunning()
+    public void PlayRun()
     {
         _animator.SetBool(IDLE, false);
         _animator.SetBool(STUN, false);
@@ -62,12 +62,12 @@ public sealed class CharacterAnimator //работа этого класса - идиотия, но хз как
         _animator.SetBool(RUN, true);
     }
 
-    public void PlayAttackCloseRange()
+    public void PlayCloseRangeAttack()
     {
         _animator.SetTrigger(ATTACK_CLOSE_RANGE);
     }
 
-    public void PlayAttackLongRange()
+    public void PlayLongRangeAttack()
     {
         _animator.SetTrigger(ATTACK_LONG_RANGE);
     }

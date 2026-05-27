@@ -1,14 +1,15 @@
 using System;
 using UnityEngine.Events;
 
-public sealed class PlayerHealth //Ёта реализаци€ буквально дублируетс€ в Character, то есть, это сервис, который можно –≈ё«ј“№ » ѕќƒћ≈Ќя“№ (ѕ≈–≈ƒ≈Ћј“№);
+public /*тут надо поработать с абстракцией*/ sealed class PlayerHealth //Ёта реализаци€ буквально дублируетс€ в Character, то есть, это сервис, который можно –≈ё«ј“№ » ѕќƒћ≈Ќя“№ (ѕ≈–≈ƒ≈Ћј“№);
 {
-    private readonly float _maxHealth;
+    public static UnityAction Died;
 
-    private float _health;//потом мб переведем пол€ здоровь€ и демеджа на int везде (надо пон€ть, насколько это оправдано и что стоит ставить); подумать про семантику названи€ этого пол€ (можно оставить, а можно назвать это поле value)
+    public static UnityAction<float> DamageTaken;
 
-    public UnityAction DamageTaken;
-    public UnityAction Died;
+    private readonly float _maxHealthValue;
+
+    private float _healthValue; //потом мб переведем пол€ здоровь€ и демеджа на int везде (надо пон€ть, насколько это оправдано и что стоит ставить); подумать про семантику названи€ этого пол€ (можно оставить, а можно назвать это поле value)
 
     public PlayerHealth(float maxHealth, float health) //»Ќ јѕ—”Ћя÷»я (Ќјƒќ ѕќ“ќћ —ƒ≈Ћј“№ ¬≈«ƒ≈) - можно сделать простую проверку пр€м здесь »Ћ» можно изменить подход к иниту полей и инитить не сами пол€, а свойства с условием в сеттере;надо ли делать эту проверку в классах более высокого уровн€?
     {
@@ -16,17 +17,17 @@ public sealed class PlayerHealth //Ёта реализаци€ буквально дублируетс€ в Charac
         {
             throw new ArgumentOutOfRangeException();
         }
-        _maxHealth = maxHealth;
+        _maxHealthValue = maxHealth;
 
         if ((health <= 0f) && (health > maxHealth)) //
         {
             throw new ArgumentOutOfRangeException();
         }
-        _health = health;
+        _healthValue = health;
     }
-
-    public float MaxHealth => _maxHealth;
-    public float Health => _health;
+    
+    public float MaxHealthValue => _maxHealthValue;
+    public float HealthValue => _healthValue;
 
     public void TakeDamage(float damage)
     {
@@ -34,21 +35,21 @@ public sealed class PlayerHealth //Ёта реализаци€ буквально дублируетс€ в Charac
         {
             throw new ArgumentOutOfRangeException();
         }
-        if ((_health -= damage) < 0f)
+        if ((_healthValue -= damage) < 0f)
         {
-            _health = 0f;
+            _healthValue = 0f;
 
             Die();
         }
-        else if ((_health -= damage) == 0f)
+        else if ((_healthValue -= damage) == 0f)
         {
             Die();
         }
         else
         {
-            _health -= damage;
+            _healthValue -= damage;
 
-            DamageTaken.Invoke();
+            DamageTaken.Invoke(_healthValue);
         }
     }
 

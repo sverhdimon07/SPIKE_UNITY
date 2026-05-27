@@ -1,38 +1,46 @@
 using UnityEngine;
 
-public class CharacterMovementController
+public sealed class CharacterMovementController
 {
-    private readonly CharacterRotation _rotation = new CharacterRotation();
+    private readonly CharacterLocomotion _locomotion;
 
-    private readonly CharacterLocomotion _locomotion = new CharacterLocomotion();
+    private readonly CharacterRotation _rotation;
 
     private readonly CharacterJump _jump;
 
-    public void Initialize(float locomotionSpeed)
+    public CharacterMovementController(CharacterLocomotion locomotion, CharacterRotation rotation)
     {
-        _locomotion.Initialize(locomotionSpeed);
-        //_running.Initialize(runningSpeed);
+        _locomotion = locomotion;
+        _rotation = rotation;
+    }
+    
+    public void Locomote(/*Transform cameraPoint, */Vector2 inputDirection)
+    {
+        //_locomotion.Locomote(CalculateWorldDirection(cameraPoint, inputDirection)); //œ≈–≈œ»—¿“‹
+        _locomotion.Locomote(inputDirection); //œ≈–≈œ»—¿“‹
     }
 
-    /*
-    public void Rotate()
+    public void Run(/*Transform cameraPoint, */Vector2 inputDirection)
     {
-
-    }*/
-
-    public void LocomoteWithinFrame(Transform playerPoint, Vector2 locomotionDirection)
-    {
-        _locomotion.LocomoteWithinFrame(playerPoint, locomotionDirection);
+        _locomotion.Run(inputDirection); //œ≈–≈œ»—¿“‹
     }
 
-    /*
-    public void Run(Transform playerPoint, Transform playerRenderAndSkeletonPoint, Vector2 locomotionDirection) //DI ‚ Locomote Ë Run Â‡ÎËÁÛ˛ ÔÓÚÓÏ
+    public void Rotate(/*Transform cameraPoint, */Vector2 inputDirection)
     {
-        //_running.Run(playerPoint, playerRenderAndSkeletonPoint, locomotionDirection);
-    }*/
+        _rotation.Rotate(inputDirection);
+    }
 
     public void Jump()
     {
         //
+    }
+
+    private Vector3 CalculateWorldDirection(Transform cameraPoint, Vector2 inputDirection)
+    {
+        Vector3 cameraForward = new Vector3(cameraPoint.forward.x, 0f, cameraPoint.forward.z).normalized; //Ã√
+        Vector3 cameraRight = new Vector3(cameraPoint.right.x, 0f, cameraPoint.right.z).normalized; //Ã√
+        Vector3 worldDirection = (cameraForward * inputDirection.y + cameraRight * inputDirection.x).normalized;
+
+        return worldDirection;
     }
 }

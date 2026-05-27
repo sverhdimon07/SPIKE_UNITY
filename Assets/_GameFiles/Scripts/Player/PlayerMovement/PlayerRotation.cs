@@ -3,14 +3,6 @@ using UnityEngine.Events;
 
 public sealed class PlayerRotation
 {
-    /*
-    private Quaternion _lastRotation; //дкъ окюбмшу онбнпнрнб
-
-    public PlayerRotation(Quaternion lastRotation)
-    {
-        _lastRotation = lastRotation;
-    }*/
-
     public static UnityAction<Quaternion> Rotated;
 
     public void Rotate(Vector3 direction) //хмйюосякъжхъ
@@ -19,4 +11,12 @@ public sealed class PlayerRotation
 
         Rotated(nextRotation);
     }
+
+    /*
+    private Quaternion _lastRotation; //дкъ окюбмшу онбнпнрнб
+
+    public PlayerRotation(Quaternion lastRotation)
+    {
+        _lastRotation = lastRotation;
+    }*/
 }

@@ -28,7 +28,6 @@ public sealed class PlayerView //контракты на обновление UI
     {
         _ui.RefreshHealthBar(valueLevel);
         _animator.PlayStun();
-        //_animator.PlayIdle(); //хз, почему не робит (по идее должно было быть элегантнейшим решением), но раз не робит, то переключаться в состояние айдла надо после окончания анимации стана
     }
 
     public void PresentWeaponLongRangeCooldown()

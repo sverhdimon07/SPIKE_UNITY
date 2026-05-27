@@ -1,6 +1,4 @@
-using UnityEngine;
-
-public class CharacterWeaponLongRange
+public sealed class CharacterWeaponLongRange
 {
     private WeaponLongRange _weapon;
 

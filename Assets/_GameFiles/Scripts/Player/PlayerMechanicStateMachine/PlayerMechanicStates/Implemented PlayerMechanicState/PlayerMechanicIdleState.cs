@@ -5,12 +5,12 @@ public sealed class PlayerMechanicIdleState : PlayerMechanicState
         //
     }
 
-    public override void DoLogic(Player player)
+    public override void Do(Player player)
     {
-        player.StartedToIdle.Invoke();
+        Player.Idled.Invoke(); //можно создать контроллер для айдла
     }
 
-    public override void DoLogicWithinFrame(Player player)
+    public override void DoWithinFrame(Player player)
     {
         //
     }

@@ -1,6 +1,6 @@
 public sealed class PlayerWeaponController
 {
-    private readonly PlayerWeaponCloseRange _weaponCloseRange = new PlayerWeaponCloseRange();
+    private readonly PlayerWeaponCloseRange _weaponCloseRange = new PlayerWeaponCloseRange(); //тут тоже надо зависеть от абстракции, как и в PlayerOffenseController
 
     private readonly PlayerWeaponLongRange _weaponLongRange = new PlayerWeaponLongRange();
 

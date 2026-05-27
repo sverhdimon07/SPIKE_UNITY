@@ -1,0 +1,1189 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.3/staging' branch; Version is '6000.3.9f1 (7a9955a4f2fa) revision 8034645'; Using compiler version '194234433'; Build Type 'Release'
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Дмитрий" at "2026-05-25T13:29:37.4114061Z"
+OS: 'Windows 10  (10.0.19045) 64bit CoreSingleLanguage' Language: 'ru' Physical Memory: 16318 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-05-25T13:29:37Z
+
+COMMAND LINE ARGUMENTS:
+S:\UNITY\Unity Editor\6000.3.9f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker5
+-projectPath
+S:/UNITY/UNITY BACKUP/SPIKE/SPIKE_UNITY
+-logFile
+Logs/AssetImportWorker5.log
+-srvPort
+59285
+-licensingIpc
+LicenseClient-Дмитрий
+-job-worker-count
+7
+-background-job-worker-count
+8
+-gc-helper-count
+1
+-name
+AssetImport
+Successfully changed project path to: S:/UNITY/UNITY BACKUP/SPIKE/SPIKE_UNITY
+S:/UNITY/UNITY BACKUP/SPIKE/SPIKE_UNITY
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+Player connection [53860]  Target information:
+
+Player connection [53860]  * "[IP] 192.168.1.39 [Port] 0 [Flags] 2 [Guid] 1169668079 [EditorId] 1169668079 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-KK1P2OH) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [53860] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [53860] Host joined alternative multi-casting on [225.0.0.222:34997]...
+JobSystem: Creating JobQueue using job-worker-count value 7
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Refreshing native plugins compatible for Editor in 8.58 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.3.9f1 (7a9955a4f2fa)
+[Subsystems] Discovering subsystems at path S:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path S:/UNITY/UNITY BACKUP/SPIKE/SPIKE_UNITY/Assets
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1060 6GB (ID=0x1c03)
+    Vendor:   NVIDIA
+    VRAM:     6029 MB
+    Driver:   32.0.15.8228
+Initialize mono
+Mono path[0] = 'S:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/Managed'
+Mono path[1] = 'S:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'S:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56532
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: S:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+[Licensing::Module] Licensing is not yet initialized.
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.17.4+4293ba1
+  Session Id:              1f8ba907585b479386beb19702ddf100
+  Correlation Id:          acc9f1bbbd26a7516f2ace8f6bcc8bd7
+  External correlation Id: 3391847257992897608
+  Machine Id:              BSinU4MsdP07HGNxKH7k4gB1okk=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Дмитрий" (connect: 0.00s, validation: 0.00s, handshake: 2.49s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Дмитрий-notifications" at "2026-05-25T13:29:39.902409Z"
+[Licensing::Module] Licensing Background thread has ended after 2.49s
+[Licensing::Module] Licensing is initialized (took 0.51s).
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-C7SA-D7MS-282S-YHFX-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 10170697332008-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Register platform support module: S:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.UWP.Extensions.dll
+Registered in 0.516005 seconds.
+- Loaded All Assemblies, in  1.376 seconds
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.848 seconds
+Domain Reload Profiling: 2223ms
+	BeginReloadAssembly (336ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (80ms)
+	RebuildNativeTypeToScriptingClass (29ms)
+	initialDomainReloadingComplete (590ms)
+	LoadAllAssembliesAndSetupDomain (339ms)
+		LoadAssemblies (334ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (331ms)
+			TypeCache.Refresh (329ms)
+				TypeCache.ScanAssembly (304ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (849ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (751ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (94ms)
+			SetLoadedEditorAssemblies (9ms)
+			BeforeProcessingInitializeOnLoad (179ms)
+			ProcessInitializeOnLoadAttributes (302ms)
+			ProcessInitializeOnLoadMethodAttributes (167ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+========================================================================
+Worker process is ready to serve import requests
+Import Worker Mode flag is 0x00
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Begin MonoManager ReloadAssembly
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-C7SA-D7MS-282S-YHFX-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 10170697332008-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Duplicate assembly 'System.Collections.Immutable.FSR.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Collections.Immutable.FSR.dll, AssemblyName=System.Collections.Immutable, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/System.Collections.Immutable.dll, AssemblyName=System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Duplicate assembly 'System.Collections.Immutable.FSR.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Collections.Immutable.FSR.dll, AssemblyName=System.Collections.Immutable, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Collections.Immutable.dll, AssemblyName=System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Duplicate assembly 'Microsoft.CodeAnalysis.CSharp.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/Microsoft.CodeAnalysis.CSharp.dll, AssemblyName=Microsoft.CodeAnalysis.CSharp, Version=4.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/Microsoft.CodeAnalysis.CSharp.dll, AssemblyName=Microsoft.CodeAnalysis.CSharp, Version=2.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35'.Duplicate assembly 'System.Reflection.Metadata.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Reflection.Metadata.dll, AssemblyName=System.Reflection.Metadata, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/System.Reflection.Metadata.dll, AssemblyName=System.Reflection.Metadata, Version=1.4.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Duplicate assembly 'Microsoft.CodeAnalysis.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/Microsoft.CodeAnalysis.dll, AssemblyName=Microsoft.CodeAnalysis, Version=4.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/Microsoft.CodeAnalysis.dll, AssemblyName=Microsoft.CodeAnalysis, Version=2.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35'.- Loaded All Assemblies, in  2.213 seconds
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+'Packages/com.unity.cinemachine/Editor/Obsolete/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+'Packages/com.unity.cinemachine/Editor/Editors/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+Refreshing native plugins compatible for Editor in 1.55 ms, found 3 plugins.
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+FSR: Shader does not exist: Object reference not set to an instance of an object
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+ImmersiveVrToolsCommon.Runtime.Logging.LoggerScoped:LogInternal (UnityEngine.LogType,object)
+ImmersiveVrToolsCommon.Runtime.Logging.LoggerScoped:LogWarning (object)
+FastScriptReload.Editor.FastScriptReloadPreference:SetCommonMaterialsShader (FastScriptReload.Editor.FastScriptReloadPreference/ShadersMode) (at Assets/FastScriptReload/Scripts/Editor/FastScriptReloadWelcomeScreen.cs:863)
+FastScriptReload.Editor.FastScriptReloadWelcomeScreenInitializer:AutoDetectAndSetShaderMode () (at Assets/FastScriptReload/Scripts/Editor/FastScriptReloadWelcomeScreen.cs:1089)
+FastScriptReload.Editor.FastScriptReloadWelcomeScreenInitializer:InitCommon () (at Assets/FastScriptReload/Scripts/Editor/FastScriptReloadWelcomeScreen.cs:971)
+FastScriptReload.Editor.FastScriptReloadWelcomeScreenInitializer:.cctor () (at Assets/FastScriptReload/Scripts/Editor/FastScriptReloadWelcomeScreen.cs:939)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/FastScriptReload/Scripts/Editor/FastScriptReloadWelcomeScreen.cs Line: 863)
+
+Package Manager log level set to [2]
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  4.929 seconds
+Domain Reload Profiling: 7138ms
+	BeginReloadAssembly (456ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (15ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (53ms)
+	RebuildCommonClasses (74ms)
+	RebuildNativeTypeToScriptingClass (28ms)
+	initialDomainReloadingComplete (126ms)
+	LoadAllAssembliesAndSetupDomain (1525ms)
+		LoadAssemblies (1089ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (719ms)
+			TypeCache.Refresh (568ms)
+				TypeCache.ScanAssembly (539ms)
+			BuildScriptInfoCaches (119ms)
+			ResolveRequiredComponents (25ms)
+	FinalizeReload (4929ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (4527ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (13ms)
+			BeforeProcessingInitializeOnLoad (470ms)
+			ProcessInitializeOnLoadAttributes (3909ms)
+			ProcessInitializeOnLoadMethodAttributes (127ms)
+			AfterProcessingInitializeOnLoad (5ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (12ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.02 seconds
+Refreshing native plugins compatible for Editor in 1.67 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 17 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7075 unused Assets / (5.2 MB). Loaded Objects now: 7909.
+Memory consumption went from 156.4 MB to 151.1 MB.
+Total: 16.583700 ms (FindLiveObjects: 1.275500 ms CreateObjectMapping: 1.073000 ms MarkObjects: 9.965300 ms  DeleteObjects: 4.268300 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 193618.627140 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Space_Plant/meshes/TreeBase_LP_Tree_0_0_0.asset
+  artifactKey: Guid(3d5ba329064c12943bfa4fc3d0da3fab) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Space_Plant/meshes/TreeBase_LP_Tree_0_0_0.asset using Guid(3d5ba329064c12943bfa4fc3d0da3fab) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '562911604358f78d30f612010c174170') in 0.1390504 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/meshes/Object_11_11_0.asset
+  artifactKey: Guid(bf496d49f4336b3428c0f9f6fe19ee7b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/meshes/Object_11_11_0.asset using Guid(bf496d49f4336b3428c0f9f6fe19ee7b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '4c4029ca4bf3f38926966bf13d8c6c55') in 0.0106012 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/G_1001_normal_220.png
+  artifactKey: Guid(9f404659f17d090419691c8dc794a025) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/G_1001_normal_220.png using Guid(9f404659f17d090419691c8dc794a025) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'a7591180f7d083053cfa37588340dad6') in 0.1270159 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/P_1001_55.mat
+  artifactKey: Guid(f6bc7527080439d4f83a92c662ed8adc) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/P_1001_55.mat using Guid(f6bc7527080439d4f83a92c662ed8adc) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5fe01b87464b4d77fe8bf3a5757b58ee') in 0.0547457 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 6
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/L_1001_metallicRoughness_231_occlusion.png
+  artifactKey: Guid(6c3761b9f60527b43a85c56038c410ee) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/L_1001_metallicRoughness_231_occlusion.png using Guid(6c3761b9f60527b43a85c56038c410ee) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5e438da3b539ab5d143bfd192b180618') in 0.0252207 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.061_1001_normal_205.png
+  artifactKey: Guid(807174b9de207904a9a0aae22708d7e3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.061_1001_normal_205.png using Guid(807174b9de207904a9a0aae22708d7e3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0972c35cb4998abadebec9b93d3b9475') in 0.0277204 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Space_Bottle/materials/Cube.003__0_0.mat
+  artifactKey: Guid(59e62f6940aa79f4c9ef20640b626a5d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Space_Bottle/materials/Cube.003__0_0.mat using Guid(59e62f6940aa79f4c9ef20640b626a5d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'b7a7b68fd5e816f95c910272a36652fb') in 0.0123431 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/M_1001_metallicRoughness_249_occlusion.png
+  artifactKey: Guid(be2ae8c944cbf5945813ea7cd4cbfb69) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/M_1001_metallicRoughness_249_occlusion.png using Guid(be2ae8c944cbf5945813ea7cd4cbfb69) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '91508501779d4568dd3a355d3112723f') in 0.0240458 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Scifi_Chair_Concept/Scifi_Chair_Concept.prefab
+  artifactKey: Guid(9de4f87907f007043a134145f5710f99) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Scifi_Chair_Concept/Scifi_Chair_Concept.prefab using Guid(9de4f87907f007043a134145f5710f99) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '77b18d038fb27644a990cd9d3d178662') in 0.2104902 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 27
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Scifi_Chair_Concept/textures/Material_metallicRoughness_1_metal.png
+  artifactKey: Guid(ab8bcb3a12eb3594d872694c3f25a14f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Scifi_Chair_Concept/textures/Material_metallicRoughness_1_metal.png using Guid(ab8bcb3a12eb3594d872694c3f25a14f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'b537797412dbd472ef9feddf16ca9d31') in 0.0273251 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Delete_1001_baseColor_101.png
+  artifactKey: Guid(1653e54a025847643bf39a180e7a3a85) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Delete_1001_baseColor_101.png using Guid(1653e54a025847643bf39a180e7a3a85) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd32551a796f0cbb6a86c8885120c4227') in 0.0268182 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.073_1001_metallicRoughness_189_occlusion.png
+  artifactKey: Guid(16c6b32a0f71b1a4686d3aa9e1545655) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.073_1001_metallicRoughness_189_occlusion.png using Guid(16c6b32a0f71b1a4686d3aa9e1545655) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '37ba57bd9aeadf3b099beeeaff66d51a') in 0.0229433 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Arcade_Game_-_Space_Invaders/materials/CR_videogamecoins_2.mat
+  artifactKey: Guid(33ab8f2a5755753419d12aa89c779b1a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Arcade_Game_-_Space_Invaders/materials/CR_videogamecoins_2.mat using Guid(33ab8f2a5755753419d12aa89c779b1a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '559c1dad1bfe54bfcba908a387264c64') in 0.0146989 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/Material.067_1001_80.mat
+  artifactKey: Guid(5a95b78a4754cce43b3905f5b27beee4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/Material.067_1001_80.mat using Guid(5a95b78a4754cce43b3905f5b27beee4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '32e5902c1f60dbf385a455ef8c882ebe') in 0.0190078 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 6
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/term_1001_metallicRoughness_13_occlusion.png
+  artifactKey: Guid(13099d5a1afe775488ea0b6969415cf0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/term_1001_metallicRoughness_13_occlusion.png using Guid(13099d5a1afe775488ea0b6969415cf0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '964e40d38796a913c29a10e89b6e2517') in 0.024787 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Sci-Fi_Personal_Space_Pod_Ship(weekly_challenge)/textures/material_metallicRoughness_1_occlusion.png
+  artifactKey: Guid(fe50947a6b267e749b61a403f74a5577) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Sci-Fi_Personal_Space_Pod_Ship(weekly_challenge)/textures/material_metallicRoughness_1_occlusion.png using Guid(fe50947a6b267e749b61a403f74a5577) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '55c0520967792592d3576cb1f8ca805b') in 0.0271339 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Space_container_-_Mars_mission/meshes/MarsBox_hands_low_UV_0_3_0.asset
+  artifactKey: Guid(a7bf4f6a7eef6ef4e95ab6646d33315f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Space_container_-_Mars_mission/meshes/MarsBox_hands_low_UV_0_3_0.asset using Guid(a7bf4f6a7eef6ef4e95ab6646d33315f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ff22903902077a807cc4ccc62c150097') in 0.0119172 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/space_Terminal/textures/Scene_-_Root_baseColor_0.png
+  artifactKey: Guid(7ecbd81a64d310641843f3d4df4bc8df) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/space_Terminal/textures/Scene_-_Root_baseColor_0.png using Guid(7ecbd81a64d310641843f3d4df4bc8df) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '32e4db5a29d5f01aa37a82a3aebfdeba') in 0.0253433 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/F11_1001_metallicRoughness_96_occlusion.png
+  artifactKey: Guid(f752c7ba5b687bf4fa366a9c8142e75a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/F11_1001_metallicRoughness_96_occlusion.png using Guid(f752c7ba5b687bf4fa366a9c8142e75a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '1426e4db674c4b1d6853805850ee87b5') in 0.0266804 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Sci-fi_Single_Chair/textures/sci-fi_chair_3_arms_metallicRoughness_9_metal.png
+  artifactKey: Guid(0854d1daed98f524d9eab215b4e186ae) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Sci-fi_Single_Chair/textures/sci-fi_chair_3_arms_metallicRoughness_9_metal.png using Guid(0854d1daed98f524d9eab215b4e186ae) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ec4c383b233c3034ed93a476c17f3d4d') in 0.0263381 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Space_Music!/materials/metal_1.mat
+  artifactKey: Guid(378d13ea5dd05644ebb104b6e3b20b3a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Space_Music!/materials/metal_1.mat using Guid(378d13ea5dd05644ebb104b6e3b20b3a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'b1c023a92868fa2f4d77bec8cf3c68d4') in 0.0128217 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000052 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/F11_1001_normal_97.png
+  artifactKey: Guid(72d770aa80467cc43a433ede9b4393d4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/F11_1001_normal_97.png using Guid(72d770aa80467cc43a433ede9b4393d4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '63624ad1433aad4e01f2e4955a67842e') in 0.0270314 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Sci-Fi_Personal_Space_Pod_Ship(weekly_challenge)/textures/material_1_metallicRoughness_4_occlusion.png
+  artifactKey: Guid(5e1efa8aeb6fc964eac923df87c7d543) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Sci-Fi_Personal_Space_Pod_Ship(weekly_challenge)/textures/material_1_metallicRoughness_4_occlusion.png using Guid(5e1efa8aeb6fc964eac923df87c7d543) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'fc6b7308e818df58d6d5762e3e17f216') in 0.0260898 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/F6_1001_metallicRoughness_84_occlusion.png
+  artifactKey: Guid(89f8f0c0bc5635a47afbb10d72c96450) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/F6_1001_metallicRoughness_84_occlusion.png using Guid(89f8f0c0bc5635a47afbb10d72c96450) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'b6fd13a619b4a686fb0d2d9b89438171') in 0.0260462 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/8_1001_metallicRoughness_120_occlusion.png
+  artifactKey: Guid(23eafafa8cde34045a954ae8119cae7d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/8_1001_metallicRoughness_120_occlusion.png using Guid(23eafafa8cde34045a954ae8119cae7d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '610234a8b6f8c338dddb9df4726dd5c9') in 0.0231735 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/caps_1001_baseColor_38.png
+  artifactKey: Guid(19e82e4bd35448941a617be0c94c5101) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/caps_1001_baseColor_38.png using Guid(19e82e4bd35448941a617be0c94c5101) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '4b7339cbbc8e26b720fb873ab1d8780f') in 0.0234391 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/L_1001_normal_232.png
+  artifactKey: Guid(f8169e1b965f75541b0a514ac5708699) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/L_1001_normal_232.png using Guid(f8169e1b965f75541b0a514ac5708699) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ecf19145d5fd53dfcdc02c2095b68e48') in 0.0241395 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/ctrl_2_1001_normal_46.png
+  artifactKey: Guid(4841e5fa06c514040891c07ed7b64a19) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/ctrl_2_1001_normal_46.png using Guid(4841e5fa06c514040891c07ed7b64a19) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0107f16e60e927ba40a752039d264f6d') in 0.0262265 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/space_Terminal/meshes/Object020__0_0_0.asset
+  artifactKey: Guid(3b3cb3ea3cb0d4a4481dc676dac17be3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/space_Terminal/meshes/Object020__0_0_0.asset using Guid(3b3cb3ea3cb0d4a4481dc676dac17be3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'eb8f5d17cc2aa3b4bb12fde5eaa46d21') in 0.0112674 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Bacspace_1001_baseColor_134.png
+  artifactKey: Guid(22016d9b1a01a5c4fb5183f8e985ab87) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Bacspace_1001_baseColor_134.png using Guid(22016d9b1a01a5c4fb5183f8e985ab87) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ae5d7bb279d3737e4f6f28ddbe847bc6') in 0.030205 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Sci-Fi_Personal_Space_Pod_Ship(weekly_challenge)/textures/material_1_emissive_5.png
+  artifactKey: Guid(8f27329ba91de2b4c93a8653678716f0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Sci-Fi_Personal_Space_Pod_Ship(weekly_challenge)/textures/material_1_emissive_5.png using Guid(8f27329ba91de2b4c93a8653678716f0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '8d17413bb1e9e4749813c57780645a65') in 0.0285446 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/YZ_1001_normal_55.png
+  artifactKey: Guid(3b96956bdd2a3244997b43ea49144809) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/YZ_1001_normal_55.png using Guid(3b96956bdd2a3244997b43ea49144809) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f3746a18ba4ad751e08187382431c188') in 0.0264301 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/B_1001_metallicRoughness_210_occlusion.png
+  artifactKey: Guid(06c1489bbc479bc4097d2ca0197684b8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/B_1001_metallicRoughness_210_occlusion.png using Guid(06c1489bbc479bc4097d2ca0197684b8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'b94eafaef150bdd65ad61a703085f0ad') in 0.0243092 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/3_1001_baseColor_104.png
+  artifactKey: Guid(3ab2c0ab6b111f544816ff95a347a813) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/3_1001_baseColor_104.png using Guid(3ab2c0ab6b111f544816ff95a347a813) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'cd1dbd7ccae4a382e847c255960b27c1') in 0.0223932 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.044_1001_baseColor_164.png
+  artifactKey: Guid(e3518a2bdabce4a4eaa10291abc97556) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.044_1001_baseColor_164.png using Guid(e3518a2bdabce4a4eaa10291abc97556) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '8c562ca568d5bb82c93a30d2b240918b') in 0.0234007 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/ctrl_2_1001_metallicRoughness_45_occlusion.png
+  artifactKey: Guid(0810462c6dbe5834b9bd1a9899239209) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/ctrl_2_1001_metallicRoughness_45_occlusion.png using Guid(0810462c6dbe5834b9bd1a9899239209) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '1417fc7621435129af0fa52a59fcaed6') in 0.0234131 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.005_1001_1001_normal_21.png
+  artifactKey: Guid(dd827d2ce6ec67a47965dc57027d3a3a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.005_1001_1001_normal_21.png using Guid(dd827d2ce6ec67a47965dc57027d3a3a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ab3b4ccaadc8167a69bd0da6090e17e2') in 0.0265712 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/ctrl_2_1001_metallicRoughness_45_metal.png
+  artifactKey: Guid(a6c7ca0cb5299e443b35ae1362e8c406) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/ctrl_2_1001_metallicRoughness_45_metal.png using Guid(a6c7ca0cb5299e443b35ae1362e8c406) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '23686e04b41a2fcdd956c27fbb592994') in 0.0248984 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/tab_1001_baseColor_35.png
+  artifactKey: Guid(fd17abcb070623e43b0255842707291b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/tab_1001_baseColor_35.png using Guid(fd17abcb070623e43b0255842707291b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '48ca6b16988fb296a710ede0f937784b') in 0.0262187 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Space_container_-_Mars_mission/meshes/MarsBox_Case_Caps_low_UV_0_1_0.asset
+  artifactKey: Guid(9a8b61eb16760b0469b989b8a2e28e0c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Space_container_-_Mars_mission/meshes/MarsBox_Case_Caps_low_UV_0_1_0.asset using Guid(9a8b61eb16760b0469b989b8a2e28e0c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0ec10b69e840f975fe9f27f3755a191a') in 0.011646 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/F5_1001_metallicRoughness_81_metal.png
+  artifactKey: Guid(38b5116c72284b146a8822b80b82c69f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/F5_1001_metallicRoughness_81_metal.png using Guid(38b5116c72284b146a8822b80b82c69f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c3b75cebfae303e46cff64d0cf41f8f6') in 0.0241879 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/3_1001_metallicRoughness_105_occlusion.png
+  artifactKey: Guid(34e8c2cc432e68847b2d5cd131092445) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/3_1001_metallicRoughness_105_occlusion.png using Guid(34e8c2cc432e68847b2d5cd131092445) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ff2e0a045fce404f7115ae10ce3ad273') in 0.0261998 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Space_container_-_Mars_mission/meshes/MarsBox_around_caps_low_UV_0_2_0.asset
+  artifactKey: Guid(83dc6e9c733567047b84911c0d1dce23) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Space_container_-_Mars_mission/meshes/MarsBox_around_caps_low_UV_0_2_0.asset using Guid(83dc6e9c733567047b84911c0d1dce23) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7f9fa14c31a50c511c6459011495a89c') in 0.0112761 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/meshes/Object_78_78_0.asset
+  artifactKey: Guid(4392636c8bf1ee44899cda87637e47a8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/meshes/Object_78_78_0.asset using Guid(4392636c8bf1ee44899cda87637e47a8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd28b0076781ed3ab356ceabb40993a75') in 0.0109695 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Free_Sci_Fi_Helmet/textures/Material.006_normal_10.png
+  artifactKey: Guid(05a943bc87bbd77469838346b0623a24) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Free_Sci_Fi_Helmet/textures/Material.006_normal_10.png using Guid(05a943bc87bbd77469838346b0623a24) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '322ede052fa656b9fa042abaad0e5fa7') in 0.0290444 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Space_Plant/textures/Tree_normal_2.png
+  artifactKey: Guid(674b72acf953c0c42b7586f8c0621b03) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Space_Plant/textures/Tree_normal_2.png using Guid(674b72acf953c0c42b7586f8c0621b03) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e94ab94b0c481da509213cffc0b2ba18') in 0.0303273 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/meshes/Object_65_65_0.asset
+  artifactKey: Guid(3f263a5d77becd346a7a9343ce7616e9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/meshes/Object_65_65_0.asset using Guid(3f263a5d77becd346a7a9343ce7616e9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '302eb46755c232e639cb8e29b0de6ea0') in 0.009006 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/5_1001_normal_112.png
+  artifactKey: Guid(3fdc341df56d6ef45a5e314a450771e3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/5_1001_normal_112.png using Guid(3fdc341df56d6ef45a5e314a450771e3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '3c15a47e1dc28692c76097e6eacb1b45') in 0.0246658 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Arcade_Game_-_Space_Invaders/textures/CR_videogame_machine_metallicRoughness_4_metal.png
+  artifactKey: Guid(43582d5d477aa6f4ab75ffbe501a1983) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Arcade_Game_-_Space_Invaders/textures/CR_videogame_machine_metallicRoughness_4_metal.png using Guid(43582d5d477aa6f4ab75ffbe501a1983) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '08cef59cb1f9efcce999110c2b05931e') in 0.0245096 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Space_Bottle/meshes/Cube_Material.004_0_2_0.asset
+  artifactKey: Guid(69168f4d8bb052a4b875dbb14c07ec51) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Space_Bottle/meshes/Cube_Material.004_0_2_0.asset using Guid(69168f4d8bb052a4b875dbb14c07ec51) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '2932f3f21d747f86b7aa4cc4da1b5eef') in 0.0105411 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.002_1001_1001_metallicRoughness_10_metal.png
+  artifactKey: Guid(1d74673d0c44c1e4aba75cd84c7519be) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.002_1001_1001_metallicRoughness_10_metal.png using Guid(1d74673d0c44c1e4aba75cd84c7519be) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'eda009b07e5a62425aebd844e42b2225') in 0.0258974 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/Bok2_1001_1001_0.mat
+  artifactKey: Guid(b2083f9d94172cb48ae26b54df7c9a7a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/Bok2_1001_1001_0.mat using Guid(b2083f9d94172cb48ae26b54df7c9a7a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5e822a0b7b4a1eab11d9e9c7f8927724') in 0.0172243 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 6
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/meshes/Object_27_27_0.asset
+  artifactKey: Guid(c8731b8d86344314ebfc3b0d2b0b9f66) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/meshes/Object_27_27_0.asset using Guid(c8731b8d86344314ebfc3b0d2b0b9f66) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '89df2d74b986930d3d75fe94a5ea4ddf') in 0.0096698 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Free_Sci_Fi_Helmet/materials/Material.005_3.mat
+  artifactKey: Guid(a79593ad8e412164295d21a6172ab43c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Free_Sci_Fi_Helmet/materials/Material.005_3.mat using Guid(a79593ad8e412164295d21a6172ab43c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd59bb11c95ce5ef5e20955c316229332') in 0.0172979 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 4
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/L_1001_76.mat
+  artifactKey: Guid(b05d119d7de85ef4dbed6b1ff8efa6e0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/L_1001_76.mat using Guid(b05d119d7de85ef4dbed6b1ff8efa6e0) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '1402555ee3dcac3a5e6ac50332f62963') in 0.0164048 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 6
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/B_1001_69.mat
+  artifactKey: Guid(e74200ad2f6e76e4cac801d5dda4b1e2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/B_1001_69.mat using Guid(e74200ad2f6e76e4cac801d5dda4b1e2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '8fd43dd512cae0663201dc4c899fccf7') in 0.0163404 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 6
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/meshes/Object_49_49_0.asset
+  artifactKey: Guid(ded22e7d7d56c2144b6bb8de23d2553b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/meshes/Object_49_49_0.asset using Guid(ded22e7d7d56c2144b6bb8de23d2553b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e11f8e0e1ab262a38ccb8a9f6c8cd134') in 0.0100656 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.012_1001_metallicRoughness_63_occlusion.png
+  artifactKey: Guid(8e61f4ddc94ec3c4f9598fb1f949a905) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.012_1001_metallicRoughness_63_occlusion.png using Guid(8e61f4ddc94ec3c4f9598fb1f949a905) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'cb1356e13ab69d29b8470d12d4429c04') in 0.0262527 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.002_1001_1001_metallicRoughness_10_occlusion.png
+  artifactKey: Guid(6d46c6ddd7f23d947aa2fd90e0689319) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.002_1001_1001_metallicRoughness_10_occlusion.png using Guid(6d46c6ddd7f23d947aa2fd90e0689319) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'fe25cd844509aa46c376b4fabd60d3bb') in 0.0232343 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/YZ_1001_metallicRoughness_54_metal.png
+  artifactKey: Guid(b3331bed76627a8489eb7b8b6db6b8c3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/YZ_1001_metallicRoughness_54_metal.png using Guid(b3331bed76627a8489eb7b8b6db6b8c3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '99c17586d40585b0f083e13e5f45f15c') in 0.0261359 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Arcade_Game_-_Space_Invaders/materials/CR_videogame_door_0.mat
+  artifactKey: Guid(4b5e19bd9b115334cbe935f1f010a95d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Arcade_Game_-_Space_Invaders/materials/CR_videogame_door_0.mat using Guid(4b5e19bd9b115334cbe935f1f010a95d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '3bd62584b5822b434b879166cf68f3ba') in 0.0177439 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 5
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Space_Bottle/materials/Material.004_3.mat
+  artifactKey: Guid(1ac0bafd1ae5e5b4d9ed93a20e3a176c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Space_Bottle/materials/Material.004_3.mat using Guid(1ac0bafd1ae5e5b4d9ed93a20e3a176c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '949b83f76650a6ba96277f59827fe6bd') in 0.0126218 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/4_1001_35.mat
+  artifactKey: Guid(b9ebd0dd0d4209645a7455d09428fdee) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/4_1001_35.mat using Guid(b9ebd0dd0d4209645a7455d09428fdee) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'b1512014833f490ada315f9577018160') in 0.0164942 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 6
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/1001_43_metallicRoughness_132_occlusion.png
+  artifactKey: Guid(f619d26ef83204143953fbf8357070bf) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/1001_43_metallicRoughness_132_occlusion.png using Guid(f619d26ef83204143953fbf8357070bf) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7e71d50b618510a147f81fdf5e9f16ea') in 0.0267189 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.044_1001_normal_166.png
+  artifactKey: Guid(7c7ec80e54b3fc84cab13fc4a804cffd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.044_1001_normal_166.png using Guid(7c7ec80e54b3fc84cab13fc4a804cffd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd787159762d74d588cfc18c3a4f7a9cc') in 0.0246005 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Sci-fi_Single_Chair/textures/sci-fi_chair_3_arms_baseColor_8.png
+  artifactKey: Guid(f0bf734ea567a3a41b9585e15567b972) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Sci-fi_Single_Chair/textures/sci-fi_chair_3_arms_baseColor_8.png using Guid(f0bf734ea567a3a41b9585e15567b972) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ca846718a5ba81f833cb67f2724b6b18') in 0.0264526 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.001_1001_1001_normal_8.png
+  artifactKey: Guid(be80d36e0f32e2f47b7b850a2baef421) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.001_1001_1001_normal_8.png using Guid(be80d36e0f32e2f47b7b850a2baef421) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '08c18dff1246681efe988ab436e2c7ab') in 0.0235564 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/meshes/Object_40_40_0.asset
+  artifactKey: Guid(45d0834eddc4b054984888e5b59f300d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/meshes/Object_40_40_0.asset using Guid(45d0834eddc4b054984888e5b59f300d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '3a455d3e83139d5a863f9c593ef253e5') in 0.008675 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.068_1001_normal_241.png
+  artifactKey: Guid(7699b69e7c4d1584d941c6fae8f0c49f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.068_1001_normal_241.png using Guid(7699b69e7c4d1584d941c6fae8f0c49f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e3c61aef76858ef16fcc5a658e5f121c') in 0.0230666 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Control-Device_X_II/meshes/Object_4_4_0.asset
+  artifactKey: Guid(c1c5de8e5c54ac343a24ee21b1f1cd66) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Control-Device_X_II/meshes/Object_4_4_0.asset using Guid(c1c5de8e5c54ac343a24ee21b1f1cd66) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '2da3942d52ed00ff6cc0e62b65aae376') in 0.0534305 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Free_Sci_Fi_Helmet/textures/base01_metallicRoughness_18_metal.png
+  artifactKey: Guid(1c5e478ea3eb7c448ad62ce8e81e926a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Free_Sci_Fi_Helmet/textures/base01_metallicRoughness_18_metal.png using Guid(1c5e478ea3eb7c448ad62ce8e81e926a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd4db225aff6467a49e17f56272b055ff') in 0.0310144 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Free_Sci_Fi_Helmet/Free_Sci_Fi_Helmet.prefab
+  artifactKey: Guid(6ccf607e97273da4eaa081f504e91c29) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Free_Sci_Fi_Helmet/Free_Sci_Fi_Helmet.prefab using Guid(6ccf607e97273da4eaa081f504e91c29) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f0a9c1aaa5f5751274f5a05aedf83fa9') in 0.0333303 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 48
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/N_1001_70.mat
+  artifactKey: Guid(e4b370be35a38b5469e93892c8f96be3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/N_1001_70.mat using Guid(e4b370be35a38b5469e93892c8f96be3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'bb345c18d39d96fcaa6703d45f42a04e') in 0.0199514 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 6
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Free_Sci_Fi_Helmet/textures/material_metallicRoughness_15_metal.png
+  artifactKey: Guid(c955673fb5425634ba9f56ffe295ca33) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Free_Sci_Fi_Helmet/textures/material_metallicRoughness_15_metal.png using Guid(c955673fb5425634ba9f56ffe295ca33) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '699f9772708251773c37e83ce8e6336e') in 0.0263533 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/1001_metallicRoughness_33_occlusion.png
+  artifactKey: Guid(1ed7a0ee09fda0d48ab81dba1bad5bc4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/1001_metallicRoughness_33_occlusion.png using Guid(1ed7a0ee09fda0d48ab81dba1bad5bc4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '81d12f42c35464cf4e04fb8428712f2d') in 0.0265523 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/Material.007_1001_15.mat
+  artifactKey: Guid(fedcacce46a02e442a0fbe281958a348) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/Material.007_1001_15.mat using Guid(fedcacce46a02e442a0fbe281958a348) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '12a0d8c53454036ca18b70a145b3d6cc') in 0.0175888 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 6
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/U_1001_metallicRoughness_159_occlusion.png
+  artifactKey: Guid(43fb36ee9eabd6946b75bda3501eedf4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/U_1001_metallicRoughness_159_occlusion.png using Guid(43fb36ee9eabd6946b75bda3501eedf4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '6c683fb5122fab51da4f8d1a2c3b500e') in 0.0236877 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.044_1001_metallicRoughness_165_occlusion.png
+  artifactKey: Guid(ea78a4cec6a62b74eb8d6a5a04e7da13) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.044_1001_metallicRoughness_165_occlusion.png using Guid(ea78a4cec6a62b74eb8d6a5a04e7da13) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '27d8e6f53d0b8d577d5eab1841c045c8') in 0.0219593 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.075_1001_normal_28.png
+  artifactKey: Guid(fd75798efa51a7049b722b9a0194f07d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.075_1001_normal_28.png using Guid(fd75798efa51a7049b722b9a0194f07d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '47a38ed6c8b6261bd0c612e383aaf1dd') in 0.0219389 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/F6_1001_metallicRoughness_84_metal.png
+  artifactKey: Guid(21bd0ae3f2cdc2643807497cb3263a88) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/F6_1001_metallicRoughness_84_metal.png using Guid(21bd0ae3f2cdc2643807497cb3263a88) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '3ffa6d84a54d475a42a0dcd46030173d') in 0.0241887 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/meshes/Object_6_6_0.asset
+  artifactKey: Guid(729612744cc25914b85a14349420f7b2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/meshes/Object_6_6_0.asset using Guid(729612744cc25914b85a14349420f7b2) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f4f27b6ff990c3f32d6aa61cfcd86837') in 0.0090702 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/7_1001_metallicRoughness_117_metal.png
+  artifactKey: Guid(10f3bdd3bf8de244e809cffd0d760ca5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/7_1001_metallicRoughness_117_metal.png using Guid(10f3bdd3bf8de244e809cffd0d760ca5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '189834162491e1f48406ca9560598fbe') in 0.0233672 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Scifi_Chair_Concept/meshes
+  artifactKey: Guid(cf87cb1aa4859e04e9555ee444a3a828) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Scifi_Chair_Concept/meshes using Guid(cf87cb1aa4859e04e9555ee444a3a828) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'da858d8c30f0e83501c3799b78b1c0e7') in 0.0070064 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/F10_1001_30.mat
+  artifactKey: Guid(7a1530684bea4b94aa440d8ff1fea858) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/F10_1001_30.mat using Guid(7a1530684bea4b94aa440d8ff1fea858) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd115452caa477d620700f23445abb3ee') in 0.0180193 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 6
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Sci-Fi_Personal_Space_Pod_Ship(weekly_challenge)/textures/material_normal_2.png
+  artifactKey: Guid(b4cb2d54737b9554c8ee1d4e055a703b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Sci-Fi_Personal_Space_Pod_Ship(weekly_challenge)/textures/material_normal_2.png using Guid(b4cb2d54737b9554c8ee1d4e055a703b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '294e40f47692b2b4a37675d2210551b2') in 0.0314177 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/meshes/Object_14_14_0.asset
+  artifactKey: Guid(0c07e118e591ec54596f78020b8d5e05) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/meshes/Object_14_14_0.asset using Guid(0c07e118e591ec54596f78020b8d5e05) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '42758c3e25c4f0a9e477284bd9eb4ef6') in 0.0090069 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Planet_Afroditi/textures/Material.001_normal_0.png
+  artifactKey: Guid(ae633747fed85d8459c1d9e64b90ddf7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Planet_Afroditi/textures/Material.001_normal_0.png using Guid(ae633747fed85d8459c1d9e64b90ddf7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '60e2bfa40353aae9396149e0f0e0699a') in 0.0234681 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spaceship_(EZNO)
+  artifactKey: Guid(40a7867c8fe0c1540a234ff4ac9978f5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spaceship_(EZNO) using Guid(40a7867c8fe0c1540a234ff4ac9978f5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '360fbf81a14716b5dc8a139e17b20b78') in 0.0073314 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spaceship_-_Evil_(Gravity)/textures/ship_metallicRoughness_1_occlusion.png
+  artifactKey: Guid(e036e13156d092845b8533643bc1cf90) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spaceship_-_Evil_(Gravity)/textures/ship_metallicRoughness_1_occlusion.png using Guid(e036e13156d092845b8533643bc1cf90) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0738639f6f2a8e452fba1560a7624ac2') in 0.0358067 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Space_Music!/materials
+  artifactKey: Guid(4971cbd417249bd46836a7f0db96496b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Space_Music!/materials using Guid(4971cbd417249bd46836a7f0db96496b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'b96328ee31a77c9bcf3eb6b8856608d7') in 0.0073903 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/0_1001_metallicRoughness_126_occlusion.png
+  artifactKey: Guid(22774de16682d2d4793ed21f4cf4b576) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/0_1001_metallicRoughness_126_occlusion.png using Guid(22774de16682d2d4793ed21f4cf4b576) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '8b54ce851691479cac7a22cc3d5b9df9') in 0.0249223 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/YZ_1001_metallicRoughness_54_occlusion.png
+  artifactKey: Guid(ca57362403d967448915d295ce130b26) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/YZ_1001_metallicRoughness_54_occlusion.png using Guid(ca57362403d967448915d295ce130b26) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '9b2eb0cf4221c7a7aa95e792a72b8d51') in 0.0239917 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.014_1001_baseColor_65.png
+  artifactKey: Guid(aa3a1560c689de04b994fc8b13d7e66f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.014_1001_baseColor_65.png using Guid(aa3a1560c689de04b994fc8b13d7e66f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f0f384284380616b69de29f34ea29c96') in 0.0240485 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Mercury_(planet)/materials
+  artifactKey: Guid(df80960d74181af4b97bf8218d329544) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Mercury_(planet)/materials using Guid(df80960d74181af4b97bf8218d329544) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '2ba300f01828ecfe5e4811113a58c68d') in 0.007663 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/YZ_1001_17.mat
+  artifactKey: Guid(a14f1682d57af2c45a3ee5e993a23e17) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/YZ_1001_17.mat using Guid(a14f1682d57af2c45a3ee5e993a23e17) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '4c8a5ce0795d1383c6242d232dabe781') in 0.0161952 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 6
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Sci-fi_Single_Chair/textures/sci-fi_chair_3_back_rest_baseColor_4.png
+  artifactKey: Guid(aa98c700ee5f4844d8413d663fa7a9e9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Sci-fi_Single_Chair/textures/sci-fi_chair_3_back_rest_baseColor_4.png using Guid(aa98c700ee5f4844d8413d663fa7a9e9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5c498ed6b11cb3e9952c7ae2d127ddb1') in 0.0238098 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.073_1001_normal_190.png
+  artifactKey: Guid(cd81610908de9404bb8cbcfe5650915a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.073_1001_normal_190.png using Guid(cd81610908de9404bb8cbcfe5650915a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '2fecd2f9079071a2592ff8a65c66c8f2') in 0.0238071 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/F7_1001_normal_88.png
+  artifactKey: Guid(646df591598db3244b27d13f7ebc9c7d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/F7_1001_normal_88.png using Guid(646df591598db3244b27d13f7ebc9c7d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '36b234538723bfe20b39455173d4d69b') in 0.0232335 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/G_1001_72.mat
+  artifactKey: Guid(b1847de0de021714d970d1566cbf4956) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/G_1001_72.mat using Guid(b1847de0de021714d970d1566cbf4956) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'b4524d13db7463a634b0c2dada6e81f7') in 0.0182759 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 6
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/Material.011_1001_19.mat
+  artifactKey: Guid(f5d7c9b1ac35dcc4b94d4213a2336aa7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/Material.011_1001_19.mat using Guid(f5d7c9b1ac35dcc4b94d4213a2336aa7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'abfb7c822252392dbc9e36ecdd4780c9') in 0.0163348 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 6
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spaceship_(EZNO)/meshes/Armor_Spaceship_1_0_2_0.asset
+  artifactKey: Guid(884d65261762c3142a191a0a0b741883) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spaceship_(EZNO)/meshes/Armor_Spaceship_1_0_2_0.asset using Guid(884d65261762c3142a191a0a0b741883) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '12c30155804cb851edd598a9f640d8b5') in 0.0178523 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/ctrl_1001_63.mat
+  artifactKey: Guid(42f91065dd02583419431587bec8558e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/materials/ctrl_1001_63.mat using Guid(42f91065dd02583419431587bec8558e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c0415ae663d59200ba669e5f7f506f88') in 0.0188278 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 6
+
+========================================================================
+Received Import Request.
+  Time since last request: 59.260355 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.067_1001_metallicRoughness_243_metal.png
+  artifactKey: Guid(fbf20e3f8a854ad4e82ca66a05f2d56a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.067_1001_metallicRoughness_243_metal.png using Guid(fbf20e3f8a854ad4e82ca66a05f2d56a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '4d367ada60d3cbe2786ac3b62fdb0ad3') in 0.0249695 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Lava_planet/Lava_planet.prefab
+  artifactKey: Guid(116da88fca5b3a349a474210ae39de59) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Lava_planet/Lava_planet.prefab using Guid(116da88fca5b3a349a474210ae39de59) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'b3d320112ff430a5f4dc88ae691d71a2') in 0.0205346 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 26
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Scifi_Chair_Concept/meshes/Plane.013_Material_0_2_0.asset
+  artifactKey: Guid(1cfb65dfe69b5294d86dfb4182ada6a4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Scifi_Chair_Concept/meshes/Plane.013_Material_0_2_0.asset using Guid(1cfb65dfe69b5294d86dfb4182ada6a4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ff50c5d24c65a244fa989c4453c2298a') in 0.0882864 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.006_1001_1001_normal_25.png
+  artifactKey: Guid(361df8dfe3992644c8b461592ea81885) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.006_1001_1001_normal_25.png using Guid(361df8dfe3992644c8b461592ea81885) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5edf0c435695463d1ffc381e486ad9fe') in 0.0274248 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/N_1001_metallicRoughness_213_occlusion.png
+  artifactKey: Guid(c139514f3ba46c94f92b895dfb89e53c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/N_1001_metallicRoughness_213_occlusion.png using Guid(c139514f3ba46c94f92b895dfb89e53c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '6e520b737488e1fd5ff3f32db704242a') in 0.0282816 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Free_Sci_Fi_Helmet/materials/Visor01_5.mat
+  artifactKey: Guid(ad8e7e7f7e7a70648a9609b18e775aa8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Free_Sci_Fi_Helmet/materials/Visor01_5.mat using Guid(ad8e7e7f7e7a70648a9609b18e775aa8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd1f730b6e1ddbfce52ec6c8ddb3d33bb') in 0.048726 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 6
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Space_Bottle/materials/Material.007_6.mat
+  artifactKey: Guid(d3fe9adf8a1eac84d8589a32b6192803) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Space_Bottle/materials/Material.007_6.mat using Guid(d3fe9adf8a1eac84d8589a32b6192803) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'cc05a5498c0c1f12d1abac68b01830c9') in 0.0132146 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.007_1001_metallicRoughness_48_occlusion.png
+  artifactKey: Guid(7db3846fa593e2c4e8a088aaaf1ae232) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.007_1001_metallicRoughness_48_occlusion.png using Guid(7db3846fa593e2c4e8a088aaaf1ae232) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5e5aa030d8ba062970bfd1cd365afd5b') in 0.0269416 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Free_Sci_Fi_Helmet/textures/Material.006_metallicRoughness_9_occlusion.png
+  artifactKey: Guid(9a1385ef6d0ac9141b19623113a001ef) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Free_Sci_Fi_Helmet/textures/Material.006_metallicRoughness_9_occlusion.png using Guid(9a1385ef6d0ac9141b19623113a001ef) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'acbeef17c933fba72e05b37c363ca3d0') in 0.0281094 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.058_1001_metallicRoughness_237_metal.png
+  artifactKey: Guid(39d729cf7a69b2c468b50cda3866a731) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/textures/Material.058_1001_metallicRoughness_237_metal.png using Guid(39d729cf7a69b2c468b50cda3866a731) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '326ec782089a312716b8c0793f990b49') in 0.0253728 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/meshes/Object_30_30_0.asset
+  artifactKey: Guid(47dc5dcff1bb08e4393b03afeff399df) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Spacecraft_Control_Terminal_Console_ORANGE/meshes/Object_30_30_0.asset using Guid(47dc5dcff1bb08e4393b03afeff399df) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '64a644d1728314e15e26b3a78bd5ae99') in 0.0106508 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Import/LahmadjuScenes/ImportedModels/Alien_Planet/textures/Planet_emissive_2.png
+  artifactKey: Guid(370d71af6e1b32747b64984a7c44c727) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Import/LahmadjuScenes/ImportedModels/Alien_Planet/textures/Planet_emissive_2.png using Guid(370d71af6e1b32747b64984a7c44c727) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '59ca31718c69ed7fe477eab24e7ebe8d') in 0.0267869 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Prepare
+'Packages/com.unity.cinemachine/Editor/Obsolete/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+'Packages/com.unity.cinemachine/Editor/Editors/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+Refreshing native plugins compatible for Editor in 1.72 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 17 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7055 unused Assets / (4.3 MB). Loaded Objects now: 7900.
+Memory consumption went from 154.1 MB to 149.8 MB.
+Total: 15.842600 ms (FindLiveObjects: 1.391300 ms CreateObjectMapping: 1.053500 ms MarkObjects: 9.658800 ms  DeleteObjects: 3.737300 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

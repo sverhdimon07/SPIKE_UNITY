@@ -3,6 +3,8 @@ using UnityEngine.Events;
 
 public sealed class Player : IDamageable, IAllRangesAttacker //я думаю, что если подобных интерфейсов для контракта какого-либо поведения страновится больше 3х, то уже нужно сделать контракт, включающий все нужные интерфейсы в себя. НО нужно понимать, обязаны ли мы при этом начинять новый единый большой интерфейс новыми методами или свойствами ИЛИ не обязаны (я думаю, что не обязаны) И также нужно понимать, какие ограничения на нас накладываются (к примеру, сможем ли мы работать с объектом на уровне его внутреннего интерфейса - ВОЗМОЖНО ЭТО КАК РАЗ КЛЮЧЕВАЯ ДЕТАТЬ, которая дает нам понять, использовать нам единый интерфейс или несколько)
 {
+    public static UnityAction Idled;
+
     private readonly PlayerMechanicStateMachine _mechanicStateMachine;
 
     private readonly PlayerHealthController _healthController;
@@ -20,29 +22,8 @@ public sealed class Player : IDamageable, IAllRangesAttacker //я думаю, что если
         _movementController = movementController;
         _offenseController = offenseController;
         _defenseController = defenseController;
-
-        _healthController.DamageTaken += DamageTaken;
-        _healthController.Died += Died;
-        _movementController.Locomoted += Locomoted;
-        _movementController.Rotated += Rotated;
     }
-
-    ~Player()
-    {
-        _healthController.DamageTaken -= DamageTaken;
-        _healthController.Died -= Died;
-        _movementController.Locomoted -= Locomoted;
-        _movementController.Rotated -= Rotated;
-    }
-
-    public UnityAction StartedToIdle;
-    public UnityAction DamageTaken; //под расширение (мб замедление времени во время стана делать, и возможно это делается при помощи заморозки сцены)
-    public UnityAction Died;
-
-    public UnityAction<Quaternion> Rotated;
-
-    public UnityAction<Vector3> Locomoted;
-
+    
     public PlayerMechanicStateMachine MechanicStateMachine => _mechanicStateMachine;
 
     public PlayerHealthController HealthController => _healthController;
@@ -52,77 +33,53 @@ public sealed class Player : IDamageable, IAllRangesAttacker //я думаю, что если
     public PlayerOffenseController OffenseController => _offenseController;
 
     public PlayerDefenseController DefenseController => _defenseController;
-
-    public Transform ThirdPersonCameraControllerPivot { get; set; }
-
-    public Vector3 GameObjectPosition { get; set; }
-
-    public Vector2 InputDirection { get; set; }
-    public Vector2 RenderAndSkeletonDirectionXZ { get; set; }
-
-    public float Health { get; set; } //РЕАЛИЗОВАТЬ ГЕТТЕР И СЕТТЕР
-    public float MaxHealth { get; set; } //РЕАЛИЗОВАТЬ ГЕТТЕР И СЕТТЕР
-
-    public void Idle() //это нужно, чтобы вернуться в Idle состояния из стана; НОРМАЛЬНАЯ, НО ВРЕМЕННАЯ МЕРА (пока нет FSM); //Изначально был метод PlayIdleAnimation, который вызывался на концах стана, НО ЭТО ВСЕ - ВРЕМЕННАЯ МЕРА (пока нет FSM)
+    
+    public void Idle()
     {
         _mechanicStateMachine.SwitchState(this, new PlayerMechanicIdleState());
-        _mechanicStateMachine.State.DoLogic(this);
-        //_animator.PlayIdleAnimation(); //изнутри вызвать события, поднять вызов сюда, а анимацию мы делаем уже в контроллере
+        _mechanicStateMachine.State.Do(this);
     }
 
     public void TakeDamage(float damage)
     {
-        _healthController.TakeDamage(damage);
+        _mechanicStateMachine.SwitchState(this, new PlayerMechanicStunState(damage));
+        _mechanicStateMachine.State.Do(this);
     }
 
     public void Die()
     {
-        _healthController.Die();
+        _mechanicStateMachine.SwitchState(this, new PlayerMechanicDeathState());
+        _mechanicStateMachine.State.Do(this);
     }
 
     public void Locomote(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection) //пропал публичный метод для бега, а я хотел дописывать контракты на ходьбу, на бег (НО МБ С FSM ВСЕ НАЛАДИТСЯ)
     {
-        _mechanicStateMachine.SwitchState(this, new PlayerMechanicLocomotionState());
-
-        ThirdPersonCameraControllerPivot = thirdPersonCameraControllerPivot;
-        InputDirection = inputDirection;
-
-        _mechanicStateMachine.State.DoLogic(this);
+        _mechanicStateMachine.SwitchState(this, new PlayerMechanicLocomotionState(thirdPersonCameraControllerPivot, inputDirection));
+        _mechanicStateMachine.State.Do(this);
     }
 
     public void Run(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection) //пропал публичный метод для бега, а я хотел дописывать контракты на ходьбу, на бег (НО МБ С FSM ВСЕ НАЛАДИТСЯ)
     {
+        _mechanicStateMachine.SwitchState(this, new PlayerMechanicRunState(thirdPersonCameraControllerPivot, inputDirection));
+        _mechanicStateMachine.State.Do(this);
         //подумать про расширение - например, мне нужно будет добавить передвижение пешком, смогу ли я добавить это, соблюдая OCP?
-        _mechanicStateMachine.SwitchState(this, new PlayerMechanicRunState());
-
-        ThirdPersonCameraControllerPivot = thirdPersonCameraControllerPivot;
-        InputDirection = inputDirection;
-
-        _mechanicStateMachine.State.DoLogic(this);
     }
 
     public void Rotate(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection) //(Transform renderAndSkeletonPivot, Transform thirdPersonCameraControllerPivot, Vector2 inputDirection)
     {
-        _movementController.Rotate(thirdPersonCameraControllerPivot, inputDirection);
+        _movementController.Rotate(thirdPersonCameraControllerPivot, inputDirection); //этот метод вызывается всегда, ибо игрок пока что вращается во всемя всех механик, но возможно стоит его вызывать только в механике передвижения, а в остальных механиках - не вызывать, ибо там может быть какая-то другая логика вращения (к примеру, при атаке может быть так, что игрок должен повернуться в сторону цели, а не камеры)
     }
 
     public void AttackCloseRange(Vector3 gameObjectPosition, Vector2 renderAndSkeletonDirectionXZ) //подумать над названием ЛК тут, ибо нам нужна семантика реальной позиции (то есть, gameObjectPosition) ИЛИ нам нужна семантика позиции для атаки (startPosition). (пример я привел неудачный, ибо тут все равно gameObjectPosition, лучше посмотреть на inputDirection сверху, где я долго писал приписку locomotion) Я ДУМАЮ ВТОРОЕ, ибо все-таки привязка к названию метода ДОЛЖНА БЫТЬ;
     {
-        _mechanicStateMachine.SwitchState(this, new PlayerMachanicAttackCloseRangeState());
-
-        GameObjectPosition = gameObjectPosition;
-        RenderAndSkeletonDirectionXZ = renderAndSkeletonDirectionXZ;
-
-        _mechanicStateMachine.State.DoLogic(this);
+        _mechanicStateMachine.SwitchState(this, new PlayerMechanicAttackCloseRangeState(gameObjectPosition, renderAndSkeletonDirectionXZ)); //возможно это стоит как-то прокидывать сверху, но пока оставлю так, ибо это логично. Но впринципе можно и прокинуть
+        _mechanicStateMachine.State.Do(this);
     }
     //transform.position, new Vector2(_renderAndSkeletonPivot.forward.x, _renderAndSkeletonPivot.forward.z)
     public void AttackLongRange(Vector3 gameObjectPosition, Vector2 renderAndSkeletonDirectionXZ)
     {
-        _mechanicStateMachine.SwitchState(this, new PlayerMachanicAttackCloseRangeState());
-
-        GameObjectPosition = gameObjectPosition;
-        RenderAndSkeletonDirectionXZ = renderAndSkeletonDirectionXZ;
-
-        _mechanicStateMachine.State.DoLogic(this);
+        _mechanicStateMachine.SwitchState(this, new PlayerMechanicAttackLongRangeState(gameObjectPosition, renderAndSkeletonDirectionXZ));
+        _mechanicStateMachine.State.Do(this);
     }
 }
+//СЮДА ИДИ

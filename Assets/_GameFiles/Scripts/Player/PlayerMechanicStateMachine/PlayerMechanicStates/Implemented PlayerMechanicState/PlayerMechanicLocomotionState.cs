@@ -2,17 +2,27 @@ using UnityEngine;
 
 public sealed class PlayerMechanicLocomotionState : PlayerMechanicState
 {
+    private readonly Transform _thirdPersonCameraControllerPivot;
+
+    private readonly Vector2 _inputDirection;
+    
+    public PlayerMechanicLocomotionState(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection)
+    {
+        _thirdPersonCameraControllerPivot = thirdPersonCameraControllerPivot;
+        _inputDirection = inputDirection;
+    }
+
     public override void Enter(Player player)
     {
         //
     }
 
-    public override void DoLogic(Player player)
+    public override void Do(Player player)
     {
-        player.MovementController.Locomote(player.ThirdPersonCameraControllerPivot, player.InputDirection);
+        player.MovementController.Locomote(_thirdPersonCameraControllerPivot, _inputDirection);
     }
 
-    public override void DoLogicWithinFrame(Player player)
+    public override void DoWithinFrame(Player player)
     {
         //
     }

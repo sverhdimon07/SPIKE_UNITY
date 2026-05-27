@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 public sealed class PlayerMovementController
 {
@@ -13,21 +12,8 @@ public sealed class PlayerMovementController
     {
         _locomotion = locomotion;
         _rotation = rotation;
-
-        //_locomotion.Locomoted += Locomoted;
-        //_rotation.Rotated += Rotated;
     }
-
-    ~PlayerMovementController()
-    {
-        //_locomotion.Locomoted -= Locomoted;
-        //_rotation.Rotated -= Rotated;
-    }
-
-    public UnityAction<Vector3> Locomoted;
-
-    public UnityAction<Quaternion> Rotated;
-
+    
     public void Locomote(Transform cameraPoint, Vector2 inputDirection)
     {
         _locomotion.Locomote(CalculateWorldDirection(cameraPoint, inputDirection)); //œ≈–≈œ»—¿“‹

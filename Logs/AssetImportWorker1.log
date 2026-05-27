@@ -1,27 +1,27 @@
 [Licensing::Module] Trying to connect to existing licensing client channel...
 Built from '6000.3/staging' branch; Version is '6000.3.9f1 (7a9955a4f2fa) revision 8034645'; Using compiler version '194234433'; Build Type 'Release'
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-User" at "2026-05-20T14:05:07.9235416Z"
-OS: 'Windows 11  (10.0.26200) Core' Language: 'ru' Physical Memory: 32189 MB
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Р”РјРёС‚СЂРёР№" at "2026-05-26T05:59:42.4647443Z"
+OS: 'Windows 10  (10.0.19045) 64bit CoreSingleLanguage' Language: 'ru' Physical Memory: 16318 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
 System  architecture: x64
 Process architecture: x64
-Date: 2026-05-20T14:05:07Z
+Date: 2026-05-26T05:59:42Z
 
 COMMAND LINE ARGUMENTS:
-D:\UNITY\Unity Editor\6000.3.9f1\Editor\Unity.exe
+S:\UNITY\Unity Editor\6000.3.9f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker1
 -projectPath
-D:/UNITY/UNITY BACKUP/SPIKE/SPIKE_UNITY
+S:/UNITY/UNITY BACKUP/SPIKE/SPIKE_UNITY
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-59896
+56903
 -licensingIpc
-LicenseClient-User
+LicenseClient-Р”РјРёС‚СЂРёР№
 -job-worker-count
 7
 -background-job-worker-count
@@ -30,8 +30,8 @@ LicenseClient-User
 1
 -name
 AssetImport
-Successfully changed project path to: D:/UNITY/UNITY BACKUP/SPIKE/SPIKE_UNITY
-D:/UNITY/UNITY BACKUP/SPIKE/SPIKE_UNITY
+Successfully changed project path to: S:/UNITY/UNITY BACKUP/SPIKE/SPIKE_UNITY
+S:/UNITY/UNITY BACKUP/SPIKE/SPIKE_UNITY
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
     "memorysetup-temp-allocator-size-audio-worker=65536"
@@ -67,10 +67,12 @@ D:/UNITY/UNITY BACKUP/SPIKE/SPIKE_UNITY
     "memorysetup-job-temp-allocator-block-size-background=1048576"
     "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
     "memorysetup-temp-allocator-size-cloud-worker=32768"
-Player connection [11440]  Target information:
+Player connection [1908]  Target information:
 
-Player connection [11440] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [11440] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [1908]  * "[IP] 192.168.1.39 [Port] 0 [Flags] 2 [Guid] 3763360351 [EditorId] 3763360351 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-KK1P2OH) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [1908] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [1908] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 7
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
@@ -82,79 +84,84 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 2.63 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 4.20 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.3.9f1 (7a9955a4f2fa)
-[Subsystems] Discovering subsystems at path D:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path D:/UNITY/UNITY BACKUP/SPIKE/SPIKE_UNITY/Assets
+[Subsystems] Discovering subsystems at path S:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path S:/UNITY/UNITY BACKUP/SPIKE/SPIKE_UNITY/Assets
 GfxDevice: creating device client; kGfxThreadingModeNonThreaded
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: Intel(R) Arc(TM) 140T GPU (16GB) (ID=0x7d51)
-    Vendor:   Intel
-    VRAM:     18347 MB
-    Driver:   32.0.101.6554
+    Renderer: NVIDIA GeForce GTX 1060 6GB (ID=0x1c03)
+    Vendor:   NVIDIA
+    VRAM:     6029 MB
+    Driver:   32.0.15.8228
 Initialize mono
-Mono path[0] = 'D:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/Managed'
-Mono path[1] = 'D:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
-Mono config path = 'D:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/MonoBleedingEdge/etc'
+Mono path[0] = 'S:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/Managed'
+Mono path[1] = 'S:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'S:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/MonoBleedingEdge/etc'
 Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56952
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: D:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: S:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 [Licensing::Module] Licensing is not yet initialized.
 [Licensing::Client] Handshaking with LicensingClient:
   Version:                 1.17.4+4293ba1
-  Session Id:              2816ee36583e42b48da448d06655470a
-  Correlation Id:          14a3e4d906dc393409977e73a784eb16
-  External correlation Id: 2723983711607218381
-  Machine Id:              xB+PCC4AnRHwQNCoJVmPiqpotp0=
-[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-User" (connect: 0.00s, validation: 0.00s, handshake: 1.47s)
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-User-notifications" at "2026-05-20T14:05:09.400076Z"
-[Licensing::Module] Licensing Background thread has ended after 1.48s
-[Licensing::Module] Licensing is initialized (took 0.14s).
+  Session Id:              149349f570fd4b44ba817afe740f8c0f
+  Correlation Id:          345cebae4e350154a1226049a9a3c6cb
+  External correlation Id: 5901684700945218347
+  Machine Id:              BSinU4MsdP07HGNxKH7k4gB1okk=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Р”РјРёС‚СЂРёР№" (connect: 0.00s, validation: 0.00s, handshake: 2.79s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Р”РјРёС‚СЂРёР№-notifications" at "2026-05-26T05:59:45.2626832Z"
+[Licensing::Module] Licensing Background thread has ended after 2.80s
+[Licensing::Module] Licensing is initialized (took 0.54s).
 [Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-C7SA-D7MS-282S-YHFX-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
 [Licensing::Module] License group:
   Id: 10170697332008-UnityPersXXXX
   Product: Unity Personal
   Type: Assigned
   Expiration: Unlimited
-Register platform support module: D:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.UWP.Extensions.dll
-Registered in 0.144757 seconds.
-- Loaded All Assemblies, in  0.761 seconds
+Register platform support module: S:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.UWP.Extensions.dll
+Registered in 0.563464 seconds.
+- Loaded All Assemblies, in  1.587 seconds
 Native extension for UWP target not found
 Native extension for WindowsStandalone target not found
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.672 seconds
-Domain Reload Profiling: 1432ms
-	BeginReloadAssembly (204ms)
+- Finished resetting the current domain, in  0.893 seconds
+Domain Reload Profiling: 2478ms
+	BeginReloadAssembly (437ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (52ms)
-	RebuildNativeTypeToScriptingClass (19ms)
-	initialDomainReloadingComplete (207ms)
-	LoadAllAssembliesAndSetupDomain (277ms)
-		LoadAssemblies (204ms)
+	RebuildCommonClasses (107ms)
+	RebuildNativeTypeToScriptingClass (33ms)
+	initialDomainReloadingComplete (651ms)
+	LoadAllAssembliesAndSetupDomain (357ms)
+		LoadAssemblies (434ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (271ms)
-			TypeCache.Refresh (268ms)
-				TypeCache.ScanAssembly (246ms)
+		AnalyzeDomain (350ms)
+			TypeCache.Refresh (347ms)
+				TypeCache.ScanAssembly (321ms)
 			BuildScriptInfoCaches (0ms)
 			ResolveRequiredComponents (1ms)
-	FinalizeReload (673ms)
+	FinalizeReload (894ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (619ms)
+		SetupLoadedEditorAssemblies (817ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (66ms)
-			SetLoadedEditorAssemblies (6ms)
-			BeforeProcessingInitializeOnLoad (151ms)
-			ProcessInitializeOnLoadAttributes (280ms)
-			ProcessInitializeOnLoadMethodAttributes (115ms)
+			InitializePlatformSupportModulesInManaged (105ms)
+			SetLoadedEditorAssemblies (14ms)
+			BeforeProcessingInitializeOnLoad (208ms)
+			ProcessInitializeOnLoadAttributes (329ms)
+			ProcessInitializeOnLoadMethodAttributes (160ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -167,11 +174,21 @@ Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInter
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
 Begin MonoManager ReloadAssembly
 [Licensing::Client] Successfully resolved entitlement details
-Duplicate assembly 'System.Collections.Immutable.FSR.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Collections.Immutable.FSR.dll, AssemblyName=System.Collections.Immutable, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/System.Collections.Immutable.dll, AssemblyName=System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Duplicate assembly 'System.Collections.Immutable.FSR.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Collections.Immutable.FSR.dll, AssemblyName=System.Collections.Immutable, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Collections.Immutable.dll, AssemblyName=System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Duplicate assembly 'Microsoft.CodeAnalysis.CSharp.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/Microsoft.CodeAnalysis.CSharp.dll, AssemblyName=Microsoft.CodeAnalysis.CSharp, Version=4.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/Microsoft.CodeAnalysis.CSharp.dll, AssemblyName=Microsoft.CodeAnalysis.CSharp, Version=2.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35'.Duplicate assembly 'System.Reflection.Metadata.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Reflection.Metadata.dll, AssemblyName=System.Reflection.Metadata, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/System.Reflection.Metadata.dll, AssemblyName=System.Reflection.Metadata, Version=1.4.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Duplicate assembly 'Microsoft.CodeAnalysis.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/Microsoft.CodeAnalysis.dll, AssemblyName=Microsoft.CodeAnalysis, Version=4.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/Microsoft.CodeAnalysis.dll, AssemblyName=Microsoft.CodeAnalysis, Version=2.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35'.- Loaded All Assemblies, in  2.437 seconds
+[Licensing::Module] License group:
+  Id: F4-C7SA-D7MS-282S-YHFX-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 10170697332008-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Duplicate assembly 'System.Collections.Immutable.FSR.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Collections.Immutable.FSR.dll, AssemblyName=System.Collections.Immutable, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/System.Collections.Immutable.dll, AssemblyName=System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Duplicate assembly 'System.Collections.Immutable.FSR.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Collections.Immutable.FSR.dll, AssemblyName=System.Collections.Immutable, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Collections.Immutable.dll, AssemblyName=System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Duplicate assembly 'Microsoft.CodeAnalysis.CSharp.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/Microsoft.CodeAnalysis.CSharp.dll, AssemblyName=Microsoft.CodeAnalysis.CSharp, Version=4.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/Microsoft.CodeAnalysis.CSharp.dll, AssemblyName=Microsoft.CodeAnalysis.CSharp, Version=2.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35'.Duplicate assembly 'System.Reflection.Metadata.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Reflection.Metadata.dll, AssemblyName=System.Reflection.Metadata, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/System.Reflection.Metadata.dll, AssemblyName=System.Reflection.Metadata, Version=1.4.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Duplicate assembly 'Microsoft.CodeAnalysis.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/Microsoft.CodeAnalysis.dll, AssemblyName=Microsoft.CodeAnalysis, Version=4.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/Microsoft.CodeAnalysis.dll, AssemblyName=Microsoft.CodeAnalysis, Version=2.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35'.- Loaded All Assemblies, in  2.741 seconds
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
 'Packages/com.unity.cinemachine/Editor/Obsolete/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
 'Packages/com.unity.cinemachine/Editor/Editors/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
-Refreshing native plugins compatible for Editor in 1.53 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 1.69 ms, found 3 plugins.
 Native extension for UWP target not found
 Native extension for WindowsStandalone target not found
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
@@ -201,69 +218,72 @@ Package Manager log level set to [2]
 [Package Manager] Cannot connect to Unity Package Manager local server
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  3.872 seconds
-Domain Reload Profiling: 6305ms
-	BeginReloadAssembly (441ms)
+- Finished resetting the current domain, in  5.201 seconds
+Domain Reload Profiling: 7937ms
+	BeginReloadAssembly (519ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (18ms)
+		DisableScriptedObjects (15ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (82ms)
-	RebuildCommonClasses (100ms)
-	RebuildNativeTypeToScriptingClass (35ms)
-	initialDomainReloadingComplete (174ms)
-	LoadAllAssembliesAndSetupDomain (1683ms)
-		LoadAssemblies (1006ms)
+		CreateAndSetChildDomain (83ms)
+	RebuildCommonClasses (98ms)
+	RebuildNativeTypeToScriptingClass (29ms)
+	initialDomainReloadingComplete (157ms)
+	LoadAllAssembliesAndSetupDomain (1932ms)
+		LoadAssemblies (1335ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (911ms)
-			TypeCache.Refresh (699ms)
-				TypeCache.ScanAssembly (658ms)
-			BuildScriptInfoCaches (155ms)
-			ResolveRequiredComponents (39ms)
-	FinalizeReload (3873ms)
+		AnalyzeDomain (916ms)
+			TypeCache.Refresh (717ms)
+				TypeCache.ScanAssembly (677ms)
+			BuildScriptInfoCaches (162ms)
+			ResolveRequiredComponents (29ms)
+	FinalizeReload (5202ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (3319ms)
+		SetupLoadedEditorAssemblies (4753ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (5ms)
-			SetLoadedEditorAssemblies (13ms)
-			BeforeProcessingInitializeOnLoad (363ms)
-			ProcessInitializeOnLoadAttributes (2765ms)
-			ProcessInitializeOnLoadMethodAttributes (167ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (16ms)
+			BeforeProcessingInitializeOnLoad (529ms)
+			ProcessInitializeOnLoadAttributes (4071ms)
+			ProcessInitializeOnLoadMethodAttributes (128ms)
 			AfterProcessingInitializeOnLoad (5ms)
 			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (20ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
-Refreshing native plugins compatible for Editor in 2.00 ms, found 3 plugins.
+		AwakeInstancesAfterBackupRestoration (14ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.02 seconds
+Refreshing native plugins compatible for Editor in 1.89 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 17 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 7001 unused Assets / (4.7 MB). Loaded Objects now: 7838.
-Memory consumption went from 157.8 MB to 153.1 MB.
-Total: 22.410300 ms (FindLiveObjects: 1.897400 ms CreateObjectMapping: 1.917600 ms MarkObjects: 12.649000 ms  DeleteObjects: 5.943400 ms)
+Unloading 6855 unused Assets / (4.9 MB). Loaded Objects now: 7698.
+Memory consumption went from 157.0 MB to 152.1 MB.
+Total: 16.170100 ms (FindLiveObjects: 1.366300 ms CreateObjectMapping: 1.263500 ms MarkObjects: 9.183400 ms  DeleteObjects: 4.355500 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 631404.757913 seconds.
-  path: Assets/_GameFiles/Scripts/Player/PlayerMechanicStateMachine/PlayerMechanicStates/Implemented PlayerMechanicState/PlayerMachanicAttackLongRangeState.cs
-  artifactKey: Guid(cdae5a5f057786240a190546b7f19257) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/_GameFiles/Scripts/Player/PlayerMechanicStateMachine/PlayerMechanicStates/Implemented PlayerMechanicState/PlayerMachanicAttackLongRangeState.cs using Guid(cdae5a5f057786240a190546b7f19257) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'b14a8890ae268db0aafd0180fd4a8a8f') in 0.2301804 seconds
+  Time since last request: 571.410184 seconds.
+  path: Assets/_GameFiles/Scripts/Player/Player.cs
+  artifactKey: Guid(d53aebcbbf7e5934e9bc24f4deba9dcd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/_GameFiles/Scripts/Player/Player.cs using Guid(d53aebcbbf7e5934e9bc24f4deba9dcd) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '37a05b344199e29d4a8581f5ab07edbc') in 0.144507 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000064 seconds.
-  path: Assets/_GameFiles/Scripts/Input/InputController.cs
-  artifactKey: Guid(86d2295b2fa0c924481cdfb528ee4031) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/_GameFiles/Scripts/Input/InputController.cs using Guid(86d2295b2fa0c924481cdfb528ee4031) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c65f4d951a9d3675a5b13e4e99ee05bd') in 0.0265538 seconds
+  Time since last request: 0.000023 seconds.
+  path: Assets/_GameFiles/Scripts/Player/PlayerWeapon/PlayerWeaponController/PlayerWeaponController.cs
+  artifactKey: Guid(33677a509b346ee47819401480e00cc9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/_GameFiles/Scripts/Player/PlayerWeapon/PlayerWeaponController/PlayerWeaponController.cs using Guid(33677a509b346ee47819401480e00cc9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '94611e1c68b0e8fc0783c1b4a708edb8') in 0.0092236 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000065 seconds.
+  Time since last request: 0.000037 seconds.
   path: Assets/_GameFiles/Scripts/Player/PlayerOffense/PlayerOffenseController/PlayerOffenseController.cs
   artifactKey: Guid(f9869d89541671440b4206915d9bc475) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/_GameFiles/Scripts/Player/PlayerOffense/PlayerOffenseController/PlayerOffenseController.cs using Guid(f9869d89541671440b4206915d9bc475) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '4763c5f844848f9595057dac2a613ad7') in 0.0239121 seconds
+Start importing Assets/_GameFiles/Scripts/Player/PlayerOffense/PlayerOffenseController/PlayerOffenseController.cs using Guid(f9869d89541671440b4206915d9bc475) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '900dec58d638a8691d0f43e74629ed93') in 0.0108323 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
-AssetImportWorkerClient::OnTransportError - code=10054 error=Удаленный хост принудительно разорвал существующее подключение.
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

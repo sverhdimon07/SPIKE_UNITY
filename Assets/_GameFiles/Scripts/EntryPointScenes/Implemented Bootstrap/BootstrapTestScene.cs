@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem.XInput;
 //в бутстрапе нам не нужно инитить данными наши зависимые монобехи - они это сделают сами. Бутстрап должен иметь в виду все классы высокого уровня - и контроллеры игровых сущностей, и контроллеры неигровых сущностей (только игровые создаются геймдизом на сцене и инитят себя сами, а неигровые создаются тут в бутстрапе и инитятся здесь)!
 public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу 1 обязательный, ибо Create не нужен отдельный метод И создавать самого себя НЕЛЬЗЯ, а Launch вообще по идее нигде не нужен, ибо если у нас есть предметные методы внутри класса, то их и будем запускать), так как добавились OnEnable и OnDisable) - Создание (важно что за создание самого себя ИЛИ свое время жизни класс отвечать не должен, он всегда создается снаружи), Инициализация (инициализация себя это про создание своих внутренних элементов (или поиск их на сцене) И их последующую инициализацию), Запуск
 {
@@ -37,10 +36,10 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
     private GameplayMenuUI _gameplayMenuUI;
 
     private InputController _inputController;
+    
+    //private Player _player;//?; пока хз, какой именно прослойкой соединять инпут и игрока - бутстрапом или другой какой-то, так что пусть пока лежит тут;
 
-    private Player _player;//?; пока хз, какой именно прослойкой соединять инпут и игрока - бутстрапом или другой какой-то, так что пусть пока лежит тут;
-
-    private Character[] _characters;
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!private CharacterNO[] _characters;
 
     //private readonly Weapon[] weaponsPlayer = new Weapon[2]; //Нужно защитить массив от изменения элементов или подмены, не помню (видик Сакутина)
 
@@ -55,8 +54,6 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
 
     public override void Awake() //тут метод Awake публичный - хз //можно сделать абстрактным в родительском классе, типо чтобы у нас был контракт на обязательность реализации, но хз, насколько это правильно и насколько правильно оставлять этот метод публичным
     {
-        //print(PlayerController.Model);
-        _player = PlayerController.Model; //
         _scenePausing = new ScenePausing();
         //_sceneLoading = new SceneLoading(); //НЕ ИНИЧУ ПОКА ЧТО
         _gameplayMenuUI = FindAnyObjectByType<GameplayMenuUI>();
@@ -65,11 +62,11 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         _saveButtonForDataSaveHandler = delegate () { _savingLoadingPlayerInteractor.SaveData(PlayerController); };
         _loadSavingButtonForDataLoadHandler = delegate () { _savingLoadingPlayerInteractor.LoadData(PlayerController); };
 
-        _attackCloseRangeButtonPressedForCloseRangeAttackHandler = delegate () { _player.AttackCloseRange(PlayerController.GameObjectPivot.position, new Vector2(PlayerController.GameObjectPivot.forward.x, PlayerController.GameObjectPivot.forward.z)); };
-        _attackLongRangeButtonPressedForLongRangeAttackHandler = delegate () { _player.AttackLongRange(PlayerController.GameObjectPivot.position, new Vector2(PlayerController.GameObjectPivot.forward.x, PlayerController.GameObjectPivot.forward.z)); };
-        _locomotionDirectionDirectedForLocomotionHandler = locomotionDirection => _player.Locomote(PlayerController.ThirdPersonCameraControllerPivot, locomotionDirection);
-        _locomotionDirectionDirectedForRunHandler = locomotionDirection => _player.Run(PlayerController.ThirdPersonCameraControllerPivot, locomotionDirection);
-        _locomotionDirectionDirectedForRotationHandler = locomotionDirection => _player.Rotate(PlayerController.ThirdPersonCameraControllerPivot, locomotionDirection);
+        _attackCloseRangeButtonPressedForCloseRangeAttackHandler = delegate () { PlayerController.AttackCloseRange(PlayerController.GameObjectPivot.position, new Vector2(PlayerController.GameObjectPivot.forward.x, PlayerController.GameObjectPivot.forward.z)); };
+        _attackLongRangeButtonPressedForLongRangeAttackHandler = delegate () { PlayerController.AttackLongRange(PlayerController.GameObjectPivot.position, new Vector2(PlayerController.GameObjectPivot.forward.x, PlayerController.GameObjectPivot.forward.z)); };
+        _locomotionDirectionDirectedForLocomotionHandler = locomotionDirection => PlayerController.Locomote(PlayerController.ThirdPersonCameraControllerPivot, locomotionDirection);
+        _locomotionDirectionDirectedForRunHandler = locomotionDirection => PlayerController.Run(PlayerController.ThirdPersonCameraControllerPivot, locomotionDirection);
+        _locomotionDirectionDirectedForRotationHandler = locomotionDirection => PlayerController.Rotate(PlayerController.ThirdPersonCameraControllerPivot, locomotionDirection);
 
         InstantiateMigratingBetweenSceneObjects(); //ВРЕМЕННО
         _gameplayMenuUI.Initialize();
@@ -77,13 +74,12 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         InitCharacterWeapons();
         InitNobodysWeapons();
         InitPlayer(); //хз, как под другому, но даже если они запускаются в Awake - OnEnable запускается раньше. Мб если сериализировать эти поля, то все будет норм
-        InitCharacter();
+        //InitCharacter();!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     }
 
     private void OnEnable() 
     {
-        //print(_player);
-        if (_player == null) //Приятно для других программистов, но насколько это прямо таки нужно? (При этом при отсутствии игрока на сцене бесконечный поток ошибок все равно есть, ибо я не вызывал события в InputController через вопросительный знак)
+        if (PlayerController == null) //Приятно для других программистов, но насколько это прямо таки нужно? (При этом при отсутствии игрока на сцене бесконечный поток ошибок все равно есть, ибо я не вызывал события в InputController через вопросительный знак)
         {
             return;
         }
@@ -101,25 +97,25 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
 
         _inputController.LocomotionDirectionDirected += _locomotionDirectionDirectedForLocomotionHandler;
         _inputController.LocomotionDirectionDirected += _locomotionDirectionDirectedForRotationHandler;
-        _inputController.LocomotionDirectionUndirected += _player.Idle;
+        _inputController.LocomotionDirectionUndirected += PlayerController.Idle;
         _inputController.RunningButtonHolded += ResubscribeRunOnLocomotionDirectionDirectedForLocomotionHandler;
         _inputController.RunningButtonUnholded += ResubscribeLocomotionOnLocomotionDirectionDirectedForLocomotionHandler;
         _inputController.AttackCloseRangeButtonPressed += _attackCloseRangeButtonPressedForCloseRangeAttackHandler;
         _inputController.AttackLongRangeButtonPressed += _attackLongRangeButtonPressedForLongRangeAttackHandler;
         _inputController.OpeningGameplayeMenuButtonPressed += _scenePausing.PauseOrResume;
         _inputController.OpeningGameplayeMenuButtonPressed += _gameplayMenuUI.OpenOrClose;
-
-        _player.Died += SceneLoading.LoadTestScene;
-
-        foreach (Character character in _characters)
+        
+        PlayerController.Died += SceneLoading.LoadTestScene;
+        /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        foreach (CharacterNO character in _characters)
         {
             character.Died += delegate () { Destroy(character); }; 
-        }
+        }*/
     }
 
     private void OnDisable()
     {
-        if (_player == null) //Приятно для других программистов, но насколько это прямо таки нужно?
+        if (PlayerController == null) //Приятно для других программистов, но насколько это прямо таки нужно?
         {
             return;
         }
@@ -133,19 +129,21 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
 
         _inputController.LocomotionDirectionDirected -= _locomotionDirectionDirectedForLocomotionHandler;
         _inputController.LocomotionDirectionDirected -= _locomotionDirectionDirectedForRotationHandler;
-        _inputController.LocomotionDirectionUndirected -= _player.Idle;
+        _inputController.LocomotionDirectionUndirected -= PlayerController.Idle;
         _inputController.RunningButtonHolded += ResubscribeRunOnLocomotionDirectionDirectedForLocomotionHandler;
         _inputController.RunningButtonUnholded += ResubscribeLocomotionOnLocomotionDirectionDirectedForLocomotionHandler;
         _inputController.AttackCloseRangeButtonPressed -= _attackCloseRangeButtonPressedForCloseRangeAttackHandler;
         _inputController.AttackLongRangeButtonPressed -= _attackLongRangeButtonPressedForLongRangeAttackHandler;
         _inputController.OpeningGameplayeMenuButtonPressed -= _scenePausing.PauseOrResume;
         _inputController.OpeningGameplayeMenuButtonPressed -= _gameplayMenuUI.OpenOrClose;
-        _player.Died -= SceneLoading.LoadTestScene;
 
-        foreach (Character character in _characters)
+        PlayerController.Died += SceneLoading.LoadTestScene;
+
+        /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        foreach (CharacterNO character in _characters)
         {
             character.Died -= delegate () { Destroy(character); };
-        }
+        }*/
     }
 
     private void InstantiateMigratingBetweenSceneObjects()
@@ -163,15 +161,16 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         //коммент выше - изучить
     }
 
+    /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     private void InitCharacter() //ПЕРЕДЕЛАЛ ЛОГИКУ ДЛЯ БОЛЬШЕЙ ОРИЕНТИРОВАННОСТИ ПОД ГЕЙМДИЗАЙНЕРА, НО ИНИТ ПРОИСХОДИТ НЕПРАВИЛЬНО (надо понять, можно ли как-то искать объекты в объектной иерархии на сцене)
     {
-        _characters = FindObjectsByType<Character>(FindObjectsSortMode.None);
+        _characters = FindObjectsByType<CharacterNO>(FindObjectsSortMode.None);
 
-        foreach (Character character in _characters)
+        foreach (CharacterNO character in _characters)
         {
             character.Initialize(_characterHealth, _characterLocomotionSpeed, _characterRunningSpeed, _characterWeaponCloseRange, _characterWeaponLongRange);
         }
-    }
+    }*/
 
     private void InitPlayerWeapons()
     {

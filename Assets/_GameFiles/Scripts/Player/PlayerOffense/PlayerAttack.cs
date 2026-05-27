@@ -15,7 +15,7 @@ public abstract class PlayerAttack
         //_damageCalculator.Initialize(); хз, всегда ли надо инитить, если внутри класса одна более-менее проста€ функци€
     }
 
-    public void Attack(Weapon weapon, Vector3 position, Vector2 direction)
+    public virtual void Attack(Weapon weapon, Vector3 position, Vector2 direction)
     {
         IDamageable damageReciever = _environmentAreaAnalyzer.Analyze(position, direction); //возможно стоит все подобные Character'у игровые сущности наследовать от единого Entity, но у нас же есть IDamageable (√≈Ќ»јЋ№Ќќ)
 

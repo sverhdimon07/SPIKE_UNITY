@@ -1,6 +1,4 @@
-using UnityEngine;
-
-public class CharacterWeaponCloseRange
+public sealed class CharacterWeaponCloseRange
 {
     private WeaponCloseRange _weapon;
 

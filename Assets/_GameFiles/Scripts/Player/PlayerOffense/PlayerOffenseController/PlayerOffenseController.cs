@@ -2,26 +2,27 @@ using UnityEngine;
 
 public sealed class PlayerOffenseController
 {
-    private readonly PlayerWeaponController _weaponController = new PlayerWeaponController();
+    private PlayerWeaponController _weaponController = new PlayerWeaponController();
     
-    private readonly PlayerAttackCloseRange _attackCloseRange = new PlayerAttackCloseRange(); //тут надо зависеть от абстракции, хотя мы хотим чтобы были именно ближняя и дальняя атака, НО лучше сделать зависимость от абстракции
+    private PlayerAttack _firstAttackType = new PlayerAttackCloseRange(); //тут надо зависеть от абстракции, хотя мы хотим чтобы были именно ближняя и дальняя атака, НО лучше сделать зависимость от абстракции
 
-    private readonly PlayerAttackLongRange _attackLongRange = new PlayerAttackLongRange();
+    private PlayerAttack _secondAttackType = new PlayerAttackLongRange(); //зависим от абстракции и в типе и а названии переменной (и тип, и название уже изменил)
 
-    public PlayerOffenseController(Vector3 position, Vector2 direction, WeaponCloseRange weaponCloseRange, WeaponLongRange weaponLongRange)
+    public PlayerOffenseController(WeaponCloseRange weaponCloseRange, WeaponLongRange weaponLongRange, Vector3 gameObjectPosition, Vector2 renderAndSkeletonDirectionXZ)
     {
+        //_weaponController = weaponController;
         _weaponController.Initialize(weaponCloseRange, weaponLongRange);
-        _attackCloseRange.Initialize(new EnvironmentAreaOverlapAnalyzer<IDamageable, PlayerController>(), position, direction, 0.15f, weaponCloseRange.Range, 1.25f, new DamageCalculatorBasic()); //работа с конретной реализацией должна проводиться наверху, но с другой стороны мы создаем крепкий контрактна то, что в ячейку ближней атаки не заинитится дальняя атака (что по идее может прилететь с сервера спокойно)
-        _attackLongRange.Initialize(new EnvironmentAreaOverlapAnalyzer<IDamageable, PlayerController>(), position, direction, 0.15f, weaponLongRange.Range, 1.25f, new DamageCalculatorBasic()); //работа с конретной реализацией должна проводиться наверху, но с другой стороны мы создаем крепкий контрактна то, что в ячейку ближней атаки не заинитится дальняя атака (что по идее может прилететь с сервера спокойно)
+        _firstAttackType.Initialize(new EnvironmentAreaOverlapAnalyzer<IDamageable, PlayerController>(), gameObjectPosition, renderAndSkeletonDirectionXZ, 0.15f, weaponCloseRange.Range, 1.25f, new DamageCalculatorBasic()); //работа с конретной реализацией должна проводиться наверху, но с другой стороны мы создаем крепкий контрактна то, что в ячейку ближней атаки не заинитится дальняя атака (что по идее может прилететь с сервера спокойно)
+        _secondAttackType.Initialize(new EnvironmentAreaOverlapAnalyzer<IDamageable, PlayerController>(), gameObjectPosition, renderAndSkeletonDirectionXZ, 0.15f, weaponLongRange.Range, 1.25f, new DamageCalculatorBasic()); //работа с конретной реализацией должна проводиться наверху, но с другой стороны мы создаем крепкий контрактна то, что в ячейку ближней атаки не заинитится дальняя атака (что по идее может прилететь с сервера спокойно)
     }
 
-    public void AttackCloseRange(Vector3 position, Vector2 direction) //сначала прописал Inject тут, но зачем при каждой атаке че-то инджектить. Инджектить нужно при поднятии нового оружия, но так как у нас данной механики пока нет, мы инджектим при создании и инициализации оружия в руках игрока
+    public void AttackCloseRange(Vector3 gameObjectPosition, Vector2 direction) //сначала прописал Inject тут, но зачем при каждой атаке че-то инджектить. Инджектить нужно при поднятии нового оружия, но так как у нас данной механики пока нет, мы инджектим при создании и инициализации оружия в руках игрока
     {
-        _attackCloseRange.Attack(_weaponController.WeaponCloseRange, position, direction);
+        _firstAttackType.Attack(_weaponController.WeaponCloseRange, gameObjectPosition, direction);
     }
 
-    public void AttackLongRange(Vector3 position, Vector2 direction)
+    public void AttackLongRange(Vector3 gameObjectPosition, Vector2 renderAndSkeletonDirectionXZ)
     {
-        _attackLongRange.Attack(_weaponController.WeaponLongRange, position, direction);
+        _secondAttackType.Attack(_weaponController.WeaponLongRange, gameObjectPosition, renderAndSkeletonDirectionXZ);
     }
 }

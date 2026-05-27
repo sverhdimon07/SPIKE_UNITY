@@ -3,6 +3,9 @@ using UnityEngine.Events;
 
 public sealed class PlayerLocomotion
 {
+    public static UnityAction<Vector3> Locomoted;
+    public static UnityAction<Vector3> Runned;
+
     private readonly float _locomotionSpeed;
     private readonly float _runningSpeed;
 
@@ -14,9 +17,6 @@ public sealed class PlayerLocomotion
         _runningSpeed = runningSpeed;
         _lastPosition = lastPosition;
     }
-
-    public static UnityAction<Vector3> Locomoted;
-    public static UnityAction<Vector3> Runned;
 
     public void Locomote(Vector3 direction) //ИНКАПУСЛЯЦИЯ
     {

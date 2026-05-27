@@ -5,8 +5,11 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(CapsuleCollider))]
-public sealed class PlayerController : MonoBehaviour
+public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAttacker //тут прикол такой, что этот контроллер тоже может реализовывать интерфейсы модели, НО стоит ли реализовывать их и там, и там - или поставить только тут и все?
 {
+    public UnityAction Died; //выходы для фабрик или классов более высокого уровня
+    public UnityAction<float> DamageTaken;
+
     [Header("View References")]
     [SerializeField] private Image _healthBar; //хотел переносить эти поля в бутстрап, НО почему-бы все поля, не отвечающие за геймплейную логику, не хранить именно здесь (ибо бутстрап должен инитить ГЕЙМДИЗАЙНЕРСКИЕ ДАННЫЕ, зачем их мешать с ссылками на вспомогательные классы?)?
     [SerializeField] private Image _weaponLongRangeCooldownBar;
@@ -32,65 +35,96 @@ public sealed class PlayerController : MonoBehaviour
     [SerializeField] private WeaponLongRange _weaponLongRange;
     [SerializeField] private WeaponData _weaponLongRangeData;
 
-    public UnityAction DamageTaken; //выходы для фабрик
-    public UnityAction Died;
+    private PlayerView _view; //вот та разница между моделью и представлением. Просто если бы это было свойством да еще и публичным, то его методами можно было бы пользоваться в классе более высокого уровня
 
-    public UnityAction<Quaternion> Rotated;
-
-    public UnityAction<Vector3> Locomoted;
-
-    private PlayerView View { get; set; } //вот та разница между моделью и представлением. Просто если бы это свойство было публичным, то его методами можно было бы пользоваться в классе более высокого уровня
-
-    public Player Model { get; private set; } //не уверен, что так правильно; вообще есть 2 варика - ЛИБО сделать так, как здесь, с публичной для вызова публичных методов моделью и подписками вьюшки здесь, ЛИБО сделать модель приватной И соединять модель и вьюшку напрямую публичными методами. Мне впринципе 2й варик больше нравится;
+    public Player _model; //не уверен, что так правильно; вообще есть 2 варика - ЛИБО сделать так, как здесь, с публичной для вызова публичных методов моделью и подписками вьюшки здесь, ЛИБО сделать модель приватной И соединять модель и вьюшку напрямую публичными методами. Мне впринципе 2й варик больше нравится;
+    
+    public Player Model => _model;
 
     public Transform GameObjectPivot => _gameObjectPivot; //ВРЕМЕННАЯ МЕРА
     public Transform ThirdPersonCameraControllerPivot => _thirdPersonCameraControllerPivot; //ВРЕМЕННАЯ МЕРА
 
     private void Awake() //чекнуть конструкторы и деструкторы в монобехах
     {
-        View = new PlayerView(new PlayerUI(_healthBar, _weaponLongRangeCooldownBar, _deathMessageText), new PlayerAnimator(_animator), _gameObjectPivot, _renderAndSkeletonPivot);
-        Model = new Player(new PlayerMechanicStateMachine(Model, new PlayerMechanicIdleState()), new PlayerHealthController(new PlayerHealth(_maxHealth, _health)), new PlayerMovementController(new PlayerLocomotion(_locomotionSpeed, _runningSpeed, transform.position), new PlayerRotation()), new PlayerOffenseController(transform.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z), _weaponCloseRange, _weaponLongRange), new PlayerDefenseController()); //тут такой прикол, что любой человек сможет создавать объект этого класса в любой части программы, но как бы и работать он с ним не сможет без верхнеуровнего монобеховского слоя. Тут все норм, я бы только засинглтонил PlayerController и Player (про PlayerView - хз)
+        _view = new PlayerView(new PlayerUI(_healthBar, _weaponLongRangeCooldownBar, _deathMessageText), new PlayerAnimator(_animator), _gameObjectPivot, _renderAndSkeletonPivot);
+        _model = new Player(new PlayerMechanicStateMachine(_model, new PlayerMechanicIdleState()), new PlayerHealthController(new PlayerHealth(_maxHealth, _health)), new PlayerMovementController(new PlayerLocomotion(_locomotionSpeed, _runningSpeed, transform.position), new PlayerRotation()), new PlayerOffenseController(_weaponCloseRange, _weaponLongRange, transform.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z)), new PlayerDefenseController()); //тут такой прикол, что любой человек сможет создавать объект этого класса в любой части программы, но как бы и работать он с ним не сможет без верхнеуровнего монобеховского слоя. Тут все норм, я бы только засинглтонил PlayerController и Player (про PlayerView - хз)
     }
 
     private void Update()
     {
-        Model.MechanicStateMachine.State.DoLogicWithinFrame(Model);
+        _model.MechanicStateMachine.State.DoWithinFrame(_model);
     }
 
     private void OnEnable()
     {
-        Model.StartedToIdle += View.PresentIdle;
-        Model.DamageTaken += delegate () { View.PresentDamageTake(Model.Health); };
-        Model.DamageTaken += DamageTaken;
-        Model.Died += View.PresentDeath; //надо дописать где-то вызов на выключение на старте, и включить объект в сцене
-        //Model.Locomoted += View.MoveCharacterModel;
-        PlayerLocomotion.Locomoted += View.MoveCharacterModelInLocomotionForm;
-        PlayerLocomotion.Runned += View.MoveCharacterModelInRunForm;
-        //Model.Rotated += View.TurnCharacterModel;
-        PlayerRotation.Rotated += View.TurnCharacterModel;
+        Player.Idled += _view.PresentIdle;
+        PlayerHealth.DamageTaken += _view.PresentDamageTake;
+        PlayerHealth.DamageTaken += DamageTaken; //под расширение (мб замедление времени во время стана делать, и возможно это делается при помощи заморозки сцены)
+        PlayerHealth.Died += _view.PresentDeath; //надо дописать где-то вызов на выключение на старте, и включить объект в сцене
+        PlayerHealth.Died += Died;
+        PlayerLocomotion.Locomoted += _view.MoveCharacterModelInLocomotionForm;
+        PlayerLocomotion.Runned += _view.MoveCharacterModelInRunForm;
+        PlayerRotation.Rotated += _view.TurnCharacterModel;
+        PlayerAttackCloseRange.Attacked += _view.PresentCloseRangeAttack;
+        PlayerAttackLongRange.Attacked += _view.PresentLongRangeAttack;
     }
 
     private void OnDisable()
     {
-        Model.StartedToIdle -= View.PresentIdle;
-        Model.DamageTaken -= delegate () { View.PresentDamageTake(Model.Health); };
-        Model.DamageTaken -= DamageTaken;
-        Model.Died -= View.PresentDeath;
-        //Model.Locomoted -= View.MoveCharacterModel;
-        PlayerLocomotion.Locomoted -= View.MoveCharacterModelInLocomotionForm;
-        PlayerLocomotion.Runned -= View.MoveCharacterModelInRunForm;
-        //Model.Rotated -= View.TurnCharacterModel;
-        PlayerRotation.Rotated -= View.TurnCharacterModel;
-    }
-
-    public void Idle()
-    {
-        View.PresentIdle();
-        //Модель пока не пишу, ибо там логики нет
+        Player.Idled -= _view.PresentIdle;
+        PlayerHealth.DamageTaken -= _view.PresentDamageTake;
+        PlayerHealth.DamageTaken -= DamageTaken;
+        PlayerHealth.Died -= _view.PresentDeath;
+        PlayerHealth.Died += Died;
+        PlayerLocomotion.Locomoted -= _view.MoveCharacterModelInLocomotionForm;
+        PlayerLocomotion.Runned -= _view.MoveCharacterModelInRunForm;
+        PlayerRotation.Rotated -= _view.TurnCharacterModel;
+        PlayerAttackCloseRange.Attacked -= _view.PresentCloseRangeAttack;
+        PlayerAttackLongRange.Attacked -= _view.PresentLongRangeAttack;
     }
 
     public void SetRenderAndSkeletonPivot(Quaternion rotation) //?
     {
         _gameObjectPivot.rotation = rotation;
+    }
+
+    public void Idle()
+    {
+        _model.Idle();
+    }
+
+    public void TakeDamage(float damage)
+    {
+        _model.TakeDamage(damage);
+    }
+
+    public void Die()
+    {
+        _model.Die();
+    }
+
+    public void Locomote(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection)
+    {
+        _model.Locomote(thirdPersonCameraControllerPivot, inputDirection);
+    }
+
+    public void Run(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection)
+    {
+        _model.Run(thirdPersonCameraControllerPivot, inputDirection);
+    }
+
+    public void Rotate(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection) //сначала хотел не вставлять сюда этот метод, но пришлось, ибо он нужен был для бутстрапа
+    {
+        _model.Rotate(thirdPersonCameraControllerPivot, inputDirection);
+    }
+
+    public void AttackCloseRange(Vector3 gameObjectPosition, Vector2 gameObjectRotation)
+    {
+        _model.AttackCloseRange(gameObjectPosition, gameObjectRotation);
+    }
+
+    public void AttackLongRange(Vector3 gameObjectPosition, Vector2 gameObjectRotation)
+    {
+        _model.AttackLongRange(gameObjectPosition, gameObjectRotation);
     }
 }

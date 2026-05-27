@@ -1,18 +1,37 @@
 using UnityEngine;
+using UnityEngine.Events;
 
-public class CharacterLocomotion 
+public sealed class CharacterLocomotion
 {
-    private float _speed;
+    public static UnityAction<Vector3> Locomoted;
+    public static UnityAction<Vector3> Runned;
 
-    public void Initialize(float speed)
+    private readonly float _locomotionSpeed;
+    private readonly float _runningSpeed;
+
+    private Vector3 _lastPosition;
+
+    public CharacterLocomotion(float locomotionSpeed, float runningSpeed, Vector3 lastPosition)
     {
-        _speed = speed;
+        _locomotionSpeed = locomotionSpeed;
+        _runningSpeed = runningSpeed;
+        _lastPosition = lastPosition;
     }
 
-    public void LocomoteWithinFrame(Transform characterPoint, Vector2 locomotionDirection)
+    public void Locomote(Vector2 direction) //ИНКАПУСЛЯЦИЯ
     {
-        Vector3 directionCalibrated = new Vector3(locomotionDirection.x, 0f, locomotionDirection.y);
+        Vector3 directionCalibrated = new Vector3(direction.x, 0f, direction.y);
+        Vector3 nextPosition = _lastPosition += directionCalibrated * _locomotionSpeed * Time.deltaTime;
+        //Debug.Log(Locomoted.GetInvocationList());
+        Locomoted.Invoke(nextPosition);
+        //Debug.Log("AAAAAAA");
+    }
 
-        characterPoint.position += directionCalibrated * _speed * Time.deltaTime;
+    public void Run(Vector2 direction) //ИНКАПУСЛЯЦИЯ
+    {
+        Vector3 directionCalibrated = new Vector3(direction.x, 0f, direction.y);
+        Vector3 nextPosition = _lastPosition += directionCalibrated * _runningSpeed * Time.deltaTime;
+
+        Runned.Invoke(nextPosition);
     }
 }
