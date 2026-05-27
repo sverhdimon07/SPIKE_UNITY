@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class StartEventWall : MonoBehaviour
 {
+    /*
     private const string PLAYER_TAG = "PlayerBox";
 
     [SerializeField] private UnityEvent wallActivated;
@@ -15,5 +16,5 @@ public class StartEventWall : MonoBehaviour
             return;
         }
         wallActivated.Invoke();
-    }
+    }*/
 }

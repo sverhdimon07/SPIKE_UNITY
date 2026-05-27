@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 
 public class BulletSpawn : MonoBehaviour
 {
+    /*
     private const string LEFTHAND_TAG = "PlayerLeftHand";
     private const string RIGHTHAND_TAG = "PlayerRightHand";
 
@@ -106,5 +107,5 @@ public class BulletSpawn : MonoBehaviour
     public void DisableSecondState()
     {
         secondState = false;
-    }
+    }*/
 }

@@ -23,7 +23,6 @@ public sealed class EnvironmentAreaOverlapAnalyzerRender : MonoBehaviour
     {
         _startSphereCenterPosition = startSphereCenterPosition;
         _sphereRaduis = sphereRaduis;
-        print("!!!!!!!!!!!!!!!!!!!!!!!!!");
     }
 
 #if UNITY_EDITOR

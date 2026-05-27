@@ -1,10 +1,10 @@
 public sealed class CharacterWeaponCloseRange
 {
-    private WeaponCloseRange _weapon;
+    private Weapon _weapon;
 
-    public WeaponCloseRange Weapon => _weapon;
+    public Weapon Weapon => _weapon;
 
-    public void Initialize(WeaponCloseRange weapon)
+    public void Initialize(Weapon weapon)
     {
         _weapon = weapon;
     }

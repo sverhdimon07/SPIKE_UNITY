@@ -1,0 +1,11 @@
+Model Information:
+* title:	Game Ready Tatical Knife
+* source:	https://sketchfab.com/3d-models/game-ready-tatical-knife-d652ad516d5c4401b38e68dece9ca665
+* author:	Arthur (https://sketchfab.com/.arthur)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Game Ready Tatical Knife" (https://sketchfab.com/3d-models/game-ready-tatical-knife-d652ad516d5c4401b38e68dece9ca665) by Arthur (https://sketchfab.com/.arthur) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

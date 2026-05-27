@@ -8,12 +8,12 @@ public sealed class CharacterOffenseController
 
     private CharacterAttack _secondAttackType = new CharacterAttackLongRange(); //зависим от абстракции и в типе и а названии переменной (и тип, и название уже изменил)
 
-    public CharacterOffenseController(WeaponCloseRange weaponCloseRange, WeaponLongRange weaponLongRange, Vector3 gameObjectPosition, Vector2 renderAndSkeletonDirectionXZ)
+    public CharacterOffenseController(Weapon firstWeapon, Weapon secondWeapon, Vector3 gameObjectPosition, Vector2 renderAndSkeletonDirectionXZ)
     {
         //_weaponController = weaponController;
-        _weaponController.Initialize(weaponCloseRange, weaponLongRange);
-        _firstAttackType.Initialize(new EnvironmentAreaOverlapAnalyzer<IDamageable, CharacterControllerNew>(), gameObjectPosition, renderAndSkeletonDirectionXZ, 0.15f, weaponCloseRange.Range, 1.25f, new DamageCalculatorBasic()); //работа с конретной реализацией должна проводитьс€ наверху, но с другой стороны мы создаем крепкий контрактна то, что в €чейку ближней атаки не заинититс€ дальн€€ атака (что по идее может прилететь с сервера спокойно)
-        _secondAttackType.Initialize(new EnvironmentAreaOverlapAnalyzer<IDamageable, CharacterControllerNew>(), gameObjectPosition, renderAndSkeletonDirectionXZ, 0.15f, weaponLongRange.Range, 1.25f, new DamageCalculatorBasic()); //работа с конретной реализацией должна проводитьс€ наверху, но с другой стороны мы создаем крепкий контрактна то, что в €чейку ближней атаки не заинититс€ дальн€€ атака (что по идее может прилететь с сервера спокойно)
+        _weaponController.Initialize(firstWeapon, secondWeapon);
+        _firstAttackType.Initialize(new EnvironmentAreaOverlapAnalyzer<IDamageable, CharacterControllerNew>(), gameObjectPosition, renderAndSkeletonDirectionXZ, 0.15f, firstWeapon.Range, 1.25f, new DamageCalculatorBasic()); //работа с конретной реализацией должна проводитьс€ наверху, но с другой стороны мы создаем крепкий контрактна то, что в €чейку ближней атаки не заинититс€ дальн€€ атака (что по идее может прилететь с сервера спокойно)
+        _secondAttackType.Initialize(new EnvironmentAreaOverlapAnalyzer<IDamageable, CharacterControllerNew>(), gameObjectPosition, renderAndSkeletonDirectionXZ, 0.15f, secondWeapon.Range, 1.25f, new DamageCalculatorBasic()); //работа с конретной реализацией должна проводитьс€ наверху, но с другой стороны мы создаем крепкий контрактна то, что в €чейку ближней атаки не заинититс€ дальн€€ атака (что по идее может прилететь с сервера спокойно)
     }
 
     public void AttackCloseRange(Vector3 gameObjectPosition, Vector2 direction) //сначала прописал Inject тут, но зачем при каждой атаке че-то инджектить. »нджектить нужно при подн€тии нового оружи€, но так как у нас данной механики пока нет, мы инджектим при создании и инициализации оружи€ в руках игрока

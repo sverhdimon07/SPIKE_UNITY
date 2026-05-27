@@ -1480,6 +1480,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd44b7c07449b7749ab39d61d9d04c46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwordBasic
+  _damage: 0
+  _range: 0
 --- !u!1 &227772839
 GameObject:
   m_ObjectHideFlags: 0
@@ -2342,14 +2344,8 @@ MonoBehaviour:
   _health: 100
   _locomotionSpeed: 2.5
   _runningSpeed: 6.25
-  _weaponCloseRange: {fileID: 1195767631}
-  _weaponCloseRangeData:
-    _damage: 0
-    _range: 0
-  _weaponLongRange: {fileID: 1269434325}
-  _weaponLongRangeData:
-    _damage: 0
-    _range: 0
+  _firstWeapon: {fileID: 1195767631}
+  _secondWeapon: {fileID: 1269434325}
 --- !u!1 &378193473
 GameObject:
   m_ObjectHideFlags: 0
@@ -2396,6 +2392,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab43a39802150944a9e5479e6f89506e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RocketLauncherBasic
+  _damage: 4
+  _range: 20
 --- !u!1 &385656658
 GameObject:
   m_ObjectHideFlags: 0
@@ -6876,6 +6874,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd44b7c07449b7749ab39d61d9d04c46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwordBasic
+  _damage: 2
+  _range: 1
 --- !u!1 &1197667553
 GameObject:
   m_ObjectHideFlags: 0
@@ -7761,6 +7761,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab43a39802150944a9e5479e6f89506e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RocketLauncherBasic
+  _damage: 4
+  _range: 20
 --- !u!1 &1273406872
 GameObject:
   m_ObjectHideFlags: 0
@@ -9041,22 +9043,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameController
   <PlayerController>k__BackingField: {fileID: 5688760110951858511}
-  _playerWeaponCloseRange: {fileID: 2065284798}
-  _playerWeaponCloseRangeData:
-    _damage: 2
-    _range: 0.75
-  _playerWeaponLongRange: {fileID: 378193475}
-  _playerWeaponLongRangeData:
-    _damage: 1
-    _range: 10
-  _characterWeaponCloseRange: {fileID: 1195767631}
-  _characterWeaponCloseRangeData:
-    _damage: 2
-    _range: 0.75
-  _characterWeaponLongRange: {fileID: 1269434325}
-  _characterWeaponLongRangeData:
-    _damage: 1
-    _range: 10
   _characterHealth: 100
   _characterLocomotionSpeed: 2.5
   _characterRunningSpeed: 6.25
@@ -10637,6 +10623,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab43a39802150944a9e5479e6f89506e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RocketLauncherBasic
+  _damage: 0
+  _range: 0
 --- !u!1 &1916277686
 GameObject:
   m_ObjectHideFlags: 0
@@ -12192,6 +12180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd44b7c07449b7749ab39d61d9d04c46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwordBasic
+  _damage: 2
+  _range: 1
 --- !u!1 &2090397971
 GameObject:
   m_ObjectHideFlags: 0
@@ -15204,14 +15194,8 @@ MonoBehaviour:
   _health: 99
   _locomotionSpeed: 2.4
   _runningSpeed: 6.24
-  _weaponCloseRange: {fileID: 2065284798}
-  _weaponCloseRangeData:
-    _damage: 0
-    _range: 0
-  _weaponLongRange: {fileID: 378193475}
-  _weaponLongRangeData:
-    _damage: 0
-    _range: 0
+  _firstWeapon: {fileID: 2065284798}
+  _secondWeapon: {fileID: 378193475}
 --- !u!4 &5748198952811327461
 Transform:
   m_ObjectHideFlags: 0

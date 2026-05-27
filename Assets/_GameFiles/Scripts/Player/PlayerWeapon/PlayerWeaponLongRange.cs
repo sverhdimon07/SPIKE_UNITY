@@ -1,10 +1,10 @@
 public sealed class PlayerWeaponLongRange
 {
-    private WeaponLongRange _weapon;
+    private Weapon _weapon;
 
-    public WeaponLongRange Weapon => _weapon;
+    public Weapon Weapon => _weapon;
 
-    public void Initialize(WeaponLongRange weapon)
+    public void Initialize(Weapon weapon)
     {
         _weapon = weapon;
     }

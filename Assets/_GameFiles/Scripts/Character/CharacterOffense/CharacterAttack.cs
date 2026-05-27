@@ -21,12 +21,10 @@ public abstract class CharacterAttack
 
         if (damageReciever == null)
         {
-            Debug.Log("AAAAAAAAAAAAAAAAAAAAAA");
             return;
         }
         float damage = _damageCalculator.Calculate(weapon);
         
         damageReciever.TakeDamage(damage);
-        Debug.Log("BBBBBBBBBBBBBBBB");
     }
 }

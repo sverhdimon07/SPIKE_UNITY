@@ -6,15 +6,7 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
 {
     [Header("Weapons")] //должна быть реализована система, которая будет учитывать выбор геймдизайнера - не поставил оружие именно игроку, он заспавнится без оружия - то есть у нас тут в любом случае будет 3 графы (оружие на сцене, оружие игрока, оружие персонажа)
     [Header("PlayerWeapons")] //Я СДЕЛАЛ ТАК, ЧТОБЫ МОЖНО БЫЛО ИНИТИТЬ ОТСЮДА ДАТУ ЛЮБОГО ТИПА ОРУЖИЯ (ТО ЕСТЬ, ЛЮБОЙ СУЩНОСТИ ОРУЖИЯ), но по идее же у каждого оружия уже изначально есть какая-то дата, но при этом она и не должна быть прямо в скрипте самого оружия проиничена, она должна быть сериализована и закинута в префаб - но тут в любом случае нужно придумать методологию создания скриптов для оружия
-    [SerializeField] private WeaponCloseRange _playerWeaponCloseRange;
-    [SerializeField] private WeaponData _playerWeaponCloseRangeData; //ПРОВЕРКА НА ОТСУТСТВИЕ ПАРАМЕТРОВ В ИНСПЕКТОРЕ (КАК ЭТО СДЕЛАНО СО ЗДОРОВЬЕМ (ИНКАПСУЛЯЦИЯ))
-    [SerializeField] private WeaponLongRange _playerWeaponLongRange;
-    [SerializeField] private WeaponData _playerWeaponLongRangeData;
     [Header("CharacterWeapons")] // не придумал, как реализовать правильно (пока у каждого персонажа ровно по одному оружию - все вроде норм, но при расширении - уже проблема, поэтому скорее всего надо отдельно каждого персонажа инитить)
-    [SerializeField] private WeaponCloseRange _characterWeaponCloseRange;
-    [SerializeField] private WeaponData _characterWeaponCloseRangeData; //ПРОВЕРКА НА ОТСУТСТВИЕ ПАРАМЕТРОВ В ИНСПЕКТОРЕ (КАК ЭТО СДЕЛАНО СО ЗДОРОВЬЕМ (ИНКАПСУЛЯЦИЯ))
-    [SerializeField] private WeaponLongRange _characterWeaponLongRange;
-    [SerializeField] private WeaponData _characterWeaponLongRangeData;
     //[SerializeField] private Weapon[] weaponsCharacter;
     //[Header("WeaponsOnScene")]
     //[SerializeField] private Weapon[] weaponsOnScene;
@@ -70,9 +62,9 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
 
         InstantiateMigratingBetweenSceneObjects(); //ВРЕМЕННО
         _gameplayMenuUI.Initialize();
-        InitPlayerWeapons();
-        InitCharacterWeapons();
-        InitNobodysWeapons();
+        //InitPlayerWeapons();
+        //InitCharacterWeapons();
+        //InitNobodysWeapons();
         InitPlayer(); //хз, как под другому, но даже если они запускаются в Awake - OnEnable запускается раньше. Мб если сериализировать эти поля, то все будет норм
         //InitCharacter();!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     }
@@ -171,23 +163,6 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
             character.Initialize(_characterHealth, _characterLocomotionSpeed, _characterRunningSpeed, _characterWeaponCloseRange, _characterWeaponLongRange);
         }
     }*/
-
-    private void InitPlayerWeapons()
-    {
-        _playerWeaponCloseRange.Initialize(_playerWeaponCloseRangeData);
-        _playerWeaponLongRange.Initialize(_playerWeaponLongRangeData);
-    }
-
-    private void InitCharacterWeapons()
-    {
-        _characterWeaponCloseRange.Initialize(_characterWeaponCloseRangeData);
-        _characterWeaponLongRange.Initialize(_characterWeaponLongRangeData);
-    }
-
-    private void InitNobodysWeapons()
-    {
-        //
-    }
 
     private void ResubscribeLocomotionOnLocomotionDirectionDirectedForLocomotionHandler()
     {

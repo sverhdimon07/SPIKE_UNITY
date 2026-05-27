@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class TimelineEvents : MonoBehaviour
 {
     [SerializeField] private CharacterAI characterAI;
-    [SerializeField] private CharacterAnimator characterAnimator;
+    //[SerializeField] private CharacterAnimator characterAnimator;
 
     [SerializeField] private float fisrtDelayTime = 24.5f;
     [SerializeField] private float secondDelayTime = 5f;
