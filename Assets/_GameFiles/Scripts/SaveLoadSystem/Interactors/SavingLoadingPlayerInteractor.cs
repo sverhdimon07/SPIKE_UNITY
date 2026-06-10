@@ -26,7 +26,7 @@ public sealed class SavingLoadingPlayerInteractor : MonoBehaviour, ISavingLoadin
         //Player player = FindAnyObjectByType<Player>(); //ХАРДКОД
         //Player player = (Player)playerMono; //ДАУНКАСТ - исправить обощенныйм типом
         Vector3 position = playerController.transform.position;
-        Quaternion rotation = playerController.GameObjectPivot.rotation;
+        Quaternion rotation = playerController.gameObject.transform.rotation;
         //List<Vector3, Quaternion> savingObjects = new List<Vector3, Quaternion>();
         //SavingLoadingPlayerData _savingLoadingPlayerData = new SavingLoadingPlayerData();
         //_savingLoadingPlayerData.Position = position;

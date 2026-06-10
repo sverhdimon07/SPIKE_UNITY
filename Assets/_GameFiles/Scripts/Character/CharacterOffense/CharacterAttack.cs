@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class CharacterAttack
 {
+    public UnityAction Attacked;
+
     private IEnvironmentAreaAnalyzer<IDamageable, CharacterControllerNew> _environmentAreaAnalyzer;
 
     private IDamageCalculator _damageCalculator;

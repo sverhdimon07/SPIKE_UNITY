@@ -7,13 +7,34 @@ using UnityEngine.UI;
 [RequireComponent(typeof(CapsuleCollider))]
 public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAttacker //тут прикол такой, что этот контроллер тоже может реализовывать интерфейсы модели, НО стоит ли реализовывать их и там, и там - или поставить только тут и все?
 {
-    public UnityAction Died; //выходы для фабрик или классов более высокого уровня
+    public static UnityAction Died; //выходы для фабрик или классов более высокого уровня
     public UnityAction<float> DamageTaken;
 
     [Header("View References")]
+    [SerializeField] private ParticleSystem _waterEffects;
+    [SerializeField] private ParticleSystem _fireEffects;
+    [SerializeField] private ParticleSystem _lightningEffects;
+    [SerializeField] private ParticleSystem _windEffects;
+
+    [SerializeField] private AudioSource _waterSound;
+    [SerializeField] private AudioSource _fireSound;
+    [SerializeField] private AudioSource _lightningSound;
+    [SerializeField] private AudioSource _windSound;
+
+    public ParticleSystem WaterEffects => _waterEffects;
+    public ParticleSystem FireEffects => _fireEffects;
+    public ParticleSystem LightningEffects => _lightningEffects;
+    public ParticleSystem WindEffects => _windEffects;
+
+    public AudioSource WaterSound => _waterSound;
+    public AudioSource FireSound => _fireSound;
+    public AudioSource LightningSound => _lightningSound;
+    public AudioSource WindSound => _windSound;
+
     [SerializeField] private Image _healthBar; //хотел переносить эти поля в бутстрап, НО почему-бы все поля, не отвечающие за геймплейную логику, не хранить именно здесь (ибо бутстрап должен инитить ГЕЙМДИЗАЙНЕРСКИЕ ДАННЫЕ, зачем их мешать с ссылками на вспомогательные классы?)?
     [SerializeField] private Image _weaponLongRangeCooldownBar;
     [SerializeField] private TMP_Text _deathMessageText;
+    [SerializeField] private TMP_Text _counterText;
     [SerializeField] private Animator _animator;
     [SerializeField] private Transform _gameObjectPivot;
     [SerializeField] private Transform _renderAndSkeletonPivot;
@@ -40,12 +61,13 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
     public Player Model => _model;
 
     public Transform GameObjectPivot => _gameObjectPivot; //ВРЕМЕННАЯ МЕРА
+    public Transform RenderAndSkeletonPivot => _renderAndSkeletonPivot; //ВРЕМЕННАЯ МЕРА
     public Transform ThirdPersonCameraControllerPivot => _thirdPersonCameraControllerPivot; //ВРЕМЕННАЯ МЕРА
 
     private void Awake() //чекнуть конструкторы и деструкторы в монобехах
     {
-        _view = new PlayerView(new PlayerUI(_healthBar, _weaponLongRangeCooldownBar, _deathMessageText), new PlayerAnimator(_animator), _gameObjectPivot, _renderAndSkeletonPivot);
-        _model = new Player(new PlayerMechanicStateMachine(_model, new PlayerMechanicIdleState()), new PlayerHealthController(new PlayerHealth(_maxHealth, _health)), new PlayerMovementController(new PlayerLocomotion(_locomotionSpeed, _runningSpeed, transform.position), new PlayerRotation()), new PlayerOffenseController(_firstWeapon, _secondWeapon, transform.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z)), new PlayerDefenseController()); //тут такой прикол, что любой человек сможет создавать объект этого класса в любой части программы, но как бы и работать он с ним не сможет без верхнеуровнего монобеховского слоя. Тут все норм, я бы только засинглтонил PlayerController и Player (про PlayerView - хз)
+        _view = new PlayerView(new PlayerUI(_healthBar, _weaponLongRangeCooldownBar, _deathMessageText, _counterText), new PlayerAnimator(_animator), _gameObjectPivot, _renderAndSkeletonPivot);
+        _model = new Player(new PlayerMechanicStateMachine(_model, new PlayerMechanicIdleState()), new PlayerHealthController(new PlayerHealth(_maxHealth, _health)), new PlayerMovementController(new PlayerLocomotion(new EnvironmentAreaOverlapAnalyzer<Collider, PlayerController>(), new Vector2(_renderAndSkeletonPivot.forward.x, _renderAndSkeletonPivot.forward.z), 0.3f, 0.5f, 2.5f, _locomotionSpeed, _runningSpeed, transform.position), new PlayerRotation()), new PlayerOffenseController(_firstWeapon, _secondWeapon, transform.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z)), new PlayerDefenseController()); //тут такой прикол, что любой человек сможет создавать объект этого класса в любой части программы, но как бы и работать он с ним не сможет без верхнеуровнего монобеховского слоя. Тут все норм, я бы только засинглтонил PlayerController и Player (про PlayerView - хз)
     }
 
     private void Update()
@@ -73,7 +95,7 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
         PlayerHealth.DamageTaken -= _view.PresentDamageTake;
         PlayerHealth.DamageTaken -= DamageTaken;
         PlayerHealth.Died -= _view.PresentDeath;
-        PlayerHealth.Died += Died;
+        PlayerHealth.Died -= Died;
         PlayerLocomotion.Locomoted -= _view.MoveCharacterModelInLocomotionForm;
         PlayerLocomotion.Runned -= _view.MoveCharacterModelInRunForm;
         PlayerRotation.Rotated -= _view.TurnCharacterModel;
@@ -101,14 +123,14 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
         _model.Die();
     }
 
-    public void Locomote(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection)
+    public void Locomote(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection, Vector2 renderAndSkeletonPivot)
     {
-        _model.Locomote(thirdPersonCameraControllerPivot, inputDirection);
+        _model.Locomote(thirdPersonCameraControllerPivot, inputDirection, renderAndSkeletonPivot);
     }
 
-    public void Run(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection)
+    public void Run(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection, Vector2 renderAndSkeletonPivot)
     {
-        _model.Run(thirdPersonCameraControllerPivot, inputDirection);
+        _model.Run(thirdPersonCameraControllerPivot, inputDirection, renderAndSkeletonPivot);
     }
 
     public void Rotate(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection) //сначала хотел не вставлять сюда этот метод, но пришлось, ибо он нужен был для бутстрапа
@@ -119,10 +141,26 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
     public void AttackCloseRange(Vector3 gameObjectPosition, Vector2 gameObjectRotation)
     {
         _model.AttackCloseRange(gameObjectPosition, gameObjectRotation);
+
+        FireEffects.Play();
+        FireSound.Play();
     }
 
     public void AttackLongRange(Vector3 gameObjectPosition, Vector2 gameObjectRotation)
     {
         _model.AttackLongRange(gameObjectPosition, gameObjectRotation);
+
+        WaterEffects.Play();
+        WaterSound.Play();
+    }
+
+    public void Block()
+    {
+        _model.HealthController.Health.Block(); //ВВЕЗДЕ СДЕЛАТЬ ТАК
+    }
+
+    public void Unblock()
+    {
+        _model.HealthController.Health.Unblock(); //ВВЕЗДЕ СДЕЛАТЬ ТАК
     }
 }

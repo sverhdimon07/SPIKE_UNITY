@@ -11,23 +11,41 @@ public sealed class PlayerLocomotion
 
     private Vector3 _lastPosition;
 
-    public PlayerLocomotion(float locomotionSpeed, float runningSpeed, Vector3 lastPosition)
+    private readonly IEnvironmentAreaAnalyzer<Collider, PlayerController> _environmentAreaAnalyzer;
+
+    public PlayerLocomotion(IEnvironmentAreaAnalyzer<Collider, PlayerController> environmentAreaAnalyzer, Vector2 skeletonAndRenderDirection, float environmentAreaAnalyzerToolDistanceToPlayer, float environmentAreaAnalyzerToolLength, float environmentAreaAnalyzerToolHeight, float locomotionSpeed, float runningSpeed, Vector3 lastPosition)
     {
+        _environmentAreaAnalyzer = environmentAreaAnalyzer;
+        _environmentAreaAnalyzer.Initialize(_lastPosition, skeletonAndRenderDirection, environmentAreaAnalyzerToolDistanceToPlayer, environmentAreaAnalyzerToolLength, environmentAreaAnalyzerToolHeight);
+
         _locomotionSpeed = locomotionSpeed;
         _runningSpeed = runningSpeed;
         _lastPosition = lastPosition;
     }
 
-    public void Locomote(Vector3 direction) //ИНКАПУСЛЯЦИЯ
+    public void Locomote(Vector3 direction, Vector2 skeletonAndRenderDirection) //ИНКАПУСЛЯЦИЯ
     {
+        Collider obstacle = _environmentAreaAnalyzer.Analyze(_lastPosition, skeletonAndRenderDirection);
+
+        if ((obstacle != null) && (obstacle.isTrigger == false))
+        {
+            return;
+        }
+
         Vector3 nextPosition = _lastPosition += direction * _locomotionSpeed * Time.deltaTime;
-        //Debug.Log(Locomoted.GetInvocationList());
+
         Locomoted.Invoke(nextPosition);
-        //Debug.Log("AAAAAAA");
     }
 
-    public void Run(Vector3 direction) //ИНКАПУСЛЯЦИЯ
+    public void Run(Vector3 direction, Vector2 skeletonAndRenderDirection) //ИНКАПУСЛЯЦИЯ
     {
+        Collider obstacle = _environmentAreaAnalyzer.Analyze(_lastPosition, skeletonAndRenderDirection);
+
+        if ((obstacle != null) && (obstacle.isTrigger == false))
+        {
+            return;
+        }
+
         Vector3 nextPosition = _lastPosition += direction * _runningSpeed * Time.deltaTime;
 
         Runned.Invoke(nextPosition);

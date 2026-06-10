@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public static class SceneLoading //сделать синглтон-сервис (первая причина этому - тут нет метода инита (я добавил срочно надо потому что) И это не сущность, это чисто функциональный класс); НАВЕРНОЕ СТОИТ ПЕРЕИМЕНОВАТЬ В SceneLoading;
 {
     private const int MAIN_MENU_SCENE_INDEX = 0;
-    private const int TEST_SCENE_INDEX = 1;
+    private const int LEVEL_SCENE_INDEX = 1;
 
     //private GameObject[] _migratingBetweenSceneObjects = new GameObject[1]; //над названием подумать
 
@@ -13,6 +13,8 @@ public static class SceneLoading //сделать синглтон-сервис (первая причина этому
     public static void Initialize(GameObject obj)
     {
         _migratingBetweenSceneObject = obj;
+
+        PlayerController.Died += LoadLevelScene;
     }
 
     public static void LoadMainMenuScene()
@@ -29,9 +31,9 @@ public static class SceneLoading //сделать синглтон-сервис (первая причина этому
         //SceneManager.MoveGameObjectToScene(_migratingBetweenSceneObject, SceneManager.GetSceneByBuildIndex(MAIN_MENU_SCENE_INDEX));
     }
 
-    public static void LoadTestScene()
+    public static void LoadLevelScene()
     {
-        SceneManager.LoadScene(TEST_SCENE_INDEX);
+        SceneManager.LoadScene(LEVEL_SCENE_INDEX);
         Time.timeScale = 1f;
 
         /*

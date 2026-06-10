@@ -5,11 +5,14 @@ public sealed class PlayerMechanicLocomotionState : PlayerMechanicState
     private readonly Transform _thirdPersonCameraControllerPivot;
 
     private readonly Vector2 _inputDirection;
-    
-    public PlayerMechanicLocomotionState(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection)
+
+    private readonly Vector2 _renderAndSkeletonPivot;
+
+    public PlayerMechanicLocomotionState(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection, Vector2 renderAndSkeletonPivot)
     {
         _thirdPersonCameraControllerPivot = thirdPersonCameraControllerPivot;
         _inputDirection = inputDirection;
+        _renderAndSkeletonPivot = renderAndSkeletonPivot;
     }
 
     public override void Enter(Player player)
@@ -19,7 +22,7 @@ public sealed class PlayerMechanicLocomotionState : PlayerMechanicState
 
     public override void Do(Player player)
     {
-        player.MovementController.Locomote(_thirdPersonCameraControllerPivot, _inputDirection);
+        player.MovementController.Locomote(_thirdPersonCameraControllerPivot, _inputDirection, _renderAndSkeletonPivot);
     }
 
     public override void DoWithinFrame(Player player)

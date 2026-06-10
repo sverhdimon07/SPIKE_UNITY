@@ -17,6 +17,6 @@ public sealed class PlayerMechanicIdleState : PlayerMechanicState
 
     public override void Exit(Player player)
     {
-        //
+        //player.MechanicStateMachine.SwitchState(player, new PlayerMechanicLocomotionState());
     }
 }

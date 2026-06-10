@@ -11,12 +11,14 @@ public sealed class EnvironmentAreaOverlapAnalyzerRender : MonoBehaviour
         //как только я поменят тип с плеера на другой - сразу все накрылось, ибо это работает на статике
         EnvironmentAreaOverlapAnalyzer<IDamageable, PlayerController>.OverlapCreated += Initialize; //прям совсем хардкод, работает с конкретной реализацией
         EnvironmentAreaOverlapAnalyzer<IDamageable, CharacterControllerNew>.OverlapCreated += Initialize; //прям совсем хардкод, работает с конкретной реализацией
+        EnvironmentAreaOverlapAnalyzer<Collider, PlayerController>.OverlapCreated += Initialize;
     }
 
     private void OnDisable()
     {
         EnvironmentAreaOverlapAnalyzer<IDamageable, PlayerController>.OverlapCreated -= Initialize;
         EnvironmentAreaOverlapAnalyzer<IDamageable, CharacterControllerNew>.OverlapCreated -= Initialize;
+        EnvironmentAreaOverlapAnalyzer<Collider, PlayerController>.OverlapCreated -= Initialize;
     }
 
     private void Initialize(Vector3 startSphereCenterPosition, float sphereRaduis)

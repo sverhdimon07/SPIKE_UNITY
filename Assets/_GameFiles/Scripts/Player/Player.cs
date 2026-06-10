@@ -52,15 +52,15 @@ public sealed class Player : IDamageable, IAllRangesAttacker //я думаю, что если
         _mechanicStateMachine.State.Do(this);
     }
 
-    public void Locomote(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection) //пропал публичный метод для бега, а я хотел дописывать контракты на ходьбу, на бег (НО МБ С FSM ВСЕ НАЛАДИТСЯ)
+    public void Locomote(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection, Vector2 skeletonAndRenderDirection) //пропал публичный метод для бега, а я хотел дописывать контракты на ходьбу, на бег (НО МБ С FSM ВСЕ НАЛАДИТСЯ)
     {
-        _mechanicStateMachine.SwitchState(this, new PlayerMechanicLocomotionState(thirdPersonCameraControllerPivot, inputDirection));
+        _mechanicStateMachine.SwitchState(this, new PlayerMechanicLocomotionState(thirdPersonCameraControllerPivot, inputDirection, skeletonAndRenderDirection));
         _mechanicStateMachine.State.Do(this);
     }
 
-    public void Run(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection) //пропал публичный метод для бега, а я хотел дописывать контракты на ходьбу, на бег (НО МБ С FSM ВСЕ НАЛАДИТСЯ)
+    public void Run(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection, Vector2 skeletonAndRenderDirection) //пропал публичный метод для бега, а я хотел дописывать контракты на ходьбу, на бег (НО МБ С FSM ВСЕ НАЛАДИТСЯ)
     {
-        _mechanicStateMachine.SwitchState(this, new PlayerMechanicRunState(thirdPersonCameraControllerPivot, inputDirection));
+        _mechanicStateMachine.SwitchState(this, new PlayerMechanicRunState(thirdPersonCameraControllerPivot, inputDirection, skeletonAndRenderDirection));
         _mechanicStateMachine.State.Do(this);
         //подумать про расширение - например, мне нужно будет добавить передвижение пешком, смогу ли я добавить это, соблюдая OCP?
     }
@@ -73,12 +73,19 @@ public sealed class Player : IDamageable, IAllRangesAttacker //я думаю, что если
     public void AttackCloseRange(Vector3 gameObjectPosition, Vector2 renderAndSkeletonDirectionXZ) //подумать над названием ЛК тут, ибо нам нужна семантика реальной позиции (то есть, gameObjectPosition) ИЛИ нам нужна семантика позиции для атаки (startPosition). (пример я привел неудачный, ибо тут все равно gameObjectPosition, лучше посмотреть на inputDirection сверху, где я долго писал приписку locomotion) Я ДУМАЮ ВТОРОЕ, ибо все-таки привязка к названию метода ДОЛЖНА БЫТЬ;
     {
         _mechanicStateMachine.SwitchState(this, new PlayerMechanicAttackCloseRangeState(gameObjectPosition, renderAndSkeletonDirectionXZ)); //возможно это стоит как-то прокидывать сверху, но пока оставлю так, ибо это логично. Но впринципе можно и прокинуть
+        //Debug.Log("444444444444444444444444444444");
         _mechanicStateMachine.State.Do(this);
     }
     //transform.position, new Vector2(_renderAndSkeletonPivot.forward.x, _renderAndSkeletonPivot.forward.z)
     public void AttackLongRange(Vector3 gameObjectPosition, Vector2 renderAndSkeletonDirectionXZ)
     {
         _mechanicStateMachine.SwitchState(this, new PlayerMechanicAttackLongRangeState(gameObjectPosition, renderAndSkeletonDirectionXZ));
+        _mechanicStateMachine.State.Do(this);
+    }
+
+    public void Block()
+    {
+        _mechanicStateMachine.SwitchState(this, new PlayerMechanicBlockState());
         _mechanicStateMachine.State.Do(this);
     }
 }

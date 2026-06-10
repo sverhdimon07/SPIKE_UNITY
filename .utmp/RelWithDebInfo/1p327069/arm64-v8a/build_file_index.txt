@@ -1,0 +1,2 @@
+D:\UNITY\UNITY BACKUP\SPIKE\SPIKE_UNITY\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+D:\UNITY\UNITY BACKUP\SPIKE\SPIKE_UNITY\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt

@@ -14,6 +14,9 @@ public sealed class InputController : MonoBehaviour
     public UnityAction AttackLongRangeButtonPressed;
     public UnityAction OpeningGameplayeMenuButtonPressed;
 
+    public UnityAction BlockButtonHolded;
+    public UnityAction BlockButtonUnholded;
+
     public UnityAction<Vector2> LocomotionDirectionDirected;
 
     private void Awake()
@@ -30,6 +33,9 @@ public sealed class InputController : MonoBehaviour
         _reader.MainCharacter.AttackCloseRange.performed += context => AttackCloseRangeButtonPressed.Invoke();
         _reader.MainCharacter.AttackLongRange.performed += context => AttackLongRangeButtonPressed.Invoke();
         _reader.MainCharacter.OpeningGameplayMenu.performed += context => OpeningGameplayeMenuButtonPressed.Invoke();
+
+        _reader.MainCharacter.Block.started += context => BlockButtonHolded.Invoke();
+        _reader.MainCharacter.Block.canceled += context => BlockButtonUnholded.Invoke();
     }
 
     private void OnDisable()
@@ -39,6 +45,9 @@ public sealed class InputController : MonoBehaviour
         _reader.MainCharacter.AttackCloseRange.performed -= context => AttackCloseRangeButtonPressed.Invoke();
         _reader.MainCharacter.AttackLongRange.performed -= context => AttackLongRangeButtonPressed.Invoke();
         _reader.MainCharacter.OpeningGameplayMenu.performed -= context => OpeningGameplayeMenuButtonPressed.Invoke();
+
+        _reader.MainCharacter.Block.started -= context => BlockButtonHolded.Invoke();
+        _reader.MainCharacter.Block.canceled -= context => BlockButtonUnholded.Invoke();
 
         _reader.Disable();
     }

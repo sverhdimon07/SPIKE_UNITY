@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public sealed class PlayerMechanicStateMachine
 {
     private PlayerMechanicState _state; //по идее, я могу прописать вызов метода Enter в сеттере свойства, но пока хз, нормальная ли это практика
@@ -17,6 +19,11 @@ public sealed class PlayerMechanicStateMachine
         {
             return;
         }
+        /*
+        if (nextState.GetType() == _state.GetType())
+        {
+            return;
+        }*/
         _state.Exit(player);
 
         _state = nextState;

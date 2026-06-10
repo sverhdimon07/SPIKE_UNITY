@@ -3,8 +3,8 @@ using UnityEngine.Events;
 
 public sealed class CharacterLocomotion
 {
-    public static UnityAction<Vector3> Locomoted;
-    public static UnityAction<Vector3> Runned;
+    public UnityAction<Vector3> Locomoted;
+    public UnityAction<Vector3> Runned;
 
     private readonly float _locomotionSpeed;
     private readonly float _runningSpeed;

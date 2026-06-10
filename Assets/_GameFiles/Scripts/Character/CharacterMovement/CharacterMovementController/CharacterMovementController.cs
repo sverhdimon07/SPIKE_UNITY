@@ -8,6 +8,10 @@ public sealed class CharacterMovementController
 
     private readonly CharacterJump _jump;
 
+    public CharacterLocomotion Locomotion => _locomotion;
+    public CharacterRotation Rotation => _rotation;
+    public CharacterJump Jump => _jump;
+
     public CharacterMovementController(CharacterLocomotion locomotion, CharacterRotation rotation)
     {
         _locomotion = locomotion;
@@ -30,7 +34,7 @@ public sealed class CharacterMovementController
         _rotation.Rotate(inputDirection);
     }
 
-    public void Jump()
+    public void DoJump()
     {
         //
     }

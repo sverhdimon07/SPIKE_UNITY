@@ -5,8 +5,7 @@ using UnityEngine.Events;
 
 public class StartEventWall : MonoBehaviour
 {
-    /*
-    private const string PLAYER_TAG = "PlayerBox";
+    private const string PLAYER_TAG = "Player";
 
     [SerializeField] private UnityEvent wallActivated;
     private void OnTriggerEnter(Collider collider)
@@ -16,5 +15,5 @@ public class StartEventWall : MonoBehaviour
             return;
         }
         wallActivated.Invoke();
-    }*/
+    }
 }

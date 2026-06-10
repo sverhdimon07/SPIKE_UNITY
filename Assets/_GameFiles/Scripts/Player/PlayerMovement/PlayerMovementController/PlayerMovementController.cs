@@ -14,14 +14,14 @@ public sealed class PlayerMovementController
         _rotation = rotation;
     }
     
-    public void Locomote(Transform cameraPoint, Vector2 inputDirection)
+    public void Locomote(Transform cameraPoint, Vector2 inputDirection, Vector2 skeletonAndRenderDirection)
     {
-        _locomotion.Locomote(CalculateWorldDirection(cameraPoint, inputDirection)); //吓信先牙臆
+        _locomotion.Locomote(CalculateWorldDirection(cameraPoint, inputDirection), skeletonAndRenderDirection); //吓信先牙臆
     }
 
-    public void Run(Transform cameraPoint, Vector2 inputDirection)
+    public void Run(Transform cameraPoint, Vector2 inputDirection, Vector2 skeletonAndRenderDirection)
     {
-        _locomotion.Run(CalculateWorldDirection(cameraPoint, inputDirection)); //吓信先牙臆
+        _locomotion.Run(CalculateWorldDirection(cameraPoint, inputDirection), skeletonAndRenderDirection); //吓信先牙臆
     }
 
     public void Rotate(Transform cameraPoint, Vector2 inputDirection)

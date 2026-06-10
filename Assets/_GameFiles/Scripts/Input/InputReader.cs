@@ -136,6 +136,15 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Block"",
+                    ""type"": ""Button"",
+                    ""id"": ""e4a813f3-2b54-449f-aeac-053cdb0d5d40"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -336,6 +345,28 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
                     ""action"": ""OpeningGameplayMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a8284960-2f59-45ce-b121-3301bd8425eb"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";KeyboardAndMouse"",
+                    ""action"": ""Block"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""195c334e-1b2f-4349-bb98-20231141b7ef"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Block"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -383,6 +414,7 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
         m_MainCharacter_AttackCloseRange = m_MainCharacter.FindAction("AttackCloseRange", throwIfNotFound: true);
         m_MainCharacter_AttackLongRange = m_MainCharacter.FindAction("AttackLongRange", throwIfNotFound: true);
         m_MainCharacter_OpeningGameplayMenu = m_MainCharacter.FindAction("OpeningGameplayMenu", throwIfNotFound: true);
+        m_MainCharacter_Block = m_MainCharacter.FindAction("Block", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
     }
@@ -471,6 +503,7 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
     private readonly InputAction m_MainCharacter_AttackCloseRange;
     private readonly InputAction m_MainCharacter_AttackLongRange;
     private readonly InputAction m_MainCharacter_OpeningGameplayMenu;
+    private readonly InputAction m_MainCharacter_Block;
     /// <summary>
     /// Provides access to input actions defined in input action map "MainCharacter".
     /// </summary>
@@ -502,6 +535,10 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "MainCharacter/OpeningGameplayMenu".
         /// </summary>
         public InputAction @OpeningGameplayMenu => m_Wrapper.m_MainCharacter_OpeningGameplayMenu;
+        /// <summary>
+        /// Provides access to the underlying input action "MainCharacter/Block".
+        /// </summary>
+        public InputAction @Block => m_Wrapper.m_MainCharacter_Block;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -543,6 +580,9 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
             @OpeningGameplayMenu.started += instance.OnOpeningGameplayMenu;
             @OpeningGameplayMenu.performed += instance.OnOpeningGameplayMenu;
             @OpeningGameplayMenu.canceled += instance.OnOpeningGameplayMenu;
+            @Block.started += instance.OnBlock;
+            @Block.performed += instance.OnBlock;
+            @Block.canceled += instance.OnBlock;
         }
 
         /// <summary>
@@ -569,6 +609,9 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
             @OpeningGameplayMenu.started -= instance.OnOpeningGameplayMenu;
             @OpeningGameplayMenu.performed -= instance.OnOpeningGameplayMenu;
             @OpeningGameplayMenu.canceled -= instance.OnOpeningGameplayMenu;
+            @Block.started -= instance.OnBlock;
+            @Block.performed -= instance.OnBlock;
+            @Block.canceled -= instance.OnBlock;
         }
 
         /// <summary>
@@ -755,6 +798,13 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnOpeningGameplayMenu(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Block" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnBlock(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

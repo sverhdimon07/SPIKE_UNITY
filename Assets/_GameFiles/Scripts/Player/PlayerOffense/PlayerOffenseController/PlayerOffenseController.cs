@@ -12,7 +12,7 @@ public sealed class PlayerOffenseController
     {
         //_weaponController = weaponController;
         _weaponController.Initialize(weaponCloseRange, weaponLongRange);
-        _firstAttackType.Initialize(new EnvironmentAreaOverlapAnalyzer<IDamageable, PlayerController>(), gameObjectPosition, renderAndSkeletonDirectionXZ, 0.15f, weaponCloseRange.Range, 1.25f, new DamageCalculatorBasic()); //работа с конретной реализацией должна проводитьс€ наверху, но с другой стороны мы создаем крепкий контрактна то, что в €чейку ближней атаки не заинититс€ дальн€€ атака (что по идее может прилететь с сервера спокойно)
+        _firstAttackType.Initialize(new EnvironmentAreaOverlapAnalyzer<IDamageable, PlayerController>(), gameObjectPosition, renderAndSkeletonDirectionXZ, 0.15f, weaponCloseRange.Range, 2.5f, new DamageCalculatorBasic()); //работа с конретной реализацией должна проводитьс€ наверху, но с другой стороны мы создаем крепкий контрактна то, что в €чейку ближней атаки не заинититс€ дальн€€ атака (что по идее может прилететь с сервера спокойно)
         _secondAttackType.Initialize(new EnvironmentAreaOverlapAnalyzer<IDamageable, PlayerController>(), gameObjectPosition, renderAndSkeletonDirectionXZ, 0.15f, weaponLongRange.Range, 1.25f, new DamageCalculatorBasic()); //работа с конретной реализацией должна проводитьс€ наверху, но с другой стороны мы создаем крепкий контрактна то, что в €чейку ближней атаки не заинититс€ дальн€€ атака (что по идее может прилететь с сервера спокойно)
     }
 

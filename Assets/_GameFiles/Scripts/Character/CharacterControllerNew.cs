@@ -4,22 +4,44 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(CapsuleCollider))]
-public /*abstract*/ class CharacterControllerNew : MonoBehaviour, IDamageable, IAllRangesAttacker //тут прикол такой, что этот контроллер тоже может реализовывать интерфейсы модели, НО стоит ли реализовывать их и там, и там - или поставить только тут и все?
+public abstract class CharacterControllerNew : MonoBehaviour, IDamageable //тут прикол такой, что этот контроллер тоже может реализовывать интерфейсы модели, НО стоит ли реализовывать их и там, и там - или поставить только тут и все?
 {
+    public Character _model; //не уверен, что так правильно; вообще есть 2 варика - ЛИБО сделать так, как здесь, с публичной для вызова публичных методов моделью и подписками вьюшки здесь, ЛИБО сделать модель приватной И соединять модель и вьюшку напрямую публичными методами. Мне впринципе 2й варик больше нравится;
+
     public UnityAction Died; //выходы для фабрик или классов более высокого уровня
     public UnityAction<float> DamageTaken;
 
     //[SerializeField] private Transform _renderAndSkeletonPivot;
-    [SerializeField] private Transform _playerPoint; //НЕНУЖНАЯ ПРИВЯЗКА - УДАЛЮ ПОТОМ (когда будет FSM)
-    [SerializeField] private Transform _lookAndLocomotionPoint;
+    protected Transform _playerPoint; //НЕНУЖНАЯ ПРИВЯЗКА - УДАЛЮ ПОТОМ (когда будет FSM)
+    [SerializeField] protected Transform _lookAndLocomotionPoint;
 
     [Header("View References")]
+    [SerializeField] private ParticleSystem _waterEffects;
+    [SerializeField] private ParticleSystem _fireEffects;
+    [SerializeField] private ParticleSystem _lightningEffects;
+    [SerializeField] private ParticleSystem _windEffects;
+
+    [SerializeField] private AudioSource _waterSound;
+    [SerializeField] private AudioSource _fireSound;
+    [SerializeField] private AudioSource _lightningSound;
+    [SerializeField] private AudioSource _windSound;
+
+    public ParticleSystem WaterEffects => _waterEffects;
+    public ParticleSystem FireEffects => _fireEffects;
+    public ParticleSystem LightningEffects => _lightningEffects;
+    public ParticleSystem WindEffects => _windEffects;
+
+    public AudioSource WaterSound => _waterSound;
+    public AudioSource FireSound => _fireSound;
+    public AudioSource LightningSound => _lightningSound;
+    public AudioSource WindSound => _windSound;
+
     [SerializeField] private Image _healthBar; //хотел переносить эти поля в бутстрап, НО почему-бы все поля, не отвечающие за геймплейную логику, не хранить именно здесь (ибо бутстрап должен инитить ГЕЙМДИЗАЙНЕРСКИЕ ДАННЫЕ, зачем их мешать с ссылками на вспомогательные классы?)?
     //[SerializeField] private Image _weaponLongRangeCooldownBar;
     //[SerializeField] private TMP_Text _deathMessageText;
     [SerializeField] private Animator _animator;
-    [SerializeField] private Transform _gameObjectPivot;
-    [SerializeField] private Transform _renderAndSkeletonPivot;
+    [SerializeField] protected Transform _gameObjectPivot;
+    [SerializeField] protected Transform _renderAndSkeletonPivot;
     //[SerializeField] private Transform _thirdPersonCameraControllerPivot;
 
     [Header("Model References")]
@@ -38,7 +60,9 @@ public /*abstract*/ class CharacterControllerNew : MonoBehaviour, IDamageable, I
 
     private CharacterView _view; //вот та разница между моделью и представлением. Просто если бы это было свойством да еще и публичным, то его методами можно было бы пользоваться в классе более высокого уровня
 
-    public Character _model; //не уверен, что так правильно; вообще есть 2 варика - ЛИБО сделать так, как здесь, с публичной для вызова публичных методов моделью и подписками вьюшки здесь, ЛИБО сделать модель приватной И соединять модель и вьюшку напрямую публичными методами. Мне впринципе 2й варик больше нравится;
+    protected int counter;
+
+    protected bool _isCloseToPlayer;
     
     public Character Model => _model;
 
@@ -47,98 +71,40 @@ public /*abstract*/ class CharacterControllerNew : MonoBehaviour, IDamageable, I
 
     private void Awake() //чекнуть конструкторы и деструкторы в монобехах
     {
+        _playerPoint = FindAnyObjectByType<PlayerController>().GetComponent<Transform>();
+
         _view = new CharacterView(new CharacterUI(_healthBar/*, _weaponLongRangeCooldownBar, _deathMessageText*/), new CharacterAnimator(_animator), _gameObjectPivot, _renderAndSkeletonPivot);
         _model = new Character(new CharacterMechanicStateMachine(_model, new CharacterMechanicIdleState()), new CharacterHealthController(new CharacterHealth(_maxHealth, _health)), new CharacterMovementController(new CharacterLocomotion(_locomotionSpeed, _runningSpeed, transform.position), new CharacterRotation()), new CharacterOffenseController(_firstWeapon, _secondWeapon, transform.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z)), new CharacterDefenseController()); //тут такой прикол, что любой человек сможет создавать объект этого класса в любой части программы, но как бы и работать он с ним не сможет без верхнеуровнего монобеховского слоя. Тут все норм, я бы только засинглтонил PlayerController и Player (про PlayerView - хз)
     }
 
-    private int counter;
-
-    private bool _isCloseToPlayer;
-    
-    private void Update() //возможно здесь будем корректировать то, куда смотрит ГГ (но возможно это стоит делать не здесь)
-    {
-        _model.MechanicStateMachine.State.DoWithinFrame(_model);
-
-        if (gameObject.name == "CharacterCloseRange")
-        {
-            transform.LookAt(_playerPoint.position);
-
-            if (Vector3.Distance(transform.position, _playerPoint.position) > 1.1f) //МГ
-            {
-                _isCloseToPlayer = false;
-
-                Locomote(/*ThirdPersonCameraControllerPivot, */new Vector2(transform.forward.x, transform.forward.z));
-
-                counter = 0;
-
-                return;
-            }
-            _isCloseToPlayer = true;
-
-            Idle();
-
-            if (counter == 0)
-            {
-                AttackCloseRange(_gameObjectPivot.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
-
-                counter += 1;
-            }
-        }
-        else if (gameObject.name == "CharacterLongRange")
-        {
-            if (Vector3.Distance(transform.position, _playerPoint.position) < 3f) //МГ
-            {
-                _renderAndSkeletonPivot.LookAt(_lookAndLocomotionPoint);
-
-                _isCloseToPlayer = false;
-                
-                Locomote(/*ThirdPersonCameraControllerPivot, */new Vector2(_lookAndLocomotionPoint.forward.x, _lookAndLocomotionPoint.forward.z));
-
-                counter = 0;
-
-                return;
-            }
-            _renderAndSkeletonPivot.LookAt(_playerPoint.position);
-
-            _isCloseToPlayer = true;
-
-            Idle();
-
-            if (counter == 0)
-            {
-                AttackLongRange(_gameObjectPivot.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
-
-                counter += 1;
-            }
-        }
-    }
-    
     private void OnEnable()
     {
-        Character.Idled += _view.PresentIdle;
-        CharacterHealth.DamageTaken += _view.PresentDamageTake;
-        CharacterHealth.DamageTaken += DamageTaken; //под расширение (мб замедление времени во время стана делать, и возможно это делается при помощи заморозки сцены)
+        _model.Idled += _view.PresentIdle;
+        _model.HealthController.Health.DamageTaken += _view.PresentDamageTake;
+        _model.HealthController.Health.DamageTaken += DamageTaken; //под расширение (мб замедление времени во время стана делать, и возможно это делается при помощи заморозки сцены)
         //CharacterHealth.Died += _view.PresentDeath; //надо дописать где-то вызов на выключение на старте, и включить объект в сцене
-        CharacterHealth.Died += Died;
-        CharacterLocomotion.Locomoted += _view.MoveCharacterModelInLocomotionForm;
-        CharacterLocomotion.Runned += _view.MoveCharacterModelInRunForm;
-        CharacterRotation.Rotated += _view.TurnCharacterModel;
-        CharacterAttackCloseRange.Attacked += _view.PresentCloseRangeAttack;
-        CharacterAttackLongRange.Attacked += _view.PresentLongRangeAttack;
+        _model.HealthController.Health.Died += OnDeath;
+        _model.HealthController.Health.Died += Died;
+        _model.MovementController.Locomotion.Locomoted += _view.MoveCharacterModelInLocomotionForm;
+        _model.MovementController.Locomotion.Runned += _view.MoveCharacterModelInRunForm;
+        _model.MovementController.Rotation.Rotated += _view.TurnCharacterModel;
+        _model.OffenseController.FirstAttackType.Attacked += _view.PresentCloseRangeAttack;
+        _model.OffenseController.SecondAttackType.Attacked += _view.PresentLongRangeAttack;
     }
 
     private void OnDisable()
     {
-        Character.Idled -= _view.PresentIdle;
-        CharacterHealth.DamageTaken -= _view.PresentDamageTake;
-        CharacterHealth.DamageTaken -= DamageTaken;
-        //CharacterHealth.Died -= _view.PresentDeath;
-        CharacterHealth.Died += Died;
-        CharacterLocomotion.Locomoted -= _view.MoveCharacterModelInLocomotionForm;
-        CharacterLocomotion.Runned -= _view.MoveCharacterModelInRunForm;
-        CharacterRotation.Rotated -= _view.TurnCharacterModel;
-        CharacterAttackCloseRange.Attacked -= _view.PresentCloseRangeAttack;
-        CharacterAttackLongRange.Attacked -= _view.PresentLongRangeAttack;
+        _model.Idled -= _view.PresentIdle;
+        _model.HealthController.Health.DamageTaken -= _view.PresentDamageTake;
+        _model.HealthController.Health.DamageTaken -= DamageTaken; //под расширение (мб замедление времени во время стана делать, и возможно это делается при помощи заморозки сцены)
+        //CharacterHealth.Died -= _view.PresentDeath; //надо дописать где-то вызов на выключение на старте, и включить объект в сцене
+        _model.HealthController.Health.Died -= OnDeath;
+        _model.HealthController.Health.Died -= Died;
+        _model.MovementController.Locomotion.Locomoted -= _view.MoveCharacterModelInLocomotionForm;
+        _model.MovementController.Locomotion.Runned -= _view.MoveCharacterModelInRunForm;
+        _model.MovementController.Rotation.Rotated -= _view.TurnCharacterModel;
+        _model.OffenseController.FirstAttackType.Attacked -= _view.PresentCloseRangeAttack;
+        _model.OffenseController.SecondAttackType.Attacked -= _view.PresentLongRangeAttack;
     }
 
     public void SetRenderAndSkeletonPivot(Quaternion rotation) //?
@@ -176,13 +142,32 @@ public /*abstract*/ class CharacterControllerNew : MonoBehaviour, IDamageable, I
         _model.Rotate(/*thirdPersonCameraControllerPivot, */inputDirection);
     }
 
-    public void AttackCloseRange(Vector3 gameObjectPosition, Vector2 gameObjectRotation)
+    public void OnDeath()
     {
-        _model.AttackCloseRange(gameObjectPosition, gameObjectRotation);
+        if (gameObject.GetComponent<CharacterControllerNewBoss>())
+        {
+            if (CharacterControllerNewBoss.FalseIfItIsFirstStage == true)
+            {
+                CharacterControllerNewBoss.FalseIfItIsFirstStage = false;
+            }
+            else if (CharacterControllerNewBoss.FalseIfItIsFirstStage == false)
+            {
+                CharacterControllerNewBoss.FalseIfItIsFirstStage = true;
+            }
+
+            Model.HealthController.Health.Heal();
+
+            CharacterControllerNewBoss.PlayerCompleteBossLives += 1;
+            if (CharacterControllerNewBoss.PlayerCompleteBossLives >= 3)
+            {
+                Destroy(gameObject);
+                BossDied.Invoke();
+            }
+            return;
+        }
+
+        Destroy(gameObject);
     }
 
-    public void AttackLongRange(Vector3 gameObjectPosition, Vector2 gameObjectRotation)
-    {
-        _model.AttackLongRange(gameObjectPosition, gameObjectRotation);
-    }
+    public static UnityAction BossDied;
 }

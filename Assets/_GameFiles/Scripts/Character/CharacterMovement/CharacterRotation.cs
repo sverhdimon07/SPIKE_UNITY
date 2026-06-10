@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public sealed class CharacterRotation
 {
-    public static UnityAction<Quaternion> Rotated;
+    public UnityAction<Quaternion> Rotated;
 
     public void Rotate(Vector3 direction) //»Õ ¿œ”—Àﬂ÷»ﬂ
     {

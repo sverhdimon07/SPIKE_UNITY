@@ -4,9 +4,11 @@ using UnityEngine.Events;
 
 public /*тут надо поработать с абстракцией*/ sealed class CharacterHealth //Ёта реализаци€ буквально дублируетс€ в Character, то есть, это сервис, который можно –≈ё«ј“№ » ѕќƒћ≈Ќя“№ (ѕ≈–≈ƒ≈Ћј“№);
 {
-    public static UnityAction Died;
+    public static UnityAction DiedSomeone;
 
-    public static UnityAction<float> DamageTaken;
+    public UnityAction Died;
+
+    public UnityAction<float> DamageTaken;
 
     private readonly float _maxHealth;
 
@@ -54,8 +56,14 @@ public /*тут надо поработать с абстракцией*/ sealed class CharacterHealth //Ёта 
         }
     }
 
+    public void Heal()
+    {
+        _health = _maxHealth;
+    }
+
     public void Die()
     {
         Died.Invoke();
+        DiedSomeone.Invoke();
     }
 }

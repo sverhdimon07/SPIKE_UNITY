@@ -11,6 +11,8 @@ public /*тут надо поработать с абстракцией*/ sealed class PlayerHealth //Эта реа
 
     private float _healthValue; //потом мб переведем поля здоровья и демеджа на int везде (надо понять, насколько это оправдано и что стоит ставить); подумать про семантику названия этого поля (можно оставить, а можно назвать это поле value)
 
+    private bool _isBlocked = false;
+
     public PlayerHealth(float maxHealth, float health) //ИНКАПСУЛЯЦИЯ (НАДО ПОТОМ СДЕЛАТЬ ВЕЗДЕ) - можно сделать простую проверку прям здесь ИЛИ можно изменить подход к иниту полей и инитить не сами поля, а свойства с условием в сеттере;надо ли делать эту проверку в классах более высокого уровня?
     {
         if (maxHealth <= 0f) //изначально написал тут так - if ((_maxHealth <= 0f) && (_maxHealth > 100f))... но это же чушь полная, ты задаешь в инспекторе максимальное значение, так почему оно вообще чем-то ограничивается? Это ошибка логики. ВСЕГДА ДУМАЙ О РАСШИРЕНИИ СИСТЕМЫ И ПЕРЕВОДЕ КАКОЙ-ТО КОНКРЕТНОЙ РЕАЛИЗАЦИИ В АБСТРАКТНЫЙ СЕРВИС, это помогает избежать подобных замыливаний глаз
@@ -31,30 +33,47 @@ public /*тут надо поработать с абстракцией*/ sealed class PlayerHealth //Эта реа
 
     public void TakeDamage(float damage)
     {
-        if (damage < 0f) //< 0, так как задел под расширение
+        if (_isBlocked == true)
         {
-            throw new ArgumentOutOfRangeException();
+            return;
         }
-        if ((_healthValue -= damage) < 0f)
+        else if (_isBlocked == false)
         {
-            _healthValue = 0f;
+            if (damage < 0f) //< 0, так как задел под расширение
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            if ((_healthValue -= damage) < 0f)
+            {
+                _healthValue = 0f;
 
-            Die();
-        }
-        else if ((_healthValue -= damage) == 0f)
-        {
-            Die();
-        }
-        else
-        {
-            _healthValue -= damage;
+                Die();
+            }
+            else if ((_healthValue -= damage) == 0f)
+            {
+                Die();
+            }
+            else
+            {
+                _healthValue -= damage;
 
-            DamageTaken.Invoke(_healthValue);
+                DamageTaken.Invoke(_healthValue);
+            }
         }
     }
 
     public void Die()
     {
         Died.Invoke();
+    }
+
+    public void Block()
+    {
+        _isBlocked = true;
+    }
+
+    public void Unblock()
+    {
+        _isBlocked = false;
     }
 }

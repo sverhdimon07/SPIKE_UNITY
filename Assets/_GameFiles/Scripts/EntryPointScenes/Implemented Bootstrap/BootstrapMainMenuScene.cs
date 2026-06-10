@@ -51,7 +51,7 @@ public sealed class BootstrapMainMenuScene : Bootstrap
 
     private void LoadTestScene()
     {
-        SceneLoading.LoadTestScene();
+        SceneLoading.LoadLevelScene();
     }
 
     private void RefreshMusicLayerAudioSourceVolume(float volume)

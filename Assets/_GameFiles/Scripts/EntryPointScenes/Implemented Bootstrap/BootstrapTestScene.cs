@@ -4,6 +4,22 @@ using UnityEngine.Events;
 //в бутстрапе нам не нужно инитить данными наши зависимые монобехи - они это сделают сами. Бутстрап должен иметь в виду все классы высокого уровня - и контроллеры игровых сущностей, и контроллеры неигровых сущностей (только игровые создаются геймдизом на сцене и инитят себя сами, а неигровые создаются тут в бутстрапе и инитятся здесь)!
 public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу 1 обязательный, ибо Create не нужен отдельный метод И создавать самого себя НЕЛЬЗЯ, а Launch вообще по идее нигде не нужен, ибо если у нас есть предметные методы внутри класса, то их и будем запускать), так как добавились OnEnable и OnDisable) - Создание (важно что за создание самого себя ИЛИ свое время жизни класс отвечать не должен, он всегда создается снаружи), Инициализация (инициализация себя это про создание своих внутренних элементов (или поиск их на сцене) И их последующую инициализацию), Запуск
 {
+    //[SerializeField] private PlayerController _playerControllerPrefab;
+    //[SerializeField] private Transform _playerControllerPrefabSpawnPoint;
+
+    //private CharacterFactotyForBoss _spawner3;
+
+    private ObjectSpawner1 _visualSpawner;
+    private ObjectsSpawner2 _visualSpawner2;
+    private ObjectSpawner3 _visualSpawner3;
+
+    private void EnableVisualSpawners()
+    {
+        _visualSpawner.enabled = true;
+        _visualSpawner2.enabled = true;
+        _visualSpawner3.enabled = true;
+    }
+
     [Header("Weapons")] //должна быть реализована система, которая будет учитывать выбор геймдизайнера - не поставил оружие именно игроку, он заспавнится без оружия - то есть у нас тут в любом случае будет 3 графы (оружие на сцене, оружие игрока, оружие персонажа)
     [Header("PlayerWeapons")] //Я СДЕЛАЛ ТАК, ЧТОБЫ МОЖНО БЫЛО ИНИТИТЬ ОТСЮДА ДАТУ ЛЮБОГО ТИПА ОРУЖИЯ (ТО ЕСТЬ, ЛЮБОЙ СУЩНОСТИ ОРУЖИЯ), но по идее же у каждого оружия уже изначально есть какая-то дата, но при этом она и не должна быть прямо в скрипте самого оружия проиничена, она должна быть сериализована и закинута в префаб - но тут в любом случае нужно придумать методологию создания скриптов для оружия
     [Header("CharacterWeapons")] // не придумал, как реализовать правильно (пока у каждого персонажа ровно по одному оружию - все вроде норм, но при расширении - уже проблема, поэтому скорее всего надо отдельно каждого персонажа инитить)
@@ -23,9 +39,13 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
 
     //private SceneLoading _sceneLoading;
 
-    private SavingLoadingPlayerInteractor _savingLoadingPlayerInteractor;
+    private SavingLoadingSystemBootstrap _savingLoadingSystemBootstrap;
 
     private GameplayMenuUI _gameplayMenuUI;
+
+    //private WinUI _winUI;
+
+    //private LoseUI _loseUI;
 
     private InputController _inputController;
     
@@ -40,28 +60,48 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
     private UnityAction _attackCloseRangeButtonPressedForCloseRangeAttackHandler;
     private UnityAction _attackLongRangeButtonPressedForLongRangeAttackHandler;
 
+    private UnityAction _blockHandler;
+    private UnityAction _unblockHandler;
+
     private UnityAction<Vector2> _locomotionDirectionDirectedForLocomotionHandler;
     private UnityAction<Vector2> _locomotionDirectionDirectedForRunHandler;
     private UnityAction<Vector2> _locomotionDirectionDirectedForRotationHandler;
 
     public override void Awake() //тут метод Awake публичный - хз //можно сделать абстрактным в родительском классе, типо чтобы у нас был контракт на обязательность реализации, но хз, насколько это правильно и насколько правильно оставлять этот метод публичным
     {
+        //_spawner3 = FindAnyObjectByType<CharacterFactotyForBoss>();
+
+        _visualSpawner = FindAnyObjectByType<ObjectSpawner1>();
+        _visualSpawner2 = FindAnyObjectByType<ObjectsSpawner2>();
+        _visualSpawner3 = FindAnyObjectByType<ObjectSpawner3>();
+
+        EnableVisualSpawners();
+
+        //PlayerUI.BossSpawned += EnableBossSpawner;
         _scenePausing = new ScenePausing();
         //_sceneLoading = new SceneLoading(); //НЕ ИНИЧУ ПОКА ЧТО
         _gameplayMenuUI = FindAnyObjectByType<GameplayMenuUI>();
+        //_winUI = FindAnyObjectByType<WinUI>();
+        //_loseUI = FindAnyObjectByType<LoseUI>();
         _inputController = GetComponent<InputController>(); //_inputController.Initialize(); //он инитится сам в себе, наверное плохо, но ничего сделать не могу; дает подсказку, ибо это надо переносить в абстрактный бутстрап;
 
-        _saveButtonForDataSaveHandler = delegate () { _savingLoadingPlayerInteractor.SaveData(PlayerController); };
-        _loadSavingButtonForDataLoadHandler = delegate () { _savingLoadingPlayerInteractor.LoadData(PlayerController); };
+        _saveButtonForDataSaveHandler = delegate () { _savingLoadingSystemBootstrap.SaveAll(); };
+        _loadSavingButtonForDataLoadHandler = delegate () { _savingLoadingSystemBootstrap.LoadAll(); };
 
-        _attackCloseRangeButtonPressedForCloseRangeAttackHandler = delegate () { PlayerController.AttackCloseRange(PlayerController.GameObjectPivot.position, new Vector2(PlayerController.GameObjectPivot.forward.x, PlayerController.GameObjectPivot.forward.z)); };
-        _attackLongRangeButtonPressedForLongRangeAttackHandler = delegate () { PlayerController.AttackLongRange(PlayerController.GameObjectPivot.position, new Vector2(PlayerController.GameObjectPivot.forward.x, PlayerController.GameObjectPivot.forward.z)); };
-        _locomotionDirectionDirectedForLocomotionHandler = locomotionDirection => PlayerController.Locomote(PlayerController.ThirdPersonCameraControllerPivot, locomotionDirection);
-        _locomotionDirectionDirectedForRunHandler = locomotionDirection => PlayerController.Run(PlayerController.ThirdPersonCameraControllerPivot, locomotionDirection);
+        _attackCloseRangeButtonPressedForCloseRangeAttackHandler = delegate () { PlayerController.AttackCloseRange(PlayerController.GameObjectPivot.position, new Vector2(PlayerController.RenderAndSkeletonPivot.forward.x, PlayerController.RenderAndSkeletonPivot.forward.z)); };
+        _attackLongRangeButtonPressedForLongRangeAttackHandler = delegate () { PlayerController.AttackLongRange(PlayerController.GameObjectPivot.position, new Vector2(PlayerController.RenderAndSkeletonPivot.forward.x, PlayerController.RenderAndSkeletonPivot.forward.z)); };
+        _locomotionDirectionDirectedForLocomotionHandler = locomotionDirection => PlayerController.Locomote(PlayerController.ThirdPersonCameraControllerPivot, locomotionDirection, new Vector2(PlayerController.RenderAndSkeletonPivot.forward.x, PlayerController.RenderAndSkeletonPivot.forward.z));
+        _locomotionDirectionDirectedForRunHandler = locomotionDirection => PlayerController.Run(PlayerController.ThirdPersonCameraControllerPivot, locomotionDirection, new Vector2(PlayerController.RenderAndSkeletonPivot.forward.x, PlayerController.RenderAndSkeletonPivot.forward.z));
+        
+        _blockHandler = delegate () { PlayerController.Block(); };
+        _unblockHandler = delegate () { PlayerController.Unblock(); };
+
         _locomotionDirectionDirectedForRotationHandler = locomotionDirection => PlayerController.Rotate(PlayerController.ThirdPersonCameraControllerPivot, locomotionDirection);
 
         InstantiateMigratingBetweenSceneObjects(); //ВРЕМЕННО
         _gameplayMenuUI.Initialize();
+        //_winUI.Initialize();
+        //_loseUI.Initialize();
         //InitPlayerWeapons();
         //InitCharacterWeapons();
         //InitNobodysWeapons();
@@ -69,15 +109,21 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         //InitCharacter();!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     }
 
+    /*
+    public void EnableBossSpawner()
+    {
+        _spawner3.gameObject.SetActive(true);
+    }*/
+
     private void OnEnable() 
     {
         if (PlayerController == null) //Приятно для других программистов, но насколько это прямо таки нужно? (При этом при отсутствии игрока на сцене бесконечный поток ошибок все равно есть, ибо я не вызывал события в InputController через вопросительный знак)
         {
             return;
         }
-        _savingLoadingPlayerInteractor = GetComponent<SavingLoadingPlayerInteractor>(); //ПОКА БЕЗ КОНТРАКТА, ИБО НЕ ЗАВЕРШИЛ ПРОЕКТИРОВАНИЕ
+        _savingLoadingSystemBootstrap = GetComponent<SavingLoadingSystemBootstrap>(); //ПОКА БЕЗ КОНТРАКТА, ИБО НЕ ЗАВЕРШИЛ ПРОЕКТИРОВАНИЕ
 
-        _savingLoadingPlayerInteractor.Initialize(new SavingLoadingJSONRepository<Vector3, Quaternion>(), "SavingLoadingPayerData.json", PlayerController);
+        //_savingLoadingPlayerInteractor.Initialize(new SavingLoadingJSONRepository<Vector3, Quaternion>(), "SavingLoadingPayerData.json", PlayerController);
 
         _gameplayMenuUI.ContinueButton.onClick.AddListener(_scenePausing.PauseOrResume);
         _gameplayMenuUI.ContinueButton.onClick.AddListener(_gameplayMenuUI.OpenOrClose);
@@ -86,6 +132,11 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         _gameplayMenuUI.LoadSavingButton.onClick.AddListener(_scenePausing.PauseOrResume);
         _gameplayMenuUI.LoadSavingButton.onClick.AddListener(_gameplayMenuUI.OpenOrClose);
         _gameplayMenuUI.LoadSavingButton.onClick.AddListener(_loadSavingButtonForDataLoadHandler);
+
+        //_winUI.MenuButton.onClick.AddListener(SceneLoading.LoadMainMenuScene);
+
+        //_loseUI.MenuButton.onClick.AddListener(SceneLoading.LoadMainMenuScene);
+        //_loseUI.LoadLevelButton.onClick.AddListener(SceneLoading.LoadLevelScene);
 
         _inputController.LocomotionDirectionDirected += _locomotionDirectionDirectedForLocomotionHandler;
         _inputController.LocomotionDirectionDirected += _locomotionDirectionDirectedForRotationHandler;
@@ -96,8 +147,14 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         _inputController.AttackLongRangeButtonPressed += _attackLongRangeButtonPressedForLongRangeAttackHandler;
         _inputController.OpeningGameplayeMenuButtonPressed += _scenePausing.PauseOrResume;
         _inputController.OpeningGameplayeMenuButtonPressed += _gameplayMenuUI.OpenOrClose;
-        
-        PlayerController.Died += SceneLoading.LoadTestScene;
+
+        _inputController.BlockButtonHolded += _blockHandler;
+        _inputController.BlockButtonUnholded += _unblockHandler;
+
+        //PlayerController.Died += _winUI.OpenOrClose;
+        PlayerController.Died += SceneLoading.LoadLevelScene;
+
+        //CharacterControllerNewBoss.BossDied += _loseUI.OpenOrClose;
         /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         foreach (CharacterNO character in _characters)
         {
@@ -119,6 +176,11 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         _gameplayMenuUI.LoadSavingButton.onClick.RemoveListener(_gameplayMenuUI.OpenOrClose);
         _gameplayMenuUI.LoadSavingButton.onClick.RemoveListener(_loadSavingButtonForDataLoadHandler);
 
+        //_winUI.MenuButton.onClick.RemoveListener(SceneLoading.LoadMainMenuScene);
+
+        //_loseUI.MenuButton.onClick.RemoveListener(SceneLoading.LoadMainMenuScene);
+        //_loseUI.LoadLevelButton.onClick.RemoveListener(SceneLoading.LoadLevelScene);
+
         _inputController.LocomotionDirectionDirected -= _locomotionDirectionDirectedForLocomotionHandler;
         _inputController.LocomotionDirectionDirected -= _locomotionDirectionDirectedForRotationHandler;
         _inputController.LocomotionDirectionUndirected -= PlayerController.Idle;
@@ -129,8 +191,13 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         _inputController.OpeningGameplayeMenuButtonPressed -= _scenePausing.PauseOrResume;
         _inputController.OpeningGameplayeMenuButtonPressed -= _gameplayMenuUI.OpenOrClose;
 
-        PlayerController.Died += SceneLoading.LoadTestScene;
+        _inputController.BlockButtonHolded -= _blockHandler;
+        _inputController.BlockButtonUnholded -= _unblockHandler;
 
+        //PlayerController.Died -= _winUI.OpenOrClose;
+        PlayerController.Died -= SceneLoading.LoadLevelScene;
+
+        //CharacterControllerNewBoss.BossDied -= _loseUI.OpenOrClose;
         /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         foreach (CharacterNO character in _characters)
         {
