@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 0.7
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 1295494694}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14734,6 +14734,22 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 697344f87f95f8540bbb1ad48f14c33d, type: 2}
+    - target: {fileID: 1301553968379450789, guid: ef54f11e800cac946b6130637ee24b07, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301553968379450789, guid: ef54f11e800cac946b6130637ee24b07, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301553968379450789, guid: ef54f11e800cac946b6130637ee24b07, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301553968379450789, guid: ef54f11e800cac946b6130637ee24b07, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1515655052288787982, guid: ef54f11e800cac946b6130637ee24b07, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -14778,10 +14794,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6186688486124048001, guid: ef54f11e800cac946b6130637ee24b07, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6273309238731660123, guid: ef54f11e800cac946b6130637ee24b07, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 697344f87f95f8540bbb1ad48f14c33d, type: 2}
+    - target: {fileID: 8773431265612116504, guid: ef54f11e800cac946b6130637ee24b07, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8795791985392930106, guid: ef54f11e800cac946b6130637ee24b07, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

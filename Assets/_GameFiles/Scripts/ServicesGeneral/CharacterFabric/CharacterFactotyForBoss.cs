@@ -39,7 +39,7 @@ public class CharacterFactotyForBoss : MonoBehaviour, ICharacterControllerNewFac
     private Vector3 GetSpawnPosition(int index)
     {
         if (_spawnPositions != null && index < _spawnPositions.Length)
-            return _spawnPositions[index].position;
+            return _spawnPositions[index].position; //MissingReferenceException: The object of type 'UnityEngine.Transform' has been destroyed but you are still trying to access it. //Your script should either check if it is null or you should not destroy the object.
 
         if (_randomPosition)
             return transform.position + Random.insideUnitSphere * _randomRadius;

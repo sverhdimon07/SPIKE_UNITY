@@ -1,0 +1,11 @@
+Model Information:
+* title:	Planet Afroditi
+* source:	https://sketchfab.com/3d-models/planet-afroditi-64e2d191987d44bfb4ee87b56e6e61f8
+* author:	zisisbad (https://sketchfab.com/zisisbad)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Planet Afroditi" (https://sketchfab.com/3d-models/planet-afroditi-64e2d191987d44bfb4ee87b56e6e61f8) by zisisbad (https://sketchfab.com/zisisbad) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
