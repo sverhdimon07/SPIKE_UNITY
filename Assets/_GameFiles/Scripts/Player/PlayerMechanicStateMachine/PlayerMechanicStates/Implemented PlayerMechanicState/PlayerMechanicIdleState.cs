@@ -1,22 +1,24 @@
 public sealed class PlayerMechanicIdleState : PlayerMechanicState
 {
-    public override void Enter(Player player)
+    public override void Enter(Player player, PlayerMechanicStateMachine stateMachine)
     {
         //
     }
 
-    public override void Do(Player player)
+    public override void Do(Player player, PlayerMechanicStateMachine stateMachine)
     {
         Player.Idled.Invoke(); //можно создать контроллер для айдла
     }
 
-    public override void DoWithinFrame(Player player)
+    public override void DoWithinFrame(Player player, PlayerMechanicStateMachine stateMachine)
     {
         //
     }
 
-    public override void Exit(Player player)
+    public override bool TryExit(Player player, PlayerMechanicStateMachine stateMachine, PlayerMechanicState nextState)
     {
-        //player.MechanicStateMachine.SwitchState(player, new PlayerMechanicLocomotionState());
+        stateMachine.SwitchState(player, nextState);
+
+        return true;
     }
 }

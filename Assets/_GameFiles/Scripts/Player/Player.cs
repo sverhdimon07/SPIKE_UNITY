@@ -23,8 +23,9 @@ public sealed class Player : IDamageable, IAllRangesAttacker //я думаю, что если
         _offenseController = offenseController;
         _defenseController = defenseController;
     }
-    
-    public PlayerMechanicStateMachine MechanicStateMachine => _mechanicStateMachine;
+
+    //public PlayerMechanicStateMachine MechanicStateMachine => _mechanicStateMachine; //оставил так, ибо по большому счету твой класс не должен бояться такой штуки, ХОТЯ он может и не боится, но лично я не хочу же чтобы у меня эта логика была APIшкой моей модели
+    public PlayerMechanicState State => _mechanicStateMachine.State; //мб стоит со всеми нижними системами сделать так же, хотя там был очень удобный доступ к событиям и деталям, НО их же можно инкапсулировать здесь
 
     public PlayerHealthController HealthController => _healthController;
 
@@ -33,35 +34,60 @@ public sealed class Player : IDamageable, IAllRangesAttacker //я думаю, что если
     public PlayerOffenseController OffenseController => _offenseController;
 
     public PlayerDefenseController DefenseController => _defenseController;
-    
+
+    public void MechanicStateUpdate()
+    {
+        _mechanicStateMachine.State.DoWithinFrame(this, _mechanicStateMachine);
+    }
+
     public void Idle()
     {
-        _mechanicStateMachine.SwitchState(this, new PlayerMechanicIdleState());
-        _mechanicStateMachine.State.Do(this);
+        PlayerMechanicState idleState = new PlayerMechanicIdleState();
+
+        if (_mechanicStateMachine.TrySwitchState(this, idleState) == true)
+        {
+            idleState.Do(this, _mechanicStateMachine);
+        }
     }
 
     public void TakeDamage(float damage)
     {
-        _mechanicStateMachine.SwitchState(this, new PlayerMechanicStunState(damage));
-        _mechanicStateMachine.State.Do(this);
+        PlayerMechanicState stunState = new PlayerMechanicStunState(damage);
+
+        if (_mechanicStateMachine.TrySwitchState(this, stunState) == true)
+        {
+            stunState.Do(this, _mechanicStateMachine);
+        }
     }
 
     public void Die()
     {
-        _mechanicStateMachine.SwitchState(this, new PlayerMechanicDeathState());
-        _mechanicStateMachine.State.Do(this);
+        PlayerMechanicState deathState = new PlayerMechanicDeathState();
+
+        if (_mechanicStateMachine.TrySwitchState(this, deathState) == true)
+        {
+            deathState.Do(this, _mechanicStateMachine);
+        }
     }
 
     public void Locomote(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection, Vector2 skeletonAndRenderDirection) //пропал публичный метод для бега, а я хотел дописывать контракты на ходьбу, на бег (НО МБ С FSM ВСЕ НАЛАДИТСЯ)
     {
-        _mechanicStateMachine.SwitchState(this, new PlayerMechanicLocomotionState(thirdPersonCameraControllerPivot, inputDirection, skeletonAndRenderDirection));
-        _mechanicStateMachine.State.Do(this);
+        PlayerMechanicState locomotionState = new PlayerMechanicLocomotionState(thirdPersonCameraControllerPivot, inputDirection, skeletonAndRenderDirection);
+
+        if (_mechanicStateMachine.TrySwitchState(this, locomotionState) == true)
+        {
+            locomotionState.Do(this, _mechanicStateMachine);
+        }
     }
 
     public void Run(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection, Vector2 skeletonAndRenderDirection) //пропал публичный метод для бега, а я хотел дописывать контракты на ходьбу, на бег (НО МБ С FSM ВСЕ НАЛАДИТСЯ)
     {
-        _mechanicStateMachine.SwitchState(this, new PlayerMechanicRunState(thirdPersonCameraControllerPivot, inputDirection, skeletonAndRenderDirection));
-        _mechanicStateMachine.State.Do(this);
+        PlayerMechanicState runState = new PlayerMechanicRunState(thirdPersonCameraControllerPivot, inputDirection, skeletonAndRenderDirection);
+
+        if (_mechanicStateMachine.TrySwitchState(this, runState) == true)
+        {
+            runState.Do(this, _mechanicStateMachine);
+        }
         //подумать про расширение - например, мне нужно будет добавить передвижение пешком, смогу ли я добавить это, соблюдая OCP?
     }
 
@@ -72,21 +98,33 @@ public sealed class Player : IDamageable, IAllRangesAttacker //я думаю, что если
 
     public void AttackCloseRange(Vector3 gameObjectPosition, Vector2 renderAndSkeletonDirectionXZ) //подумать над названием ЛК тут, ибо нам нужна семантика реальной позиции (то есть, gameObjectPosition) ИЛИ нам нужна семантика позиции для атаки (startPosition). (пример я привел неудачный, ибо тут все равно gameObjectPosition, лучше посмотреть на inputDirection сверху, где я долго писал приписку locomotion) Я ДУМАЮ ВТОРОЕ, ибо все-таки привязка к названию метода ДОЛЖНА БЫТЬ;
     {
-        _mechanicStateMachine.SwitchState(this, new PlayerMechanicAttackCloseRangeState(gameObjectPosition, renderAndSkeletonDirectionXZ)); //возможно это стоит как-то прокидывать сверху, но пока оставлю так, ибо это логично. Но впринципе можно и прокинуть
-        //Debug.Log("444444444444444444444444444444");
-        _mechanicStateMachine.State.Do(this);
+        //возможно это стоит как-то прокидывать сверху, но пока оставлю так, ибо это логично. Но впринципе можно и прокинуть
+        PlayerMechanicState attackCloseRangeState = new PlayerMechanicAttackCloseRangeState(gameObjectPosition, renderAndSkeletonDirectionXZ);
+
+        if (_mechanicStateMachine.TrySwitchState(this, attackCloseRangeState) == true)
+        {
+            attackCloseRangeState.Do(this, _mechanicStateMachine);
+        }
     }
     //transform.position, new Vector2(_renderAndSkeletonPivot.forward.x, _renderAndSkeletonPivot.forward.z)
     public void AttackLongRange(Vector3 gameObjectPosition, Vector2 renderAndSkeletonDirectionXZ)
     {
-        _mechanicStateMachine.SwitchState(this, new PlayerMechanicAttackLongRangeState(gameObjectPosition, renderAndSkeletonDirectionXZ));
-        _mechanicStateMachine.State.Do(this);
+        PlayerMechanicState attackLongRangeState = new PlayerMechanicAttackLongRangeState(gameObjectPosition, renderAndSkeletonDirectionXZ);
+
+        if (_mechanicStateMachine.TrySwitchState(this, attackLongRangeState) == true)
+        {
+            attackLongRangeState.Do(this, _mechanicStateMachine);
+        }
     }
 
     public void Block()
     {
-        _mechanicStateMachine.SwitchState(this, new PlayerMechanicBlockState());
-        _mechanicStateMachine.State.Do(this);
+        PlayerMechanicState blockState = new PlayerMechanicBlockState();
+
+        if (_mechanicStateMachine.TrySwitchState(this, blockState) == true)
+        {
+            blockState.Do(this, _mechanicStateMachine);
+        }
     }
 }
 //СЮДА ИДИ

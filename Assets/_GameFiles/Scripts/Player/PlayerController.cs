@@ -11,26 +11,6 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
     public UnityAction<float> DamageTaken;
 
     [Header("View References")]
-    [SerializeField] private ParticleSystem _waterEffects;
-    [SerializeField] private ParticleSystem _fireEffects;
-    [SerializeField] private ParticleSystem _lightningEffects;
-    [SerializeField] private ParticleSystem _windEffects;
-
-    [SerializeField] private AudioSource _waterSound;
-    [SerializeField] private AudioSource _fireSound;
-    [SerializeField] private AudioSource _lightningSound;
-    [SerializeField] private AudioSource _windSound;
-
-    public ParticleSystem WaterEffects => _waterEffects;
-    public ParticleSystem FireEffects => _fireEffects;
-    public ParticleSystem LightningEffects => _lightningEffects;
-    public ParticleSystem WindEffects => _windEffects;
-
-    public AudioSource WaterSound => _waterSound;
-    public AudioSource FireSound => _fireSound;
-    public AudioSource LightningSound => _lightningSound;
-    public AudioSource WindSound => _windSound;
-
     [SerializeField] private Image _healthBar; //хотел переносить эти поля в бутстрап, НО почему-бы все поля, не отвечающие за геймплейную логику, не хранить именно здесь (ибо бутстрап должен инитить ГЕЙМДИЗАЙНЕРСКИЕ ДАННЫЕ, зачем их мешать с ссылками на вспомогательные классы?)?
     [SerializeField] private Image _weaponLongRangeCooldownBar;
     [SerializeField] private TMP_Text _deathMessageText;
@@ -39,6 +19,10 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
     [SerializeField] private Transform _gameObjectPivot;
     [SerializeField] private Transform _renderAndSkeletonPivot;
     [SerializeField] private Transform _thirdPersonCameraControllerPivot;
+    [SerializeField] private ParticleSystem _closeRangeWeaponEffect;
+    [SerializeField] private ParticleSystem _longRangeWeaponEffect;
+    [SerializeField] private AudioSource _closeRangeWeaponSound;
+    [SerializeField] private AudioSource _longRangeWeaponSound;
 
     [Header("Model References")]
     [Range(0.1f, 100f)] //так как это не инкапсуляция - надо чекнуть то, искапсулирую ли я эти входные данные на уровне конкретных реализаций (сервисов) внутри; а вообще монобех именно так и инкапсулируется, я просто хз, как работать со скриптбл обджектами, там наверное как-то по-другому нужно будет проверять входные значения, если я захочу, чтобы у игрока максимальное здоровье было всегда не больше 100f
@@ -56,9 +40,7 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
 
     private PlayerView _view; //вот та разница между моделью и представлением. Просто если бы это было свойством да еще и публичным, то его методами можно было бы пользоваться в классе более высокого уровня
 
-    public Player _model; //не уверен, что так правильно; вообще есть 2 варика - ЛИБО сделать так, как здесь, с публичной для вызова публичных методов моделью и подписками вьюшки здесь, ЛИБО сделать модель приватной И соединять модель и вьюшку напрямую публичными методами. Мне впринципе 2й варик больше нравится;
-    
-    public Player Model => _model;
+    private Player _model; //не уверен, что так правильно; вообще есть 2 варика - ЛИБО сделать так, как здесь, с публичной для вызова публичных методов моделью и подписками вьюшки здесь, ЛИБО сделать модель приватной И соединять модель и вьюшку напрямую публичными методами. Мне впринципе 2й варик больше нравится;
 
     public Transform GameObjectPivot => _gameObjectPivot; //ВРЕМЕННАЯ МЕРА
     public Transform RenderAndSkeletonPivot => _renderAndSkeletonPivot; //ВРЕМЕННАЯ МЕРА
@@ -66,13 +48,15 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
 
     private void Awake() //чекнуть конструкторы и деструкторы в монобехах
     {
-        _view = new PlayerView(new PlayerUI(_healthBar, _weaponLongRangeCooldownBar, _deathMessageText, _counterText), new PlayerAnimator(_animator), _gameObjectPivot, _renderAndSkeletonPivot);
+        _view = new PlayerView(new PlayerUI(_healthBar, _weaponLongRangeCooldownBar, _deathMessageText, _counterText), new PlayerAnimator(_animator), _gameObjectPivot, _renderAndSkeletonPivot, _closeRangeWeaponEffect, _longRangeWeaponEffect, _closeRangeWeaponSound, _longRangeWeaponSound);
         _model = new Player(new PlayerMechanicStateMachine(_model, new PlayerMechanicIdleState()), new PlayerHealthController(new PlayerHealth(_maxHealth, _health)), new PlayerMovementController(new PlayerLocomotion(new EnvironmentAreaOverlapAnalyzer<Collider, PlayerController>(), new Vector2(_renderAndSkeletonPivot.forward.x, _renderAndSkeletonPivot.forward.z), 0.3f, 0.5f, 2.5f, _locomotionSpeed, _runningSpeed, transform.position), new PlayerRotation()), new PlayerOffenseController(_firstWeapon, _secondWeapon, transform.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z)), new PlayerDefenseController()); //тут такой прикол, что любой человек сможет создавать объект этого класса в любой части программы, но как бы и работать он с ним не сможет без верхнеуровнего монобеховского слоя. Тут все норм, я бы только засинглтонил PlayerController и Player (про PlayerView - хз)
     }
 
     private void Update()
     {
-        _model.MechanicStateMachine.State.DoWithinFrame(_model);
+        _model.MechanicStateUpdate();
+
+        //print(_model.State);
     }
 
     private void OnEnable()
@@ -85,8 +69,8 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
         PlayerLocomotion.Locomoted += _view.MoveCharacterModelInLocomotionForm;
         PlayerLocomotion.Runned += _view.MoveCharacterModelInRunForm;
         PlayerRotation.Rotated += _view.TurnCharacterModel;
-        PlayerAttackCloseRange.Attacked += _view.PresentCloseRangeAttack;
-        PlayerAttackLongRange.Attacked += _view.PresentLongRangeAttack;
+        PlayerAttackCloseRange.Attacked += async delegate { await _view.PresentCloseRangeAttack(); };
+        PlayerAttackLongRange.Attacked += async delegate { await _view.PresentLongRangeAttack(); };
     }
 
     private void OnDisable()
@@ -99,8 +83,8 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
         PlayerLocomotion.Locomoted -= _view.MoveCharacterModelInLocomotionForm;
         PlayerLocomotion.Runned -= _view.MoveCharacterModelInRunForm;
         PlayerRotation.Rotated -= _view.TurnCharacterModel;
-        PlayerAttackCloseRange.Attacked -= _view.PresentCloseRangeAttack;
-        PlayerAttackLongRange.Attacked -= _view.PresentLongRangeAttack;
+        PlayerAttackCloseRange.Attacked -= async delegate { await _view.PresentCloseRangeAttack(); };
+        PlayerAttackLongRange.Attacked -= async delegate { await _view.PresentLongRangeAttack(); };
     }
 
     public void SetRenderAndSkeletonPivot(Quaternion rotation) //?
@@ -141,26 +125,20 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
     public void AttackCloseRange(Vector3 gameObjectPosition, Vector2 gameObjectRotation)
     {
         _model.AttackCloseRange(gameObjectPosition, gameObjectRotation);
-
-        FireEffects.Play();
-        FireSound.Play();
     }
 
     public void AttackLongRange(Vector3 gameObjectPosition, Vector2 gameObjectRotation)
     {
         _model.AttackLongRange(gameObjectPosition, gameObjectRotation);
-
-        WaterEffects.Play();
-        WaterSound.Play();
     }
 
     public void Block()
     {
-        _model.HealthController.Health.Block(); //ВВЕЗДЕ СДЕЛАТЬ ТАК
+        _model.HealthController.Health.Block(); //ВЕЗДЕ СДЕЛАТЬ ТАК - но нет же, я был не прав, ибо у нас внтури оч сложная логика со стейт машиной, которая лежит внутри и сюда ее вносить - это бред
     }
 
     public void Unblock()
     {
-        _model.HealthController.Health.Unblock(); //ВВЕЗДЕ СДЕЛАТЬ ТАК
+        _model.HealthController.Health.Unblock(); //ВЕЗДЕ СДЕЛАТЬ ТАК
     }
 }

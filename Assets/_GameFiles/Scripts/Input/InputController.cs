@@ -7,6 +7,8 @@ public sealed class InputController : MonoBehaviour
 
     private Vector2 _locomotionDirection;
 
+    private int _locomotionDirectionUndirectedCounter;
+
     public UnityAction LocomotionDirectionUndirected;
     public UnityAction RunningButtonHolded;
     public UnityAction RunningButtonUnholded;
@@ -58,10 +60,16 @@ public sealed class InputController : MonoBehaviour
 
         if (_locomotionDirection == Vector2.zero)
         {
-            LocomotionDirectionUndirected.Invoke(); //тут бесконечно происходит вызов, мб добавить счетчик, НО некритично
+            if (_locomotionDirectionUndirectedCounter < 1)
+            {
+                _locomotionDirectionUndirectedCounter += 1;
 
+                LocomotionDirectionUndirected.Invoke();
+            }
             return;
         }
+        _locomotionDirectionUndirectedCounter = 0;
+
         LocomotionDirectionDirected.Invoke(_locomotionDirection);
     }
 }

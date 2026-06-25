@@ -15,23 +15,25 @@ public sealed class PlayerMechanicRunState : PlayerMechanicState
         _renderAndSkeletonRender = renderAndSkeletonPivot;
     }
 
-    public override void Enter(Player player)
+    public override void Enter(Player player, PlayerMechanicStateMachine stateMachine)
     {
         //
     }
 
-    public override void Do(Player player)
+    public override void Do(Player player, PlayerMechanicStateMachine stateMachine)
     {
         player.MovementController.Run(_thirdPersonCameraControllerPivot, _inputDirection, _renderAndSkeletonRender);
     }
 
-    public override void DoWithinFrame(Player player)
+    public override void DoWithinFrame(Player player, PlayerMechanicStateMachine stateMachine)
     {
         //
     }
 
-    public override void Exit(Player player)
+    public override bool TryExit(Player player, PlayerMechanicStateMachine stateMachine, PlayerMechanicState nextState)
     {
-        //
+        stateMachine.SwitchState(player, nextState);
+
+        return true;
     }
 }

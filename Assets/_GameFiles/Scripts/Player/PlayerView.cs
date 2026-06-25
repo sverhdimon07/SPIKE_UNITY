@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
 public sealed class PlayerView //контракты на обновление UI, обновление анимации - хз, нужны ли
@@ -10,12 +11,22 @@ public sealed class PlayerView //контракты на обновление UI
 
     private readonly Transform _renderAndSkeletonPivot;
 
-    public PlayerView(PlayerUI ui, PlayerAnimator animator, Transform gameObjectPivot, Transform renderAndSkeletonPivot) //тут слишком конкретные классы лежат, надо их сделать общими сервисами для всех - и игрока, и врагов
+    private readonly ParticleSystem _closeRangeWeaponEffect;
+    private readonly ParticleSystem _longRangeWeaponEffect;
+
+    private readonly AudioSource _closeRangeWeaponSound;
+    private readonly AudioSource _longRangeWeaponSound;
+
+    public PlayerView(PlayerUI ui, PlayerAnimator animator, Transform gameObjectPivot, Transform renderAndSkeletonPivot, ParticleSystem closeRangeWeaponEffect, ParticleSystem longRangeWeaponEffect, AudioSource closeRangeWeaponSound, AudioSource longRangeWeaponSound) //тут слишком конкретные классы лежат, надо их сделать общими сервисами для всех - и игрока, и врагов
     {
         _ui = ui;
         _animator = animator;
         _gameObjectPivot = gameObjectPivot;
         _renderAndSkeletonPivot = renderAndSkeletonPivot;
+        _closeRangeWeaponEffect = closeRangeWeaponEffect;
+        _longRangeWeaponEffect = longRangeWeaponEffect;
+        _closeRangeWeaponSound = closeRangeWeaponSound;
+        _longRangeWeaponSound = longRangeWeaponSound;
     }
 
     public void PresentIdle()
@@ -28,12 +39,6 @@ public sealed class PlayerView //контракты на обновление UI
     {
         _ui.RefreshHealthBar(valueLevel);
         _animator.PlayStun();
-    }
-
-    public void PresentWeaponLongRangeCooldown()
-    {
-        _ui.RefreshWeaponLongRangeCooldownBar();
-        //
     }
 
     public void PresentDeath()
@@ -59,14 +64,21 @@ public sealed class PlayerView //контракты на обновление UI
         _renderAndSkeletonPivot.rotation = requiredWorldRotation;
     }
 
-    public void PresentCloseRangeAttack()
+    public async Task PresentCloseRangeAttack()
     {
         _animator.PlayCloseRangeAttack();
+        await Task.Delay(100);
+        _closeRangeWeaponEffect.Play();
+        _closeRangeWeaponSound.Play();
     }
 
-    public void PresentLongRangeAttack()
+    public async Task PresentLongRangeAttack()
     {
+        _ui.RefreshWeaponLongRangeCooldownBarOnEmpty();
         _animator.PlayLongRangeAttack();
-        _ui.RefreshWeaponLongRangeCooldownBar();
+        await Task.Delay(900);
+        _longRangeWeaponEffect.Play();
+        _longRangeWeaponSound.Play();
+        await _ui.RefreshWeaponLongRangeCooldownBarOnFull();
     }
 }

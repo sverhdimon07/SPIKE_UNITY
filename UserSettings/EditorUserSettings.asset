@@ -9,37 +9,37 @@ EditorUserSettings:
       value: 18134705175a055722080a3115371d4a0d55006876786860616b0471b8b07a68ffab74f9ee2a3a30300cea1a11320d0beb1a0c25f7060f494b4cc80018eb09361fc211cb1f862d19c51d19dcc413d6ade0d8ddfcddf9f4d9d29195fcfde6ebeae6f0a9c9afa6f8c5b89ff7a1aacececac4eba4d7c9d28bda
       flags: 0
     RecentlyUsedSceneGuid-0:
-      value: 5305560750025a0e5e0c582440710744404f4e787a7d226329784863e1b2673b
-      flags: 0
-    RecentlyUsedSceneGuid-1:
       value: 0155070703560d0909565c71497b074410154d7f2f7e76657f2b1962e7b2603c
       flags: 0
-    RecentlyUsedSceneGuid-2:
+    RecentlyUsedSceneGuid-1:
       value: 56050d5100020d0b585e5570477607441716407b7e7f72362c2b4d63e0e1636b
       flags: 0
-    RecentlyUsedSceneGuid-3:
+    RecentlyUsedSceneGuid-2:
       value: 560806525d010c0e550c5a7443745d441016402f7e2e7e637c2b4437bab7646d
       flags: 0
-    RecentlyUsedSceneGuid-4:
+    RecentlyUsedSceneGuid-3:
       value: 0554000451000b59095e58734725594442164b72757e2335752d4861b0e16060
       flags: 0
-    RecentlyUsedSceneGuid-5:
-      value: 5054510407075e5f545f5d2644215b44474e1e7f787a7335757c4d36e7b06761
-      flags: 0
-    RecentlyUsedSceneGuid-6:
+    RecentlyUsedSceneGuid-4:
       value: 070855005754510d0c5e0e7144750844124e1d2f787f25662c714d35b6e4373c
       flags: 0
-    RecentlyUsedSceneGuid-7:
+    RecentlyUsedSceneGuid-5:
       value: 5a08575f5207595a0f5d59741173094444164f7d7d2a23317c7a4465bbe1646d
       flags: 0
-    RecentlyUsedSceneGuid-8:
+    RecentlyUsedSceneGuid-6:
       value: 5a5757560101590a5d0c0e24427b5d44434e4c7a7b7a23677f2b4565b7b5353a
+      flags: 0
+    RecentlyUsedSceneGuid-7:
+      value: 5054510407075e5f545f5d2644215b44474e1e7f787a7335757c4d36e7b06761
+      flags: 0
+    RecentlyUsedSceneGuid-8:
+      value: 5205030455010f0d555c5e7514220744414e1a7d2d7b24662b7b4b32b1b56160
       flags: 0
     RecentlyUsedSceneGuid-9:
       value: 570051535405580c5f0c5871127b0a44404f4a2c7f7024312f7a4a60b5b66461
       flags: 0
     Trace.SinkConfigs:
-      value: 181377090b53005c1e4c563952365119020e56292326353f212c5f69f9a2103de4e623e5f3163a2a3c0ead664629002dfc484549d50a1e0e1601ef0714ec52490a8715c60a8a455ec2171ac18f009da1f3dfd8feddf9d5ddddcab2e0fdfee9baafe5b7eeafb5e18ce882ffa989cbcbc1f2c3adc1e1e48b9deb829d918ac1dbdeffdf89d3ea8ec2def4afe2d7f3c2ba
+      value: 181377090b53005c1e4c563952365119020e56292326353f212c5f69f9a2103de4e623e5f3163a2a3c0ead664629002dfc484549d50a1e0e1601ef0714ec52490a8715c60a8a455ec51612cb8f009da1f3dfd8feddf9d5ddddcab2e0fdfee9baafe5b7eeafb5e18ce882ffa989cbcbc1f2c3adc1e1e48b9deb829d918ac1dbdeffdf89d3ea8ec2def4afe2d7f3c2ba
       flags: 0
     lightmappingBakingProfile:
       value: 51
