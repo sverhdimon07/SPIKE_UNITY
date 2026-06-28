@@ -39,7 +39,7 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
 
     //private SceneLoading _sceneLoading;
 
-    private SavingLoadingSystemBootstrap _savingLoadingSystemBootstrap;
+    private GameSaveLoadInteractor _savingLoadingSystemBootstrap;
 
     private GameplayMenuUI _gameplayMenuUI;
 
@@ -48,7 +48,9 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
     //private LoseUI _loseUI;
 
     private InputController _inputController;
-    
+
+    private ScoreController _playerScoreController;
+
     //private Player _player;//?; пока хз, какой именно прослойкой соединять инпут и игрока - бутстрапом или другой какой-то, так что пусть пока лежит тут;
 
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!private CharacterNO[] _characters;
@@ -77,6 +79,8 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
 
         EnableVisualSpawners();
 
+        _playerScoreController = FindAnyObjectByType<ScoreController>();
+
         //PlayerUI.BossSpawned += EnableBossSpawner;
         _scenePausing = new ScenePausing();
         //_sceneLoading = new SceneLoading(); //НЕ ИНИЧУ ПОКА ЧТО
@@ -85,8 +89,8 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         //_loseUI = FindAnyObjectByType<LoseUI>();
         _inputController = GetComponent<InputController>(); //_inputController.Initialize(); //он инитится сам в себе, наверное плохо, но ничего сделать не могу; дает подсказку, ибо это надо переносить в абстрактный бутстрап;
 
-        _saveButtonForDataSaveHandler = delegate () { _savingLoadingSystemBootstrap.SaveAll(); };
-        _loadSavingButtonForDataLoadHandler = delegate () { _savingLoadingSystemBootstrap.LoadAll(); };
+        _saveButtonForDataSaveHandler = delegate () { _savingLoadingSystemBootstrap.ExecuteSaveOperation(); };
+        _loadSavingButtonForDataLoadHandler = delegate () { _savingLoadingSystemBootstrap.ExecuteLoadOperation(); };
 
         _attackCloseRangeButtonPressedForCloseRangeAttackHandler = delegate () { PlayerController.AttackCloseRange(PlayerController.GameObjectPivot.position, new Vector2(PlayerController.RenderAndSkeletonPivot.forward.x, PlayerController.RenderAndSkeletonPivot.forward.z)); };
         _attackLongRangeButtonPressedForLongRangeAttackHandler = delegate () { PlayerController.AttackLongRange(PlayerController.GameObjectPivot.position, new Vector2(PlayerController.RenderAndSkeletonPivot.forward.x, PlayerController.RenderAndSkeletonPivot.forward.z)); };
@@ -121,7 +125,7 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         {
             return;
         }
-        _savingLoadingSystemBootstrap = GetComponent<SavingLoadingSystemBootstrap>(); //ПОКА БЕЗ КОНТРАКТА, ИБО НЕ ЗАВЕРШИЛ ПРОЕКТИРОВАНИЕ
+        _savingLoadingSystemBootstrap = GetComponent<GameSaveLoadInteractor>(); //ПОКА БЕЗ КОНТРАКТА, ИБО НЕ ЗАВЕРШИЛ ПРОЕКТИРОВАНИЕ
 
         //_savingLoadingPlayerInteractor.Initialize(new SavingLoadingJSONRepository<Vector3, Quaternion>(), "SavingLoadingPayerData.json", PlayerController);
 

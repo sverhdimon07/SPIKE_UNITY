@@ -4,15 +4,16 @@ using UnityEngine.Events;
 
 public /*тут надо поработать с абстракцией*/ sealed class CharacterHealth //Ёта реализаци€ буквально дублируетс€ в Character, то есть, это сервис, который можно –≈ё«ј“№ » ѕќƒћ≈Ќя“№ (ѕ≈–≈ƒ≈Ћј“№);
 {
-    public static UnityAction DiedSomeone;
-
     public UnityAction Died;
+    //public static UnityAction DiedSomeone;
+
+    //public UnityAction Died;
 
     public UnityAction<float> DamageTaken;
 
-    private readonly float _maxHealth;
+    private readonly float _maxHealthValue;
 
-    private float _health; //потом мб переведем пол€ здоровь€ и демеджа на int везде (надо пон€ть, насколько это оправдано и что стоит ставить); подумать про семантику названи€ этого пол€ (можно оставить, а можно назвать это поле value)
+    private float _healthValue; //потом мб переведем пол€ здоровь€ и демеджа на int везде (надо пон€ть, насколько это оправдано и что стоит ставить); подумать про семантику названи€ этого пол€ (можно оставить, а можно назвать это поле value)
 
     public CharacterHealth(float maxHealth, float health) //»Ќ јѕ—”Ћя÷»я (Ќјƒќ ѕќ“ќћ —ƒ≈Ћј“№ ¬≈«ƒ≈) - можно сделать простую проверку пр€м здесь »Ћ» можно изменить подход к иниту полей и инитить не сами пол€, а свойства с условием в сеттере;надо ли делать эту проверку в классах более высокого уровн€?
     {
@@ -20,17 +21,30 @@ public /*тут надо поработать с абстракцией*/ sealed class CharacterHealth //Ёта 
         {
             throw new ArgumentOutOfRangeException();
         }
-        _maxHealth = maxHealth;
+        _maxHealthValue = maxHealth;
 
         if ((health <= 0f) && (health > maxHealth)) //
         {
             throw new ArgumentOutOfRangeException();
         }
-        _health = health;
+        _healthValue = health;
     }
     
-    public float MaxHealth => _maxHealth;
-    public float Health => _health;
+    public float MaxHealthValue => _maxHealthValue;
+    public float HealthValue => _healthValue;
+
+    public void SetHealthValue(float healthValue)
+    {
+        if (healthValue <= 0f) //< 0, так как задел под расширение
+        {
+            throw new ArgumentOutOfRangeException();
+        }
+        if (healthValue > _maxHealthValue)
+        {
+            throw new ArgumentOutOfRangeException();
+        }
+        _healthValue = healthValue;
+    }
 
     public void TakeDamage(float damage)
     {
@@ -38,32 +52,35 @@ public /*тут надо поработать с абстракцией*/ sealed class CharacterHealth //Ёта 
         {
             throw new ArgumentOutOfRangeException();
         }
-        if ((_health -= damage) < 0f)
+        if ((_healthValue -= damage) < 0f)
         {
-            _health = 0f;
+            _healthValue = 0f;
 
             Die();
         }
-        else if ((_health -= damage) == 0f)
+        else if ((_healthValue -= damage) == 0f)
         {
             Die();
         }
         else
         {
-            _health -= damage;
+            _healthValue -= damage;
 
-            DamageTaken.Invoke(_health);
+            DamageTaken.Invoke(_healthValue);
         }
     }
 
     public void Heal()
     {
-        _health = _maxHealth;
+        _healthValue = _maxHealthValue;
     }
 
     public void Die()
     {
         Died.Invoke();
-        DiedSomeone.Invoke();
+        //Died.Invoke();
+        //DiedSomeone.Invoke();
+
+        _healthValue = _maxHealthValue;
     }
 }

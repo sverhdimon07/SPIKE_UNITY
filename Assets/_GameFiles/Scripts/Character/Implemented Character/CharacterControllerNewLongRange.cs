@@ -2,10 +2,28 @@ using UnityEngine;
 
 public class CharacterControllerNewLongRange : CharacterControllerNew, ILongRangeAttacker
 {
+    public WeaponType WeaponType;
+
+    public AttackType AttackType;
+
+
+    public override void Awake()
+    {
+        base.Awake();
+        if (WeaponType == WeaponType.First)
+        {
+            _firstGun.SetActive(true);
+            _secondGun.SetActive(false);
+        }
+        else if (WeaponType == WeaponType.Second)
+        {
+            _firstGun.SetActive(false);
+            _secondGun.SetActive(true);
+        }
+    }
+
     private void Update() //возможно здесь будем корректировать то, куда смотрит ГГ (но возможно это стоит делать не здесь)
     {
-        _model.MechanicStateMachine.State.DoWithinFrame(_model);
-
         if (Vector3.Distance(transform.position, _playerPoint.position) < 3f) //МГ
         {
             _renderAndSkeletonPivot.LookAt(_lookAndLocomotionPoint);
@@ -33,8 +51,6 @@ public class CharacterControllerNewLongRange : CharacterControllerNew, ILongRang
     }
     public void AttackLongRange(Vector3 gameObjectPosition, Vector2 gameObjectRotation)
     {
-        _model.AttackLongRange(gameObjectPosition, gameObjectRotation);
-        FireEffects.Play();
-        FireSound.Play();
+        Model.AttackLongRange(gameObjectPosition, gameObjectRotation);
     }
 }

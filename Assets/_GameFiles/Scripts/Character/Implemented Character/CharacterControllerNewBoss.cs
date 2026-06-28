@@ -1,3 +1,4 @@
+/*
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -95,9 +96,6 @@ public class CharacterControllerNewBoss : CharacterControllerNew, IAllRangesAtta
             SecondStageStarted.Invoke();
         }
 
-        // Обновляем состояние FSM (если нужно)
-        _model.MechanicStateMachine.State.DoWithinFrame(_model);
-
         float distance = Vector3.Distance(transform.position, _playerPoint.position);
         _gameObjectPivot.LookAt(_playerPoint);
 
@@ -133,9 +131,7 @@ public class CharacterControllerNewBoss : CharacterControllerNew, IAllRangesAtta
             }
 
             // Восстанавливаем здоровье модели (через HealthController)
-            _model.HealthController.Health.Heal();  // предполагаем, что есть такой метод
-            // Если в модели нет RestoreFullHealth, можно так:
-            // _model.HealthController.Health.SetHealth(_model.HealthController.Health.MaxHealth);
+            SetHealthValue(100f);
         }
     }
 
@@ -221,10 +217,6 @@ public class CharacterControllerNewBoss : CharacterControllerNew, IAllRangesAtta
         {
             AttackCloseRange(_gameObjectPivot.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
             _lastAttackTime = Time.time;
-
-            // Эффекты ближнего боя (Water)
-            if (WaterEffects != null) WaterEffects.Play();
-            if (WaterSound != null) WaterSound.Play();
         }
     }
 
@@ -244,9 +236,6 @@ public class CharacterControllerNewBoss : CharacterControllerNew, IAllRangesAtta
             {
                 AttackCloseRange(_gameObjectPivot.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
                 _lastAttackTime = Time.time;
-
-                if (WaterEffects != null) WaterEffects.Play();
-                if (WaterSound != null) WaterSound.Play();
             }
         }
         else
@@ -296,25 +285,171 @@ public class CharacterControllerNewBoss : CharacterControllerNew, IAllRangesAtta
         {
             AttackLongRange(_gameObjectPivot.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
 
-
             _lastAttackTime = Time.time;
-
-            if (FireEffects != null) FireEffects.Play();
-            if (FireSound != null) FireSound.Play();
         }
     }
 
     public void AttackCloseRange(Vector3 gameObjectPosition, Vector2 gameObjectRotation)
     {
-        _model.AttackCloseRange(gameObjectPosition, gameObjectRotation);
-        WaterEffects.Play();
-        WaterSound.Play();
+        Model.AttackCloseRange(gameObjectPosition, gameObjectRotation);
     }
 
     public void AttackLongRange(Vector3 gameObjectPosition, Vector2 gameObjectRotation)
     {
-        _model.AttackLongRange(gameObjectPosition, gameObjectRotation);
-        LightningEffects.Play();
-        LightningSound.Play();
+        Model.AttackLongRange(gameObjectPosition, gameObjectRotation);
+    }
+}
+*/
+using UnityEngine;
+public class CharacterControllerNewBoss : CharacterControllerNew, IAllRangesAttacker
+{
+    public WeaponType WeaponType;
+
+    public AttackType AttackType;
+
+    public override void Awake()
+    {
+        base.Awake();
+
+        if (WeaponType == WeaponType.First)
+        {
+            _firstSword.SetActive(true);
+            _secondSword.SetActive(false);
+
+            _firstGun.SetActive(true);
+            _secondGun.SetActive(false);
+        }
+        else if (WeaponType == WeaponType.Second)
+        {
+            _firstSword.SetActive(false);
+            _secondSword.SetActive(true);
+
+            _firstGun.SetActive(false);
+            _secondGun.SetActive(true);
+        }
+    }
+
+    [Header("Combat Settings")]
+    [SerializeField] private float meleeRange = 1.1f;          // дистанция для ближней атаки
+    [SerializeField] private float attackCooldown = 1.5f;      // общая задержка между атаками
+
+    [Header("Ranged Behavior")]
+    [SerializeField] private float timeToRangedAttack = 5f;    // время на дистанции до первого дальнего выстрела
+    [SerializeField] private float chaseDuration = 10f;        // длительность преследования после дальнего выстрела
+
+    // Приватные переменные состояния
+    private float _lastAttackTime;
+    private float _timeSinceFar;          // время, проведённое на дистанции > meleeRange
+    private bool _hasDoneRangedAttack;    // был ли уже выполнен дальний выстрел в текущем цикле
+    private bool _isChasing;              // активен ли режим преследования после дальнего выстрела
+    private float _chaseTimer;            // таймер преследования
+
+    private void Update()
+    {
+        // Поворачиваем босса к игроку
+        _gameObjectPivot.LookAt(_playerPoint);
+
+        float distance = Vector3.Distance(transform.position, _playerPoint.position);
+
+        if (distance <= meleeRange)
+        {
+            // Ближняя зона – ближний бой
+            HandleMelee();
+        }
+        else
+        {
+            // Дальняя зона – логика дальнего боя с преследованием
+            HandleRanged(distance);
+        }
+    }
+
+    private void HandleMelee()
+    {
+        // Сбрасываем все дальние таймеры
+        _timeSinceFar = 0f;
+        _hasDoneRangedAttack = false;
+        _isChasing = false;
+        _chaseTimer = 0f;
+
+        // Останавливаемся (не двигаемся)
+        Idle();
+
+        // Атакуем, если прошла задержка
+        if (Time.time - _lastAttackTime >= attackCooldown)
+        {
+            AttackCloseRange(_gameObjectPivot.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
+            _lastAttackTime = Time.time;
+        }
+    }
+
+    private void HandleRanged(float distance)
+    {
+        if (_isChasing)
+        {
+            // Режим преследования после дальнего выстрела
+            _chaseTimer += Time.deltaTime;
+            Locomote(new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
+
+            // Если игрок подошёл в ближнюю зону – переключаемся на ближний бой (это произойдёт в следующем Update)
+            // или если время преследования истекло – делаем ещё один дальний выстрел
+            if (distance <= meleeRange)
+            {
+                // сбросим флаги, чтобы на следующем кадре перейти в ближний режим
+                _isChasing = false;
+                _chaseTimer = 0f;
+                _timeSinceFar = 0f;
+                _hasDoneRangedAttack = false;
+            }
+            else if (_chaseTimer >= chaseDuration)
+            {
+                PerformRangedAttack();
+                _chaseTimer = 0f;
+                // остаёмся в режиме преследования, сбрасываем таймер
+            }
+        }
+        else
+        {
+            // Не в режиме преследования – считаем время на дистанции
+            _timeSinceFar += Time.deltaTime;
+
+            if (_timeSinceFar < timeToRangedAttack)
+            {
+                // Двигаемся к игроку (преследование)
+                Locomote(new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
+            }
+            else if (!_hasDoneRangedAttack)
+            {
+                // Прошло время до первого дальнего выстрела – стреляем и переходим в режим преследования
+                PerformRangedAttack();
+                _hasDoneRangedAttack = true;
+                _isChasing = true;
+                _chaseTimer = 0f;
+            }
+            else
+            {
+                // Уже был дальний выстрел, но преследование не началось (защита от ошибок)
+                Locomote(new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
+            }
+        }
+    }
+
+    private void PerformRangedAttack()
+    {
+        if (Time.time - _lastAttackTime >= attackCooldown)
+        {
+            AttackLongRange(_gameObjectPivot.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
+            _lastAttackTime = Time.time;
+        }
+    }
+
+    // Реализация интерфейсов (вызовы методов модели)
+    public void AttackCloseRange(Vector3 gameObjectPosition, Vector2 gameObjectRotation)
+    {
+        Model.AttackCloseRange(gameObjectPosition, gameObjectRotation);
+    }
+
+    public void AttackLongRange(Vector3 gameObjectPosition, Vector2 gameObjectRotation)
+    {
+        Model.AttackLongRange(gameObjectPosition, gameObjectRotation);
     }
 }

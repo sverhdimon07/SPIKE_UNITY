@@ -1,11 +1,42 @@
 using UnityEngine;
 
+public enum AttackType
+{
+    Ice,
+    Lighning,
+    Lighning2,
+    Last
+}
+
+public enum WeaponType
+{
+    First,
+    Second
+}
 public class CharacterControllerNewCloseRange : CharacterControllerNew, ICloseRangeAttacker
 {
+    public WeaponType WeaponType;
+
+    public AttackType AttackType;
+
+    public override void Awake()
+    {
+        base.Awake();
+
+        if (WeaponType == WeaponType.First)
+        {
+            _firstSword.SetActive(true);
+            _secondSword.SetActive(false);
+        }
+        else if (WeaponType == WeaponType.Second)
+        {
+            _firstSword.SetActive(false);
+            _secondSword.SetActive(true);
+        }
+    }
+
     private void Update() //возможно здесь будем корректировать то, куда смотрит ГГ (но возможно это стоит делать не здесь)
     {
-        _model.MechanicStateMachine.State.DoWithinFrame(_model);
-
         _gameObjectPivot.LookAt(_playerPoint);
 
         if (Vector3.Distance(transform.position, _playerPoint.position) > 1.1f)
@@ -29,8 +60,6 @@ public class CharacterControllerNewCloseRange : CharacterControllerNew, ICloseRa
 
     public void AttackCloseRange(Vector3 gameObjectPosition, Vector2 gameObjectRotation)
     {
-        _model.AttackCloseRange(gameObjectPosition, gameObjectRotation);
-        WindEffects.Play();
-        WindSound.Play();
+        Model.AttackCloseRange(gameObjectPosition, gameObjectRotation);
     }
 }

@@ -12,9 +12,10 @@ public class CharacterFactotyForBoss : MonoBehaviour, ICharacterControllerNewFac
     [SerializeField] private CharacterControllerNewCloseRange _closeRangePrefab;
     [SerializeField] private CharacterControllerNewLongRange _longRangePrefab;
     [SerializeField] private CharacterControllerNewBoss _bossPrefab;
+
     private void Awake()
     {
-        PlayerUI.BossSpawned += Spawn;
+        //PlayerUI.BossSpawned += Spawn;
     }
 
     public void Spawn()

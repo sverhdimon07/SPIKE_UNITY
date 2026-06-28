@@ -18,6 +18,11 @@ public sealed class CharacterLocomotion
         _lastPosition = lastPosition;
     }
 
+    public void SetLastPosition(Vector3 lastPosition)
+    {
+        _lastPosition = lastPosition;
+    }
+
     public void Locomote(Vector2 direction) //ИНКАПУСЛЯЦИЯ
     {
         Vector3 directionCalibrated = new Vector3(direction.x, 0f, direction.y);

@@ -32,7 +32,7 @@ public class WinUI : MonoBehaviour
     {
         gameObject.SetActive(true);
 
-        _statisticsText.text = "Очки - " + PlayerUI.Counter;
+        //_statisticsText.text = "Очки - " + PlayerUI.Counter;
     }
 
     private void Close()

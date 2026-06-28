@@ -6,9 +6,7 @@ using UnityEngine.UI;
 
 public sealed class PlayerUI
 {
-    public static int Counter;
-
-    public static UnityAction BossSpawned;
+    //public static int Counter;
 
     private readonly Image _healthBar;
     private readonly Image _weaponLongRangeCooldownBar;
@@ -23,14 +21,7 @@ public sealed class PlayerUI
         _weaponLongRangeCooldownBar = weaponLongRangeCooldownBar;
         _deathMessageText = deathMessageText;
         _counterText = counterText;
-
         _counterText.text = 0.ToString();
-
-        CharacterHealth.DiedSomeone += RefreshCounterText;
-    }
-    ~PlayerUI() 
-    {
-        CharacterHealth.DiedSomeone -= RefreshCounterText;
     }
 
     public void RefreshHealthBar(float valueLevel)
@@ -66,23 +57,25 @@ public sealed class PlayerUI
 
     public void RefreshCounterText()
     {
+        /*
         if (CharacterControllerNewBoss.Spawned == true)
         {
             Debug.Log(_counterText.text);
             return;
-        }
+        }*/
         int counter = int.Parse(_counterText.text);
         counter += 1;
-        Counter = counter;
+        //Counter = counter;
 
         _counterText.text = counter.ToString();
 
+        /*
         if (_counterText.text == "3")
         {
             BossSpawned.Invoke();
 
-            CharacterControllerNewBoss.Spawned = true;
-        }
+            //CharacterControllerNewBoss.Spawned = true;
+        }*/
     }
 
     /*

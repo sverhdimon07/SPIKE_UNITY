@@ -66,9 +66,9 @@
     <Compile Include="Assets\Import\Lahmadju\Scripts\CharacterAI.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterOffense\CharacterOffenseController\CharacterOffenseController.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterOffense\CharacterAttack.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\NewSaveLoadSystem\Interactor.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Environment\Object Spawner 2.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerOffense\PlayerAttack.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\NewSaveLoadSystem\JSONPlayerRepository.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\EnvironmentAreaAnalyzers\EnvironmentAreaAnalyzerRenders\EnvironmentAreaOverlapAnalyzerRender.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Player And Weapons\Deflect Handler.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabLogger.cs" />
@@ -80,6 +80,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Player And Weapons\Player Accept Incoming Damage.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\CharacterFabric\CharacterFactotyForBoss.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\OldSaveLoadSystem 1\Interactors\SavingLoadingPlayerInteractor.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterMechanicStateMachine\CharacterMechanicStateMachine.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\Character.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMechanicStateMachine\PlayerMechanicStates\Implemented PlayerMechanicState\PlayerMechanicLocomotionState.cs" />
@@ -91,13 +92,11 @@
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerWeapon\PlayerWeaponCloseRange.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Environment\Object Spawner 3.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterMovement\CharacterMovementController\CharacterMovementController.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\Interactors\SavingLoadingPlayerData.cs" />
     <Compile Include="Assets\Import\DODONPAScripts\Player Health Level UI.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMechanicStateMachine\PlayerMechanicStates\Implemented PlayerMechanicState\PlayerMechanicDeathState.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\UIGeneral\LoseUI.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\ProjectileLaunch.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\Limiters.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\NewSaveLoadSystem\Interfaces\IInteractor.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterMovement\CharacterLocomotion.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Player And Weapons\Incoming Hit Handler Position.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityAttitudeTowardPlayerInterfaces\IAlly.cs" />
@@ -110,7 +109,6 @@
     <Compile Include="Assets\Import\Lahmadju\Scripts\Boss\PS Boss Accept Incoming Damage.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Player And Weapons\Animate Hands 2.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Boss\Boss Health System.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\NewSaveLoadSystem\PlayerSavingData.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterMechanicStateMachine\CharacterMechanicStates\Implemented CharacterMechanicState\CharacterMechanicRunState.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\Implemented Character\CharacterControllerNewLongRange.cs" />
@@ -128,6 +126,7 @@
     <Compile Include="Assets\Import\Lahmadju\Scripts\Environment\Arena Light.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterWeapon\CharacterWeaponLongRange.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Player And Weapons\Gun Color.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\NewSaveLoadSystem\JSONCharacterRepository.cs" />
     <Compile Include="Assets\Import\Models\Locations\SciFi Warehouse Kit\Demo\Scripts\PushPhysics.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Weapon\Implemented Weapon\WeaponCloseRange.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityBehaviorInterfaces\ILongRangeAttacker.cs" />
@@ -144,6 +143,7 @@
     <Compile Include="Assets\Import\Particles\Vefects\Trails VFX URP\Scripts\Demo_TurningAround.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Boss\Second Phase Limiters.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\OldSaveLoadSystem 1\Interactors\SavingLoadingPlayerData.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Boss\Boss AI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
@@ -154,9 +154,9 @@
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterOffense\Implemented CharacterAttack\CharacterAttackLongRange.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerOffense\Implemented PlayerAttack\PlayerAttackLongRange.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterMechanicStateMachine\CharacterMechanicStates\Implemented CharacterMechanicState\CharacterMechanicDeathState.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\NewSaveLoadSystem\CharacterSavingData.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Sound System\Space Ships Sounds 2.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\EntryPointScenes\Implemented Bootstrap\BootstrapTestScene.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\NewSaveLoadSystem\GameSaveLoadInteractor.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Environment\Particles Position Change.cs" />
     <Compile Include="Assets\Import\Models\Locations\SciFi Warehouse Kit\Demo\Scripts\LightFlicker.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterView.cs" />
@@ -169,15 +169,12 @@
     <Compile Include="Assets\Import\Lahmadju\Scripts\DODONPA Scripts\Environment Change\Object Rotation Around Its Axis.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMechanicStateMachine\PlayerMechanicStates\Implemented PlayerMechanicState\PlayerMechanicAttackCloseRangeState.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\NewSaveLoadSystem\JSONRepository.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\NewSaveLoadSystem\SavingLoadingSystemBootstrap.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\EnvironmentAreaAnalyzers\EnvironmentAreaColliderAnalyzer.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabUI.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterMovement\CharacterRotation.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterMechanicStateMachine\CharacterMechanicStates\Implemented CharacterMechanicState\CharacterMechanicIdleState.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterMechanicStateMachine\CharacterMechanicStates\Implemented CharacterMechanicState\CharacterMechanicLocomotionState.cs" />
     <Compile Include="Assets\Import\Lahmadju\Imported Models\Ultimate 10 Plus Shaders\Scripts\U10PS_DissolveOverTime.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\Repositories\SavingLoadingJSONRepository.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMovement\PlayerMovementController\PlayerMovementController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
@@ -185,7 +182,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Boss\Boss Limb Action.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\UIGeneral\MainMenuUI\MainMenuUI.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\Interactors\SavingLoadingPlayerInteractor.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterMovement\CharacterJump.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
@@ -215,6 +211,8 @@
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterMechanicStateMachine\CharacterMechanicStates\Implemented CharacterMechanicState\CharacterMechanicAttackCloseRangeState.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Diegetic UI\Player Health Bar.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\DamageCalculators\DamageCalculatorBasic.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\NewSaveLoadSystem\Interfaces\IPlayerRepository.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\NewSaveLoadSystem\CharacterSaveData.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Interfaces\NonGameEntityInterfaces\IDamageCalculator.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\Resizer.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerDefense\PlayerDefenseController.cs" />
@@ -225,7 +223,6 @@
     <Compile Include="Assets\Import\Lahmadju\Scripts\Sound System\Main Doors Sounds.cs" />
     <Compile Include="Assets\Import\DODONPAScripts\Jetpack Fuel Level UI.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\UIGeneral\WinUI.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\NewSaveLoadSystem\Interfaces\IRepository.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabPlugin.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabImporterWindow.cs" />
     <Compile Include="Assets\Import\Particles\Vefects\Trails VFX URP\Scripts\Demo_FreeCam.cs" />
@@ -234,10 +231,12 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabModelWindow.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerScore\ScoreController.cs" />
     <Compile Include="Assets\Import\Lahmadju\Imported Models\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Input\InputController.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Environment\Object Spawner 1.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\Implemented Character\CharacterControllerNewCloseRange.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\NewSaveLoadSystem\Interfaces\ICharacterRepository.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterMechanicStateMachine\CharacterMechanicStates\Implemented CharacterMechanicState\CharacterMechanicAttackLongRangeState.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMovement\PlayerLocomotion.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Enums\SavingLoadingRepositoryTypes.cs" />
@@ -263,13 +262,14 @@
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMechanicStateMachine\PlayerMechanicStates\Implemented PlayerMechanicState\PlayerMechanicRunState.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMovement\PlayerRotation.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Sound System\Camera Sounds.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\OldSaveLoadSystem 1\Repositories\SavingLoadingJSONRepository.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerUI\PlayerUI.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\EnvironmentAreaAnalyzers\EnvironmentAreaOverlapAnalyzer.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\CharacterFabricNew\Spawner.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Common Systems\World Time Counter.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Player And Weapons\Player Health System.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Player And Weapons\Boss Holding Point Position.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\NewSaveLoadSystem\PlayerSaveData.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Player And Weapons\Bullet Behavior.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterMechanicStateMachine\CharacterMechanicStates\CharacterMechanicState.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Weapon\Implemented Weapon\WeaponLongRange.cs" />

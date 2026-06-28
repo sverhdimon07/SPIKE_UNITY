@@ -23,6 +23,11 @@ public sealed class PlayerLocomotion
         _lastPosition = lastPosition;
     }
 
+    public void SetLastPosition(Vector3 lastPosition)
+    {
+        _lastPosition = lastPosition;
+    }
+
     public void Locomote(Vector3 direction, Vector2 skeletonAndRenderDirection) //ИНКАПУСЛЯЦИЯ
     {
         Collider obstacle = _environmentAreaAnalyzer.Analyze(_lastPosition, skeletonAndRenderDirection);

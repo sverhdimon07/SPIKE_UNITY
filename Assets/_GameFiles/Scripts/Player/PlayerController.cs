@@ -42,12 +42,20 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
 
     private Player _model; //не уверен, что так правильно; вообще есть 2 варика - ЛИБО сделать так, как здесь, с публичной для вызова публичных методов моделью и подписками вьюшки здесь, ЛИБО сделать модель приватной И соединять модель и вьюшку напрямую публичными методами. Мне впринципе 2й варик больше нравится;
 
+    private ScoreController _scoreController;
+
+    public ScoreController ScoreController => _scoreController;
+
     public Transform GameObjectPivot => _gameObjectPivot; //ВРЕМЕННАЯ МЕРА
     public Transform RenderAndSkeletonPivot => _renderAndSkeletonPivot; //ВРЕМЕННАЯ МЕРА
     public Transform ThirdPersonCameraControllerPivot => _thirdPersonCameraControllerPivot; //ВРЕМЕННАЯ МЕРА
 
+    public float Health => _model.HealthController.Health.HealthValue;
+
     private void Awake() //чекнуть конструкторы и деструкторы в монобехах
     {
+        _scoreController = FindAnyObjectByType<ScoreController>();
+
         _view = new PlayerView(new PlayerUI(_healthBar, _weaponLongRangeCooldownBar, _deathMessageText, _counterText), new PlayerAnimator(_animator), _gameObjectPivot, _renderAndSkeletonPivot, _closeRangeWeaponEffect, _longRangeWeaponEffect, _closeRangeWeaponSound, _longRangeWeaponSound);
         _model = new Player(new PlayerMechanicStateMachine(_model, new PlayerMechanicIdleState()), new PlayerHealthController(new PlayerHealth(_maxHealth, _health)), new PlayerMovementController(new PlayerLocomotion(new EnvironmentAreaOverlapAnalyzer<Collider, PlayerController>(), new Vector2(_renderAndSkeletonPivot.forward.x, _renderAndSkeletonPivot.forward.z), 0.3f, 0.5f, 2.5f, _locomotionSpeed, _runningSpeed, transform.position), new PlayerRotation()), new PlayerOffenseController(_firstWeapon, _secondWeapon, transform.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z)), new PlayerDefenseController()); //тут такой прикол, что любой человек сможет создавать объект этого класса в любой части программы, но как бы и работать он с ним не сможет без верхнеуровнего монобеховского слоя. Тут все норм, я бы только засинглтонил PlayerController и Player (про PlayerView - хз)
     }
@@ -63,33 +71,47 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
     {
         Player.Idled += _view.PresentIdle;
         PlayerHealth.DamageTaken += _view.PresentDamageTake;
-        PlayerHealth.DamageTaken += DamageTaken; //под расширение (мб замедление времени во время стана делать, и возможно это делается при помощи заморозки сцены)
+        //PlayerHealth.DamageTaken += DamageTaken; //под расширение (мб замедление времени во время стана делать, и возможно это делается при помощи заморозки сцены)
         PlayerHealth.Died += _view.PresentDeath; //надо дописать где-то вызов на выключение на старте, и включить объект в сцене
-        PlayerHealth.Died += Died;
+        //PlayerHealth.Died += () => Destroy(gameObject);
+        //PlayerHealth.Died += Died;
         PlayerLocomotion.Locomoted += _view.MoveCharacterModelInLocomotionForm;
         PlayerLocomotion.Runned += _view.MoveCharacterModelInRunForm;
         PlayerRotation.Rotated += _view.TurnCharacterModel;
         PlayerAttackCloseRange.Attacked += async delegate { await _view.PresentCloseRangeAttack(); };
         PlayerAttackLongRange.Attacked += async delegate { await _view.PresentLongRangeAttack(); };
+        ScoreController.ScoreIncreased += _view.PresentScoreIncrease;
     }
 
     private void OnDisable()
     {
         Player.Idled -= _view.PresentIdle;
         PlayerHealth.DamageTaken -= _view.PresentDamageTake;
-        PlayerHealth.DamageTaken -= DamageTaken;
+        //PlayerHealth.DamageTaken -= DamageTaken;
         PlayerHealth.Died -= _view.PresentDeath;
-        PlayerHealth.Died -= Died;
+        //PlayerHealth.Died += () => Destroy(gameObject);
+        //PlayerHealth.Died -= Died;
         PlayerLocomotion.Locomoted -= _view.MoveCharacterModelInLocomotionForm;
         PlayerLocomotion.Runned -= _view.MoveCharacterModelInRunForm;
         PlayerRotation.Rotated -= _view.TurnCharacterModel;
         PlayerAttackCloseRange.Attacked -= async delegate { await _view.PresentCloseRangeAttack(); };
         PlayerAttackLongRange.Attacked -= async delegate { await _view.PresentLongRangeAttack(); };
+        ScoreController.ScoreIncreased -= _view.PresentScoreIncrease;
+    }
+
+    public void SetLastPosition(Vector3 lastPosition)
+    {
+        _model.MovementController.Locomotion.SetLastPosition(lastPosition);
     }
 
     public void SetRenderAndSkeletonPivot(Quaternion rotation) //?
     {
         _gameObjectPivot.rotation = rotation;
+    }
+
+    public void SetHealthValue(float healthValue)
+    {
+        _model.HealthController.Health.SetHealthValue(healthValue);
     }
 
     public void Idle()

@@ -1,48 +1,47 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(CapsuleCollider))]
 public abstract class CharacterControllerNew : MonoBehaviour, IDamageable //тут прикол такой, что этот контроллер тоже может реализовывать интерфейсы модели, НО стоит ли реализовывать их и там, и там - или поставить только тут и все?
 {
-    public Character _model; //не уверен, что так правильно; вообще есть 2 варика - ЛИБО сделать так, как здесь, с публичной для вызова публичных методов моделью и подписками вьюшки здесь, ЛИБО сделать модель приватной И соединять модель и вьюшку напрямую публичными методами. Мне впринципе 2й варик больше нравится;
+    [SerializeField] protected GameObject _firstSword;
+    [SerializeField] protected GameObject _firstGun;
 
-    public UnityAction Died; //выходы для фабрик или классов более высокого уровня
-    public UnityAction<float> DamageTaken;
+    [SerializeField] protected GameObject _secondSword;
+    [SerializeField] protected GameObject _secondGun;
 
-    //[SerializeField] private Transform _renderAndSkeletonPivot;
-    protected Transform _playerPoint; //НЕНУЖНАЯ ПРИВЯЗКА - УДАЛЮ ПОТОМ (когда будет FSM)
-    [SerializeField] protected Transform _lookAndLocomotionPoint;
+    public static UnityAction Died; //выходы для фабрик или классов более высокого уровня
+    //public UnityAction<float> DamageTaken;
 
     [Header("View References")]
-    [SerializeField] private ParticleSystem _waterEffects;
-    [SerializeField] private ParticleSystem _fireEffects;
-    [SerializeField] private ParticleSystem _lightningEffects;
-    [SerializeField] private ParticleSystem _windEffects;
-
-    [SerializeField] private AudioSource _waterSound;
-    [SerializeField] private AudioSource _fireSound;
-    [SerializeField] private AudioSource _lightningSound;
-    [SerializeField] private AudioSource _windSound;
-
-    public ParticleSystem WaterEffects => _waterEffects;
-    public ParticleSystem FireEffects => _fireEffects;
-    public ParticleSystem LightningEffects => _lightningEffects;
-    public ParticleSystem WindEffects => _windEffects;
-
-    public AudioSource WaterSound => _waterSound;
-    public AudioSource FireSound => _fireSound;
-    public AudioSource LightningSound => _lightningSound;
-    public AudioSource WindSound => _windSound;
-
     [SerializeField] private Image _healthBar; //хотел переносить эти поля в бутстрап, НО почему-бы все поля, не отвечающие за геймплейную логику, не хранить именно здесь (ибо бутстрап должен инитить ГЕЙМДИЗАЙНЕРСКИЕ ДАННЫЕ, зачем их мешать с ссылками на вспомогательные классы?)?
-    //[SerializeField] private Image _weaponLongRangeCooldownBar;
-    //[SerializeField] private TMP_Text _deathMessageText;
     [SerializeField] private Animator _animator;
     [SerializeField] protected Transform _gameObjectPivot;
     [SerializeField] protected Transform _renderAndSkeletonPivot;
-    //[SerializeField] private Transform _thirdPersonCameraControllerPivot;
+    [SerializeField] protected Transform _lookAndLocomotionPoint;
+    [SerializeField] private ParticleSystem _firstEffect;
+    [SerializeField] private ParticleSystem _secondEffect;
+    [SerializeField] private ParticleSystem _thirdEffect;
+    [SerializeField] private ParticleSystem _fourthEffect;
+    [SerializeField] private ParticleSystem _fivthEffect;
+    [SerializeField] private ParticleSystem _sixthEffect;
+    [SerializeField] private ParticleSystem _seventhEffect;
+    [SerializeField] private ParticleSystem _eighthEffect;
+    [SerializeField] private ParticleSystem _ninethEffect;
+    [SerializeField] private ParticleSystem _tenthEffect;
+    [SerializeField] private AudioSource _firstSound;
+    [SerializeField] private AudioSource _secondSound;
+    [SerializeField] private AudioSource _thirdSound;
+    [SerializeField] private AudioSource _fourthSound;
+    [SerializeField] private AudioSource _fivthSound;
+    [SerializeField] private AudioSource _sixthSound;
+    [SerializeField] private AudioSource _seventhSound;
+    [SerializeField] private AudioSource _eighthSound;
+    [SerializeField] private AudioSource _ninethSound;
+    [SerializeField] private AudioSource _tenthSound;
 
     [Header("Model References")]
     [Range(0.1f, 100f)] //так как это не инкапсуляция - надо чекнуть то, искапсулирую ли я эти входные данные на уровне конкретных реализаций (сервисов) внутри; а вообще монобех именно так и инкапсулируется, я просто хз, как работать со скриптбл обджектами, там наверное как-то по-другому нужно будет проверять входные значения, если я захочу, чтобы у игрока максимальное здоровье было всегда не больше 100f
@@ -60,56 +59,86 @@ public abstract class CharacterControllerNew : MonoBehaviour, IDamageable //ту
 
     private CharacterView _view; //вот та разница между моделью и представлением. Просто если бы это было свойством да еще и публичным, то его методами можно было бы пользоваться в классе более высокого уровня
 
+    private Character _model; //не уверен, что так правильно; вообще есть 2 варика - ЛИБО сделать так, как здесь, с публичной для вызова публичных методов моделью и подписками вьюшки здесь, ЛИБО сделать модель приватной И соединять модель и вьюшку напрямую публичными методами. Мне впринципе 2й варик больше нравится;
+
+    private ScoreController _scoreController;
+
+    protected Transform _playerPoint; //НЕНУЖНАЯ ПРИВЯЗКА - УДАЛЮ ПОТОМ (когда будет FSM)
+
     protected int counter;
 
     protected bool _isCloseToPlayer;
-    
+
     public Character Model => _model;
 
-    public Transform GameObjectPivot => _gameObjectPivot; //ВРЕМЕННАЯ МЕРА
-    //public Transform ThirdPersonCameraControllerPivot => _thirdPersonCameraControllerPivot; //ВРЕМЕННАЯ МЕРА
+    public float Health => _model.HealthController.Health.HealthValue;
 
-    private void Awake() //чекнуть конструкторы и деструкторы в монобехах
+
+    public virtual void Awake() //чекнуть конструкторы и деструкторы в монобехах
     {
+        _scoreController = FindAnyObjectByType<ScoreController>();
         _playerPoint = FindAnyObjectByType<PlayerController>().GetComponent<Transform>();
 
-        _view = new CharacterView(new CharacterUI(_healthBar/*, _weaponLongRangeCooldownBar, _deathMessageText*/), new CharacterAnimator(_animator), _gameObjectPivot, _renderAndSkeletonPivot);
+        _view = new CharacterView(new CharacterUI(_healthBar), new CharacterAnimator(_animator), _gameObjectPivot, _renderAndSkeletonPivot, _firstEffect, _secondEffect, _thirdEffect, _fourthEffect, _fivthEffect, _sixthEffect, _seventhEffect, _eighthEffect, _ninethEffect, _tenthEffect, _firstSound, _secondSound, _thirdSound, _fourthSound, _fivthSound, _sixthSound, _seventhSound, _eighthSound, _ninethSound, _tenthSound);
         _model = new Character(new CharacterMechanicStateMachine(_model, new CharacterMechanicIdleState()), new CharacterHealthController(new CharacterHealth(_maxHealth, _health)), new CharacterMovementController(new CharacterLocomotion(_locomotionSpeed, _runningSpeed, transform.position), new CharacterRotation()), new CharacterOffenseController(_firstWeapon, _secondWeapon, transform.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z)), new CharacterDefenseController()); //тут такой прикол, что любой человек сможет создавать объект этого класса в любой части программы, но как бы и работать он с ним не сможет без верхнеуровнего монобеховского слоя. Тут все норм, я бы только засинглтонил PlayerController и Player (про PlayerView - хз)
+    }
+
+    private void Update()
+    {
+        _model.MechanicStateUpdate();
+
+        //print(_model.State);
     }
 
     private void OnEnable()
     {
         _model.Idled += _view.PresentIdle;
         _model.HealthController.Health.DamageTaken += _view.PresentDamageTake;
-        _model.HealthController.Health.DamageTaken += DamageTaken; //под расширение (мб замедление времени во время стана делать, и возможно это делается при помощи заморозки сцены)
+        //_model.HealthController.Health.DamageTaken += DamageTaken; //под расширение (мб замедление времени во время стана делать, и возможно это делается при помощи заморозки сцены)
         //CharacterHealth.Died += _view.PresentDeath; //надо дописать где-то вызов на выключение на старте, и включить объект в сцене
-        _model.HealthController.Health.Died += OnDeath;
+        _model.HealthController.Health.Died += () => Destroy(gameObject);
+        //_model.HealthController.Health.Died += OnDeath;
         _model.HealthController.Health.Died += Died;
         _model.MovementController.Locomotion.Locomoted += _view.MoveCharacterModelInLocomotionForm;
         _model.MovementController.Locomotion.Runned += _view.MoveCharacterModelInRunForm;
         _model.MovementController.Rotation.Rotated += _view.TurnCharacterModel;
-        _model.OffenseController.FirstAttackType.Attacked += _view.PresentCloseRangeAttack;
-        _model.OffenseController.SecondAttackType.Attacked += _view.PresentLongRangeAttack;
+        _model.OffenseController.FirstAttackType.Attacked += async delegate { await _view.PresentCloseRangeAttack(); };
+        _model.OffenseController.SecondAttackType.Attacked += async delegate { await _view.PresentLongRangeAttack(); };
+
+        _model.HealthController.Health.Died += delegate { _scoreController.IncreaseScore(); };
     }
 
     private void OnDisable()
     {
         _model.Idled -= _view.PresentIdle;
         _model.HealthController.Health.DamageTaken -= _view.PresentDamageTake;
-        _model.HealthController.Health.DamageTaken -= DamageTaken; //под расширение (мб замедление времени во время стана делать, и возможно это делается при помощи заморозки сцены)
+        //_model.HealthController.Health.DamageTaken -= DamageTaken; //под расширение (мб замедление времени во время стана делать, и возможно это делается при помощи заморозки сцены)
         //CharacterHealth.Died -= _view.PresentDeath; //надо дописать где-то вызов на выключение на старте, и включить объект в сцене
-        _model.HealthController.Health.Died -= OnDeath;
+        _model.HealthController.Health.Died -= () => Destroy(gameObject);
+        //_model.HealthController.Health.Died -= OnDeath;
         _model.HealthController.Health.Died -= Died;
         _model.MovementController.Locomotion.Locomoted -= _view.MoveCharacterModelInLocomotionForm;
         _model.MovementController.Locomotion.Runned -= _view.MoveCharacterModelInRunForm;
         _model.MovementController.Rotation.Rotated -= _view.TurnCharacterModel;
-        _model.OffenseController.FirstAttackType.Attacked -= _view.PresentCloseRangeAttack;
-        _model.OffenseController.SecondAttackType.Attacked -= _view.PresentLongRangeAttack;
+        _model.OffenseController.FirstAttackType.Attacked -= async delegate { await _view.PresentCloseRangeAttack(); };
+        _model.OffenseController.SecondAttackType.Attacked -= async delegate { await _view.PresentLongRangeAttack(); };
+
+        _model.HealthController.Health.Died -= delegate { _scoreController.IncreaseScore(); };
+    }
+
+    public void SetLastPosition(Vector3 lastPosition)
+    {
+        _model.MovementController.Locomotion.SetLastPosition(lastPosition);
     }
 
     public void SetRenderAndSkeletonPivot(Quaternion rotation) //?
     {
         _gameObjectPivot.rotation = rotation;
+    }
+
+    public void SetHealthValue(float healthValue)
+    {
+        _model.HealthController.Health.SetHealthValue(healthValue);
     }
 
     public void Idle()
@@ -142,6 +171,7 @@ public abstract class CharacterControllerNew : MonoBehaviour, IDamageable //ту
         _model.Rotate(/*thirdPersonCameraControllerPivot, */inputDirection);
     }
 
+    /*
     public void OnDeath()
     {
         if (gameObject.GetComponent<CharacterControllerNewBoss>())
@@ -155,7 +185,7 @@ public abstract class CharacterControllerNew : MonoBehaviour, IDamageable //ту
                 CharacterControllerNewBoss.FalseIfItIsFirstStage = true;
             }
 
-            Model.HealthController.Health.Heal();
+            _model.HealthController.Health.Heal();
 
             CharacterControllerNewBoss.PlayerCompleteBossLives += 1;
             if (CharacterControllerNewBoss.PlayerCompleteBossLives >= 3)
@@ -165,9 +195,7 @@ public abstract class CharacterControllerNew : MonoBehaviour, IDamageable //ту
             }
             return;
         }
-
-        Destroy(gameObject);
     }
 
-    public static UnityAction BossDied;
+    public static UnityAction BossDied;*/
 }

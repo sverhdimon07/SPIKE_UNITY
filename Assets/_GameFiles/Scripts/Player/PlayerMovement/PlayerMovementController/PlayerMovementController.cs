@@ -13,7 +13,9 @@ public sealed class PlayerMovementController
         _locomotion = locomotion;
         _rotation = rotation;
     }
-    
+
+    public PlayerLocomotion Locomotion => _locomotion;
+
     public void Locomote(Transform cameraPoint, Vector2 inputDirection, Vector2 skeletonAndRenderDirection)
     {
         _locomotion.Locomote(CalculateWorldDirection(cameraPoint, inputDirection), skeletonAndRenderDirection); //œ≈–≈œ»—¿“‹

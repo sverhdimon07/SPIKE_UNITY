@@ -31,6 +31,19 @@ public /*тут надо поработать с абстракцией*/ sealed class PlayerHealth //Эта реа
     public float MaxHealthValue => _maxHealthValue;
     public float HealthValue => _healthValue;
 
+    public void SetHealthValue(float healthValue)
+    {
+        if (healthValue <= 0f) //< 0, так как задел под расширение
+        {
+            throw new ArgumentOutOfRangeException();
+        }
+        if (healthValue > _maxHealthValue)
+        {
+            throw new ArgumentOutOfRangeException();
+        }
+        _healthValue = healthValue;
+    }
+
     public void TakeDamage(float damage)
     {
         if (_isBlocked == true)
@@ -65,6 +78,8 @@ public /*тут надо поработать с абстракцией*/ sealed class PlayerHealth //Эта реа
     public void Die()
     {
         Died.Invoke();
+
+        _healthValue = _maxHealthValue;
     }
 
     public void Block()

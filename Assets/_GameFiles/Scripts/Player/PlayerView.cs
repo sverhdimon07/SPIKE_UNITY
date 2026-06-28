@@ -81,4 +81,9 @@ public sealed class PlayerView //контракты на обновление UI
         _longRangeWeaponSound.Play();
         await _ui.RefreshWeaponLongRangeCooldownBarOnFull();
     }
+
+    public void PresentScoreIncrease()
+    {
+        _ui.RefreshCounterText();
+    }
 }
