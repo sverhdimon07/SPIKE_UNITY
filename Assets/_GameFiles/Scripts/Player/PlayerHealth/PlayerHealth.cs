@@ -1,11 +1,18 @@
 using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 public /*тут надо поработать с абстракцией*/ sealed class PlayerHealth //Ёта реализаци€ буквально дублируетс€ в Character, то есть, это сервис, который можно –≈ё«ј“№ » ѕќƒћ≈Ќя“№ (ѕ≈–≈ƒ≈Ћј“№);
 {
-    public static UnityAction Died;
+    public int Lives = 3;
+
+    public UnityAction Died;
+
+    public UnityAction<int> LivesChanged;
 
     public static UnityAction<float> DamageTaken;
+
+    public UnityAction Blocked;
 
     private readonly float _maxHealthValue;
 
@@ -42,6 +49,8 @@ public /*тут надо поработать с абстракцией*/ sealed class PlayerHealth //Ёта реа
             throw new ArgumentOutOfRangeException();
         }
         _healthValue = healthValue;
+
+        DamageTaken.Invoke(_healthValue);
     }
 
     public void TakeDamage(float damage)
@@ -77,14 +86,22 @@ public /*тут надо поработать с абстракцией*/ sealed class PlayerHealth //Ёта реа
 
     public void Die()
     {
-        Died.Invoke();
-
+        if (Lives <= 0)
+        {
+            Died.Invoke();
+            return;
+        }
         _healthValue = _maxHealthValue;
+        Lives -= 1;
+
+        LivesChanged.Invoke(Lives);
     }
 
     public void Block()
     {
         _isBlocked = true;
+
+        Blocked.Invoke();
     }
 
     public void Unblock()

@@ -127,4 +127,3 @@ public sealed class Player : IDamageable, IAllRangesAttacker //я думаю, что если
         }
     }
 }
-//СЮДА ИДИ

@@ -36,6 +36,12 @@ public sealed class PlayerMechanicStunState : PlayerMechanicState
 
             return true;
         }
+        else if (nextState.GetType() == typeof(PlayerMechanicStunState))
+        {
+            stateMachine.SwitchState(player, nextState);
+
+            return true;
+        }
         else
         {
             return false;

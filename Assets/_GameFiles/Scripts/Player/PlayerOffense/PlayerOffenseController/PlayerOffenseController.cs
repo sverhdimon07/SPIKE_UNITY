@@ -8,6 +8,9 @@ public sealed class PlayerOffenseController
 
     private PlayerAttack _secondAttackType = new PlayerAttackLongRange(); //зависим от абстракции и в типе и а названии переменной (и тип, и название уже изменил)
 
+    public PlayerAttack FirstAttackType => _firstAttackType;
+    public PlayerAttack SecondAttackType => _secondAttackType;
+
     public PlayerOffenseController(Weapon weaponCloseRange, Weapon weaponLongRange, Vector3 gameObjectPosition, Vector2 renderAndSkeletonDirectionXZ)
     {
         //_weaponController = weaponController;

@@ -4,12 +4,15 @@ using UnityEngine;
 public class CharacterView
 {
     private readonly CharacterUI _ui;
+
     private readonly CharacterAnimator _animator;
+
     private readonly Transform _gameObjectPivot;
+
     private readonly Transform _renderAndSkeletonPivot;
 
-    // Массивы для хранения всех эффектов и звуков
     private readonly ParticleSystem[] _effects;
+
     private readonly AudioSource[] _sounds;
 
     public CharacterView(
@@ -102,6 +105,11 @@ public class CharacterView
 
         // Случайный эффект и звук
         PlayRandomEffectAndSound();
+    }
+
+    public void PresentBlock()
+    {
+        _animator.PlayBlock();
     }
 
     // Вспомогательный метод для выбора случайного эффекта и звука

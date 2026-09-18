@@ -61,7 +61,7 @@ public abstract class CharacterControllerNew : MonoBehaviour, IDamageable //ту
 
     private Character _model; //не уверен, что так правильно; вообще есть 2 варика - ЛИБО сделать так, как здесь, с публичной для вызова публичных методов моделью и подписками вьюшки здесь, ЛИБО сделать модель приватной И соединять модель и вьюшку напрямую публичными методами. Мне впринципе 2й варик больше нравится;
 
-    private ScoreController _scoreController;
+    protected ScoreController _scoreController;
 
     protected Transform _playerPoint; //НЕНУЖНАЯ ПРИВЯЗКА - УДАЛЮ ПОТОМ (когда будет FSM)
 
@@ -83,7 +83,12 @@ public abstract class CharacterControllerNew : MonoBehaviour, IDamageable //ту
         _model = new Character(new CharacterMechanicStateMachine(_model, new CharacterMechanicIdleState()), new CharacterHealthController(new CharacterHealth(_maxHealth, _health)), new CharacterMovementController(new CharacterLocomotion(_locomotionSpeed, _runningSpeed, transform.position), new CharacterRotation()), new CharacterOffenseController(_firstWeapon, _secondWeapon, transform.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z)), new CharacterDefenseController()); //тут такой прикол, что любой человек сможет создавать объект этого класса в любой части программы, но как бы и работать он с ним не сможет без верхнеуровнего монобеховского слоя. Тут все норм, я бы только засинглтонил PlayerController и Player (про PlayerView - хз)
     }
 
-    private void Update()
+    public virtual void Start()
+    {
+        Idle();
+    }
+
+    public virtual void Update()
     {
         _model.MechanicStateUpdate();
 
@@ -96,16 +101,17 @@ public abstract class CharacterControllerNew : MonoBehaviour, IDamageable //ту
         _model.HealthController.Health.DamageTaken += _view.PresentDamageTake;
         //_model.HealthController.Health.DamageTaken += DamageTaken; //под расширение (мб замедление времени во время стана делать, и возможно это делается при помощи заморозки сцены)
         //CharacterHealth.Died += _view.PresentDeath; //надо дописать где-то вызов на выключение на старте, и включить объект в сцене
-        _model.HealthController.Health.Died += () => Destroy(gameObject);
+        _model.HealthController.Health.Died += () => Destroy();
         //_model.HealthController.Health.Died += OnDeath;
         _model.HealthController.Health.Died += Died;
+        _model.HealthController.Health.Blocked += _view.PresentBlock;
         _model.MovementController.Locomotion.Locomoted += _view.MoveCharacterModelInLocomotionForm;
         _model.MovementController.Locomotion.Runned += _view.MoveCharacterModelInRunForm;
         _model.MovementController.Rotation.Rotated += _view.TurnCharacterModel;
         _model.OffenseController.FirstAttackType.Attacked += async delegate { await _view.PresentCloseRangeAttack(); };
         _model.OffenseController.SecondAttackType.Attacked += async delegate { await _view.PresentLongRangeAttack(); };
 
-        _model.HealthController.Health.Died += delegate { _scoreController.IncreaseScore(); };
+        _model.HealthController.Health.Died += delegate { CheckScore(); };
     }
 
     private void OnDisable()
@@ -114,7 +120,7 @@ public abstract class CharacterControllerNew : MonoBehaviour, IDamageable //ту
         _model.HealthController.Health.DamageTaken -= _view.PresentDamageTake;
         //_model.HealthController.Health.DamageTaken -= DamageTaken; //под расширение (мб замедление времени во время стана делать, и возможно это делается при помощи заморозки сцены)
         //CharacterHealth.Died -= _view.PresentDeath; //надо дописать где-то вызов на выключение на старте, и включить объект в сцене
-        _model.HealthController.Health.Died -= () => Destroy(gameObject);
+        _model.HealthController.Health.Died -= () => Destroy();
         //_model.HealthController.Health.Died -= OnDeath;
         _model.HealthController.Health.Died -= Died;
         _model.MovementController.Locomotion.Locomoted -= _view.MoveCharacterModelInLocomotionForm;
@@ -123,7 +129,7 @@ public abstract class CharacterControllerNew : MonoBehaviour, IDamageable //ту
         _model.OffenseController.FirstAttackType.Attacked -= async delegate { await _view.PresentCloseRangeAttack(); };
         _model.OffenseController.SecondAttackType.Attacked -= async delegate { await _view.PresentLongRangeAttack(); };
 
-        _model.HealthController.Health.Died -= delegate { _scoreController.IncreaseScore(); };
+        _model.HealthController.Health.Died -= delegate { CheckScore(); };
     }
 
     public void SetLastPosition(Vector3 lastPosition)
@@ -171,31 +177,32 @@ public abstract class CharacterControllerNew : MonoBehaviour, IDamageable //ту
         _model.Rotate(/*thirdPersonCameraControllerPivot, */inputDirection);
     }
 
-    /*
-    public void OnDeath()
+    public void Block()
     {
-        if (gameObject.GetComponent<CharacterControllerNewBoss>())
-        {
-            if (CharacterControllerNewBoss.FalseIfItIsFirstStage == true)
-            {
-                CharacterControllerNewBoss.FalseIfItIsFirstStage = false;
-            }
-            else if (CharacterControllerNewBoss.FalseIfItIsFirstStage == false)
-            {
-                CharacterControllerNewBoss.FalseIfItIsFirstStage = true;
-            }
-
-            _model.HealthController.Health.Heal();
-
-            CharacterControllerNewBoss.PlayerCompleteBossLives += 1;
-            if (CharacterControllerNewBoss.PlayerCompleteBossLives >= 3)
-            {
-                Destroy(gameObject);
-                BossDied.Invoke();
-            }
-            return;
-        }
+        _model.Block(); //ВЕЗДЕ СДЕЛАТЬ ТАК - но нет же, я был не прав, ибо у нас внтури оч сложная логика со стейт машиной, которая лежит внутри и сюда ее вносить - это бред
     }
 
-    public static UnityAction BossDied;*/
+    public void Unblock()
+    {
+        _model.HealthController.Health.Unblock(); //ВЕЗДЕ СДЕЛАТЬ ТАК
+        _model.Idle();
+    }
+
+    public void Destroy()
+    {
+        if (gameObject.GetComponent<CharacterControllerNewBoss>() == true)
+        {
+            return;
+        }
+        Destroy(gameObject);
+    }
+
+    public void CheckScore()
+    {
+        if (gameObject.GetComponent<CharacterControllerNewBoss>() == true)
+        {
+            return;
+        }
+        _scoreController.IncreaseScore();
+    }
 }

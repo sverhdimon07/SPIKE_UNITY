@@ -1,18 +1,15 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(CapsuleCollider))]
 public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAttacker //тут прикол такой, что этот контроллер тоже может реализовывать интерфейсы модели, НО стоит ли реализовывать их и там, и там - или поставить только тут и все?
 {
-    public static UnityAction Died; //выходы для фабрик или классов более высокого уровня
-    public UnityAction<float> DamageTaken;
-
     [Header("View References")]
     [SerializeField] private Image _healthBar; //хотел переносить эти поля в бутстрап, НО почему-бы все поля, не отвечающие за геймплейную логику, не хранить именно здесь (ибо бутстрап должен инитить ГЕЙМДИЗАЙНЕРСКИЕ ДАННЫЕ, зачем их мешать с ссылками на вспомогательные классы?)?
     [SerializeField] private Image _weaponLongRangeCooldownBar;
+    [SerializeField] private Image _livesBar;
     [SerializeField] private TMP_Text _deathMessageText;
     [SerializeField] private TMP_Text _counterText;
     [SerializeField] private Animator _animator;
@@ -44,19 +41,35 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
 
     private ScoreController _scoreController;
 
-    public ScoreController ScoreController => _scoreController;
+    private ScenePausing _scenePausing;
+
+    private LoseUI _loseUI;
+
+    //public UnityAction Died; //выходы для фабрик или классов более высокого уровня
+
+    //public UnityAction<float> DamageTaken;
 
     public Transform GameObjectPivot => _gameObjectPivot; //ВРЕМЕННАЯ МЕРА
     public Transform RenderAndSkeletonPivot => _renderAndSkeletonPivot; //ВРЕМЕННАЯ МЕРА
     public Transform ThirdPersonCameraControllerPivot => _thirdPersonCameraControllerPivot; //ВРЕМЕННАЯ МЕРА
 
+    public Player Model => _model;
+
+    public ScoreController ScoreController => _scoreController;
+
     public float Health => _model.HealthController.Health.HealthValue;
 
     private void Awake() //чекнуть конструкторы и деструкторы в монобехах
     {
+        _scenePausing = new ScenePausing();
+
         _scoreController = FindAnyObjectByType<ScoreController>();
 
-        _view = new PlayerView(new PlayerUI(_healthBar, _weaponLongRangeCooldownBar, _deathMessageText, _counterText), new PlayerAnimator(_animator), _gameObjectPivot, _renderAndSkeletonPivot, _closeRangeWeaponEffect, _longRangeWeaponEffect, _closeRangeWeaponSound, _longRangeWeaponSound);
+        _loseUI = FindAnyObjectByType<LoseUI>();
+
+        _loseUI.Initialize();
+
+        _view = new PlayerView(new PlayerUI(_healthBar, _weaponLongRangeCooldownBar, _livesBar, _deathMessageText, _counterText), new PlayerAnimator(_animator), _gameObjectPivot, _renderAndSkeletonPivot, _closeRangeWeaponEffect, _longRangeWeaponEffect, _closeRangeWeaponSound, _longRangeWeaponSound);
         _model = new Player(new PlayerMechanicStateMachine(_model, new PlayerMechanicIdleState()), new PlayerHealthController(new PlayerHealth(_maxHealth, _health)), new PlayerMovementController(new PlayerLocomotion(new EnvironmentAreaOverlapAnalyzer<Collider, PlayerController>(), new Vector2(_renderAndSkeletonPivot.forward.x, _renderAndSkeletonPivot.forward.z), 0.3f, 0.5f, 2.5f, _locomotionSpeed, _runningSpeed, transform.position), new PlayerRotation()), new PlayerOffenseController(_firstWeapon, _secondWeapon, transform.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z)), new PlayerDefenseController()); //тут такой прикол, что любой человек сможет создавать объект этого класса в любой части программы, но как бы и работать он с ним не сможет без верхнеуровнего монобеховского слоя. Тут все норм, я бы только засинглтонил PlayerController и Player (про PlayerView - хз)
     }
 
@@ -72,15 +85,22 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
         Player.Idled += _view.PresentIdle;
         PlayerHealth.DamageTaken += _view.PresentDamageTake;
         //PlayerHealth.DamageTaken += DamageTaken; //под расширение (мб замедление времени во время стана делать, и возможно это делается при помощи заморозки сцены)
-        PlayerHealth.Died += _view.PresentDeath; //надо дописать где-то вызов на выключение на старте, и включить объект в сцене
-        //PlayerHealth.Died += () => Destroy(gameObject);
-        //PlayerHealth.Died += Died;
+        _model.HealthController.Health.Died += _view.PresentDeath; //надо дописать где-то вызов на выключение на старте, и включить объект в сцене
+        //_model.HealthController.Health.Died += Died;
+        _model.HealthController.Health.LivesChanged += _view.PresentLives;
+        _model.HealthController.Health.Blocked += _view.PresentBlock;
         PlayerLocomotion.Locomoted += _view.MoveCharacterModelInLocomotionForm;
         PlayerLocomotion.Runned += _view.MoveCharacterModelInRunForm;
         PlayerRotation.Rotated += _view.TurnCharacterModel;
-        PlayerAttackCloseRange.Attacked += async delegate { await _view.PresentCloseRangeAttack(); };
-        PlayerAttackLongRange.Attacked += async delegate { await _view.PresentLongRangeAttack(); };
+        _model.OffenseController.FirstAttackType.Attacked += async delegate { await _view.PresentCloseRangeAttack(); };
+        _model.OffenseController.SecondAttackType.Attacked += async delegate { await _view.PresentLongRangeAttack(); };
         ScoreController.ScoreIncreased += _view.PresentScoreIncrease;
+
+        _loseUI.MenuButton.onClick.AddListener(SceneLoading.LoadMainMenuScene);
+        _loseUI.LoadLevelButton.onClick.AddListener(SceneLoading.LoadLevelScene);
+
+        _model.HealthController.Health.Died += _loseUI.OpenOrClose;
+        _model.HealthController.Health.Died += _scenePausing.PauseOrResume;
     }
 
     private void OnDisable()
@@ -88,15 +108,22 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
         Player.Idled -= _view.PresentIdle;
         PlayerHealth.DamageTaken -= _view.PresentDamageTake;
         //PlayerHealth.DamageTaken -= DamageTaken;
-        PlayerHealth.Died -= _view.PresentDeath;
-        //PlayerHealth.Died += () => Destroy(gameObject);
-        //PlayerHealth.Died -= Died;
+        _model.HealthController.Health.Died -= _view.PresentDeath;
+        //_model.HealthController.Health.Died -= Died;
+        _model.HealthController.Health.LivesChanged -= _view.PresentLives;
+        _model.HealthController.Health.Blocked -= _view.PresentBlock;
         PlayerLocomotion.Locomoted -= _view.MoveCharacterModelInLocomotionForm;
         PlayerLocomotion.Runned -= _view.MoveCharacterModelInRunForm;
         PlayerRotation.Rotated -= _view.TurnCharacterModel;
-        PlayerAttackCloseRange.Attacked -= async delegate { await _view.PresentCloseRangeAttack(); };
-        PlayerAttackLongRange.Attacked -= async delegate { await _view.PresentLongRangeAttack(); };
+        _model.OffenseController.FirstAttackType.Attacked -= async delegate { await _view.PresentCloseRangeAttack(); };
+        _model.OffenseController.SecondAttackType.Attacked -= async delegate { await _view.PresentLongRangeAttack(); };
         ScoreController.ScoreIncreased -= _view.PresentScoreIncrease;
+
+        _loseUI.MenuButton.onClick.RemoveListener(SceneLoading.LoadMainMenuScene);
+        _loseUI.LoadLevelButton.onClick.RemoveListener(SceneLoading.LoadLevelScene);
+
+        _model.HealthController.Health.Died -= _loseUI.OpenOrClose;
+        _model.HealthController.Health.Died -= _scenePausing.PauseOrResume;
     }
 
     public void SetLastPosition(Vector3 lastPosition)
@@ -156,11 +183,12 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
 
     public void Block()
     {
-        _model.HealthController.Health.Block(); //ВЕЗДЕ СДЕЛАТЬ ТАК - но нет же, я был не прав, ибо у нас внтури оч сложная логика со стейт машиной, которая лежит внутри и сюда ее вносить - это бред
+        _model.Block(); //ВЕЗДЕ СДЕЛАТЬ ТАК - но нет же, я был не прав, ибо у нас внтури оч сложная логика со стейт машиной, которая лежит внутри и сюда ее вносить - это бред
     }
 
     public void Unblock()
     {
         _model.HealthController.Health.Unblock(); //ВЕЗДЕ СДЕЛАТЬ ТАК
+        _model.Idle();
     }
 }

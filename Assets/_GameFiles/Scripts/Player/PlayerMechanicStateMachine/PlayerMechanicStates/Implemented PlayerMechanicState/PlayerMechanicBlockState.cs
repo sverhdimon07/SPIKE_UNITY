@@ -23,6 +23,18 @@ public class PlayerMechanicBlockState : PlayerMechanicState
 
             return true;
         }
+        if (nextState.GetType() == typeof(PlayerMechanicAttackCloseRangeState))
+        {
+            stateMachine.SwitchState(player, nextState);
+
+            return true;
+        }
+        if (nextState.GetType() == typeof(PlayerMechanicAttackLongRangeState))
+        {
+            stateMachine.SwitchState(player, nextState);
+
+            return true;
+        }
         else
         {
             return false;

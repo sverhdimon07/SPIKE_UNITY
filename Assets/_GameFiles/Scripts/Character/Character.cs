@@ -116,4 +116,14 @@ public /*abstract*/ class Character : IDamageable, IAllRangesAttacker //я думаю,
             attackLongRangeState.Do(this, _mechanicStateMachine);
         }
     }
+
+    public void Block()
+    {
+        CharacterMechanicBlockState blockState = new CharacterMechanicBlockState();
+
+        if (_mechanicStateMachine.TrySwitchState(this, blockState) == true)
+        {
+            blockState.Do(this, _mechanicStateMachine);
+        }
+    }
 }

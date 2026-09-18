@@ -1,19 +1,19 @@
 using System;
-using UnityEngine;
 using UnityEngine.Events;
 
 public /*тут надо поработать с абстракцией*/ sealed class CharacterHealth //Ёта реализаци€ буквально дублируетс€ в Character, то есть, это сервис, который можно –≈ё«ј“№ » ѕќƒћ≈Ќя“№ (ѕ≈–≈ƒ≈Ћј“№);
 {
     public UnityAction Died;
-    //public static UnityAction DiedSomeone;
-
-    //public UnityAction Died;
 
     public UnityAction<float> DamageTaken;
+
+    public UnityAction Blocked;
 
     private readonly float _maxHealthValue;
 
     private float _healthValue; //потом мб переведем пол€ здоровь€ и демеджа на int везде (надо пон€ть, насколько это оправдано и что стоит ставить); подумать про семантику названи€ этого пол€ (можно оставить, а можно назвать это поле value)
+
+    private bool _isBlocked = false;
 
     public CharacterHealth(float maxHealth, float health) //»Ќ јѕ—”Ћя÷»я (Ќјƒќ ѕќ“ќћ —ƒ≈Ћј“№ ¬≈«ƒ≈) - можно сделать простую проверку пр€м здесь »Ћ» можно изменить подход к иниту полей и инитить не сами пол€, а свойства с условием в сеттере;надо ли делать эту проверку в классах более высокого уровн€?
     {
@@ -44,29 +44,38 @@ public /*тут надо поработать с абстракцией*/ sealed class CharacterHealth //Ёта 
             throw new ArgumentOutOfRangeException();
         }
         _healthValue = healthValue;
+
+        DamageTaken.Invoke(_healthValue);
     }
 
     public void TakeDamage(float damage)
     {
-        if (damage < 0f) //< 0, так как задел под расширение
+        if (_isBlocked == true)
         {
-            throw new ArgumentOutOfRangeException();
+            return;
         }
-        if ((_healthValue -= damage) < 0f)
+        else if (_isBlocked == false)
         {
-            _healthValue = 0f;
+            if (damage < 0f) //< 0, так как задел под расширение
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            if ((_healthValue -= damage) < 0f)
+            {
+                _healthValue = 0f;
 
-            Die();
-        }
-        else if ((_healthValue -= damage) == 0f)
-        {
-            Die();
-        }
-        else
-        {
-            _healthValue -= damage;
+                Die();
+            }
+            else if ((_healthValue -= damage) == 0f)
+            {
+                Die();
+            }
+            else
+            {
+                _healthValue -= damage;
 
-            DamageTaken.Invoke(_healthValue);
+                DamageTaken.Invoke(_healthValue);
+            }
         }
     }
 
@@ -78,9 +87,19 @@ public /*тут надо поработать с абстракцией*/ sealed class CharacterHealth //Ёта 
     public void Die()
     {
         Died.Invoke();
-        //Died.Invoke();
-        //DiedSomeone.Invoke();
 
         _healthValue = _maxHealthValue;
+    }
+
+    public void Block()
+    {
+        _isBlocked = true;
+
+        Blocked.Invoke();
+    }
+
+    public void Unblock()
+    {
+        _isBlocked = false;
     }
 }

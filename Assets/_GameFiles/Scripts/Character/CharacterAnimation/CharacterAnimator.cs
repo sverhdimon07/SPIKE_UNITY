@@ -9,6 +9,7 @@ public class CharacterAnimator //работа этого класса - идиоти€, но хз как сделат
     private const string RUN = "Run";
     private const string ATTACK_CLOSE_RANGE = "AttackCloseRange";
     private const string ATTACK_LONG_RANGE = "AttackLongRange";
+    private const string BLOCK = "Block";
 
     private readonly Animator _animator;
 
@@ -23,6 +24,7 @@ public class CharacterAnimator //работа этого класса - идиоти€, но хз как сделат
         _animator.SetBool(DEATH, false); //пон€тно, что нелогично то, что у нас здесь есть эти строчки во всех методах, но под возможное расширение - почему бы и нет (возможно говорю бессмыслицу)
         _animator.SetBool(LOCOMOTION, false);
         _animator.SetBool(RUN, false);
+        _animator.SetBool(BLOCK, false);
         _animator.SetBool(IDLE, true);
     }
 
@@ -32,6 +34,7 @@ public class CharacterAnimator //работа этого класса - идиоти€, но хз как сделат
         _animator.SetBool(DEATH, false);
         _animator.SetBool(LOCOMOTION, false);
         _animator.SetBool(RUN, false);
+        _animator.SetBool(BLOCK, false);
         _animator.SetBool(STUN, true);
     }
 
@@ -41,6 +44,7 @@ public class CharacterAnimator //работа этого класса - идиоти€, но хз как сделат
         _animator.SetBool(STUN, false);
         _animator.SetBool(LOCOMOTION, false);
         _animator.SetBool(RUN, false);
+        _animator.SetBool(BLOCK, false);
         _animator.SetBool(DEATH, true);
     }
 
@@ -50,6 +54,7 @@ public class CharacterAnimator //работа этого класса - идиоти€, но хз как сделат
         _animator.SetBool(STUN, false);
         _animator.SetBool(DEATH, false);
         _animator.SetBool(RUN, false);
+        _animator.SetBool(BLOCK, false);
         _animator.SetBool(LOCOMOTION, true);
     }
 
@@ -59,6 +64,7 @@ public class CharacterAnimator //работа этого класса - идиоти€, но хз как сделат
         _animator.SetBool(STUN, false);
         _animator.SetBool(DEATH, false);
         _animator.SetBool(LOCOMOTION, false);
+        _animator.SetBool(BLOCK, false);
         _animator.SetBool(RUN, true);
     }
 
@@ -70,6 +76,16 @@ public class CharacterAnimator //работа этого класса - идиоти€, но хз как сделат
     public void PlayLongRangeAttack()
     {
         _animator.SetTrigger(ATTACK_LONG_RANGE);
+    }
+
+    public void PlayBlock()
+    {
+        _animator.SetBool(IDLE, false);
+        _animator.SetBool(STUN, false);
+        _animator.SetBool(DEATH, false);
+        _animator.SetBool(LOCOMOTION, false);
+        _animator.SetBool(RUN, false);
+        _animator.SetBool(BLOCK, true);
     }
     //»Ќ јѕ—”Ћя÷»ё ѕ–ќƒ”ћј“№ (здесь просто нагл€дный пример хорошей (хорошей ли?) инкапсул€ции "2го типа", когда у нас нет единого метода, в который мы можем сувать все подр€д, а у нас есть несколько методов, который создают инкапсулированный интерфейс взаимодействи€ с объектом)
 }

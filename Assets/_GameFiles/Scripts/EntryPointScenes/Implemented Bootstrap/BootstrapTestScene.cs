@@ -43,13 +43,9 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
 
     private GameplayMenuUI _gameplayMenuUI;
 
-    //private WinUI _winUI;
-
-    //private LoseUI _loseUI;
-
     private InputController _inputController;
 
-    private ScoreController _playerScoreController;
+    private ScoreController _scoreController;
 
     //private Player _player;//?; пока хз, какой именно прослойкой соединять инпут и игрока - бутстрапом или другой какой-то, так что пусть пока лежит тут;
 
@@ -79,14 +75,12 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
 
         EnableVisualSpawners();
 
-        _playerScoreController = FindAnyObjectByType<ScoreController>();
+        _scoreController = FindAnyObjectByType<ScoreController>();
 
         //PlayerUI.BossSpawned += EnableBossSpawner;
         _scenePausing = new ScenePausing();
         //_sceneLoading = new SceneLoading(); //НЕ ИНИЧУ ПОКА ЧТО
         _gameplayMenuUI = FindAnyObjectByType<GameplayMenuUI>();
-        //_winUI = FindAnyObjectByType<WinUI>();
-        //_loseUI = FindAnyObjectByType<LoseUI>();
         _inputController = GetComponent<InputController>(); //_inputController.Initialize(); //он инитится сам в себе, наверное плохо, но ничего сделать не могу; дает подсказку, ибо это надо переносить в абстрактный бутстрап;
 
         _saveButtonForDataSaveHandler = delegate () { _savingLoadingSystemBootstrap.ExecuteSaveOperation(); };
@@ -104,8 +98,6 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
 
         InstantiateMigratingBetweenSceneObjects(); //ВРЕМЕННО
         _gameplayMenuUI.Initialize();
-        //_winUI.Initialize();
-        //_loseUI.Initialize();
         //InitPlayerWeapons();
         //InitCharacterWeapons();
         //InitNobodysWeapons();
@@ -126,9 +118,7 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
             return;
         }
         _savingLoadingSystemBootstrap = GetComponent<GameSaveLoadInteractor>(); //ПОКА БЕЗ КОНТРАКТА, ИБО НЕ ЗАВЕРШИЛ ПРОЕКТИРОВАНИЕ
-
-        //_savingLoadingPlayerInteractor.Initialize(new SavingLoadingJSONRepository<Vector3, Quaternion>(), "SavingLoadingPayerData.json", PlayerController);
-
+        
         _gameplayMenuUI.ContinueButton.onClick.AddListener(_scenePausing.PauseOrResume);
         _gameplayMenuUI.ContinueButton.onClick.AddListener(_gameplayMenuUI.OpenOrClose);
         _gameplayMenuUI.ExitButton.onClick.AddListener(SceneLoading.LoadMainMenuScene);
@@ -137,33 +127,35 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         _gameplayMenuUI.LoadSavingButton.onClick.AddListener(_gameplayMenuUI.OpenOrClose);
         _gameplayMenuUI.LoadSavingButton.onClick.AddListener(_loadSavingButtonForDataLoadHandler);
 
-        //_winUI.MenuButton.onClick.AddListener(SceneLoading.LoadMainMenuScene);
-
-        //_loseUI.MenuButton.onClick.AddListener(SceneLoading.LoadMainMenuScene);
-        //_loseUI.LoadLevelButton.onClick.AddListener(SceneLoading.LoadLevelScene);
-
         _inputController.LocomotionDirectionDirected += _locomotionDirectionDirectedForLocomotionHandler;
         _inputController.LocomotionDirectionDirected += _locomotionDirectionDirectedForRotationHandler;
-        _inputController.LocomotionDirectionUndirected += PlayerController.Idle;
+        _inputController.LocomotionDirectionUndirected += SwitchPlayerToIdle;
         _inputController.RunningButtonHolded += ResubscribeRunOnLocomotionDirectionDirectedForLocomotionHandler;
         _inputController.RunningButtonUnholded += ResubscribeLocomotionOnLocomotionDirectionDirectedForLocomotionHandler;
         _inputController.AttackCloseRangeButtonPressed += _attackCloseRangeButtonPressedForCloseRangeAttackHandler;
         _inputController.AttackLongRangeButtonPressed += _attackLongRangeButtonPressedForLongRangeAttackHandler;
+
         _inputController.OpeningGameplayeMenuButtonPressed += _scenePausing.PauseOrResume;
         _inputController.OpeningGameplayeMenuButtonPressed += _gameplayMenuUI.OpenOrClose;
 
         _inputController.BlockButtonHolded += _blockHandler;
         _inputController.BlockButtonUnholded += _unblockHandler;
+    }
 
-        //PlayerController.Died += _winUI.OpenOrClose;
-        PlayerController.Died += SceneLoading.LoadLevelScene;
-
-        //CharacterControllerNewBoss.BossDied += _loseUI.OpenOrClose;
-        /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        foreach (CharacterNO character in _characters)
+    private void SwitchPlayerToIdle()
+    {
+        if (PlayerController.Model.State.GetType() == typeof(PlayerMechanicLocomotionState))
         {
-            character.Died += delegate () { Destroy(character); }; 
-        }*/
+            PlayerController.Idle();
+        }
+        else if (PlayerController.Model.State.GetType() == typeof(PlayerMechanicRunState))
+        {
+            PlayerController.Idle();
+        }
+        else
+        {
+            return;
+        }
     }
 
     private void OnDisable()
@@ -180,33 +172,19 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         _gameplayMenuUI.LoadSavingButton.onClick.RemoveListener(_gameplayMenuUI.OpenOrClose);
         _gameplayMenuUI.LoadSavingButton.onClick.RemoveListener(_loadSavingButtonForDataLoadHandler);
 
-        //_winUI.MenuButton.onClick.RemoveListener(SceneLoading.LoadMainMenuScene);
-
-        //_loseUI.MenuButton.onClick.RemoveListener(SceneLoading.LoadMainMenuScene);
-        //_loseUI.LoadLevelButton.onClick.RemoveListener(SceneLoading.LoadLevelScene);
-
         _inputController.LocomotionDirectionDirected -= _locomotionDirectionDirectedForLocomotionHandler;
         _inputController.LocomotionDirectionDirected -= _locomotionDirectionDirectedForRotationHandler;
-        _inputController.LocomotionDirectionUndirected -= PlayerController.Idle;
+        _inputController.LocomotionDirectionUndirected -= SwitchPlayerToIdle;
         _inputController.RunningButtonHolded += ResubscribeRunOnLocomotionDirectionDirectedForLocomotionHandler;
         _inputController.RunningButtonUnholded += ResubscribeLocomotionOnLocomotionDirectionDirectedForLocomotionHandler;
         _inputController.AttackCloseRangeButtonPressed -= _attackCloseRangeButtonPressedForCloseRangeAttackHandler;
         _inputController.AttackLongRangeButtonPressed -= _attackLongRangeButtonPressedForLongRangeAttackHandler;
+
         _inputController.OpeningGameplayeMenuButtonPressed -= _scenePausing.PauseOrResume;
         _inputController.OpeningGameplayeMenuButtonPressed -= _gameplayMenuUI.OpenOrClose;
 
         _inputController.BlockButtonHolded -= _blockHandler;
         _inputController.BlockButtonUnholded -= _unblockHandler;
-
-        //PlayerController.Died -= _winUI.OpenOrClose;
-        PlayerController.Died -= SceneLoading.LoadLevelScene;
-
-        //CharacterControllerNewBoss.BossDied -= _loseUI.OpenOrClose;
-        /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        foreach (CharacterNO character in _characters)
-        {
-            character.Died -= delegate () { Destroy(character); };
-        }*/
     }
 
     private void InstantiateMigratingBetweenSceneObjects()

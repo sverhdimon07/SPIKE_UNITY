@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class PlayerAttack
 {
+    public UnityAction Attacked;
+
     private IEnvironmentAreaAnalyzer<IDamageable, PlayerController> _environmentAreaAnalyzer;
 
     private IDamageCalculator _damageCalculator;

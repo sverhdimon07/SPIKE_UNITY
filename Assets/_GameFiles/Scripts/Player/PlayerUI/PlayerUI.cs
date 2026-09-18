@@ -1,32 +1,34 @@
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public sealed class PlayerUI
 {
-    //public static int Counter;
-
     private readonly Image _healthBar;
     private readonly Image _weaponLongRangeCooldownBar;
+    private readonly Image _livesBar;
     private readonly TMP_Text _deathMessageText;
     private readonly TMP_Text _counterText;
     
     private readonly int _externalDataScale = 100;
 
-    public PlayerUI(Image healthBar, Image weaponLongRangeCooldownBar, TMP_Text deathMessageText, TMP_Text counterText)
+    public PlayerUI(Image healthBar, Image weaponLongRangeCooldownBar, Image livesBar, TMP_Text deathMessageText, TMP_Text counterText)
     {
         _healthBar = healthBar;
         _weaponLongRangeCooldownBar = weaponLongRangeCooldownBar;
+        _livesBar = livesBar;
         _deathMessageText = deathMessageText;
+
+        _deathMessageText.enabled = false;
+
         _counterText = counterText;
         _counterText.text = 0.ToString();
     }
 
-    public void RefreshHealthBar(float valueLevel)
+    public void RefreshHealthBar(float value)
     {
-        float barFullness = valueLevel / _externalDataScale;
+        float barFullness = value / _externalDataScale;
 
         _healthBar.fillAmount = barFullness;
     }
@@ -41,6 +43,26 @@ public sealed class PlayerUI
         await Task.Delay(600);
 
         _weaponLongRangeCooldownBar.fillAmount = 1f;
+    }
+
+    public void RefreshLivesBar(int value)
+    {
+        if (value == 3)
+        {
+            _livesBar.fillAmount = 1f;
+        }
+        else if (value == 2)
+        {
+            _livesBar.fillAmount = 0.66f;
+        }
+        else if (value == 1)
+        {
+            _livesBar.fillAmount = 0.33f;
+        }
+        else
+        {
+            _livesBar.fillAmount = 0f;
+        }
     }
 
     public void RefreshDeathMessageText()

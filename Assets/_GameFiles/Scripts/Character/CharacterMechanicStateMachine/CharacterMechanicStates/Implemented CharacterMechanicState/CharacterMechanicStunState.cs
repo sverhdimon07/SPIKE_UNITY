@@ -38,6 +38,12 @@ public sealed class CharacterMechanicStunState : CharacterMechanicState
 
             return true;
         }
+        else if (nextState.GetType() == typeof(CharacterMechanicStunState))
+        {
+            stateMachine.SwitchState(character, nextState);
+
+            return true;
+        }
         else
         {
             return false;

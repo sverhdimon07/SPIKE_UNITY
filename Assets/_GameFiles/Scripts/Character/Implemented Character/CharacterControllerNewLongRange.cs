@@ -22,8 +22,10 @@ public class CharacterControllerNewLongRange : CharacterControllerNew, ILongRang
         }
     }
 
-    private void Update() //возможно здесь будем корректировать то, куда смотрит ГГ (но возможно это стоит делать не здесь)
+    public override void Update() //возможно здесь будем корректировать то, куда смотрит ГГ (но возможно это стоит делать не здесь)
     {
+        base.Update();
+
         if (Vector3.Distance(transform.position, _playerPoint.position) < 3f) //МГ
         {
             _renderAndSkeletonPivot.LookAt(_lookAndLocomotionPoint);
@@ -40,7 +42,7 @@ public class CharacterControllerNewLongRange : CharacterControllerNew, ILongRang
 
         _isCloseToPlayer = true;
 
-        Idle();
+        //Idle();
 
         if (counter == 0)
         {

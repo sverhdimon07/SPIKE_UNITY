@@ -27,9 +27,8 @@ public sealed class CharacterLocomotion
     {
         Vector3 directionCalibrated = new Vector3(direction.x, 0f, direction.y);
         Vector3 nextPosition = _lastPosition += directionCalibrated * _locomotionSpeed * Time.deltaTime;
-        //Debug.Log(Locomoted.GetInvocationList());
+
         Locomoted.Invoke(nextPosition);
-        //Debug.Log("AAAAAAA");
     }
 
     public void Run(Vector2 direction) //ИНКАПУСЛЯЦИЯ

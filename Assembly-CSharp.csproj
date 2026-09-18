@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\SaveAndLoad\OldSaveLoadSystem 1\Repositories\SavingLoadingJSONRepository.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Interfaces\NonGameEntityInterfaces\IEnvironmentAreaAnalyzer.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Sound System\Space Ships Sounds.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Player And Weapons\Incoming Hit Handler 1.cs" />
@@ -68,8 +69,8 @@
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterOffense\CharacterAttack.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Environment\Object Spawner 2.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerOffense\PlayerAttack.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\NewSaveLoadSystem\JSONPlayerRepository.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\EnvironmentAreaAnalyzers\EnvironmentAreaAnalyzerRenders\EnvironmentAreaOverlapAnalyzerRender.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\SaveAndLoad\NewSaveLoadSystem\Interfaces\IPlayerRepository.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Player And Weapons\Deflect Handler.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabLogger.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterMechanicStateMachine\CharacterMechanicStates\Implemented CharacterMechanicState\CharacterMechanicStunState.cs" />
@@ -80,7 +81,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Player And Weapons\Player Accept Incoming Damage.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\CharacterFabric\CharacterFactotyForBoss.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\OldSaveLoadSystem 1\Interactors\SavingLoadingPlayerInteractor.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterMechanicStateMachine\CharacterMechanicStateMachine.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\Character.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMechanicStateMachine\PlayerMechanicStates\Implemented PlayerMechanicState\PlayerMechanicLocomotionState.cs" />
@@ -94,6 +94,7 @@
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterMovement\CharacterMovementController\CharacterMovementController.cs" />
     <Compile Include="Assets\Import\DODONPAScripts\Player Health Level UI.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMechanicStateMachine\PlayerMechanicStates\Implemented PlayerMechanicState\PlayerMechanicDeathState.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\SaveAndLoad\OldSaveLoadSystem 1\Interactors\SavingLoadingPlayerInteractor.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\UIGeneral\LoseUI.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\ProjectileLaunch.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\Limiters.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMechanicStateMachine\PlayerMechanicStates\Implemented PlayerMechanicState\PlayerMechanicBlockState.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerOffense\Implemented PlayerAttack\PlayerAttackCloseRange.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\SaveAndLoad\NewSaveLoadSystem\CharacterSaveData.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Boss\Boss Invincivility.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Boss\PS Boss Accept Incoming Damage.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Player And Weapons\Animate Hands 2.cs" />
@@ -115,22 +117,22 @@
     <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\SoundPlayer.cs" />
     <Compile Include="Assets\Import\Models\Locations\SciFi Warehouse Kit\Demo\Scripts\MouseComponent.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Weapon\Weapon.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\SaveAndLoad\NewSaveLoadSystem\Interfaces\ICharacterRepository.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\SaveAndLoad\NewSaveLoadSystem\JSONCharacterRepository.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerHealth\PlayerHealthController\PlayerHealthController.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerHealth\PlayerHealth.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Boss\PF Boss Accept Incoming Damage.cs" />
     <Compile Include="Assets\Import\Lahmadju\Imported Models\Scifi-Gun\ReadMe.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Import\Lahmadju\Imported Models\_Barking_Dog\Common Scripts\Turn_Move.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Boss\Player Speed Controller.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\SceneLoading\SceneLoading.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Environment\Arena Light.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterWeapon\CharacterWeaponLongRange.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Player And Weapons\Gun Color.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\NewSaveLoadSystem\JSONCharacterRepository.cs" />
     <Compile Include="Assets\Import\Models\Locations\SciFi Warehouse Kit\Demo\Scripts\PushPhysics.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Weapon\Implemented Weapon\WeaponCloseRange.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityBehaviorInterfaces\ILongRangeAttacker.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\Input\InputReader.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\Implemented Character\CharacterControllerNewBoss.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\EntryPointScenes\Implemented Bootstrap\BootstrapMainMenuScene.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
@@ -143,23 +145,25 @@
     <Compile Include="Assets\Import\Particles\Vefects\Trails VFX URP\Scripts\Demo_TurningAround.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Boss\Second Phase Limiters.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\OldSaveLoadSystem 1\Interactors\SavingLoadingPlayerData.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Boss\Boss AI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Interfaces\NonGameEntityInterfaces\ISavingLoadingInteractor.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityBehaviorInterfaces\IAllRangesAttacker.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\Input\InputReader.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\Input\InputController.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\EventBusGeneral\EventBusGeneral.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterOffense\Implemented CharacterAttack\CharacterAttackLongRange.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerOffense\Implemented PlayerAttack\PlayerAttackLongRange.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterMechanicStateMachine\CharacterMechanicStates\Implemented CharacterMechanicState\CharacterMechanicDeathState.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Sound System\Space Ships Sounds 2.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\SaveAndLoad\NewSaveLoadSystem\PlayerSaveData.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\EntryPointScenes\Implemented Bootstrap\BootstrapTestScene.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\NewSaveLoadSystem\GameSaveLoadInteractor.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Environment\Particles Position Change.cs" />
     <Compile Include="Assets\Import\Models\Locations\SciFi Warehouse Kit\Demo\Scripts\LightFlicker.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterView.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\SaveAndLoad\NewSaveLoadSystem\GameSaveLoadInteractor.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterUI\CharacterUI.cs" />
     <Compile Include="Assets\Import\Models\Locations\SciFi Warehouse Kit\Demo\Scripts\PlayRandomSound.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
@@ -194,13 +198,17 @@
     <Compile Include="Assets\_GameFiles\Scripts\Weapon\Implemented Weapon\Implemented WeaponLongRange\RocketLauncherBasic.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\EnvironmentAreaAnalyzers\EnvironmentAreaRaycastAnalyzer.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMechanicStateMachine\PlayerMechanicStates\Implemented PlayerMechanicState\PlayerMechanicIdleState.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\SaveAndLoad\NewSaveLoadSystem\JSONPlayerRepository.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityBehaviorInterfaces\IDamageable.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Player And Weapons\Incoming Hit Handler 4.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterHealth\CharacterHealthController\CharacterHealthController.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\Score\ScoreController.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Boss\Protection Colliders.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterMechanicStateMachine\CharacterMechanicStates\Implemented CharacterMechanicState\CharacterMechanicBlockState.cs" />
     <Compile Include="Assets\FastScriptReload\Examples\Scripts\Graph.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Player And Weapons\Gameplay Menu.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\SaveAndLoad\OldSaveLoadSystem 1\Interactors\SavingLoadingPlayerData.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\CharacterFabric\CharacterFactory.cs" />
     <Compile Include="Assets\Import\Lahmadju\Imported Models\_Barking_Dog\Common Scripts\MouseLook.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabBrowserWindow.cs" />
@@ -211,8 +219,6 @@
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterMechanicStateMachine\CharacterMechanicStates\Implemented CharacterMechanicState\CharacterMechanicAttackCloseRangeState.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Diegetic UI\Player Health Bar.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\DamageCalculators\DamageCalculatorBasic.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\NewSaveLoadSystem\Interfaces\IPlayerRepository.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\NewSaveLoadSystem\CharacterSaveData.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Interfaces\NonGameEntityInterfaces\IDamageCalculator.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\Resizer.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerDefense\PlayerDefenseController.cs" />
@@ -231,15 +237,11 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabModelWindow.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerScore\ScoreController.cs" />
     <Compile Include="Assets\Import\Lahmadju\Imported Models\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\Input\InputController.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Environment\Object Spawner 1.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\Implemented Character\CharacterControllerNewCloseRange.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\NewSaveLoadSystem\Interfaces\ICharacterRepository.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterMechanicStateMachine\CharacterMechanicStates\Implemented CharacterMechanicState\CharacterMechanicAttackLongRangeState.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMovement\PlayerLocomotion.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\Enums\SavingLoadingRepositoryTypes.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Environment\Start Event Wall.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Interfaces\GameEntityInterfaces\EntityAttitudeTowardPlayerInterfaces\IEnemy.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterWeapon\CharacterWeaponController\CharacterWeaponController.cs" />
@@ -262,14 +264,12 @@
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMechanicStateMachine\PlayerMechanicStates\Implemented PlayerMechanicState\PlayerMechanicRunState.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMovement\PlayerRotation.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Sound System\Camera Sounds.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\OldSaveLoadSystem 1\Repositories\SavingLoadingJSONRepository.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerUI\PlayerUI.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\EnvironmentAreaAnalyzers\EnvironmentAreaOverlapAnalyzer.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Common Systems\World Time Counter.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Player And Weapons\Player Health System.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Player And Weapons\Boss Holding Point Position.cs" />
-    <Compile Include="Assets\_GameFiles\Scripts\SaveLoadSystem\NewSaveLoadSystem\PlayerSaveData.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Player And Weapons\Bullet Behavior.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterMechanicStateMachine\CharacterMechanicStates\CharacterMechanicState.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Weapon\Implemented Weapon\WeaponLongRange.cs" />
@@ -908,10 +908,6 @@
       <HintPath>Library\PackageCache\com.unity.ext.nunit@d8c07649098d\net40\unity-custom\nunit.framework.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@4dfd81071c64\Runtime\Newtonsoft.Json.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="System.IO.Hashing">
       <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.IO.Hashing\System.IO.Hashing.dll</HintPath>
       <Private>False</Private>
@@ -930,6 +926,10 @@
     </Reference>
     <Reference Include="Ionic.Zip.Unity">
       <HintPath>Assets\Sketchfab For Unity\Dependencies\Libraries\Ionic.Zip.Unity.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="GLTFSerialization">
@@ -1432,10 +1432,6 @@
       <HintPath>D:\UNITY\Unity Editor\6000.3.9f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Settings.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Settings.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.VisualEffectGraph.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualEffectGraph.Editor.dll</HintPath>
       <Private>False</Private>
@@ -1444,20 +1440,12 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="UnityEditor.UI.Analytics">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.Analytics.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="glTFast.Editor">
-      <HintPath>Library\ScriptAssemblies\glTFast.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Rendering.LightTransport.Editor">
@@ -1472,16 +1460,8 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.AI.Assistant.Agent.Dynamic.Extension.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Assistant.Agent.Dynamic.Extension.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.AI.Assistant.API.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Assistant.API.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Splines.Editor">
@@ -1512,10 +1492,6 @@
       <HintPath>Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.AI.Assistant.Integrations.Profiler.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Assistant.Integrations.Profiler.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
       <Private>False</Private>
@@ -1528,12 +1504,12 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.2D.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.AI.Assistant.Tools.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Assistant.Tools.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.VisualScripting.Shared.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Searcher.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
@@ -1552,16 +1528,8 @@
       <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Searcher.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.Cinemachine.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Cinemachine.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.AI.MCP.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.MCP.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.UnifiedRayTracing.Runtime">
@@ -1576,24 +1544,16 @@
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.AI.Assistant.Bridge.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Assistant.Bridge.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
       <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.AI.Assistant.Annotations.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Assistant.Annotations.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow">
@@ -1604,20 +1564,8 @@
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.AI.Assistant.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Assistant.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.VisualScripting.Flow.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="glTFast.dots">
-      <HintPath>Library\ScriptAssemblies\glTFast.dots.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.AI.Tracing">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Tracing.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
@@ -1656,12 +1604,12 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Multiplayer.Center.Common">
-      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Center.Common.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Multiplayer.Center.Common">
+      <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Center.Common.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Burst">
@@ -1670,10 +1618,6 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="HFDownloader">
-      <HintPath>Library\ScriptAssemblies\HFDownloader.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.InternalAPIEngineBridge.004">
@@ -1696,16 +1640,16 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Config.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Collections.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Collections.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor.Shared">
@@ -1716,8 +1660,8 @@
       <HintPath>Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="glTFast">
-      <HintPath>Library\ScriptAssemblies\glTFast.dll</HintPath>
+    <Reference Include="Unity.Settings.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Settings.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Splines">
@@ -1726,10 +1670,6 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.AI.MCP.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.MCP.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

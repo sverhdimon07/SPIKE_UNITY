@@ -1,311 +1,54 @@
-/*
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class CharacterControllerNewBoss : CharacterControllerNew, IAllRangesAttacker
 {
-    public static int PlayerCompleteBossLives = 0;
+    [SerializeField] private Image _livesBar;
 
-    public UnityAction FirstStageStarted;
-    public UnityAction SecondStageStarted;
+    [SerializeField] private WinUI _winUI;
+    private ScenePausing _scenePausing;
 
-    public static bool Spawned = false;
-    public static bool FalseIfItIsFirstStage = true;
+    public WeaponType WeaponType;
+    public AttackType AttackType;
 
-    [Header("Phase Settings (Global Lives)")]
-    [SerializeField] private int globalLives = 2;          // общее количество фаз (жизней)
-    [SerializeField] private GameObject _limiters;    // объект-ограничитель для ближней фазы
+    [Header("Combat Settings")]
+    [SerializeField] private float meleeRange = 1.1f;
+    [SerializeField] private float attackCooldown = 4f;
+
+    [Header("Ranged Behavior (Phase 1)")]
+    [SerializeField] private float timeToRangedAttack = 5f;
+    [SerializeField] private float chaseDuration = 10f;
+
+    [Header("Block Settings")]
+    [SerializeField] private float blockDuration = 3f;
+    [SerializeField] private float blockCooldown = 6f;
+    [SerializeField] private float blockChance = 0.25f;
+
+    // --- Параметры фаз ---
+    [Header("Phase Settings")]
+    [SerializeField] private int globalLives = 6;
+    [SerializeField] private GameObject _limiters;
     [SerializeField] private ParticleSystem _limitersParticle;
+    [SerializeField] private float phaseTwoTeleportDistance = 4f;
+    [SerializeField] private float phaseOneAttackCooldown = 1.5f;
+    [SerializeField] private float phaseTwoAttackCooldown = 0.8f;
+    [SerializeField] private float phaseTwoStopDistance = 1.8f; // дистанция, на которой босс останавливается во 2-й фазе
+    [SerializeField] private float initialSpawnDistance = 10f; // дистанция от игрока при первом появлении
 
-    [Header("Phase Transition Teleports")]
-    private Transform bossCenterPoint;    // точка, куда телепортируется босс после 2-й фазы
-    [SerializeField] private float phaseTwoTeleportDistance = 5.5f;   // дистанция от игрока при переходе во 2-ю фазу
-    [SerializeField] private float phaseTwoTeleportPlayerDistance = 10f; // дистанция от босса, куда отбрасывать игрока после 2-й фазы
-
-    [Header("Attack Speeds")]
-    [SerializeField] private float phaseOneAttackCooldown = 1.5f;  // скорость атак в 1-й фазе (ближние)
-    [SerializeField] private float phaseTwoAttackCooldown = 0.8f;   // скорость атак во 2-й фазе (только ближние)
-
-    [Header("All Ranges Settings (Phase 1)")]
-    [SerializeField] private float meleeRange = 1.1f;          // дистанция ближнего боя
-    [SerializeField] private float timeToRangedAttack = 5f;     // время на дистанции > meleeRange до первого дальнего выстрела
-    [SerializeField] private float chaseDuration = 10f;         // длительность преследования после дальнего выстрела
-
-    // Приватные переменные состояния
     private int _currentGlobalLife;
     private bool _isPhaseTwoActive;
-    private float _currentAttackCooldown;   // текущий интервал атак (зависит от фазы)
-    private float _lastAttackTime;           // время последней атаки (уже было, но продублируем)
 
-    // Переменные для логики AllRanges (фаза 1)
+    private float _lastAttackTime;
     private float _timeSinceFar;
     private bool _hasDoneRangedAttack;
     private bool _isChasing;
     private float _chaseTimer;
 
-    // Флаги для телепортации
-    private bool _hasTeleportedToPhaseTwo;
+    private bool _isBlocking;
+    private float _blockTimer;
+    private float _timeSinceLastBlock;
 
-    private void Start()
-    {
-        FirstStageStarted += SecondDeathToFirst;
-        SecondStageStarted += FirstDeathToSecond;
-
-        PlayerCompleteBossLives = 0;
-        Spawned = false;
-        FalseIfItIsFirstStage = false;
-
-        bossCenterPoint = FindAnyObjectByType<Bootstrap>().transform;
-
-        // Инициализация начальных значений
-        _currentGlobalLife = 0;               // начинаем с 0-й фазы (первая)
-        _isPhaseTwoActive = false;
-        _currentAttackCooldown = phaseOneAttackCooldown;
-        _lastAttackTime = -_currentAttackCooldown; // чтобы можно было атаковать сразу
-
-        if (_limiters != null)
-            _limiters.SetActive(false);
-    }
-
-    private void FirstDeathToSecond()
-    {
-        AnyDeath();
-        _limiters.SetActive(true);
-        _limiters.transform.SetParent(null);
-        _limitersParticle.Play();
-    }
-
-    private void SecondDeathToFirst()
-    {
-        AnyDeath();
-        _limiters.SetActive(false);
-        _limiters.transform.SetParent(gameObject.transform);
-        _limitersParticle.Stop();
-    }
-
-    private void Update()
-    {
-        print(FalseIfItIsFirstStage);
-
-        if (FalseIfItIsFirstStage == false)
-        {
-            FirstStageStarted.Invoke();
-        }
-        else if (FalseIfItIsFirstStage == true)
-        {
-            SecondStageStarted.Invoke();
-        }
-
-        float distance = Vector3.Distance(transform.position, _playerPoint.position);
-        _gameObjectPivot.LookAt(_playerPoint);
-
-        if (_isPhaseTwoActive)
-        {
-            // ФАЗА 2: только ближний бой, постоянное движение к игроку
-            HandlePhaseTwoBehaviour(distance);
-        }
-        else
-        {
-            // ФАЗА 1: стандартное AllRanges поведение
-            HandlePhaseOneBehaviour(distance);
-        }
-    }
-
-    public void AnyDeath()  // переопределяем метод базового класса
-    {
-        // Босс "умер" (здоровье модели закончилось)
-        _currentGlobalLife++;
-
-        if (_currentGlobalLife < globalLives)
-        {
-            // Переход на следующую фазу
-            if (!_isPhaseTwoActive && _currentGlobalLife == 1)
-            {
-                // Переход во вторую фазу
-                ActivatePhaseTwo();
-            }
-            else
-            {
-                // Возврат в первую фазу после завершения второй (если globalLives > 2, но по заданию 2 фазы)
-                ReturnToPhaseOne();
-            }
-
-            // Восстанавливаем здоровье модели (через HealthController)
-            SetHealthValue(100f);
-        }
-    }
-
-    private void ActivatePhaseTwo()
-    {
-        _isPhaseTwoActive = true;
-        _currentAttackCooldown = phaseTwoAttackCooldown;
-        _hasTeleportedToPhaseTwo = false;   // ещё не телепортировались
-
-        // Включаем ограничители арены
-        if (_limiters != null)
-            _limiters.SetActive(true);
-
-        // Телепортируем босса к игроку (не впритык, на заданную дистанцию)
-        TeleportBossToPlayer(phaseTwoTeleportDistance);
-
-        // Сбрасываем таймеры AllRanges (на всякий случай)
-        _timeSinceFar = 0f;
-        _hasDoneRangedAttack = false;
-        _isChasing = false;
-        _chaseTimer = 0f;
-    }
-
-    private void ReturnToPhaseOne()
-    {
-        _isPhaseTwoActive = false;
-        _currentAttackCooldown = phaseOneAttackCooldown;
-
-        // Выключаем ограничители арены
-        if (_limiters != null)
-            _limiters.SetActive(false);
-
-        // Телепортируем босса в центр
-        if (bossCenterPoint != null)
-            transform.position = bossCenterPoint.position;
-        else
-            Debug.LogWarning("BossCenterPoint не назначен!");
-
-        // Телепортируем игрока подальше от босса
-        TeleportPlayerAway(phaseTwoTeleportPlayerDistance);
-
-        // Сбрасываем все таймеры AllRanges для новой первой фазы
-        _timeSinceFar = 0f;
-        _hasDoneRangedAttack = false;
-        _isChasing = false;
-        _chaseTimer = 0f;
-        _lastAttackTime = -_currentAttackCooldown;
-    }
-
-    private void TeleportBossToPlayer(float distance)
-    {
-        if (_playerPoint == null) return;
-        Vector3 directionToPlayer = (transform.position - _playerPoint.position).normalized;
-        Vector3 targetPosition = _playerPoint.position + directionToPlayer * distance;
-        // Дополнительно: можно ограничить по Y, чтобы босс не улетел
-        targetPosition.y = transform.position.y;
-        transform.position = targetPosition;
-    }
-
-    private void TeleportPlayerAway(float distance)
-    {
-        if (_playerPoint == null) return;
-        Vector3 directionFromBoss = (_playerPoint.position - transform.position).normalized;
-        Vector3 targetPosition = transform.position + directionFromBoss * distance;
-        targetPosition.y = _playerPoint.position.y; // сохраняем высоту игрока
-        _playerPoint.position = targetPosition;
-    }
-
-    private void HandlePhaseTwoBehaviour(float distance)
-    {
-        // Всегда двигаемся к игроку
-        if (distance > meleeRange)
-        {
-            Locomote(new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
-        }
-        else
-        {
-            Idle(); // остановились в зоне атаки
-        }
-
-        // Атакуем с заданной скоростью, если в ближней зоне
-        if (distance <= meleeRange && Time.time - _lastAttackTime >= _currentAttackCooldown)
-        {
-            AttackCloseRange(_gameObjectPivot.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
-            _lastAttackTime = Time.time;
-        }
-    }
-
-    private void HandlePhaseOneBehaviour(float distance)
-    {
-        if (distance <= meleeRange)
-        {
-            // Ближняя зона: сбрасываем дальние таймеры, атакуем с phaseOneAttackCooldown
-            _timeSinceFar = 0f;
-            _hasDoneRangedAttack = false;
-            _isChasing = false;
-            _chaseTimer = 0f;
-
-            Idle(); // стоим на месте
-
-            if (Time.time - _lastAttackTime >= _currentAttackCooldown)
-            {
-                AttackCloseRange(_gameObjectPivot.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
-                _lastAttackTime = Time.time;
-            }
-        }
-        else
-        {
-            // Дистанция > meleeRange – логика дальнего боя
-            if (_isChasing)
-            {
-                _chaseTimer += Time.deltaTime;
-                Locomote(new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
-
-                if (distance <= meleeRange)
-                {
-                    _isChasing = false;
-                    _chaseTimer = 0f;
-                }
-                else if (_chaseTimer >= chaseDuration)
-                {
-                    PerformRangedAttack();
-                    _chaseTimer = 0f;
-                }
-            }
-            else
-            {
-                _timeSinceFar += Time.deltaTime;
-                if (_timeSinceFar < timeToRangedAttack)
-                {
-                    Locomote(new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
-                }
-                else if (!_hasDoneRangedAttack)
-                {
-                    PerformRangedAttack();
-                    _hasDoneRangedAttack = true;
-                    _isChasing = true;
-                    _chaseTimer = 0f;
-                }
-                else
-                {
-                    Locomote(new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
-                }
-            }
-        }
-    }
-
-    private void PerformRangedAttack()
-    {
-        if (Time.time - _lastAttackTime >= _currentAttackCooldown)
-        {
-            AttackLongRange(_gameObjectPivot.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
-
-            _lastAttackTime = Time.time;
-        }
-    }
-
-    public void AttackCloseRange(Vector3 gameObjectPosition, Vector2 gameObjectRotation)
-    {
-        Model.AttackCloseRange(gameObjectPosition, gameObjectRotation);
-    }
-
-    public void AttackLongRange(Vector3 gameObjectPosition, Vector2 gameObjectRotation)
-    {
-        Model.AttackLongRange(gameObjectPosition, gameObjectRotation);
-    }
-}
-*/
-using UnityEngine;
-public class CharacterControllerNewBoss : CharacterControllerNew, IAllRangesAttacker
-{
-    public WeaponType WeaponType;
-
-    public AttackType AttackType;
+    private bool _wasInMeleeRange = false;
 
     public override void Awake()
     {
@@ -315,7 +58,6 @@ public class CharacterControllerNewBoss : CharacterControllerNew, IAllRangesAtta
         {
             _firstSword.SetActive(true);
             _secondSword.SetActive(false);
-
             _firstGun.SetActive(true);
             _secondGun.SetActive(false);
         }
@@ -323,58 +65,111 @@ public class CharacterControllerNewBoss : CharacterControllerNew, IAllRangesAtta
         {
             _firstSword.SetActive(false);
             _secondSword.SetActive(true);
-
             _firstGun.SetActive(false);
             _secondGun.SetActive(true);
         }
+
+        _scenePausing = new ScenePausing();
+        _winUI.MenuButton.onClick.AddListener(SceneLoading.LoadMainMenuScene);
+
+        Model.HealthController.Health.Died += OnBossDeath;
+
+        _currentGlobalLife = 0;
+        _isPhaseTwoActive = false;
+        attackCooldown = phaseOneAttackCooldown;
+
+        if (_limiters != null)
+            _limiters.SetActive(false);
     }
 
-    [Header("Combat Settings")]
-    [SerializeField] private float meleeRange = 1.1f;          // дистанция для ближней атаки
-    [SerializeField] private float attackCooldown = 1.5f;      // общая задержка между атаками
-
-    [Header("Ranged Behavior")]
-    [SerializeField] private float timeToRangedAttack = 5f;    // время на дистанции до первого дальнего выстрела
-    [SerializeField] private float chaseDuration = 10f;        // длительность преследования после дальнего выстрела
-
-    // Приватные переменные состояния
-    private float _lastAttackTime;
-    private float _timeSinceFar;          // время, проведённое на дистанции > meleeRange
-    private bool _hasDoneRangedAttack;    // был ли уже выполнен дальний выстрел в текущем цикле
-    private bool _isChasing;              // активен ли режим преследования после дальнего выстрела
-    private float _chaseTimer;            // таймер преследования
-
-    private void Update()
+    public override void Start()
     {
-        // Поворачиваем босса к игроку
-        _gameObjectPivot.LookAt(_playerPoint);
+        base.Start();
+        // Отодвигаем босса от игрока при старте
+        SetInitialPosition();
+    }
 
+    private void SetInitialPosition()
+    {
+        if (_playerPoint == null) return;
+        Vector3 randomDirection = Random.insideUnitSphere;
+        randomDirection.y = 0;
+        randomDirection.Normalize();
+        Vector3 targetPosition = _playerPoint.position + randomDirection * initialSpawnDistance;
+        targetPosition.y = transform.position.y;
+        transform.position = targetPosition;
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        _gameObjectPivot.LookAt(_playerPoint);
         float distance = Vector3.Distance(transform.position, _playerPoint.position);
 
-        if (distance <= meleeRange)
+        if (_isPhaseTwoActive)
         {
-            // Ближняя зона – ближний бой
-            HandleMelee();
+            HandlePhaseTwoBehaviour(distance);
+            return;
+        }
+
+        if (distance <= meleeRange)
+            HandleMelee(distance);
+        else
+            HandleRanged(distance);
+    }
+
+    // --- ВТОРАЯ ФАЗА: агрессивный ближний бой с остановкой на дистанции ---
+    private void HandlePhaseTwoBehaviour(float distance)
+    {
+        // 1. Двигаемся, только если дистанция больше заданной остановочной дистанции
+        if (distance > phaseTwoStopDistance)
+        {
+            Locomote(new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
         }
         else
         {
-            // Дальняя зона – логика дальнего боя с преследованием
-            HandleRanged(distance);
+            Idle(); // стоим на месте, когда подошли достаточно близко
+        }
+
+        // 2. Блок отключён
+        if (_isBlocking)
+        {
+            Unblock();
+            _isBlocking = false;
+            _blockTimer = 0f;
+        }
+
+        // 3. Атакуем, если игрок в радиусе meleeRange
+        if (distance <= meleeRange && Time.time - _lastAttackTime >= attackCooldown)
+        {
+            AttackCloseRange(_gameObjectPivot.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
+            _lastAttackTime = Time.time;
         }
     }
 
-    private void HandleMelee()
+    // --- ПЕРВАЯ ФАЗА: ближняя зона ---
+    private void HandleMelee(float distance)
     {
-        // Сбрасываем все дальние таймеры
         _timeSinceFar = 0f;
         _hasDoneRangedAttack = false;
         _isChasing = false;
         _chaseTimer = 0f;
 
-        // Останавливаемся (не двигаемся)
-        Idle();
+        if (!_wasInMeleeRange)
+        {
+            _isBlocking = true;
+            _blockTimer = 4f;
+            Block();
+            _timeSinceLastBlock = Time.time + Random.Range(8f, 15f);
+            _wasInMeleeRange = true;
+        }
 
-        // Атакуем, если прошла задержка
+        UpdateBlock(distance);
+
+        if (_isBlocking)
+            return;
+
         if (Time.time - _lastAttackTime >= attackCooldown)
         {
             AttackCloseRange(_gameObjectPivot.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
@@ -382,19 +177,25 @@ public class CharacterControllerNewBoss : CharacterControllerNew, IAllRangesAtta
         }
     }
 
+    // --- ПЕРВАЯ ФАЗА: дальняя зона ---
     private void HandleRanged(float distance)
     {
+        _wasInMeleeRange = false;
+
+        if (_isBlocking)
+        {
+            Unblock();
+            _isBlocking = false;
+            _blockTimer = 0f;
+        }
+
         if (_isChasing)
         {
-            // Режим преследования после дальнего выстрела
             _chaseTimer += Time.deltaTime;
             Locomote(new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
 
-            // Если игрок подошёл в ближнюю зону – переключаемся на ближний бой (это произойдёт в следующем Update)
-            // или если время преследования истекло – делаем ещё один дальний выстрел
             if (distance <= meleeRange)
             {
-                // сбросим флаги, чтобы на следующем кадре перейти в ближний режим
                 _isChasing = false;
                 _chaseTimer = 0f;
                 _timeSinceFar = 0f;
@@ -404,22 +205,18 @@ public class CharacterControllerNewBoss : CharacterControllerNew, IAllRangesAtta
             {
                 PerformRangedAttack();
                 _chaseTimer = 0f;
-                // остаёмся в режиме преследования, сбрасываем таймер
             }
         }
         else
         {
-            // Не в режиме преследования – считаем время на дистанции
             _timeSinceFar += Time.deltaTime;
 
             if (_timeSinceFar < timeToRangedAttack)
             {
-                // Двигаемся к игроку (преследование)
                 Locomote(new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
             }
             else if (!_hasDoneRangedAttack)
             {
-                // Прошло время до первого дальнего выстрела – стреляем и переходим в режим преследования
                 PerformRangedAttack();
                 _hasDoneRangedAttack = true;
                 _isChasing = true;
@@ -427,9 +224,35 @@ public class CharacterControllerNewBoss : CharacterControllerNew, IAllRangesAtta
             }
             else
             {
-                // Уже был дальний выстрел, но преследование не началось (защита от ошибок)
                 Locomote(new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
             }
+        }
+    }
+
+    private void UpdateBlock(float distance)
+    {
+        if (distance > meleeRange)
+            return;
+
+        if (_isBlocking)
+        {
+            _blockTimer -= Time.deltaTime;
+            if (_blockTimer <= 0f)
+            {
+                Unblock();
+                _isBlocking = false;
+                _blockTimer = 0f;
+            }
+            return;
+        }
+
+        if (Time.time - _timeSinceLastBlock >= blockCooldown &&
+            Random.value < blockChance)
+        {
+            _isBlocking = true;
+            _blockTimer = blockDuration;
+            _timeSinceLastBlock = Time.time;
+            Block();
         }
     }
 
@@ -442,7 +265,125 @@ public class CharacterControllerNewBoss : CharacterControllerNew, IAllRangesAtta
         }
     }
 
-    // Реализация интерфейсов (вызовы методов модели)
+    private void OnBossDeath()
+    {
+        _currentGlobalLife++;
+
+        if (_currentGlobalLife == 2)
+        {
+            _scoreController.IncreaseScore();
+
+            _livesBar.fillAmount = 0.66f;
+        }
+        else if (_currentGlobalLife == 4)
+        {
+            _scoreController.IncreaseScore();
+
+            _livesBar.fillAmount = 0.33f;
+        }
+        else if (_currentGlobalLife == 6)
+        {
+            _scoreController.IncreaseScore();
+
+            _livesBar.fillAmount = 0f;
+        }
+
+        if (_currentGlobalLife < globalLives)
+        {
+            if (_isPhaseTwoActive)
+                ReturnToPhaseOne();
+            else
+                ActivatePhaseTwo();
+
+            SetHealthValue(Model.HealthController.Health.MaxHealthValue);
+
+            if (_isBlocking)
+            {
+                Unblock();
+                _isBlocking = false;
+                _blockTimer = 0f;
+            }
+        }
+        else
+        {
+            _winUI.OpenOrClose();
+            _scenePausing.PauseOrResume();
+        }
+    }
+
+    private void ActivatePhaseTwo()
+    {
+        _isPhaseTwoActive = true;
+        attackCooldown = phaseTwoAttackCooldown;
+
+        TeleportBossToPlayer(phaseTwoTeleportDistance);
+
+        if (_limiters != null)
+        {
+            _limiters.SetActive(true);
+            _limiters.transform.SetParent(null);
+            if (_limitersParticle != null)
+                _limitersParticle.Play();
+        }
+
+        if (_isBlocking)
+        {
+            Unblock();
+            _isBlocking = false;
+            _blockTimer = 0f;
+        }
+
+        _timeSinceFar = 0f;
+        _hasDoneRangedAttack = false;
+        _isChasing = false;
+        _chaseTimer = 0f;
+        _lastAttackTime = -attackCooldown;
+        _wasInMeleeRange = false;
+    }
+
+    private void ReturnToPhaseOne()
+    {
+        _isPhaseTwoActive = false;
+        attackCooldown = phaseOneAttackCooldown;
+
+        if (_limiters != null)
+        {
+            _limiters.SetActive(false);
+            _limiters.transform.SetParent(transform);
+            if (_limitersParticle != null)
+                _limitersParticle.Stop();
+        }
+
+        _timeSinceFar = 0f;
+        _hasDoneRangedAttack = false;
+        _isChasing = false;
+        _chaseTimer = 0f;
+        _lastAttackTime = -attackCooldown;
+        _wasInMeleeRange = false;
+    }
+
+    private void TeleportBossToPlayer(float distance)
+    {
+        if (_playerPoint == null) return;
+
+        Vector3 direction = (transform.position - _playerPoint.position);
+        // Если босс и игрок почти в одной точке – выбираем случайное направление
+        if (direction.sqrMagnitude < 0.01f)
+        {
+            direction = Random.insideUnitSphere;
+            direction.y = 0;
+            direction.Normalize();
+        }
+        else
+        {
+            direction.Normalize();
+        }
+
+        Vector3 targetPosition = _playerPoint.position + direction * distance;
+        targetPosition.y = transform.position.y;
+        transform.position = targetPosition;
+    }
+
     public void AttackCloseRange(Vector3 gameObjectPosition, Vector2 gameObjectRotation)
     {
         Model.AttackCloseRange(gameObjectPosition, gameObjectRotation);

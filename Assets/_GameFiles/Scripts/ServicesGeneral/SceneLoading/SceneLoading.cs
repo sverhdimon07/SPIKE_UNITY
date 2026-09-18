@@ -13,8 +13,6 @@ public static class SceneLoading //сделать синглтон-сервис (перва€ причина этому
     public static void Initialize(GameObject obj)
     {
         _migratingBetweenSceneObject = obj;
-
-        PlayerController.Died += LoadLevelScene;
     }
 
     public static void LoadMainMenuScene()

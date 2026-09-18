@@ -29,6 +29,16 @@ public sealed class PlayerView //контракты на обновление UI
         _longRangeWeaponSound = longRangeWeaponSound;
     }
 
+    public void PresentLives(int value)
+    {
+        _ui.RefreshLivesBar(value);
+    }
+
+    public void PresentScoreIncrease()
+    {
+        _ui.RefreshCounterText();
+    }
+
     public void PresentIdle()
     {
         //
@@ -82,8 +92,8 @@ public sealed class PlayerView //контракты на обновление UI
         await _ui.RefreshWeaponLongRangeCooldownBarOnFull();
     }
 
-    public void PresentScoreIncrease()
+    public void PresentBlock()
     {
-        _ui.RefreshCounterText();
+        _animator.PlayBlock();
     }
 }
