@@ -3,6 +3,13 @@ using UnityEngine.UI;
 
 public class CharacterControllerNewBoss : CharacterControllerNew, IAllRangesAttacker
 {
+    private const float PhaseTwoCombatDuration = 10f;
+    private const float PhaseTwoRecoveryDuration = 3f;
+    private const float CollisionSkin = 0.02f;
+    private static readonly int IdleAnimation = Animator.StringToHash("Base Layer.Idle");
+    private static readonly int CloseRangeAttackTrigger = Animator.StringToHash("AttackCloseRange");
+    private static readonly int LongRangeAttackTrigger = Animator.StringToHash("AttackLongRange");
+
     [SerializeField] private Image _livesBar;
 
     [SerializeField] private WinUI _winUI;
@@ -29,14 +36,23 @@ public class CharacterControllerNewBoss : CharacterControllerNew, IAllRangesAtta
     [SerializeField] private int globalLives = 6;
     [SerializeField] private GameObject _limiters;
     [SerializeField] private ParticleSystem _limitersParticle;
-    [SerializeField] private float phaseTwoTeleportDistance = 4f;
+    [SerializeField, Min(0.1f)] private float phaseTwoTeleportDistance = 2f;
     [SerializeField] private float phaseOneAttackCooldown = 1.5f;
     [SerializeField] private float phaseTwoAttackCooldown = 0.8f;
-    [SerializeField] private float phaseTwoStopDistance = 1.8f; // дистанция, на которой босс останавливается во 2-й фазе
     [SerializeField] private float initialSpawnDistance = 10f; // дистанция от игрока при первом появлении
 
     private int _currentGlobalLife;
     private bool _isPhaseTwoActive;
+    private bool _isRecoveringInPhaseTwo;
+    private double _phaseTwoStateEndsAt;
+
+    private Animator _bossAnimator;
+    private CapsuleCollider _bossCapsule;
+    private CapsuleCollider _playerCapsule;
+    private Limiters _phaseTwoLimiters;
+    private Quaternion _limitersRotation;
+    private Vector3 _limitersScale;
+    private readonly RaycastHit[] _phaseTwoMovementHits = new RaycastHit[8];
 
     private float _lastAttackTime;
     private float _timeSinceFar;
@@ -77,9 +93,17 @@ public class CharacterControllerNewBoss : CharacterControllerNew, IAllRangesAtta
         _currentGlobalLife = 0;
         _isPhaseTwoActive = false;
         attackCooldown = phaseOneAttackCooldown;
+        _bossAnimator = GetComponent<Animator>();
+        _bossCapsule = GetComponent<CapsuleCollider>();
+        _playerCapsule = _playerPoint.GetComponent<CapsuleCollider>();
 
         if (_limiters != null)
+        {
+            _phaseTwoLimiters = _limiters.GetComponent<Limiters>();
+            _limitersRotation = _limiters.transform.rotation;
+            _limitersScale = _limiters.transform.lossyScale;
             _limiters.SetActive(false);
+        }
     }
 
     public override void Start()
@@ -104,14 +128,14 @@ public class CharacterControllerNewBoss : CharacterControllerNew, IAllRangesAtta
     {
         base.Update();
 
-        _gameObjectPivot.LookAt(_playerPoint);
-        float distance = Vector3.Distance(transform.position, _playerPoint.position);
-
         if (_isPhaseTwoActive)
         {
-            HandlePhaseTwoBehaviour(distance);
+            HandlePhaseTwoBehaviour();
             return;
         }
+
+        _gameObjectPivot.LookAt(_playerPoint);
+        float distance = Vector3.Distance(transform.position, _playerPoint.position);
 
         if (distance <= meleeRange)
             HandleMelee(distance);
@@ -119,33 +143,86 @@ public class CharacterControllerNewBoss : CharacterControllerNew, IAllRangesAtta
             HandleRanged(distance);
     }
 
-    // --- ВТОРАЯ ФАЗА: агрессивный ближний бой с остановкой на дистанции ---
-    private void HandlePhaseTwoBehaviour(float distance)
+    private void HandlePhaseTwoBehaviour()
     {
-        // 1. Двигаемся, только если дистанция больше заданной остановочной дистанции
-        if (distance > phaseTwoStopDistance)
+        if (Time.deltaTime <= 0f)
+            return;
+
+        if (Time.timeAsDouble >= _phaseTwoStateEndsAt)
         {
-            Locomote(new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
-        }
-        else
-        {
-            Idle(); // стоим на месте, когда подошли достаточно близко
+            _isRecoveringInPhaseTwo = !_isRecoveringInPhaseTwo;
+            _phaseTwoStateEndsAt = Time.timeAsDouble +
+                (_isRecoveringInPhaseTwo ? PhaseTwoRecoveryDuration : PhaseTwoCombatDuration);
+
+            if (_isRecoveringInPhaseTwo)
+            {
+                Unblock();
+                _bossAnimator.ResetTrigger(CloseRangeAttackTrigger);
+                _bossAnimator.ResetTrigger(LongRangeAttackTrigger);
+                _bossAnimator.CrossFadeInFixedTime(IdleAnimation, 0.1f);
+            }
         }
 
-        // 2. Блок отключён
-        if (_isBlocking)
+        if (_isRecoveringInPhaseTwo)
+            return;
+
+        Vector3 toPlayer = _playerPoint.position - transform.position;
+        toPlayer.y = 0f;
+        float distance = toPlayer.magnitude;
+        if (distance > 0.001f)
+            _gameObjectPivot.rotation = Quaternion.LookRotation(toPlayer);
+
+        if (distance > meleeRange)
         {
-            Unblock();
-            _isBlocking = false;
-            _blockTimer = 0f;
+            ChaseInPhaseTwo(toPlayer / distance, distance);
+            return;
         }
 
-        // 3. Атакуем, если игрок в радиусе meleeRange
-        if (distance <= meleeRange && Time.time - _lastAttackTime >= attackCooldown)
+        if (Model.State is CharacterMechanicLocomotionState)
+            Idle();
+
+        if (Time.time - _lastAttackTime < attackCooldown)
+            return;
+
+        Idle();
+        AttackCloseRange(_gameObjectPivot.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
+        _lastAttackTime = Time.time;
+    }
+
+    private void ChaseInPhaseTwo(Vector3 direction, float distanceToPlayer)
+    {
+        float fullStep = Model.MovementController.Locomotion.LocomotionSpeed * Time.deltaTime;
+        float step = Mathf.Min(fullStep, distanceToPlayer - meleeRange * 0.9f);
+        GetBossCapsule(out Vector3 bottom, out Vector3 top, out float radius);
+        RaycastHit[] hits = _phaseTwoMovementHits;
+        int count = Physics.CapsuleCastNonAlloc(bottom, top, radius, direction, hits,
+            step + CollisionSkin, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore);
+        if (count == hits.Length)
         {
-            AttackCloseRange(_gameObjectPivot.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z));
-            _lastAttackTime = Time.time;
+            hits = Physics.CapsuleCastAll(bottom, top, radius, direction,
+                step + CollisionSkin, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore);
+            count = hits.Length;
         }
+
+        for (int i = 0; i < count; i++)
+        {
+            RaycastHit hit = hits[i];
+            if (!hit.collider.transform.IsChildOf(transform) && Vector3.Dot(hit.normal, direction) < -0.001f)
+                step = Mathf.Min(step, hit.distance - CollisionSkin);
+        }
+
+        if (!(Model.State is CharacterMechanicIdleState || Model.State is CharacterMechanicLocomotionState))
+            Idle();
+
+        if (step <= 0f)
+        {
+            if (Model.State is CharacterMechanicLocomotionState)
+                Idle();
+            return;
+        }
+
+        Vector3 input = direction * (step / fullStep);
+        Locomote(new Vector2(input.x, input.z));
     }
 
     // --- ПЕРВАЯ ФАЗА: ближняя зона ---
@@ -314,23 +391,32 @@ public class CharacterControllerNewBoss : CharacterControllerNew, IAllRangesAtta
     private void ActivatePhaseTwo()
     {
         _isPhaseTwoActive = true;
+        _isRecoveringInPhaseTwo = false;
+        _phaseTwoStateEndsAt = Time.timeAsDouble + PhaseTwoCombatDuration;
         attackCooldown = phaseTwoAttackCooldown;
 
-        TeleportBossToPlayer(phaseTwoTeleportDistance);
+        Unblock();
+        _isBlocking = false;
+        _blockTimer = 0f;
+
+        TeleportBossToPlayer();
 
         if (_limiters != null)
         {
-            _limiters.SetActive(true);
             _limiters.transform.SetParent(null);
+            _limiters.transform.rotation = _limitersRotation;
+            _limiters.transform.localScale = _limitersScale;
+            Vector3 center = (transform.position + _playerPoint.position) * 0.5f;
+            center.y = Mathf.Min(transform.position.y, _playerPoint.position.y);
+            float requiredRadius = Mathf.Max(GetHorizontalReach(_bossCapsule, center),
+                GetHorizontalReach(_playerCapsule, center)) + 0.25f;
+            if (_phaseTwoLimiters != null)
+                _phaseTwoLimiters.PlaceAround(center, requiredRadius);
+
+            _limiters.SetActive(true);
+            Physics.SyncTransforms();
             if (_limitersParticle != null)
                 _limitersParticle.Play();
-        }
-
-        if (_isBlocking)
-        {
-            Unblock();
-            _isBlocking = false;
-            _blockTimer = 0f;
         }
 
         _timeSinceFar = 0f;
@@ -362,26 +448,82 @@ public class CharacterControllerNewBoss : CharacterControllerNew, IAllRangesAtta
         _wasInMeleeRange = false;
     }
 
-    private void TeleportBossToPlayer(float distance)
+    private void TeleportBossToPlayer()
     {
-        if (_playerPoint == null) return;
+        Vector3 direction = transform.position - _playerPoint.position;
+        direction.y = 0f;
+        direction = direction.sqrMagnitude > 0.01f ? direction.normalized : Vector3.forward;
+        _gameObjectPivot.rotation = Quaternion.LookRotation(-direction);
+        Physics.SyncTransforms();
 
-        Vector3 direction = (transform.position - _playerPoint.position);
-        // Если босс и игрок почти в одной точке – выбираем случайное направление
-        if (direction.sqrMagnitude < 0.01f)
+        float minimumDistance = GetCapsuleRadius(_bossCapsule) + GetCapsuleRadius(_playerCapsule) + 0.15f;
+        float preferredDistance = Mathf.Max(phaseTwoTeleportDistance, minimumDistance);
+        if (TryFindPhaseTwoPosition(direction, preferredDistance, out Vector3 position, out Quaternion facing) ||
+            (preferredDistance > minimumDistance &&
+             TryFindPhaseTwoPosition(direction, minimumDistance, out position, out facing)))
         {
-            direction = Random.insideUnitSphere;
-            direction.y = 0;
-            direction.Normalize();
-        }
-        else
-        {
-            direction.Normalize();
+            _gameObjectPivot.SetPositionAndRotation(position, facing);
         }
 
-        Vector3 targetPosition = _playerPoint.position + direction * distance;
-        targetPosition.y = transform.position.y;
-        transform.position = targetPosition;
+        SetLastPosition(_gameObjectPivot.position);
+    }
+
+    private bool TryFindPhaseTwoPosition(Vector3 direction, float distance, out Vector3 position, out Quaternion facing)
+    {
+        GetBossCapsule(out Vector3 bottom, out Vector3 top, out float radius);
+        Vector3 playerPosition = _playerPoint.position;
+        Vector3 bossPosition = _gameObjectPivot.position;
+        Quaternion inverseRotation = Quaternion.Inverse(_gameObjectPivot.rotation);
+        int arenaWalls = LayerMask.GetMask("ArenaWall");
+        Vector3 lineHeight = Vector3.up * radius;
+
+        for (int i = 0; i < 8; i++)
+        {
+            Vector3 offset = Quaternion.AngleAxis(i * 45f, Vector3.up) * direction * distance;
+            position = playerPosition + offset;
+            position.y = bossPosition.y;
+            facing = Quaternion.LookRotation(-offset);
+            if (Physics.Linecast(playerPosition + lineHeight, position + lineHeight, arenaWalls,
+                    QueryTriggerInteraction.Ignore))
+                continue;
+
+            Quaternion turn = facing * inverseRotation;
+            Vector3 capsuleOrigin = position + Vector3.up * CollisionSkin;
+            Collider[] overlaps = Physics.OverlapCapsule(capsuleOrigin + turn * (bottom - bossPosition),
+                capsuleOrigin + turn * (top - bossPosition), radius, Physics.DefaultRaycastLayers,
+                QueryTriggerInteraction.Ignore);
+            if (!System.Array.Exists(overlaps, collider => !collider.transform.IsChildOf(transform)))
+                return true;
+        }
+
+        position = bossPosition;
+        facing = _gameObjectPivot.rotation;
+        return false;
+    }
+
+    private void GetBossCapsule(out Vector3 bottom, out Vector3 top, out float radius)
+    {
+        Transform capsuleTransform = _bossCapsule.transform;
+        float fullRadius = GetCapsuleRadius(_bossCapsule);
+        float halfSegment = Mathf.Max(0f,
+            _bossCapsule.height * Mathf.Abs(capsuleTransform.lossyScale.y) * 0.5f - fullRadius);
+        Vector3 center = capsuleTransform.TransformPoint(_bossCapsule.center);
+        bottom = center - capsuleTransform.up * halfSegment;
+        top = center + capsuleTransform.up * halfSegment;
+        radius = Mathf.Max(fullRadius - CollisionSkin, fullRadius * 0.5f);
+    }
+
+    private static float GetCapsuleRadius(CapsuleCollider capsule)
+    {
+        Vector3 scale = capsule.transform.lossyScale;
+        return capsule.radius * Mathf.Max(Mathf.Abs(scale.x), Mathf.Abs(scale.z));
+    }
+
+    private static float GetHorizontalReach(CapsuleCollider capsule, Vector3 origin)
+    {
+        Vector3 offset = capsule.transform.TransformPoint(capsule.center) - origin;
+        offset.y = 0f;
+        return offset.magnitude + GetCapsuleRadius(capsule);
     }
 
     public void AttackCloseRange(Vector3 gameObjectPosition, Vector2 gameObjectRotation)

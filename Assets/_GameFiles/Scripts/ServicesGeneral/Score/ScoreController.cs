@@ -34,7 +34,7 @@ public class ScoreController : MonoBehaviour
         _score += 1;
         Score += 1;
 
-        if (_score == 1)
+        if (_score >= 1 && !_boss.gameObject.activeSelf)
         {
             _boss.gameObject.SetActive(true);
         }

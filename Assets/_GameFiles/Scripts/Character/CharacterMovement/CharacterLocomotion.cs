@@ -11,6 +11,8 @@ public sealed class CharacterLocomotion
 
     private Vector3 _lastPosition;
 
+    public float LocomotionSpeed => _locomotionSpeed;
+
     public CharacterLocomotion(float locomotionSpeed, float runningSpeed, Vector3 lastPosition)
     {
         _locomotionSpeed = locomotionSpeed;
