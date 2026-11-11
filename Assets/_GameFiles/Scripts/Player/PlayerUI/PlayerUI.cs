@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -38,9 +37,8 @@ public sealed class PlayerUI
         _weaponLongRangeCooldownBar.fillAmount = 0f;
     }
 
-    public async Task RefreshWeaponLongRangeCooldownBarOnFull()
+    public void RefreshWeaponLongRangeCooldownBarOnFull()
     {
-        await Task.Delay(600);
 
         _weaponLongRangeCooldownBar.fillAmount = 1f;
     }

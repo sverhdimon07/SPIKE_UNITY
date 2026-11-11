@@ -145,6 +145,15 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Transform"",
+                    ""type"": ""Button"",
+                    ""id"": ""f0365e47-4d3c-4661-83bf-f43199e428ad"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -367,6 +376,28 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
                     ""action"": ""Block"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f307de08-660c-4a22-ac7b-c949964efd51"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";KeyboardAndMouse"",
+                    ""action"": ""Transform"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7015b84d-997b-4ff2-92db-b720e93b638f"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Transform"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -415,6 +446,7 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
         m_MainCharacter_AttackLongRange = m_MainCharacter.FindAction("AttackLongRange", throwIfNotFound: true);
         m_MainCharacter_OpeningGameplayMenu = m_MainCharacter.FindAction("OpeningGameplayMenu", throwIfNotFound: true);
         m_MainCharacter_Block = m_MainCharacter.FindAction("Block", throwIfNotFound: true);
+        m_MainCharacter_Transform = m_MainCharacter.FindAction("Transform", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
     }
@@ -504,6 +536,7 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
     private readonly InputAction m_MainCharacter_AttackLongRange;
     private readonly InputAction m_MainCharacter_OpeningGameplayMenu;
     private readonly InputAction m_MainCharacter_Block;
+    private readonly InputAction m_MainCharacter_Transform;
     /// <summary>
     /// Provides access to input actions defined in input action map "MainCharacter".
     /// </summary>
@@ -539,6 +572,10 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "MainCharacter/Block".
         /// </summary>
         public InputAction @Block => m_Wrapper.m_MainCharacter_Block;
+        /// <summary>
+        /// Provides access to the underlying input action "MainCharacter/Transform".
+        /// </summary>
+        public InputAction @Transform => m_Wrapper.m_MainCharacter_Transform;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -583,6 +620,9 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
             @Block.started += instance.OnBlock;
             @Block.performed += instance.OnBlock;
             @Block.canceled += instance.OnBlock;
+            @Transform.started += instance.OnTransform;
+            @Transform.performed += instance.OnTransform;
+            @Transform.canceled += instance.OnTransform;
         }
 
         /// <summary>
@@ -612,6 +652,9 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
             @Block.started -= instance.OnBlock;
             @Block.performed -= instance.OnBlock;
             @Block.canceled -= instance.OnBlock;
+            @Transform.started -= instance.OnTransform;
+            @Transform.performed -= instance.OnTransform;
+            @Transform.canceled -= instance.OnTransform;
         }
 
         /// <summary>
@@ -805,6 +848,13 @@ public partial class @InputReader: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnBlock(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Transform" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnTransform(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

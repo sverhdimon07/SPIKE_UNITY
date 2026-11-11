@@ -59,6 +59,7 @@
     <Analyzer Include="D:\UNITY\UNITYBACKUP\SPIKE\SPIKE_UNITY\Library\PackageCache\com.unity.entities@6ce362df365b\Unity.Entities\SourceGenerators\Common.dll" />
     <Analyzer Include="D:\UNITY\UNITYBACKUP\SPIKE\SPIKE_UNITY\Library\PackageCache\com.unity.entities@6ce362df365b\Unity.Entities\SourceGenerators\SystemGenerator.EntityQueryBulkOperations.dll" />
     <Analyzer Include="D:\UNITY\UNITYBACKUP\SPIKE\SPIKE_UNITY\Library\PackageCache\com.unity.entities@6ce362df365b\Unity.Entities\SourceGenerators\Unity.Entities.Analyzer.CodeFixes.dll" />
+    <Analyzer Include="D:\UNITY\UNITYBACKUP\SPIKE\SPIKE_UNITY\Library\PackageCache\com.unity.pipeline@348882856bbb\Runtime\Analyzers\IlInterpreterAnalyzer.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
@@ -652,8 +653,16 @@
       <HintPath>Library\PackageCache\com.unity.collab-proxy@e566cd3e7623\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityPipeline.Microsoft.CodeAnalysis.CSharp">
+      <HintPath>Library\PackageCache\com.unity.pipeline@348882856bbb\Runtime\Plugins\CodeAnalysis\UnityPipeline.Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@e566cd3e7623\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@4dfd81071c64\Runtime\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="log4netPlastic">
@@ -676,6 +685,14 @@
       <HintPath>Assets\Sketchfab For Unity\Dependencies\Libraries\SketchfabPlugin.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityPipeline.System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Library\PackageCache\com.unity.pipeline@348882856bbb\Runtime\Plugins\CodeAnalysis\UnityPipeline.System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityPipeline.System.Collections.Immutable">
+      <HintPath>Library\PackageCache\com.unity.pipeline@348882856bbb\Runtime\Plugins\CodeAnalysis\UnityPipeline.System.Collections.Immutable.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
       <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
       <Private>False</Private>
@@ -692,8 +709,16 @@
       <HintPath>Assets\FastScriptReload\Plugins\Roslyn\2021+\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityPipeline.System.Reflection.Metadata">
+      <HintPath>Library\PackageCache\com.unity.pipeline@348882856bbb\Runtime\Plugins\CodeAnalysis\UnityPipeline.System.Reflection.Metadata.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="GLTFSerialization">
       <HintPath>Assets\Sketchfab For Unity\Dependencies\Libraries\GLTFSerialization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityPipeline.Microsoft.CodeAnalysis">
+      <HintPath>Library\PackageCache\com.unity.pipeline@348882856bbb\Runtime\Plugins\CodeAnalysis\UnityPipeline.Microsoft.CodeAnalysis.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">
@@ -1288,16 +1313,16 @@
       <HintPath>Library\ScriptAssemblies\Unity.Splines.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.AI.Navigation.Updater">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
+    <Reference Include="Unity.Pipeline.IlInterpreter">
+      <HintPath>Library\ScriptAssemblies\Unity.Pipeline.IlInterpreter.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.AI.Navigation.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Entities.Graphics.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Entities.Graphics.Editor.dll</HintPath>
+    <Reference Include="Unity.AI.Navigation.Updater">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
@@ -1306,6 +1331,10 @@
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime.Shared">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.Shared.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Entities.Graphics.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Entities.Graphics.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="PPv2URPConverters">
@@ -1368,6 +1397,14 @@
       <HintPath>Library\ScriptAssemblies\Unity.Entities.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Pipeline.Attributes">
+      <HintPath>Library\ScriptAssemblies\Unity.Pipeline.Attributes.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Pipeline.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Pipeline.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
       <Private>False</Private>
@@ -1382,6 +1419,10 @@
     </Reference>
     <Reference Include="Unity.Transforms.Hybrid">
       <HintPath>Library\ScriptAssemblies\Unity.Transforms.Hybrid.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Pipeline">
+      <HintPath>Library\ScriptAssemblies\Unity.Pipeline.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow">
@@ -1418,6 +1459,10 @@
     </Reference>
     <Reference Include="Unity.InputSystem.ForUI">
       <HintPath>Library\ScriptAssemblies\Unity.InputSystem.ForUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Pipeline.ScenePreview">
+      <HintPath>Library\ScriptAssemblies\Unity.Pipeline.ScenePreview.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">

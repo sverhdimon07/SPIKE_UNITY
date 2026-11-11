@@ -10,6 +10,9 @@ public class PlayerSaveData //хороший вопрос - как называ�
     public float Health;
 
     public int Score;
-
-
+    public Quaternion FormRotation;
+    public bool IsFighter;
+    public bool IsFlightLocked;
+    public bool IsFalling;
+    public float FallSpeed;
 }

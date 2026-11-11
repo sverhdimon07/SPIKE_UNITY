@@ -63,6 +63,10 @@ public abstract class CharacterControllerNew : MonoBehaviour, IDamageable //ту
 
     protected ScoreController _scoreController;
 
+    private PlayerController _playerController;
+    private Canvas _healthCanvas;
+    private bool _healthCanvasEnabled;
+
     protected Transform _playerPoint; //НЕНУЖНАЯ ПРИВЯЗКА - УДАЛЮ ПОТОМ (когда будет FSM)
 
     protected int counter;
@@ -77,7 +81,10 @@ public abstract class CharacterControllerNew : MonoBehaviour, IDamageable //ту
     public virtual void Awake() //чекнуть конструкторы и деструкторы в монобехах
     {
         _scoreController = FindAnyObjectByType<ScoreController>();
-        _playerPoint = FindAnyObjectByType<PlayerController>().GetComponent<Transform>();
+        _playerController = FindAnyObjectByType<PlayerController>();
+        _playerPoint = _playerController.transform;
+        _healthCanvas = _healthBar.GetComponentInParent<Canvas>(true);
+        _healthCanvasEnabled = _healthCanvas != null && _healthCanvas.enabled;
 
         _view = new CharacterView(new CharacterUI(_healthBar), new CharacterAnimator(_animator), _gameObjectPivot, _renderAndSkeletonPivot, _firstEffect, _secondEffect, _thirdEffect, _fourthEffect, _fivthEffect, _sixthEffect, _seventhEffect, _eighthEffect, _ninethEffect, _tenthEffect, _firstSound, _secondSound, _thirdSound, _fourthSound, _fivthSound, _sixthSound, _seventhSound, _eighthSound, _ninethSound, _tenthSound);
         _model = new Character(new CharacterMechanicStateMachine(_model, new CharacterMechanicIdleState()), new CharacterHealthController(new CharacterHealth(_maxHealth, _health)), new CharacterMovementController(new CharacterLocomotion(_locomotionSpeed, _runningSpeed, transform.position), new CharacterRotation()), new CharacterOffenseController(_firstWeapon, _secondWeapon, transform.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z)), new CharacterDefenseController()); //тут такой прикол, что любой человек сможет создавать объект этого класса в любой части программы, но как бы и работать он с ним не сможет без верхнеуровнего монобеховского слоя. Тут все норм, я бы только засинглтонил PlayerController и Player (про PlayerView - хз)
@@ -95,8 +102,18 @@ public abstract class CharacterControllerNew : MonoBehaviour, IDamageable //ту
         //print(_model.State);
     }
 
+    private void SetFighterForm(bool isFighter)
+    {
+        if (_healthCanvas != null)
+        {
+            _healthCanvas.enabled = _healthCanvasEnabled && !isFighter;
+        }
+    }
+
     private void OnEnable()
     {
+        _playerController.FighterFormChanged += SetFighterForm;
+        SetFighterForm(_playerController.IsFighter);
         _model.Idled += _view.PresentIdle;
         _model.HealthController.Health.DamageTaken += _view.PresentDamageTake;
         //_model.HealthController.Health.DamageTaken += DamageTaken; //под расширение (мб замедление времени во время стана делать, и возможно это делается при помощи заморозки сцены)
@@ -116,6 +133,7 @@ public abstract class CharacterControllerNew : MonoBehaviour, IDamageable //ту
 
     private void OnDisable()
     {
+        _playerController.FighterFormChanged -= SetFighterForm;
         _model.Idled -= _view.PresentIdle;
         _model.HealthController.Health.DamageTaken -= _view.PresentDamageTake;
         //_model.HealthController.Health.DamageTaken -= DamageTaken; //под расширение (мб замедление времени во время стана делать, и возможно это делается при помощи заморозки сцены)

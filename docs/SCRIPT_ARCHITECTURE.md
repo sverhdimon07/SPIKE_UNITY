@@ -20,10 +20,20 @@
 
 Цепочка команд игрока проходит через `InputReader` → `InputController` → обработчики в `BootstrapTestScene` → `PlayerController` → `Player`.
 
-- [`InputController`](../Assets/_GameFiles/Scripts/ServicesGeneral/Input/InputController.cs) создаёт `InputReader`, читает направление в `Update` и публикует события ходьбы, бега, атаки, блока и паузы. `InputReader` генерируется из [InputActionMapSystemDefault.inputactions](../Assets/_GameFiles/InputActionMapSystems/InputActionMapSystemDefault.inputactions). В карте `MainCharacter` есть привязки клавиатуры, мыши и геймпада. Глобальный ассет действий в `EditorBuildSettings` — [InputActionMapSystemInEngine.inputactions](../Assets/_GameFiles/InputActionMapSystems/InputActionMapSystemInEngine.inputactions).
+- [`InputController`](../Assets/_GameFiles/Scripts/ServicesGeneral/Input/InputController.cs) создаёт `InputReader`, читает направление в `Update` и публикует события движения, атаки, блока, трансформации и паузы. Состояние кнопки бега читается при обработке движения. `InputReader` генерируется из [InputActionMapSystemDefault.inputactions](../Assets/_GameFiles/InputActionMapSystems/InputActionMapSystemDefault.inputactions). В карте `MainCharacter` есть привязки клавиатуры, мыши и геймпада. Глобальный ассет действий в `EditorBuildSettings` — [InputActionMapSystemInEngine.inputactions](../Assets/_GameFiles/InputActionMapSystems/InputActionMapSystemInEngine.inputactions).
 - [`PlayerController`](../Assets/_GameFiles/Scripts/Player/PlayerController.cs) — компонент на [префабе игрока](../Assets/_GameFiles/Prefabs/MainCharacters/Player%20%28MainCharacter%29.prefab). В `Awake` он создаёт модель `Player`, контроллеры подсистем и `PlayerView` из сериализованных ссылок. Он передаёт команды модели и подключает события к представлению. `PlayerView` обновляет трансформы, `PlayerAnimator`, `PlayerUI`, звук и частицы.
 - [`Player`](../Assets/_GameFiles/Scripts/Player/Player.cs) передаёт команды в `PlayerMechanicStateMachine`. Допустимость перехода задаёт `TryExit` текущего состояния. Состояния лежат в `Player/PlayerMechanicStateMachine`. Контроллер вызывает `MechanicStateUpdate()` каждый кадр, а модель вызывает `DoWithinFrame` активного состояния.
 - Ходьба и бег используют `PlayerMovementController` и `PlayerLocomotion`. Направление движения и поворот учитывают поворот камеры. `PlayerLocomotion` хранит последнюю позицию, которую при загрузке обновляет `PlayerController.SetLastPosition`. Блок проходит через состояние `PlayerMechanicBlockState` в `PlayerHealth`. `PlayerDefenseController` пока пуст.
+
+### Трансформация и полёт
+
+`InputController` принимает действие `Transform` с клавиатуры, геймпада и экранного `OnScreenButton` из префаба `GameplayUI`. `BootstrapTestScene` вызывает `PlayerController.ToggleFighterForm` и по `FighterFormChanged` обновляет боевой ввод и экранные элементы. `PlayerView` переключает HUD и две модели. Контроллеры противников по тому же событию скрывают шкалы здоровья и жизней. Истребитель использует вложенный префаб `Space Ship 2` без компонентов движения и звука фонового корабля. Поворот модели задан внутри `FighterPivot`. В полёте `PlayerView` настраивает позицию и дистанцию Cinemachine относительно этого pivot и восстанавливает параметры человека при выходе из формы.
+
+Вход в `PlayerMechanicFlightState` проходит через `TryExit` текущего состояния игрока. Состояние полёта снимает блок при входе и допускает переход в `Idle`. В полёте `Player` отклоняет урон, а `InputController` подавляет атаки и блок. `PlayerMovementController` вычисляет направление полёта по полным векторам камеры. `PlayerLocomotion` использует капсулу игрока для проверки пути, останавливает полёт при препятствии и сообщает представлению фактическую позицию.
+
+При обратной трансформации `PlayerController` сразу возвращает человека в `Idle`. `Player.MechanicStateUpdate` обновляет гравитацию в `PlayerLocomotion` каждый кадр в человеческой форме. Проверка капсулой определяет опору и ограничивает смещение вниз при приземлении. Пока человек падает, обработчики ходьбы и бега пропускают смещение по горизонтали. При старте, загрузке и выходе из формы истребителя `PlayerController` проверяет опору сразу. При загрузке сохранённая скорость падения применяется, если человек в воздухе. Новая трансформация прерывает падение.
+
+На объекте `FlightLimiter` в `FirstLevel` стоят триггер и кинематический `Rigidbody` для обработки касания игроком. `PlayerLocomotion` также проверяет пересечение триггера по всей траектории шага полёта. Оба пути вызывают `PlayerController.LockFighterForm`, который сохраняет запрет и принудительно возвращает истребитель в форму человека.
 
 ## Противники и появление босса
 
@@ -59,14 +69,14 @@
 
 ## Сохранения
 
-Штатный маршрут `FirstLevel` проходит через [`GameSaveLoadInteractor`](../Assets/_GameFiles/Scripts/ServicesGeneral/SaveAndLoad/NewSaveLoadSystem/GameSaveLoadInteractor.cs). Он читает сохранение в `Awake`, сохраняет по кнопке паузы и подписывается на `Application.quitting`. Репозитории используют `JsonUtility` и записывают два отдельных файла в `Application.persistentDataPath`.
+Штатный маршрут `FirstLevel` проходит через [`GameSaveLoadInteractor`](../Assets/_GameFiles/Scripts/ServicesGeneral/SaveAndLoad/NewSaveLoadSystem/GameSaveLoadInteractor.cs). Он читает сохранение в `Start` после инициализации игрока и подписок, сохраняет по кнопке паузы и подписывается на `Application.quitting`. Репозитории используют `JsonUtility` и записывают два отдельных файла в `Application.persistentDataPath`.
 
 | Файл | Поля |
 | --- | --- |
-| `player_save.json` | `PlayerSaveData`: позиция, поворот, текущее здоровье, очки. |
+| `player_save.json` | `PlayerSaveData`: позиция и поворот корня, поворот модели, текущее здоровье, очки, форма, запрет трансформации, флаг и скорость падения. |
 | `characters_save.json` | `SavedCharactersData`: массив записей `CharacterSaveData` с позицией, поворотом и текущим здоровьем. |
 
-Записи противников применяются по индексам массива из `FindObjectsByType(..., FindObjectsSortMode.None)`. В JSON отсутствуют идентификаторы и типы противников, глобальные жизни, фаза босса, выбранное оружие и прогресс полёта. `IsBoss` существует как статический флаг процесса, обновляется при обходе противников во время сохранения и используется при загрузке для переключения сценовых объектов. Пустой список активных противников не перезаписывает старый файл. Эти детали важны при доработке точного восстановления боя.
+Записи противников применяются по индексам массива из `FindObjectsByType(..., FindObjectsSortMode.None)`. В JSON отсутствуют идентификаторы и типы противников, глобальные жизни, фаза босса и выбранное оружие. Старые файлы загружаются в человеческой форме с прежними координатами и поворотом корня. Если поля запрета в сохранении ещё нет, трансформация доступна до касания триггера. `IsBoss` существует как статический флаг процесса, обновляется при обходе противников во время сохранения и используется при загрузке для переключения сценовых объектов. Пустой список активных противников не перезаписывает старый файл. Эти детали важны при доработке точного восстановления боя.
 
 В [`OldSaveLoadSystem 1`](../Assets/_GameFiles/Scripts/ServicesGeneral/SaveAndLoad/OldSaveLoadSystem%201) есть другой формат для позиции и поворота игрока. В [`GameplayUI.prefab`](../Assets/_GameFiles/Prefabs/UI/UILayouts/GameplayUI.prefab) остались сериализованные вызовы его `SaveData` и `LoadData` с пустыми целями. Рабочие обработчики кнопок в `FirstLevel` назначает `BootstrapTestScene`.
 
@@ -74,10 +84,10 @@
 
 | Задача | Первые места для проверки |
 | --- | --- |
-| Управление на Android, кнопки, бег, блок | Карта `MainCharacter`, `InputController`, подписки в `BootstrapTestScene`, переходы в состояниях `Player`. Для паузы учитывай, что `InputController.Update` продолжает читать движение, а часть обработчиков временно отписывается. |
+| Управление на Android, кнопки, бег, блок | Карта `MainCharacter`, `InputController`, подписки в `BootstrapTestScene`, переходы в состояниях `Player`. В паузе `InputController` приостанавливает игровой ввод. |
 | Дальность, урон, кулдаун, варианты оружия | `PlayerOffenseController`, `CharacterOffenseController`, реализации атак, `EnvironmentAreaOverlapAnalyzer`, префабы оружия и переопределения в префабе игрока. `WeaponType` у противников переключает видимые варианты в `Awake`. Подключённый выбор оружия игроком в рассмотренном коде не обнаружен. |
 | Появление босса, фазы, глобальные жизни | `FirstLevel`, `ScoreController`, `CharacterControllerNew.CheckScore`, `CharacterControllerNewBoss.OnBossDeath`, `PlayerHealth.Die` и обе шкалы жизней в сцене. |
-| Трансформация, полёт, уклонение и парирование | Для начала сверить требования с картой `MainCharacter`, состояниями игрока и подключениями сцены. В рассмотренном маршруте ввода и состояний отдельные действия для этих механик не подтверждены. |
+| Трансформация и полёт | Действие `Transform` в `MainCharacter`, `BootstrapTestScene`, `PlayerMechanicFlightState` и воздушное движение в `PlayerLocomotion`. |
 | Пауза, итоговые экраны и сохранения | `BootstrapTestScene`, `GameplayUI.prefab`, `WinUI`, `LoseUI`, `GameSaveLoadInteractor`, DTO и репозитории из `NewSaveLoadSystem`. Проверять восстановление в новой сессии, поскольку часть состояния статическая. |
 
-`GameControllerScenes/GameController.cs` и `EventBusGeneral/EventBusGeneral.cs` пока содержат пустые классы. Координация сцены и событий проходит через bootstrap, ссылки Unity, обработчики в компонентах и события моделей. При изменении подписок проверяй пары `OnEnable` и `OnDisable`. В `BootstrapTestScene.OnDisable` два обработчика бега добавляются через `+=`, а в нескольких других компонентах для отписки создаются новые анонимные делегаты. Повторная активация объектов требует проверки этих связей.
+`GameControllerScenes/GameController.cs` и `EventBusGeneral/EventBusGeneral.cs` пока содержат пустые классы. Координация сцены и событий проходит через bootstrap, ссылки Unity, обработчики в компонентах и события моделей. При изменении подписок проверяй пары `OnEnable` и `OnDisable`. В нескольких компонентах для отписки создаются новые анонимные делегаты. Повторная активация объектов требует проверки этих связей.

@@ -17,7 +17,7 @@ public class PlayerMechanicBlockState : PlayerMechanicState
 
     public override bool TryExit(Player player, PlayerMechanicStateMachine stateMachine, PlayerMechanicState nextState)
     {
-        if (nextState.GetType() == typeof(PlayerMechanicIdleState))
+        if (nextState is PlayerMechanicIdleState or PlayerMechanicFlightState)
         {
             stateMachine.SwitchState(player, nextState);
 

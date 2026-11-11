@@ -59,6 +59,7 @@
     <Analyzer Include="D:\UNITY\UNITYBACKUP\SPIKE\SPIKE_UNITY\Library\PackageCache\com.unity.entities@6ce362df365b\Unity.Entities\SourceGenerators\Common.dll" />
     <Analyzer Include="D:\UNITY\UNITYBACKUP\SPIKE\SPIKE_UNITY\Library\PackageCache\com.unity.entities@6ce362df365b\Unity.Entities\SourceGenerators\SystemGenerator.EntityQueryBulkOperations.dll" />
     <Analyzer Include="D:\UNITY\UNITYBACKUP\SPIKE\SPIKE_UNITY\Library\PackageCache\com.unity.entities@6ce362df365b\Unity.Entities\SourceGenerators\Unity.Entities.Analyzer.CodeFixes.dll" />
+    <Analyzer Include="D:\UNITY\UNITYBACKUP\SPIKE\SPIKE_UNITY\Library\PackageCache\com.unity.pipeline@348882856bbb\Runtime\Analyzers\IlInterpreterAnalyzer.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
@@ -190,6 +191,7 @@
     <Compile Include="Assets\Import\Lahmadju\Scripts\DODONPA Scripts\Environment Change\Object Rotation Around Its Axis.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMechanicStateMachine\PlayerMechanicStates\Implemented PlayerMechanicState\PlayerMechanicAttackCloseRangeState.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMechanicStateMachine\PlayerMechanicStates\Implemented PlayerMechanicState\PlayerMechanicFlightState.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\EnvironmentAreaAnalyzers\EnvironmentAreaColliderAnalyzer.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabUI.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterMovement\CharacterRotation.cs" />
@@ -284,6 +286,7 @@
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMechanicStateMachine\PlayerMechanicStates\Implemented PlayerMechanicState\PlayerMechanicRunState.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMovement\PlayerRotation.cs" />
     <Compile Include="Assets\Import\Lahmadju\Scripts\Sound System\Camera Sounds.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMovement\FlightLimiter.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerUI\PlayerUI.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\EnvironmentAreaAnalyzers\EnvironmentAreaOverlapAnalyzer.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
@@ -934,12 +937,28 @@
       <HintPath>Library\PackageCache\com.unity.ext.nunit@d8c07649098d\net40\unity-custom\nunit.framework.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityPipeline.Microsoft.CodeAnalysis.CSharp">
+      <HintPath>Library\PackageCache\com.unity.pipeline@348882856bbb\Runtime\Plugins\CodeAnalysis\UnityPipeline.Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@4dfd81071c64\Runtime\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="SketchfabPlugin">
       <HintPath>Assets\Sketchfab For Unity\Dependencies\Libraries\SketchfabPlugin.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityPipeline.System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Library\PackageCache\com.unity.pipeline@348882856bbb\Runtime\Plugins\CodeAnalysis\UnityPipeline.System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityPipeline.System.Collections.Immutable">
+      <HintPath>Library\PackageCache\com.unity.pipeline@348882856bbb\Runtime\Plugins\CodeAnalysis\UnityPipeline.System.Collections.Immutable.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">
@@ -954,8 +973,16 @@
       <HintPath>Assets\FastScriptReload\Plugins\Roslyn\2021+\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityPipeline.System.Reflection.Metadata">
+      <HintPath>Library\PackageCache\com.unity.pipeline@348882856bbb\Runtime\Plugins\CodeAnalysis\UnityPipeline.System.Reflection.Metadata.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="GLTFSerialization">
       <HintPath>Assets\Sketchfab For Unity\Dependencies\Libraries\GLTFSerialization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityPipeline.Microsoft.CodeAnalysis">
+      <HintPath>Library\PackageCache\com.unity.pipeline@348882856bbb\Runtime\Plugins\CodeAnalysis\UnityPipeline.Microsoft.CodeAnalysis.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">
@@ -1530,16 +1557,16 @@
       <HintPath>Library\ScriptAssemblies\Unity.Splines.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.AI.Navigation.Updater">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
+    <Reference Include="Unity.Pipeline.IlInterpreter">
+      <HintPath>Library\ScriptAssemblies\Unity.Pipeline.IlInterpreter.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.AI.Navigation.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Entities.Graphics.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Entities.Graphics.Editor.dll</HintPath>
+    <Reference Include="Unity.AI.Navigation.Updater">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
@@ -1548,6 +1575,10 @@
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime.Shared">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.Shared.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Entities.Graphics.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Entities.Graphics.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="PPv2URPConverters">
@@ -1610,6 +1641,14 @@
       <HintPath>Library\ScriptAssemblies\Unity.Entities.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Pipeline.Attributes">
+      <HintPath>Library\ScriptAssemblies\Unity.Pipeline.Attributes.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Pipeline.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Pipeline.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
       <Private>False</Private>
@@ -1624,6 +1663,10 @@
     </Reference>
     <Reference Include="Unity.Transforms.Hybrid">
       <HintPath>Library\ScriptAssemblies\Unity.Transforms.Hybrid.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Pipeline">
+      <HintPath>Library\ScriptAssemblies\Unity.Pipeline.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow">
@@ -1660,6 +1703,10 @@
     </Reference>
     <Reference Include="Unity.InputSystem.ForUI">
       <HintPath>Library\ScriptAssemblies\Unity.InputSystem.ForUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Pipeline.ScenePreview">
+      <HintPath>Library\ScriptAssemblies\Unity.Pipeline.ScenePreview.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">

@@ -22,9 +22,12 @@ public class GameSaveLoadInteractor : MonoBehaviour
         _playerRepository = new JsonPlayerRepository(PLAYER_FILE);
         _characterRepository = new JsonCharacterRepository(CHARACTER_FILE);
 
-        ExecuteLoadOperation();
-
         Application.quitting += OnApplicationQuitting;
+    }
+
+    private void Start()
+    {
+        ExecuteLoadOperation();
     }
 
     private void OnDestroy()
@@ -61,8 +64,13 @@ public class GameSaveLoadInteractor : MonoBehaviour
         {
             Position = _playerController.transform.position,
             Rotation = _playerController.transform.rotation,
+            FormRotation = _playerController.FormRotation,
             Health = _playerController.Health,
-            Score = ScoreController.Score
+            Score = ScoreController.Score,
+            IsFighter = _playerController.IsFighter,
+            IsFlightLocked = _playerController.IsFlightLocked,
+            IsFalling = _playerController.IsFalling,
+            FallSpeed = _playerController.FallSpeed
         };
 
         _playerRepository.Save(data);
@@ -74,10 +82,8 @@ public class GameSaveLoadInteractor : MonoBehaviour
         var data = _playerRepository.Load();
         if (data != null)
         {
-            _playerController.transform.position = data.Position;
-
-            _playerController.SetLastPosition(data.Position);
             _playerController.SetRenderAndSkeletonPivot(data.Rotation);
+            _playerController.RestoreForm(data.Position, data.FormRotation, data.IsFighter, data.IsFalling, data.FallSpeed, data.IsFlightLocked);
 
             if (data.Health <= 0f)
             {

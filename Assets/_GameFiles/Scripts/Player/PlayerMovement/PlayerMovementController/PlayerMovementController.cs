@@ -26,6 +26,15 @@ public sealed class PlayerMovementController
         _locomotion.Run(CalculateWorldDirection(cameraPoint, inputDirection), skeletonAndRenderDirection); //œ≈–≈œ»—¿“‹
     }
 
+    public void Fly(Transform cameraPoint, Vector2 inputDirection)
+    {
+        Vector3 direction = (cameraPoint.forward * inputDirection.y + cameraPoint.right * inputDirection.x).normalized;
+        if (_locomotion.Fly(direction))
+        {
+            _rotation.Rotate(direction);
+        }
+    }
+
     public void Rotate(Transform cameraPoint, Vector2 inputDirection)
     {
         _rotation.Rotate(CalculateWorldDirection(cameraPoint, inputDirection));

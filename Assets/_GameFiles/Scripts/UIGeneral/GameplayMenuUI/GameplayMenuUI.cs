@@ -8,6 +8,12 @@ public sealed class GameplayMenuUI : MonoBehaviour
     [SerializeField] private Button _saveButton;
     [SerializeField] private Button _loadSavingButton;
 
+    [SerializeField] private GameObject _flightOverlay;
+    [SerializeField] private GameObject[] _buttonsHiddenInFlight;
+
+    private bool[] _buttonsActiveBeforeFlight;
+    private bool _isFighter;
+
     private InputController _inputController;
 
     public Button ContinueButton => _continueButton;
@@ -24,6 +30,32 @@ public sealed class GameplayMenuUI : MonoBehaviour
     {
         gameObject.SetActive(false);
         //OpenOrClose(); //НЕПРАВИЛЬНО, хотя когда мы полностью отрубаем канвас в геймплее, мб так и нужно (ибо вместе с этим отрубается EventSystem); Концептуально этот класс сейчас управляет своим сроком жизни, хотя такого быть не должно, НО с другой стороны это просто инит и все, НО должен ли класс вообще иметь такие приватные методы, если все то же самое я могу прописать в классе более высокого уровня
+    }
+
+    public void SetFighterForm(bool isFighter)
+    {
+        if (_flightOverlay == null || _isFighter == isFighter)
+        {
+            return;
+        }
+
+        _isFighter = isFighter;
+        _flightOverlay.SetActive(isFighter);
+        if (isFighter)
+        {
+            _buttonsActiveBeforeFlight ??= new bool[_buttonsHiddenInFlight.Length];
+        }
+
+        for (int i = 0; i < _buttonsHiddenInFlight.Length; i++)
+        {
+            GameObject button = _buttonsHiddenInFlight[i];
+            if (isFighter)
+            {
+                _buttonsActiveBeforeFlight[i] = button.activeSelf;
+            }
+
+            button.SetActive(!isFighter && _buttonsActiveBeforeFlight[i]);
+        }
     }
 
     public void OpenOrClose()

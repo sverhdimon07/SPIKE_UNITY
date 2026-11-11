@@ -27,6 +27,8 @@ public sealed class Player : IDamageable, IAllRangesAttacker //я думаю, что если
     //public PlayerMechanicStateMachine MechanicStateMachine => _mechanicStateMachine; //оставил так, ибо по большому счету твой класс не должен бояться такой штуки, ХОТЯ он может и не боится, но лично я не хочу же чтобы у меня эта логика была APIшкой моей модели
     public PlayerMechanicState State => _mechanicStateMachine.State; //мб стоит со всеми нижними системами сделать так же, хотя там был очень удобный доступ к событиям и деталям, НО их же можно инкапсулировать здесь
 
+    public bool IsFighter => State is PlayerMechanicFlightState;
+
     public PlayerHealthController HealthController => _healthController;
 
     public PlayerMovementController MovementController => _movementController;
@@ -38,6 +40,29 @@ public sealed class Player : IDamageable, IAllRangesAttacker //я думаю, что если
     public void MechanicStateUpdate()
     {
         _mechanicStateMachine.State.DoWithinFrame(this, _mechanicStateMachine);
+        if (!IsFighter)
+        {
+            _movementController.Locomotion.UpdateGravity();
+        }
+    }
+
+    public bool TryEnterFighterForm()
+    {
+        if (!_mechanicStateMachine.TrySwitchState(this, new PlayerMechanicFlightState()))
+        {
+            return false;
+        }
+
+        _movementController.Locomotion.ClearFall();
+        return true;
+    }
+
+    public void ResetToHuman()
+    {
+        _healthController.Health.Unblock();
+        var idle = new PlayerMechanicIdleState();
+        _mechanicStateMachine.SwitchState(this, idle);
+        idle.Do(this, _mechanicStateMachine);
     }
 
     public void Idle()
@@ -52,6 +77,11 @@ public sealed class Player : IDamageable, IAllRangesAttacker //я думаю, что если
 
     public void TakeDamage(float damage)
     {
+        if (IsFighter)
+        {
+            return;
+        }
+
         PlayerMechanicState stunState = new PlayerMechanicStunState(damage);
 
         if (_mechanicStateMachine.TrySwitchState(this, stunState) == true)
@@ -72,6 +102,17 @@ public sealed class Player : IDamageable, IAllRangesAttacker //я думаю, что если
 
     public void Locomote(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection, Vector2 skeletonAndRenderDirection) //пропал публичный метод для бега, а я хотел дописывать контракты на ходьбу, на бег (НО МБ С FSM ВСЕ НАЛАДИТСЯ)
     {
+        if (IsFighter)
+        {
+            _movementController.Fly(thirdPersonCameraControllerPivot, inputDirection);
+            return;
+        }
+
+        if (_movementController.Locomotion.IsFalling)
+        {
+            return;
+        }
+
         PlayerMechanicState locomotionState = new PlayerMechanicLocomotionState(thirdPersonCameraControllerPivot, inputDirection, skeletonAndRenderDirection);
 
         if (_mechanicStateMachine.TrySwitchState(this, locomotionState) == true)
@@ -82,6 +123,17 @@ public sealed class Player : IDamageable, IAllRangesAttacker //я думаю, что если
 
     public void Run(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection, Vector2 skeletonAndRenderDirection) //пропал публичный метод для бега, а я хотел дописывать контракты на ходьбу, на бег (НО МБ С FSM ВСЕ НАЛАДИТСЯ)
     {
+        if (IsFighter)
+        {
+            _movementController.Fly(thirdPersonCameraControllerPivot, inputDirection);
+            return;
+        }
+
+        if (_movementController.Locomotion.IsFalling)
+        {
+            return;
+        }
+
         PlayerMechanicState runState = new PlayerMechanicRunState(thirdPersonCameraControllerPivot, inputDirection, skeletonAndRenderDirection);
 
         if (_mechanicStateMachine.TrySwitchState(this, runState) == true)
@@ -93,6 +145,11 @@ public sealed class Player : IDamageable, IAllRangesAttacker //я думаю, что если
 
     public void Rotate(Transform thirdPersonCameraControllerPivot, Vector2 inputDirection) //(Transform renderAndSkeletonPivot, Transform thirdPersonCameraControllerPivot, Vector2 inputDirection)
     {
+        if (IsFighter)
+        {
+            return;
+        }
+
         _movementController.Rotate(thirdPersonCameraControllerPivot, inputDirection); //этот метод вызывается всегда, ибо игрок пока что вращается во всемя всех механик, но возможно стоит его вызывать только в механике передвижения, а в остальных механиках - не вызывать, ибо там может быть какая-то другая логика вращения (к примеру, при атаке может быть так, что игрок должен повернуться в сторону цели, а не камеры)
     }
 

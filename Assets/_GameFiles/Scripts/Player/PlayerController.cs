@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,6 +21,14 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
     [SerializeField] private ParticleSystem _longRangeWeaponEffect;
     [SerializeField] private AudioSource _closeRangeWeaponSound;
     [SerializeField] private AudioSource _longRangeWeaponSound;
+
+    [SerializeField] private Transform _fighter;
+    [Min(0.1f)]
+    [SerializeField] private float _fighterCameraDistance = 4.8f;
+    [SerializeField] private GameObject _hud;
+
+    [Min(0.1f)]
+    [SerializeField] private float _flightSpeed = 14f;
 
     [Header("Model References")]
     [Range(0.1f, 100f)] //так как это не инкапсуляция - надо чекнуть то, искапсулирую ли я эти входные данные на уровне конкретных реализаций (сервисов) внутри; а вообще монобех именно так и инкапсулируется, я просто хз, как работать со скриптбл обджектами, там наверное как-то по-другому нужно будет проверять входные значения, если я захочу, чтобы у игрока максимальное здоровье было всегда не больше 100f
@@ -53,6 +62,15 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
     public Transform RenderAndSkeletonPivot => _renderAndSkeletonPivot; //ВРЕМЕННАЯ МЕРА
     public Transform ThirdPersonCameraControllerPivot => _thirdPersonCameraControllerPivot; //ВРЕМЕННАЯ МЕРА
 
+    public event System.Action<bool> FighterFormChanged;
+
+    public bool IsFighter => _model?.IsFighter == true;
+    public bool IsFlightLocked { get; private set; }
+    public bool IsFalling => Locomotion.IsFalling;
+    public float FallSpeed => Locomotion.FallSpeed;
+    public Quaternion FormRotation => IsFighter ? _view.FighterRotation : _renderAndSkeletonPivot.rotation;
+    private PlayerLocomotion Locomotion => _model.MovementController.Locomotion;
+
     public Player Model => _model;
 
     public ScoreController ScoreController => _scoreController;
@@ -69,8 +87,19 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
 
         _loseUI.Initialize();
 
-        _view = new PlayerView(new PlayerUI(_healthBar, _weaponLongRangeCooldownBar, _livesBar, _deathMessageText, _counterText), new PlayerAnimator(_animator), _gameObjectPivot, _renderAndSkeletonPivot, _closeRangeWeaponEffect, _longRangeWeaponEffect, _closeRangeWeaponSound, _longRangeWeaponSound);
-        _model = new Player(new PlayerMechanicStateMachine(_model, new PlayerMechanicIdleState()), new PlayerHealthController(new PlayerHealth(_maxHealth, _health)), new PlayerMovementController(new PlayerLocomotion(new EnvironmentAreaOverlapAnalyzer<Collider, PlayerController>(), new Vector2(_renderAndSkeletonPivot.forward.x, _renderAndSkeletonPivot.forward.z), 0.3f, 0.5f, 2.5f, _locomotionSpeed, _runningSpeed, transform.position), new PlayerRotation()), new PlayerOffenseController(_firstWeapon, _secondWeapon, transform.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z)), new PlayerDefenseController()); //тут такой прикол, что любой человек сможет создавать объект этого класса в любой части программы, но как бы и работать он с ним не сможет без верхнеуровнего монобеховского слоя. Тут все норм, я бы только засинглтонил PlayerController и Player (про PlayerView - хз)
+        _view = new PlayerView(new PlayerUI(_healthBar, _weaponLongRangeCooldownBar, _livesBar, _deathMessageText, _counterText), new PlayerAnimator(_animator), _gameObjectPivot, _renderAndSkeletonPivot, _closeRangeWeaponEffect, _longRangeWeaponEffect, _closeRangeWeaponSound, _longRangeWeaponSound, _fighter, _hud,
+            _thirdPersonCameraControllerPivot.GetComponent<CinemachinePositionComposer>(), _fighterCameraDistance);
+        _model = new Player(new PlayerMechanicStateMachine(_model, new PlayerMechanicIdleState()), new PlayerHealthController(new PlayerHealth(_maxHealth, _health)), new PlayerMovementController(new PlayerLocomotion(new EnvironmentAreaOverlapAnalyzer<Collider, PlayerController>(), new Vector2(_renderAndSkeletonPivot.forward.x, _renderAndSkeletonPivot.forward.z), 0.3f, 0.5f, 2.5f, _locomotionSpeed, _runningSpeed, transform.position, GetComponent<CapsuleCollider>(), _flightSpeed), new PlayerRotation()), new PlayerOffenseController(_firstWeapon, _secondWeapon, transform.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z)), new PlayerDefenseController()); //тут такой прикол, что любой человек сможет создавать объект этого класса в любой части программы, но как бы и работать он с ним не сможет без верхнеуровнего монобеховского слоя. Тут все норм, я бы только засинглтонил PlayerController и Player (про PlayerView - хз)
+        Locomotion.FlightLimiterReached += LockFighterForm;
+        Locomotion.AirborneMoved += _view.MoveAirborne;
+    }
+
+    private void Start()
+    {
+        if (!IsFighter)
+        {
+            Locomotion.RefreshGroundSupport(Locomotion.FallSpeed);
+        }
     }
 
     private void Update()
@@ -139,6 +168,80 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
     public void SetHealthValue(float healthValue)
     {
         _model.HealthController.Health.SetHealthValue(healthValue);
+    }
+
+    public void ToggleFighterForm()
+    {
+        if (IsFlightLocked || _fighter == null || _hud == null || Time.timeScale <= 0f)
+        {
+            return;
+        }
+
+        Locomotion.SetLastPosition(_gameObjectPivot.position);
+        if (IsFighter)
+        {
+            ExitFighterForm();
+        }
+        else
+        {
+            SetFighterForm(true);
+        }
+    }
+
+    public void LockFighterForm()
+    {
+        IsFlightLocked = true;
+        if (IsFighter)
+        {
+            ExitFighterForm();
+        }
+    }
+
+    private void ExitFighterForm()
+    {
+        SetFighterForm(false);
+        Locomotion.RefreshGroundSupport();
+    }
+
+    public void RestoreForm(Vector3 position, Quaternion rotation, bool isFighter, bool isFalling, float fallSpeed, bool isFlightLocked)
+    {
+        _gameObjectPivot.position = position;
+        Locomotion.SetLastPosition(position);
+        _view.CancelAttackPresentation();
+
+        IsFlightLocked = isFlightLocked;
+        isFighter = isFighter && !IsFlightLocked && _fighter != null && _hud != null;
+        if (!IsFighter)
+        {
+            _model.ResetToHuman();
+        }
+
+        SetFighterForm(isFighter);
+        if (Quaternion.Dot(rotation, rotation) > 0f)
+        {
+            _view.TurnCharacterModel(rotation);
+        }
+
+        if (!IsFighter)
+        {
+            Locomotion.RefreshGroundSupport(isFalling ? fallSpeed : 0f);
+        }
+    }
+
+    private void SetFighterForm(bool isFighter)
+    {
+        if (IsFighter == isFighter || (isFighter && !_model.TryEnterFighterForm()))
+        {
+            return;
+        }
+
+        _view.SetFighterForm(isFighter, _thirdPersonCameraControllerPivot.forward);
+        if (!isFighter)
+        {
+            _model.Idle();
+        }
+
+        FighterFormChanged?.Invoke(isFighter);
     }
 
     public void Idle()

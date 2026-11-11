@@ -61,9 +61,6 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
     private UnityAction _blockHandler;
     private UnityAction _unblockHandler;
 
-    private UnityAction<Vector2> _locomotionDirectionDirectedForLocomotionHandler;
-    private UnityAction<Vector2> _locomotionDirectionDirectedForRunHandler;
-    private UnityAction<Vector2> _locomotionDirectionDirectedForRotationHandler;
 
     public override void Awake() //тут метод Awake публичный - хз //можно сделать абстрактным в родительском классе, типо чтобы у нас был контракт на обязательность реализации, но хз, насколько это правильно и насколько правильно оставлять этот метод публичным
     {
@@ -88,13 +85,10 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
 
         _attackCloseRangeButtonPressedForCloseRangeAttackHandler = delegate () { PlayerController.AttackCloseRange(PlayerController.GameObjectPivot.position, new Vector2(PlayerController.RenderAndSkeletonPivot.forward.x, PlayerController.RenderAndSkeletonPivot.forward.z)); };
         _attackLongRangeButtonPressedForLongRangeAttackHandler = delegate () { PlayerController.AttackLongRange(PlayerController.GameObjectPivot.position, new Vector2(PlayerController.RenderAndSkeletonPivot.forward.x, PlayerController.RenderAndSkeletonPivot.forward.z)); };
-        _locomotionDirectionDirectedForLocomotionHandler = locomotionDirection => PlayerController.Locomote(PlayerController.ThirdPersonCameraControllerPivot, locomotionDirection, new Vector2(PlayerController.RenderAndSkeletonPivot.forward.x, PlayerController.RenderAndSkeletonPivot.forward.z));
-        _locomotionDirectionDirectedForRunHandler = locomotionDirection => PlayerController.Run(PlayerController.ThirdPersonCameraControllerPivot, locomotionDirection, new Vector2(PlayerController.RenderAndSkeletonPivot.forward.x, PlayerController.RenderAndSkeletonPivot.forward.z));
         
         _blockHandler = delegate () { PlayerController.Block(); };
         _unblockHandler = delegate () { PlayerController.Unblock(); };
 
-        _locomotionDirectionDirectedForRotationHandler = locomotionDirection => PlayerController.Rotate(PlayerController.ThirdPersonCameraControllerPivot, locomotionDirection);
 
         InstantiateMigratingBetweenSceneObjects(); //ВРЕМЕННО
         _gameplayMenuUI.Initialize();
@@ -127,11 +121,11 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         _gameplayMenuUI.LoadSavingButton.onClick.AddListener(_gameplayMenuUI.OpenOrClose);
         _gameplayMenuUI.LoadSavingButton.onClick.AddListener(_loadSavingButtonForDataLoadHandler);
 
-        _inputController.LocomotionDirectionDirected += _locomotionDirectionDirectedForLocomotionHandler;
-        _inputController.LocomotionDirectionDirected += _locomotionDirectionDirectedForRotationHandler;
+        _inputController.LocomotionDirectionDirected += MovePlayer;
+        _inputController.TransformButtonPressed += PlayerController.ToggleFighterForm;
+        PlayerController.FighterFormChanged += PresentFighterForm;
+        PresentFighterForm(PlayerController.IsFighter);
         _inputController.LocomotionDirectionUndirected += SwitchPlayerToIdle;
-        _inputController.RunningButtonHolded += ResubscribeRunOnLocomotionDirectionDirectedForLocomotionHandler;
-        _inputController.RunningButtonUnholded += ResubscribeLocomotionOnLocomotionDirectionDirectedForLocomotionHandler;
         _inputController.AttackCloseRangeButtonPressed += _attackCloseRangeButtonPressedForCloseRangeAttackHandler;
         _inputController.AttackLongRangeButtonPressed += _attackLongRangeButtonPressedForLongRangeAttackHandler;
 
@@ -172,11 +166,10 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         _gameplayMenuUI.LoadSavingButton.onClick.RemoveListener(_gameplayMenuUI.OpenOrClose);
         _gameplayMenuUI.LoadSavingButton.onClick.RemoveListener(_loadSavingButtonForDataLoadHandler);
 
-        _inputController.LocomotionDirectionDirected -= _locomotionDirectionDirectedForLocomotionHandler;
-        _inputController.LocomotionDirectionDirected -= _locomotionDirectionDirectedForRotationHandler;
+        _inputController.LocomotionDirectionDirected -= MovePlayer;
+        _inputController.TransformButtonPressed -= PlayerController.ToggleFighterForm;
+        PlayerController.FighterFormChanged -= PresentFighterForm;
         _inputController.LocomotionDirectionUndirected -= SwitchPlayerToIdle;
-        _inputController.RunningButtonHolded += ResubscribeRunOnLocomotionDirectionDirectedForLocomotionHandler;
-        _inputController.RunningButtonUnholded += ResubscribeLocomotionOnLocomotionDirectionDirectedForLocomotionHandler;
         _inputController.AttackCloseRangeButtonPressed -= _attackCloseRangeButtonPressedForCloseRangeAttackHandler;
         _inputController.AttackLongRangeButtonPressed -= _attackLongRangeButtonPressedForLongRangeAttackHandler;
 
@@ -213,16 +206,26 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         }
     }*/
 
-    private void ResubscribeLocomotionOnLocomotionDirectionDirectedForLocomotionHandler()
+    private void MovePlayer(Vector2 direction)
     {
-        _inputController.LocomotionDirectionDirected -= _locomotionDirectionDirectedForRunHandler;
-        _inputController.LocomotionDirectionDirected += _locomotionDirectionDirectedForLocomotionHandler;
+        Vector2 facing = new Vector2(PlayerController.RenderAndSkeletonPivot.forward.x, PlayerController.RenderAndSkeletonPivot.forward.z);
+        Transform cameraPoint = PlayerController.ThirdPersonCameraControllerPivot;
+        if (_inputController.IsRunning)
+        {
+            PlayerController.Run(cameraPoint, direction, facing);
+        }
+        else
+        {
+            PlayerController.Locomote(cameraPoint, direction, facing);
+        }
+
+        PlayerController.Rotate(cameraPoint, direction);
     }
 
-    private void ResubscribeRunOnLocomotionDirectionDirectedForLocomotionHandler()
+    private void PresentFighterForm(bool isFighter)
     {
-        _inputController.LocomotionDirectionDirected -= _locomotionDirectionDirectedForLocomotionHandler;
-        _inputController.LocomotionDirectionDirected += _locomotionDirectionDirectedForRunHandler;
+        _inputController.SetFighterForm(isFighter);
+        _gameplayMenuUI.SetFighterForm(isFighter);
     }
 }
 
