@@ -4,11 +4,12 @@ using UnityEngine.InputSystem;
 
 public sealed class InputController : MonoBehaviour
 {
-    private InputReader _reader;
+    private InputReader _reader; //можем ли мы подменить приватное поле созданного нами типа?
     private bool _hadMovementInput;
     private bool _isGameplayMenuOpened;
     private bool _isFighter;
 
+    //private UnityAction _locomotionDirectionUndirectedHandler;
     public UnityAction LocomotionDirectionUndirected;
     public UnityAction AttackCloseRangeButtonPressed;
     public UnityAction AttackLongRangeButtonPressed;
@@ -16,6 +17,7 @@ public sealed class InputController : MonoBehaviour
     public UnityAction TransformButtonPressed;
     public UnityAction BlockButtonHolded;
     public UnityAction BlockButtonUnholded;
+    //private UnityAction<Vector2> _locomotionDirectionDirectedHandler;
     public UnityAction<Vector2> LocomotionDirectionDirected;
 
     public bool IsRunning => _reader.MainCharacter.Running.IsPressed();
@@ -24,6 +26,7 @@ public sealed class InputController : MonoBehaviour
 
     private void Awake()
     {
+        //_reader.MainCharacter.OpeningGameplayMenu.performed += context => OpeningGameplayeMenuButtonPressed.Invoke();
         _reader = new InputReader();
     }
 
@@ -35,7 +38,8 @@ public sealed class InputController : MonoBehaviour
         actions.Block.started += OnBlockStarted;
         actions.Block.canceled += OnBlockCanceled;
         actions.Transform.performed += OnTransform;
-        actions.OpeningGameplayMenu.performed += OnOpeningGameplayMenu;
+        actions.OpeningGameplayMenu.performed += OnOpeningGameplayMenu; //
+        //_reader.MainCharacter.OpeningGameplayMenu.performed += context => OnOpeningGameplayeMenuButtonPressed(); //
         _reader.Enable();
     }
 
@@ -47,7 +51,8 @@ public sealed class InputController : MonoBehaviour
         actions.Block.started -= OnBlockStarted;
         actions.Block.canceled -= OnBlockCanceled;
         actions.Transform.performed -= OnTransform;
-        actions.OpeningGameplayMenu.performed -= OnOpeningGameplayMenu;
+        actions.OpeningGameplayMenu.performed -= OnOpeningGameplayMenu; //
+        //_reader.MainCharacter.OpeningGameplayMenu.performed -= context => OnOpeningGameplayeMenuButtonPressed(); //
         _reader.Disable();
     }
 

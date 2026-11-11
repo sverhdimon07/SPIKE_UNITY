@@ -62,6 +62,7 @@ public abstract class CharacterControllerNew : MonoBehaviour, IDamageable //ту
     private Character _model; //не уверен, что так правильно; вообще есть 2 варика - ЛИБО сделать так, как здесь, с публичной для вызова публичных методов моделью и подписками вьюшки здесь, ЛИБО сделать модель приватной И соединять модель и вьюшку напрямую публичными методами. Мне впринципе 2й варик больше нравится;
 
     protected ScoreController _scoreController;
+    private bool _scoreAwarded;
 
     private PlayerController _playerController;
     private Canvas _healthCanvas;
@@ -155,6 +156,12 @@ public abstract class CharacterControllerNew : MonoBehaviour, IDamageable //ту
         _model.MovementController.Locomotion.SetLastPosition(lastPosition);
     }
 
+    public virtual void RestoreSavedPosition(Vector3 position)
+    {
+        transform.position = position;
+        SetLastPosition(position);
+    }
+
     public void SetRenderAndSkeletonPivot(Quaternion rotation) //?
     {
         _gameObjectPivot.rotation = rotation;
@@ -217,10 +224,12 @@ public abstract class CharacterControllerNew : MonoBehaviour, IDamageable //ту
 
     public void CheckScore()
     {
-        if (gameObject.GetComponent<CharacterControllerNewBoss>() == true)
+        if (_scoreAwarded || gameObject.GetComponent<CharacterControllerNewBoss>() == true)
         {
             return;
         }
+
+        _scoreAwarded = true;
         _scoreController.IncreaseScore();
     }
 }

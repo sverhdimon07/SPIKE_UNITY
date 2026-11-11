@@ -90,7 +90,7 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
         _view = new PlayerView(new PlayerUI(_healthBar, _weaponLongRangeCooldownBar, _livesBar, _deathMessageText, _counterText), new PlayerAnimator(_animator), _gameObjectPivot, _renderAndSkeletonPivot, _closeRangeWeaponEffect, _longRangeWeaponEffect, _closeRangeWeaponSound, _longRangeWeaponSound, _fighter, _hud,
             _thirdPersonCameraControllerPivot.GetComponent<CinemachinePositionComposer>(), _fighterCameraDistance);
         _model = new Player(new PlayerMechanicStateMachine(_model, new PlayerMechanicIdleState()), new PlayerHealthController(new PlayerHealth(_maxHealth, _health)), new PlayerMovementController(new PlayerLocomotion(new EnvironmentAreaOverlapAnalyzer<Collider, PlayerController>(), new Vector2(_renderAndSkeletonPivot.forward.x, _renderAndSkeletonPivot.forward.z), 0.3f, 0.5f, 2.5f, _locomotionSpeed, _runningSpeed, transform.position, GetComponent<CapsuleCollider>(), _flightSpeed), new PlayerRotation()), new PlayerOffenseController(_firstWeapon, _secondWeapon, transform.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z)), new PlayerDefenseController()); //тут такой прикол, что любой человек сможет создавать объект этого класса в любой части программы, но как бы и работать он с ним не сможет без верхнеуровнего монобеховского слоя. Тут все норм, я бы только засинглтонил PlayerController и Player (про PlayerView - хз)
-        Locomotion.FlightLimiterReached += LockFighterForm;
+        Locomotion.FlightLimiterReached += limiter => limiter.Reach(this);
         Locomotion.AirborneMoved += _view.MoveAirborne;
     }
 

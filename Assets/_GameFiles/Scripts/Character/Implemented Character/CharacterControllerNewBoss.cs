@@ -42,6 +42,7 @@ public class CharacterControllerNewBoss : CharacterControllerNew, IAllRangesAtta
     [SerializeField] private float initialSpawnDistance = 10f; // дистанция от игрока при первом появлении
 
     private int _currentGlobalLife;
+    private bool _hasRestoredPosition;
     private bool _isPhaseTwoActive;
     private bool _isRecoveringInPhaseTwo;
     private double _phaseTwoStateEndsAt;
@@ -110,7 +111,16 @@ public class CharacterControllerNewBoss : CharacterControllerNew, IAllRangesAtta
     {
         base.Start();
         // Отодвигаем босса от игрока при старте
-        SetInitialPosition();
+        if (!_hasRestoredPosition)
+        {
+            SetInitialPosition();
+        }
+    }
+
+    public override void RestoreSavedPosition(Vector3 position)
+    {
+        base.RestoreSavedPosition(position);
+        _hasRestoredPosition = true;
     }
 
     private void SetInitialPosition()

@@ -3,19 +3,16 @@ using System.Collections.Generic;
 
 public class GameSaveLoadInteractor : MonoBehaviour
 {
-    [SerializeField] private GameObject _characterBoss;
-    [SerializeField] private GameObject _characterCloseRange;
-
     [Header("Scene References")]
     [SerializeField] private PlayerController _playerController;
+    [SerializeField] private FlightLimiter _flightLimiter;
 
     private IPlayerRepository _playerRepository;
     private ICharacterRepository _characterRepository;
+    private Vector3 _levelStartPosition;
 
     private const string PLAYER_FILE = "player_save.json";
     private const string CHARACTER_FILE = "characters_save.json";
-
-    public static bool IsBoss;
 
     private void Awake()
     {
@@ -27,6 +24,7 @@ public class GameSaveLoadInteractor : MonoBehaviour
 
     private void Start()
     {
+        _levelStartPosition = _playerController.transform.position;
         ExecuteLoadOperation();
     }
 
@@ -48,8 +46,19 @@ public class GameSaveLoadInteractor : MonoBehaviour
 
     public void ExecuteLoadOperation()
     {
-        LoadPlayer();
-        LoadCharacters();
+        PlayerSaveData player = _playerRepository.Load();
+        if (player == null)
+        {
+            Debug.Log("No player save file found");
+            return;
+        }
+
+        CharacterSaveData[] characters = _characterRepository.Load()?.Characters;
+        bool reachedFlightLimiter = HasReachedFlightLimiter(player);
+        int score = _flightLimiter == null || reachedFlightLimiter ? player.Score : 0;
+        LoadPlayer(player, reachedFlightLimiter, score);
+        RestoreEnemies(reachedFlightLimiter, score, characters);
+        LoadCharacters(characters);
     }
 
     private void SavePlayer()
@@ -69,6 +78,7 @@ public class GameSaveLoadInteractor : MonoBehaviour
             Score = ScoreController.Score,
             IsFighter = _playerController.IsFighter,
             IsFlightLocked = _playerController.IsFlightLocked,
+            HasReachedFlightLimiter = _flightLimiter != null && _playerController.IsFlightLocked,
             IsFalling = _playerController.IsFalling,
             FallSpeed = _playerController.FallSpeed
         };
@@ -77,52 +87,50 @@ public class GameSaveLoadInteractor : MonoBehaviour
         Debug.Log("Player saved");
     }
 
-    private void LoadPlayer()
+    private bool HasReachedFlightLimiter(PlayerSaveData data)
     {
-        var data = _playerRepository.Load();
-        if (data != null)
-        {
-            _playerController.SetRenderAndSkeletonPivot(data.Rotation);
-            _playerController.RestoreForm(data.Position, data.FormRotation, data.IsFighter, data.IsFalling, data.FallSpeed, data.IsFlightLocked);
+        return _flightLimiter != null && (data.HasReachedFlightLimiter ||
+            (data.IsFlightLocked && _flightLimiter.IsAtOrPastBoundary(
+                _levelStartPosition, data.Position, _playerController.GetComponent<CapsuleCollider>())));
+    }
 
-            if (data.Health <= 0f)
-            {
-                data.Health = 100f;
-            }
-            _playerController.SetHealthValue(data.Health);
-            _playerController.ScoreController.SetScore(data.Score);
-            Debug.Log("Player loaded");
-        }
-        else
+    private void LoadPlayer(PlayerSaveData data, bool reachedFlightLimiter, int score)
+    {
+        _playerController.SetRenderAndSkeletonPivot(data.Rotation);
+        bool flightLocked = _flightLimiter == null ? data.IsFlightLocked : reachedFlightLimiter;
+        _playerController.RestoreForm(data.Position, data.FormRotation, data.IsFighter, data.IsFalling, data.FallSpeed, flightLocked);
+        _playerController.SetHealthValue(data.Health > 0f ? data.Health : 100f);
+        _playerController.ScoreController.SetScore(score);
+        Debug.Log("Player loaded");
+    }
+
+    private void RestoreEnemies(bool reachedFlightLimiter, int score, CharacterSaveData[] characters)
+    {
+        if (_flightLimiter == null)
         {
-            Debug.Log("No player save file found");
+            return;
         }
+
+        bool beforeBoss = reachedFlightLimiter && score < ScoreController.BossSpawnScore;
+        bool onlyLongRange = System.Array.Exists(characters ?? System.Array.Empty<CharacterSaveData>(),
+            character => character?.CharacterType == nameof(CharacterControllerNewLongRange));
+
+        _flightLimiter.RestoreEnemies(
+            beforeBoss && (score == 0 || !onlyLongRange),
+            beforeBoss && (score == 0 || onlyLongRange));
     }
 
     private void SaveCharacters()
     {
         CharacterControllerNew[] allCharacters = FindObjectsByType<CharacterControllerNew>(FindObjectsSortMode.None);
 
-        if (allCharacters.Length == 0)
-        {
-            Debug.Log("No characters found to save");
-            return;
-        }
-
-        List<CharacterSaveData> charactersDataList = new List<CharacterSaveData>();
+        List<CharacterSaveData> charactersDataList = new List<CharacterSaveData>(allCharacters.Length);
 
         foreach (var character in allCharacters)
         {
-            if (character.gameObject.GetComponent<CharacterControllerNewBoss>() == true)
-            {
-                IsBoss = true;
-            }
-            else
-            {
-                IsBoss = false;
-            }
             charactersDataList.Add(new CharacterSaveData
             {
+                CharacterType = character.GetType().Name,
                 Position = character.transform.position,
                 Rotation = character.transform.rotation,
                 Health = character.Health
@@ -134,10 +142,9 @@ public class GameSaveLoadInteractor : MonoBehaviour
         Debug.Log($"Saved {charactersDataList.Count} characters");
     }
 
-    private void LoadCharacters()
+    private void LoadCharacters(CharacterSaveData[] characters)
     {
-        SavedCharactersData wrapper = _characterRepository.Load();
-        if (wrapper == null || wrapper.Characters == null)
+        if (characters == null)
         {
             Debug.Log("No characters save file found");
             return;
@@ -145,32 +152,29 @@ public class GameSaveLoadInteractor : MonoBehaviour
 
         CharacterControllerNew[] currentCharacters = FindObjectsByType<CharacterControllerNew>(FindObjectsSortMode.None);
 
-        if (currentCharacters.Length != wrapper.Characters.Length)
+        var remaining = new List<CharacterSaveData>(characters);
+        int count = 0;
+        foreach (var character in currentCharacters)
         {
-            Debug.LogWarning($"Number of characters changed: saved {wrapper.Characters.Length}, current {currentCharacters.Length}. Restoration may be incorrect.");
-        }
-
-        int count = Mathf.Min(currentCharacters.Length, wrapper.Characters.Length);
-        for (int i = 0; i < count; i++)
-        {
-            if (IsBoss == true)
+            string characterType = character.GetType().Name;
+            int index = remaining.FindIndex(saved => saved?.CharacterType == characterType);
+            if (index < 0)
             {
-                _characterCloseRange.SetActive(false);
-                _characterBoss.SetActive(true);
+                index = remaining.FindIndex(saved => saved != null && string.IsNullOrEmpty(saved.CharacterType));
             }
-            else
-            {
-            }
-            currentCharacters[i].transform.position = wrapper.Characters[i].Position;
 
-            currentCharacters[i].SetLastPosition(wrapper.Characters[i].Position);
-            currentCharacters[i].SetRenderAndSkeletonPivot(wrapper.Characters[i].Rotation);
-
-            if (wrapper.Characters[i].Health <= 0f)
+            if (index < 0)
             {
-                wrapper.Characters[i].Health = 100f;
+                continue;
             }
-            currentCharacters[i].SetHealthValue(wrapper.Characters[i].Health);
+
+            CharacterSaveData data = remaining[index];
+            remaining.RemoveAt(index);
+            character.RestoreSavedPosition(data.Position);
+            character.SetRenderAndSkeletonPivot(data.Rotation);
+            float maxHealth = character.Model.HealthController.Health.MaxHealthValue;
+            character.SetHealthValue(data.Health > 0f ? Mathf.Min(data.Health, maxHealth) : maxHealth);
+            count++;
         }
 
         Debug.Log($"Loaded {count} characters");

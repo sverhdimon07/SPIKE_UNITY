@@ -6,7 +6,7 @@ public sealed class PlayerLocomotion
     public static UnityAction<Vector3> Locomoted;
     public static UnityAction<Vector3> Runned;
 
-    public event UnityAction FlightLimiterReached;
+    public event UnityAction<FlightLimiter> FlightLimiterReached;
     public event UnityAction<Vector3> AirborneMoved;
 
     private const float CollisionSkin = 0.02f;
@@ -81,11 +81,11 @@ public sealed class PlayerLocomotion
         }
 
         ScanAirbornePath(direction, distance + CollisionSkin, QueryTriggerInteraction.Collide,
-            out float obstacleDistance, out float limiterDistance);
-        if (limiterDistance <= distance && limiterDistance <= obstacleDistance)
+            out float obstacleDistance, out float limiterDistance, out FlightLimiter limiter);
+        if (limiter != null && limiterDistance <= distance && limiterDistance <= obstacleDistance)
         {
             MoveInAir(direction * limiterDistance);
-            FlightLimiterReached?.Invoke();
+            FlightLimiterReached?.Invoke(limiter);
             return false;
         }
 
@@ -152,12 +152,12 @@ public sealed class PlayerLocomotion
 
     private bool TryGetAirborneObstacle(Vector3 direction, float distance, out float hitDistance)
     {
-        ScanAirbornePath(direction, distance, QueryTriggerInteraction.Ignore, out hitDistance, out _);
+        ScanAirbornePath(direction, distance, QueryTriggerInteraction.Ignore, out hitDistance, out _, out _);
         return hitDistance < float.PositiveInfinity;
     }
 
     private void ScanAirbornePath(Vector3 direction, float distance, QueryTriggerInteraction triggers,
-        out float obstacleDistance, out float limiterDistance)
+        out float obstacleDistance, out float limiterDistance, out FlightLimiter closestLimiter)
     {
         Transform capsuleTransform = _capsule.transform;
         Vector3 scale = capsuleTransform.lossyScale;
@@ -179,6 +179,7 @@ public sealed class PlayerLocomotion
 
         obstacleDistance = float.PositiveInfinity;
         limiterDistance = float.PositiveInfinity;
+        closestLimiter = null;
         for (int i = 0; i < count; i++)
         {
             RaycastHit hit = hits[i];
@@ -189,9 +190,10 @@ public sealed class PlayerLocomotion
 
             if (hit.collider.isTrigger)
             {
-                if (hit.collider.TryGetComponent(out FlightLimiter limiter) && limiter.isActiveAndEnabled)
+                if (hit.distance < limiterDistance && hit.collider.TryGetComponent(out FlightLimiter limiter) && limiter.isActiveAndEnabled)
                 {
-                    limiterDistance = Mathf.Min(limiterDistance, hit.distance);
+                    limiterDistance = hit.distance;
+                    closestLimiter = limiter;
                 }
             }
             else if (Vector3.Dot(hit.normal, direction) < -0.001f)

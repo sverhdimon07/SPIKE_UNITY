@@ -20,13 +20,17 @@ public class CharacterFactory : MonoBehaviour, ICharacterControllerNewFactory
     [SerializeField] private CharacterControllerNewLongRange _longRangePrefab;
     [SerializeField] private CharacterControllerNewBoss _bossPrefab;
 
-    private void Awake()
+    protected void SpawnConfiguredCharacters()
     {
         for (int i = 0; i < _spawnCount; i++)
         {
-            Vector3 pos = GetSpawnPosition(i);
-            Create(pos);
+            SpawnAt(i);
         }
+    }
+
+    public CharacterControllerNew SpawnAt(int index)
+    {
+        return Create(GetSpawnPosition(index));
     }
 
     public CharacterControllerNew Create(Vector3 position)

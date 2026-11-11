@@ -3,6 +3,8 @@ using UnityEngine.Events;
 
 public class ScoreController : MonoBehaviour
 {
+    public const int BossSpawnScore = 2;
+
     public static int Score;
 
     public static UnityAction ScoreIncreased;
@@ -20,13 +22,14 @@ public class ScoreController : MonoBehaviour
         _score = 0;
         Score = 0;
         _boss = FindAnyObjectByType<CharacterControllerNewBoss>();
-        _boss.gameObject.SetActive(false);
+        UpdateBossVisibility();
     }
 
     public void SetScore(int score)
     {
         _score = score;
         Score = score;
+        UpdateBossVisibility();
     }
 
     public void IncreaseScore()
@@ -34,11 +37,15 @@ public class ScoreController : MonoBehaviour
         _score += 1;
         Score += 1;
 
-        if (_score >= 1 && !_boss.gameObject.activeSelf)
-        {
-            _boss.gameObject.SetActive(true);
-        }
-
+        UpdateBossVisibility();
         ScoreIncreased.Invoke();
+    }
+
+    private void UpdateBossVisibility()
+    {
+        if (_boss != null)
+        {
+            _boss.gameObject.SetActive(_score >= BossSpawnScore);
+        }
     }
 }

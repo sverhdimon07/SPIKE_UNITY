@@ -13,6 +13,7 @@ public class PlayerSaveData //хороший вопрос - как называ�
     public Quaternion FormRotation;
     public bool IsFighter;
     public bool IsFlightLocked;
+    public bool HasReachedFlightLimiter;
     public bool IsFalling;
     public float FallSpeed;
 }

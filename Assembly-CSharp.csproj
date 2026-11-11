@@ -273,6 +273,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMechanicStateMachine\PlayerMechanicStates\Implemented PlayerMechanicState\PlayerMechanicStunState.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\CharacterFabric\CharacterAutoSpawnFactory.cs" />
     <Compile Include="Assets\Import\Lahmadju\Imported Models\Ultimate 10 Plus Shaders\Scripts\U10PS_SnowOverTime.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterHealth\CharacterHealth.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />

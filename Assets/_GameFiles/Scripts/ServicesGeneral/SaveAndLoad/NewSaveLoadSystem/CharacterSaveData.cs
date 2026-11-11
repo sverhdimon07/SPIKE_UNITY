@@ -3,6 +3,8 @@ using UnityEngine;
 [System.Serializable]
 public class CharacterSaveData
 {
+    public string CharacterType;
+
     public Vector3 Position;
 
     public Quaternion Rotation;
