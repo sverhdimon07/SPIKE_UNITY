@@ -293,6 +293,17 @@
                 },
                 {
                     "name": "",
+                    "id": "d03eb273-2b64-470a-a44d-3c2b708b41de",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Block",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "f307de08-660c-4a22-ac7b-c949964efd51",
                     "path": "<Keyboard>/f",
                     "interactions": "",

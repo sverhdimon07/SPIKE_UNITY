@@ -8,20 +8,15 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Crystal1
-  m_Shader: {fileID: 4800000, guid: b7839dad95683814aa64166edc107ae2, type: 3}
+  m_Shader: {fileID: 210, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ALPHAPREMULTIPLY_ON
   - _FADING_ON
-  - _METALLICSPECGLOSSMAP
-  - _NORMALMAP
-  - _SOFTPARTICLES_ON
-  - _SURFACE_TYPE_TRANSPARENT
-  m_InvalidKeywords:
-  - _ALPHABLEND_ON
-  - _FLIPBOOKBLENDING_OFF
   - _METALLICGLOSSMAP
+  - _NORMALMAP
+  m_InvalidKeywords: []
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -29,9 +24,9 @@ Material:
   stringTagMap:
     RenderType: Transparent
   disabledShaderPasses:
-  - GRABPASS
   - DepthOnly
   - SHADOWCASTER
+  - GRABPASS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -105,7 +100,7 @@ Material:
     - _GlossyReflections: 1
     - _LightingEnabled: 1
     - _Metallic: 0
-    - _Mode: 2
+    - _Mode: 3
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _QueueOffset: 0

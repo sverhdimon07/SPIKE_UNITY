@@ -8,6 +8,7 @@ public sealed class InputController : MonoBehaviour
     private bool _hadMovementInput;
     private bool _isGameplayMenuOpened;
     private bool _isFighter;
+    private bool _blockInputActive;
 
     //private UnityAction _locomotionDirectionUndirectedHandler;
     public UnityAction LocomotionDirectionUndirected;
@@ -35,7 +36,7 @@ public sealed class InputController : MonoBehaviour
         var actions = _reader.MainCharacter;
         actions.AttackCloseRange.performed += OnAttackCloseRange;
         actions.AttackLongRange.performed += OnAttackLongRange;
-        actions.Block.started += OnBlockStarted;
+        actions.Block.performed += OnBlockPerformed;
         actions.Block.canceled += OnBlockCanceled;
         actions.Transform.performed += OnTransform;
         actions.OpeningGameplayMenu.performed += OnOpeningGameplayMenu; //
@@ -48,12 +49,13 @@ public sealed class InputController : MonoBehaviour
         var actions = _reader.MainCharacter;
         actions.AttackCloseRange.performed -= OnAttackCloseRange;
         actions.AttackLongRange.performed -= OnAttackLongRange;
-        actions.Block.started -= OnBlockStarted;
+        actions.Block.performed -= OnBlockPerformed;
         actions.Block.canceled -= OnBlockCanceled;
         actions.Transform.performed -= OnTransform;
         actions.OpeningGameplayMenu.performed -= OnOpeningGameplayMenu; //
         //_reader.MainCharacter.OpeningGameplayMenu.performed -= context => OnOpeningGameplayeMenuButtonPressed(); //
         _reader.Disable();
+        ReleaseBlockInput();
     }
 
     private void OnDestroy()
@@ -63,6 +65,11 @@ public sealed class InputController : MonoBehaviour
 
     private void Update()
     {
+        if (!CombatInputEnabled)
+        {
+            ReleaseBlockInput();
+        }
+
         if (!GameplayInputEnabled)
         {
             return;
@@ -86,11 +93,19 @@ public sealed class InputController : MonoBehaviour
     public void SetFighterForm(bool isFighter)
     {
         _isFighter = isFighter;
+        if (isFighter)
+        {
+            ReleaseBlockInput();
+        }
     }
 
     public void OnOpeningGameplayMenuButtonPressed()
     {
         _isGameplayMenuOpened = !_isGameplayMenuOpened;
+        if (_isGameplayMenuOpened)
+        {
+            ReleaseBlockInput();
+        }
     }
 
     private void OnAttackCloseRange(InputAction.CallbackContext context)
@@ -109,18 +124,25 @@ public sealed class InputController : MonoBehaviour
         }
     }
 
-    private void OnBlockStarted(InputAction.CallbackContext context)
+    private void OnBlockPerformed(InputAction.CallbackContext context)
     {
-        if (CombatInputEnabled)
+        if (CombatInputEnabled && !_blockInputActive)
         {
+            _blockInputActive = true;
             BlockButtonHolded?.Invoke();
         }
     }
 
     private void OnBlockCanceled(InputAction.CallbackContext context)
     {
-        if (!_isFighter)
+        ReleaseBlockInput();
+    }
+
+    private void ReleaseBlockInput()
+    {
+        if (_blockInputActive)
         {
+            _blockInputActive = false;
             BlockButtonUnholded?.Invoke();
         }
     }

@@ -17,6 +17,13 @@ public static class SceneLoading //сделать синглтон-сервис (перва€ причина этому
 
     public static void LoadMainMenuScene()
     {
+        if (_migratingBetweenSceneObject != null)
+        {
+            _migratingBetweenSceneObject.SetActive(false);
+            Object.Destroy(_migratingBetweenSceneObject);
+        }
+
+        _migratingBetweenSceneObject = null;
         SceneManager.LoadScene(MAIN_MENU_SCENE_INDEX);
         Time.timeScale = 1f;
 

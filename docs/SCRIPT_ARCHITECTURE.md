@@ -12,6 +12,8 @@
 | [FirstLevel](../Assets/_GameFiles/Scenes/FirstLevel/FirstLevel.unity), индекс `1` | [Префаб Bootstrap](../Assets/_GameFiles/Prefabs/Bootstrap.prefab) содержит `BootstrapTestScene`, `InputController`, `GameSaveLoadInteractor`, `ScoreController` и визуализатор зон overlap. Сцена подставляет ссылки на игрока и другие объекты через переопределения префабов. `BootstrapTestScene` связывает управление, игрока, паузу и кнопки сохранения и загрузки. |
 | [Test](../Assets/_GameFiles/Scenes/Test/Test.unity), вне списка сборки | Отдельная сцена с собственными подключениями, включая компонент старой системы сохранений. Для проверки штатного маршрута от меню к миссии ориентируйся на `MainMenu` и `FirstLevel`. |
 
+При выходе из паузы в главное меню или возврате с экрана победы или поражения `SceneLoading.LoadMainMenuScene()` отключает и удаляет текущий `SoundDesign` перед загрузкой `MainMenu`. Музыку запускает новый `MusicLayer` из сцены меню. `LoadLevelScene()` сохраняет текущий источник музыки, в том числе при перезагрузке уровня.
+
 В [ProjectVersion.txt](../ProjectSettings/ProjectVersion.txt) записана Unity `6000.3.9f1`. В [manifest.json](../Packages/manifest.json) указаны URP `17.3.0`, Input System `1.18.0` и Cinemachine `3.1.6`. В [ProjectSettings.asset](../ProjectSettings/ProjectSettings.asset) записаны `AndroidMinSdkVersion: 25` и `AndroidTargetSdkVersion: 0`. Android 14 указан в ТЗ как целевая среда.
 
 Для прямого управления открытым редактором подключён официальный пакет `com.unity.pipeline` версии `1.0.0-pre.1`. Он предоставляет локальное соединение для Unity CLI. Подключение проверено чтением списка открытых сцен, редактор вернул активную сцену `FirstLevel`. Команды подключения приведены в [AGENTS.md](../AGENTS.md). Проверка соединения выполнялась в режиме редактирования.
@@ -24,6 +26,7 @@
 - [`PlayerController`](../Assets/_GameFiles/Scripts/Player/PlayerController.cs) — компонент на [префабе игрока](../Assets/_GameFiles/Prefabs/MainCharacters/Player%20%28MainCharacter%29.prefab). В `Awake` он создаёт модель `Player`, контроллеры подсистем и `PlayerView` из сериализованных ссылок. Он передаёт команды модели и подключает события к представлению. `PlayerView` обновляет трансформы, `PlayerAnimator`, `PlayerUI`, звук и частицы.
 - [`Player`](../Assets/_GameFiles/Scripts/Player/Player.cs) передаёт команды в `PlayerMechanicStateMachine`. Допустимость перехода задаёт `TryExit` текущего состояния. Состояния лежат в `Player/PlayerMechanicStateMachine`. Контроллер вызывает `MechanicStateUpdate()` каждый кадр, а модель вызывает `DoWithinFrame` активного состояния.
 - Ходьба и бег используют `PlayerMovementController` и `PlayerLocomotion`. Направление движения и поворот учитывают поворот камеры. `PlayerLocomotion` хранит последнюю позицию, которую при загрузке обновляет `PlayerController.SetLastPosition`. Блок проходит через состояние `PlayerMechanicBlockState` в `PlayerHealth`. `PlayerDefenseController` пока пуст.
+- Экранная кнопка блока в `GameplayUI` отправляет `<Gamepad>/leftTrigger` в действие `MainCharacter/Block`. Для того же действия доступны пробел и `<Gamepad>/buttonSouth`. `InputController` передаёт нажатие и снимает блок при отпускании, открытии меню, трансформации или отключении боевого ввода.
 
 ### Трансформация и полёт
 

@@ -292,6 +292,9 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
     public void Unblock()
     {
         _model.HealthController.Health.Unblock(); //ВЕЗДЕ СДЕЛАТЬ ТАК
-        _model.Idle();
+        if (_model.State is PlayerMechanicBlockState)
+        {
+            _model.Idle();
+        }
     }
 }

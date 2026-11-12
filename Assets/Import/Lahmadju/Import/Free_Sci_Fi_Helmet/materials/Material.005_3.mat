@@ -21,14 +21,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Material.005_3
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _METALLICSPECGLOSSMAP
-  - _OCCLUSIONMAP
-  m_InvalidKeywords:
   - _METALLICGLOSSMAP
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -115,7 +113,7 @@ Material:
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 1
-    - _Glossiness: 0.3195076
+    - _Glossiness: 1
     - _GlossyReflections: 1
     - _Metallic: 0.21382576
     - _Mode: 0
@@ -135,7 +133,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.2649776, g: 0.38396567, b: 0.5929203, a: 1}
-    - _Color: {r: 0.26497757, g: 0.38396564, b: 0.5929203, a: 1}
+    - _Color: {r: 0.2649776, g: 0.38396567, b: 0.5929203, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
