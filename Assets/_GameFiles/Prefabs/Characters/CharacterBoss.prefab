@@ -80673,7 +80673,6 @@ MonoBehaviour:
   _runningSpeed: 6.25
   _firstWeapon: {fileID: 1503671876388982301}
   _secondWeapon: {fileID: 4213343721204747925}
-  _winUI: {fileID: 0}
   WeaponType: 1
   AttackType: 0
   meleeRange: 1.1

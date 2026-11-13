@@ -1,22 +1,23 @@
+database is locked
 [Licensing::Module] Trying to connect to existing licensing client channel...
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-User" at "2026-11-13T17:56:07.2938165Z"
 Built from '6000.3/staging' branch; Version is '6000.3.9f1 (7a9955a4f2fa) revision 8034645'; Using compiler version '194234433'; Build Type 'Release'
 OS: 'Windows 11  (10.0.26300) Core' Language: 'ru' Physical Memory: 32189 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
 System  architecture: x64
 Process architecture: x64
-Date: 2026-11-13T06:05:32Z
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-User" at "2026-11-13T06:05:32.0628249Z"
+Date: 2026-11-13T17:56:07Z
 [Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 23028, path: "D:/UNITY/Unity Hub/UnityLicensingClient_V1/Unity.Licensing.Client.exe")
 [Licensing::Module] LicensingClient has failed validation; ignoring
 [Licensing::Client] Handshaking with LicensingClient:
   Version:                 1.18.3+d7ffd15
-  Session Id:              23da658199074f4e8fe557997bad132a
+  Session Id:              a9f32d6be44441f3943d1b631ac60797
   Correlation Id:          88909abbc0a95a9090eeda3851fcb45c
-  External correlation Id: 8043534418528559674
+  External correlation Id: 246620735959481072
   Machine Id:              xB+PCC4AnRHwQNCoJVmPiqpotp0=
-[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-User" (connect: 0.00s, validation: 0.01s, handshake: 0.11s)
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-User-notifications" at "2026-11-13T06:05:32.189844Z"
-[Licensing::Module] Licensing Background thread has ended after 0.13s
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-User" (connect: 0.00s, validation: 0.00s, handshake: 0.09s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-User-notifications" at "2026-11-13T17:56:07.3888037Z"
+[Licensing::Module] Licensing Background thread has ended after 0.10s
 
 COMMAND LINE ARGUMENTS:
 D:\UNITY\Unity Editor\6000.3.9f1\Editor\Unity.exe
@@ -30,7 +31,7 @@ D:/UNITY/UNITYBACKUP/SPIKE/SPIKE_UNITY
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-63081
+49247
 -licensingIpc
 LicenseClient-User
 -job-worker-count
@@ -78,16 +79,16 @@ D:/UNITY/UNITYBACKUP/SPIKE/SPIKE_UNITY
     "memorysetup-job-temp-allocator-block-size-background=1048576"
     "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
     "memorysetup-temp-allocator-size-cloud-worker=32768"
-Player connection [14396]  Target information:
+Player connection [18380]  Target information:
 
-Player connection [14396]  * "[IP] 192.168.56.1 [Port] 0 [Flags] 2 [Guid] 2919478375 [EditorId] 2919478375 [Version] 1048832 [Id] WindowsEditor(7,DODONPA) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [18380]  * "[IP] 192.168.56.1 [Port] 0 [Flags] 2 [Guid] 4254299074 [EditorId] 4254299074 [Version] 1048832 [Id] WindowsEditor(7,DODONPA) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [14396]  * "[IP] 172.18.144.1 [Port] 0 [Flags] 2 [Guid] 2919478375 [EditorId] 2919478375 [Version] 1048832 [Id] WindowsEditor(7,DODONPA) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [18380]  * "[IP] 172.18.144.1 [Port] 0 [Flags] 2 [Guid] 4254299074 [EditorId] 4254299074 [Version] 1048832 [Id] WindowsEditor(7,DODONPA) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [14396]  * "[IP] 192.168.229.172 [Port] 0 [Flags] 2 [Guid] 2919478375 [EditorId] 2919478375 [Version] 1048832 [Id] WindowsEditor(7,DODONPA) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [18380]  * "[IP] 192.168.152.172 [Port] 0 [Flags] 2 [Guid] 4254299074 [EditorId] 4254299074 [Version] 1048832 [Id] WindowsEditor(7,DODONPA) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [14396] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [14396] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [18380] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [18380] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 7
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
@@ -99,7 +100,7 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 3.71 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 4.47 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.3.9f1 (7a9955a4f2fa)
 [Subsystems] Discovering subsystems at path D:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/Resources/UnitySubsystems
@@ -115,7 +116,7 @@ Initialize mono
 Mono path[0] = 'D:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/Managed'
 Mono path[1] = 'D:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'D:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56980
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56520
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: D:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
@@ -129,11 +130,11 @@ Register platform support module: D:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/P
 [Licensing::Client] Successfully resolved entitlement details
 Register platform support module: D:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
 Register platform support module: D:/UNITY/Unity Editor/6000.3.9f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
-Registered in 0.017105 seconds.
-- Loaded All Assemblies, in  0.775 seconds
+Registered in 0.041242 seconds.
+- Loaded All Assemblies, in  0.644 seconds
 Native extension for LinuxStandalone target not found
 Native extension for Android target not found
-Android Extension - Scanning For ADB Devices 598 ms
+Android Extension - Scanning For ADB Devices 564 ms
 Native extension for UWP target not found
 Native extension for WindowsStandalone target not found
 Package Manager log level set to [2]
@@ -142,35 +143,35 @@ Package Manager log level set to [2]
 [Package Manager] Cannot connect to Unity Package Manager local server
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.471 seconds
-Domain Reload Profiling: 2246ms
-	BeginReloadAssembly (239ms)
+- Finished resetting the current domain, in  1.413 seconds
+Domain Reload Profiling: 2057ms
+	BeginReloadAssembly (184ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (68ms)
-	RebuildNativeTypeToScriptingClass (19ms)
-	initialDomainReloadingComplete (95ms)
-	LoadAllAssembliesAndSetupDomain (354ms)
-		LoadAssemblies (241ms)
+	RebuildCommonClasses (51ms)
+	RebuildNativeTypeToScriptingClass (16ms)
+	initialDomainReloadingComplete (103ms)
+	LoadAllAssembliesAndSetupDomain (289ms)
+		LoadAssemblies (184ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (344ms)
-			TypeCache.Refresh (341ms)
-				TypeCache.ScanAssembly (319ms)
+		AnalyzeDomain (282ms)
+			TypeCache.Refresh (278ms)
+				TypeCache.ScanAssembly (253ms)
 			BuildScriptInfoCaches (0ms)
 			ResolveRequiredComponents (1ms)
-	FinalizeReload (1472ms)
+	FinalizeReload (1414ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1402ms)
+		SetupLoadedEditorAssemblies (1351ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (832ms)
-			SetLoadedEditorAssemblies (7ms)
-			BeforeProcessingInitializeOnLoad (185ms)
-			ProcessInitializeOnLoadAttributes (282ms)
-			ProcessInitializeOnLoadMethodAttributes (95ms)
+			InitializePlatformSupportModulesInManaged (786ms)
+			SetLoadedEditorAssemblies (8ms)
+			BeforeProcessingInitializeOnLoad (155ms)
+			ProcessInitializeOnLoadAttributes (312ms)
+			ProcessInitializeOnLoadMethodAttributes (89ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -187,20 +188,20 @@ Assembly reference Packages/com.unity.entities/Unity.Scenes.Editor/Internals/Pro
 Begin MonoManager ReloadAssembly
 [Licensing::Client] Successfully resolved entitlement details
 Duplicate assembly 'System.Collections.Immutable.FSR.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Collections.Immutable.FSR.dll, AssemblyName=System.Collections.Immutable, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/System.Collections.Immutable.dll, AssemblyName=System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Duplicate assembly 'System.Collections.Immutable.FSR.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Collections.Immutable.FSR.dll, AssemblyName=System.Collections.Immutable, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Collections.Immutable.dll, AssemblyName=System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Duplicate assembly 'Microsoft.CodeAnalysis.CSharp.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/Microsoft.CodeAnalysis.CSharp.dll, AssemblyName=Microsoft.CodeAnalysis.CSharp, Version=4.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/Microsoft.CodeAnalysis.CSharp.dll, AssemblyName=Microsoft.CodeAnalysis.CSharp, Version=2.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35'.Duplicate assembly 'System.Reflection.Metadata.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Reflection.Metadata.dll, AssemblyName=System.Reflection.Metadata, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/System.Reflection.Metadata.dll, AssemblyName=System.Reflection.Metadata, Version=1.4.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'.Duplicate assembly 'Microsoft.CodeAnalysis.dll' with different versions detected, using 'Assets/FastScriptReload/Plugins/Roslyn/2021+/Microsoft.CodeAnalysis.dll, AssemblyName=Microsoft.CodeAnalysis, Version=4.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' and ignoring 'Assets/FastScriptReload/Plugins/Roslyn/Microsoft.CodeAnalysis.dll, AssemblyName=Microsoft.CodeAnalysis, Version=2.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35'.Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  2.090 seconds
+- Loaded All Assemblies, in  3.580 seconds
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
 Assembly reference Packages/com.unity.entities/Unity.Scenes.Editor/Internals/Properties/Unity.Properties.Internals.asmref has no target assembly definition
 'Packages/com.unity.cinemachine/Editor/Obsolete/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
 'Packages/com.unity.cinemachine/Editor/Editors/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
-Refreshing native plugins compatible for Editor in 1.14 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 4.63 ms, found 4 plugins.
 Native extension for LinuxStandalone target not found
 Native extension for Android target not found
 Native extension for UWP target not found
 Native extension for WindowsStandalone target not found
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
 Assembly reference Packages/com.unity.entities/Unity.Scenes.Editor/Internals/Properties/Unity.Properties.Internals.asmref has no target assembly definition
-TypeManager.Initialize took: 192ms
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.02 seconds
+TypeManager.Initialize took: 334ms
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
 [Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] Unable to send message (not connected to server process).
 [Package Manager] Cannot connect to Unity Package Manager local server
@@ -209,39 +210,39 @@ Launched and connected shader compiler UnityShaderCompiler.exe after 0.02 second
 [Package Manager] Cannot connect to Unity Package Manager local server
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  5.203 seconds
-Domain Reload Profiling: 7292ms
-	BeginReloadAssembly (303ms)
+- Finished resetting the current domain, in 10.680 seconds
+Domain Reload Profiling: 14255ms
+	BeginReloadAssembly (562ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (9ms)
+		DisableScriptedObjects (19ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (57ms)
-	RebuildCommonClasses (55ms)
-	RebuildNativeTypeToScriptingClass (16ms)
-	initialDomainReloadingComplete (111ms)
-	LoadAllAssembliesAndSetupDomain (1603ms)
-		LoadAssemblies (835ms)
+		CreateAndSetChildDomain (93ms)
+	RebuildCommonClasses (109ms)
+	RebuildNativeTypeToScriptingClass (38ms)
+	initialDomainReloadingComplete (200ms)
+	LoadAllAssembliesAndSetupDomain (2665ms)
+		LoadAssemblies (1433ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (929ms)
-			TypeCache.Refresh (695ms)
-				TypeCache.ScanAssembly (651ms)
-			BuildScriptInfoCaches (185ms)
-			ResolveRequiredComponents (34ms)
-	FinalizeReload (5204ms)
+		AnalyzeDomain (1560ms)
+			TypeCache.Refresh (1265ms)
+				TypeCache.ScanAssembly (1186ms)
+			BuildScriptInfoCaches (228ms)
+			ResolveRequiredComponents (43ms)
+	FinalizeReload (10682ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (4913ms)
+		SetupLoadedEditorAssemblies (10223ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (40ms)
-			SetLoadedEditorAssemblies (11ms)
-			BeforeProcessingInitializeOnLoad (316ms)
-			ProcessInitializeOnLoadAttributes (4264ms)
-			ProcessInitializeOnLoadMethodAttributes (279ms)
-			AfterProcessingInitializeOnLoad (3ms)
-			EditorAssembliesLoaded (0ms)
+			InitializePlatformSupportModulesInManaged (62ms)
+			SetLoadedEditorAssemblies (20ms)
+			BeforeProcessingInitializeOnLoad (478ms)
+			ProcessInitializeOnLoadAttributes (9257ms)
+			ProcessInitializeOnLoadMethodAttributes (394ms)
+			AfterProcessingInitializeOnLoad (10ms)
+			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (13ms)
+		AwakeInstancesAfterBackupRestoration (18ms)
 WARNING: Shader Unsupported: 'Hidden/Universal Render Pipeline/Terrain/Lit (Base Pass)' - All subshaders removed
 WARNING: Shader Did you use #pragma only_renderers and omit this platform?
 WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
@@ -254,58 +255,47 @@ WARNING: Shader If subshaders removal was intentional, you may have forgotten tu
 WARNING: Shader Unsupported: 'Universal Render Pipeline/Terrain/Lit' - All subshaders removed
 WARNING: Shader Did you use #pragma only_renderers and omit this platform?
 WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
-Refreshing native plugins compatible for Editor in 2.18 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 3.19 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 56 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 9605 unused Assets / (8.7 MB). Loaded Objects now: 10286.
-Memory consumption went from 187.8 MB to 179.1 MB.
-Total: 27.559600 ms (FindLiveObjects: 1.608500 ms CreateObjectMapping: 1.188800 ms MarkObjects: 17.007600 ms  DeleteObjects: 7.751700 ms)
+Unloading 9606 unused Assets / (9.8 MB). Loaded Objects now: 10287.
+Memory consumption went from 191.6 MB to 181.8 MB.
+Total: 53.647900 ms (FindLiveObjects: 3.711500 ms CreateObjectMapping: 2.462300 ms MarkObjects: 35.282000 ms  DeleteObjects: 12.187400 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 638393.322258 seconds.
-  path: Assets/_GameFiles/Scripts/Player/PlayerHealth/PlayerHealth.cs
-  artifactKey: Guid(2cce6db635747d541821bcda0fc5eaf9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/_GameFiles/Scripts/Player/PlayerHealth/PlayerHealth.cs using Guid(2cce6db635747d541821bcda0fc5eaf9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '1bc74eb6de6ec2eed75dfc8db9d4d5e6') in 0.1859883 seconds
+  Time since last request: 681037.049797 seconds.
+  path: Assets/_GameFiles/Scripts/EntryPointScenes/Implemented Bootstrap/BootstrapTestScene.cs
+  artifactKey: Guid(41ed0bf8e04e97e47954275a340bf5e9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/_GameFiles/Scripts/EntryPointScenes/Implemented Bootstrap/BootstrapTestScene.cs using Guid(41ed0bf8e04e97e47954275a340bf5e9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd8305bc974bbe5fbdb997b7528137f51') in 0.2434801 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000043 seconds.
-  path: Assets/Import/Lahmadju/Scripts/Environment/Main Doors.cs
-  artifactKey: Guid(701cf29a91603384b964fae95994c67e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Import/Lahmadju/Scripts/Environment/Main Doors.cs using Guid(701cf29a91603384b964fae95994c67e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ae0926630136146df421067b4f5fa00f') in 0.0206513 seconds
+  Time since last request: 0.000090 seconds.
+  path: Assets/_GameFiles/Scripts/Player/PlayerWeapon/PlayerWeaponController/PlayerWeaponController.cs
+  artifactKey: Guid(33677a509b346ee47819401480e00cc9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/_GameFiles/Scripts/Player/PlayerWeapon/PlayerWeaponController/PlayerWeaponController.cs using Guid(33677a509b346ee47819401480e00cc9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7d9f00178512ac3ca73ac820df8ae74b') in 0.0358922 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000027 seconds.
-  path: Assets/_GameFiles/Audio/FighterEngine.mixer
-  artifactKey: Guid(e127f4fd41729ee5a93c1c7febc5b16d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/_GameFiles/Audio/FighterEngine.mixer using Guid(e127f4fd41729ee5a93c1c7febc5b16d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter)Refreshing native plugins compatible for Editor in 2.52 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
- -> (artifact id: '9b91053faf9db39ab68ebb4f8b22f857') in 0.0473851 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 5
+  Time since last request: 0.000246 seconds.
+  path: Assets/_GameFiles/Scripts/Player/PlayerController.cs
+  artifactKey: Guid(5d4cbd3b8e00fc94bb975625b813180f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/_GameFiles/Scripts/Player/PlayerController.cs using Guid(5d4cbd3b8e00fc94bb975625b813180f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '1e1899a3e118418f5f5bb78fea939766') in 0.0306041 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
-Received Prepare
-WARNING: Shader Unsupported: 'Hidden/Universal Render Pipeline/Terrain/Lit (Base Pass)' - All subshaders removed
-WARNING: Shader Did you use #pragma only_renderers and omit this platform?
-WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
-WARNING: Shader Unsupported: 'Hidden/Universal Render Pipeline/Terrain/Lit (Base Pass)' - All subshaders removed
-WARNING: Shader Did you use #pragma only_renderers and omit this platform?
-WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
-WARNING: Shader Unsupported: 'Universal Render Pipeline/Terrain/Lit' - All subshaders removed
-WARNING: Shader Did you use #pragma only_renderers and omit this platform?
-WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
-WARNING: Shader Unsupported: 'Universal Render Pipeline/Terrain/Lit' - All subshaders removed
-WARNING: Shader Did you use #pragma only_renderers and omit this platform?
-WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
-Refreshing native plugins compatible for Editor in 2.90 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 51 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 53 unused Assets / (4.4 MB). Loaded Objects now: 10288.
-Memory consumption went from 176.0 MB to 171.6 MB.
-Total: 15.717000 ms (FindLiveObjects: 1.756900 ms CreateObjectMapping: 0.920200 ms MarkObjects: 11.532600 ms  DeleteObjects: 1.503900 ms)
+Received Import Request.
+  Time since last request: 0.001435 seconds.
+  path: Assets/_GameFiles/Scripts/Player/PlayerOffense/PlayerOffenseController/PlayerOffenseController.cs
+  artifactKey: Guid(f9869d89541671440b4206915d9bc475) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/_GameFiles/Scripts/Player/PlayerOffense/PlayerOffenseController/PlayerOffenseController.cs using Guid(f9869d89541671440b4206915d9bc475) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '3e2e2fea9562b45dbc3e58161ab07845') in 0.0304444 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
-Prepare: number of updated asset objects reloaded= 0
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

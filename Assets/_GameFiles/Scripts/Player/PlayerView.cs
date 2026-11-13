@@ -57,9 +57,9 @@ public sealed class PlayerView //контракты на обновление UI
         _ui.RefreshLivesBar(value);
     }
 
-    public void PresentScore()
+    public void PresentScore(int score)
     {
-        _ui.RefreshCounterText(ScoreController.Score);
+        _ui.RefreshCounterText(score);
     }
 
     public void PresentIdle()

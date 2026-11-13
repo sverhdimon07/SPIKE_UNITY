@@ -1,29 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectSpawner1 : MonoBehaviour
 {
     [SerializeField] private GameObject spawningObject;
     [SerializeField] private GameObject spawningObjectRotationPivot;
+    [SerializeField, Min(0.01f)] private float spawnCooldown = 5f;
 
-    private Vector3 spawnPoint;
-    private void Awake()
+    public void StartSpawning()
     {
-        enabled = false;
+        if (!isActiveAndEnabled || IsInvoking(nameof(SpawnWave)))
+        {
+            return;
+        }
+
+        SpawnWave();
+        float interval = Mathf.Max(0.01f, spawnCooldown);
+        InvokeRepeating(nameof(SpawnWave), interval, interval);
     }
-    private void Start()
+
+    public void StopSpawning()
     {
-        spawnPoint = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        for (int i = 0; i < 3; i++)
+        CancelInvoke(nameof(SpawnWave));
+        CancelInvoke(nameof(ObjectCreation));
+    }
+
+    private void OnDisable()
+    {
+        StopSpawning();
+    }
+
+    private void SpawnWave()
+    {
+        ObjectCreation();
+        for (int i = 1; i < 3; i++)
         {
             Invoke(nameof(ObjectCreation), i / 2f);
         }
     }
+
     private void ObjectCreation()
     {
-        GameObject objectCopy = Instantiate(spawningObject, spawnPoint, spawningObjectRotationPivot.transform.rotation);
-        objectCopy.GetComponent<ConstantForce>().relativeForce = new Vector3(0, 0, -4000);
-        Destroy(objectCopy, 10f);
+        GameObject ship = Instantiate(spawningObject, transform.position, spawningObjectRotationPivot.transform.rotation);
+        ship.GetComponent<ConstantForce>().relativeForce = new Vector3(0, 0, -4000f);
+        Destroy(ship, 10f);
     }
 }

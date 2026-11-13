@@ -7,7 +7,7 @@ public sealed class PlayerMechanicIdleState : PlayerMechanicState
 
     public override void Do(Player player, PlayerMechanicStateMachine stateMachine)
     {
-        Player.Idled.Invoke(); //можно создать контроллер для айдла
+        player.Idled?.Invoke(); //можно создать контроллер для айдла
     }
 
     public override void DoWithinFrame(Player player, PlayerMechanicStateMachine stateMachine)

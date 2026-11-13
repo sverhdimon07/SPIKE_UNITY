@@ -1,61 +1,37 @@
-using UnityEngine;
-using UnityEngine.Events;
+using System;
 
-public class ScoreController : MonoBehaviour
+public sealed class ScoreController
 {
     public const int BossSpawnScore = 2;
 
-    public static int Score;
-
-    public static UnityAction ScoreChanged;
+    public event Action<int> ScoreChanged;
 
     public int RegularEnemyScore { get; private set; }
+    public int TotalScore => RegularEnemyScore + _bossScore;
 
-    private CharacterControllerNewBoss _boss;
+    public bool IsBossUnlocked => RegularEnemyScore >= BossSpawnScore;
 
-    private int _score;
-
-    public UnityAction BossSpawned;
+    private int _bossScore;
 
     //public int Score => _score;
 
-    private void Awake()
-    {
-        _score = 0;
-        Score = 0;
-        _boss = FindAnyObjectByType<CharacterControllerNewBoss>();
-        UpdateBossVisibility();
-    }
-
-    public void SetScore(int score)
+    public void RestoreRegularEnemyScore(int score)
     {
         RegularEnemyScore = score;
-        _score = score;
-        Score = score;
-        UpdateBossVisibility();
-        ScoreChanged?.Invoke();
+        _bossScore = 0;
+        ScoreChanged?.Invoke(TotalScore);
     }
 
-    public void IncreaseRegularEnemyScore()
+    public void RecordRegularEnemyDefeat()
     {
-        RegularEnemyScore += 1;
-        IncreaseScore();
+        RegularEnemyScore++;
+        ScoreChanged?.Invoke(TotalScore);
     }
 
-    public void IncreaseScore()
+    public void RecordBossPhasePair()
     {
-        _score += 1;
-        Score += 1;
-
-        UpdateBossVisibility();
-        ScoreChanged?.Invoke();
+        _bossScore++;
+        ScoreChanged?.Invoke(TotalScore);
     }
 
-    private void UpdateBossVisibility()
-    {
-        if (_boss != null)
-        {
-            _boss.gameObject.SetActive(_score >= BossSpawnScore);
-        }
-    }
 }

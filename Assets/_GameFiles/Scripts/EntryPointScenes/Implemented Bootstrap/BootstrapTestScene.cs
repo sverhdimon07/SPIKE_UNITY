@@ -1,4 +1,4 @@
-using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 //в бутстрапе нам не нужно инитить данными наши зависимые монобехи - они это сделают сами. Бутстрап должен иметь в виду все классы высокого уровня - и контроллеры игровых сущностей, и контроллеры неигровых сущностей (только игровые создаются геймдизом на сцене и инитят себя сами, а неигровые создаются тут в бутстрапе и инитятся здесь)!
@@ -20,32 +20,37 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         _visualSpawner3.enabled = true;
     }
 
-    [Header("Weapons")] //должна быть реализована система, которая будет учитывать выбор геймдизайнера - не поставил оружие именно игроку, он заспавнится без оружия - то есть у нас тут в любом случае будет 3 графы (оружие на сцене, оружие игрока, оружие персонажа)
-    [Header("PlayerWeapons")] //Я СДЕЛАЛ ТАК, ЧТОБЫ МОЖНО БЫЛО ИНИТИТЬ ОТСЮДА ДАТУ ЛЮБОГО ТИПА ОРУЖИЯ (ТО ЕСТЬ, ЛЮБОЙ СУЩНОСТИ ОРУЖИЯ), но по идее же у каждого оружия уже изначально есть какая-то дата, но при этом она и не должна быть прямо в скрипте самого оружия проиничена, она должна быть сериализована и закинута в префаб - но тут в любом случае нужно придумать методологию создания скриптов для оружия
-    [Header("CharacterWeapons")] // не придумал, как реализовать правильно (пока у каждого персонажа ровно по одному оружию - все вроде норм, но при расширении - уже проблема, поэтому скорее всего надо отдельно каждого персонажа инитить)
+    //[Header("Weapons")] //должна быть реализована система, которая будет учитывать выбор геймдизайнера - не поставил оружие именно игроку, он заспавнится без оружия - то есть у нас тут в любом случае будет 3 графы (оружие на сцене, оружие игрока, оружие персонажа)
+    //[Header("PlayerWeapons")] //Я СДЕЛАЛ ТАК, ЧТОБЫ МОЖНО БЫЛО ИНИТИТЬ ОТСЮДА ДАТУ ЛЮБОГО ТИПА ОРУЖИЯ (ТО ЕСТЬ, ЛЮБОЙ СУЩНОСТИ ОРУЖИЯ), но по идее же у каждого оружия уже изначально есть какая-то дата, но при этом она и не должна быть прямо в скрипте самого оружия проиничена, она должна быть сериализована и закинута в префаб - но тут в любом случае нужно придумать методологию создания скриптов для оружия
+    //[Header("CharacterWeapons")] // не придумал, как реализовать правильно (пока у каждого персонажа ровно по одному оружию - все вроде норм, но при расширении - уже проблема, поэтому скорее всего надо отдельно каждого персонажа инитить)
     //[SerializeField] private Weapon[] weaponsCharacter;
     //[Header("WeaponsOnScene")]
     //[SerializeField] private Weapon[] weaponsOnScene;
 
-    [Header("Character")] //ПОКА ОДИН
-    [Range(1f, 100f)]
-    [SerializeField] private float _characterHealth = 100f;
-    [Range(1f, 10f)]
-    [SerializeField] private float _characterLocomotionSpeed = 2.5f;
-    [Range(2f, 10f)]
-    [SerializeField] private float _characterRunningSpeed = 6.25f;
+    //[Header("Character")] //ПОКА ОДИН
+    //[Range(1f, 100f)]
+    //[SerializeField] private float _characterHealth = 100f;
+    //[Range(1f, 10f)]
+    //[SerializeField] private float _characterLocomotionSpeed = 2.5f;
+    //[Range(2f, 10f)]
+    //[SerializeField] private float _characterRunningSpeed = 6.25f;
 
-    private ScenePausing _scenePausing;
+    private UIController _uiController;
+    [SerializeField] private WinUI _winUI;
 
     //private SceneLoading _sceneLoading;
 
-    private GameSaveLoadInteractor _savingLoadingSystemBootstrap;
+    [SerializeField] private bool _enableSaving;
+    [SerializeField] private FlightLimiter _flightLimiter;
 
-    private GameplayMenuUI _gameplayMenuUI;
+    private SceneSaveState _sceneSaveState;
+    private GameSaveLoadInteractor _savingLoadingSystemBootstrap;
 
     private InputController _inputController;
 
     private ScoreController _scoreController;
+    private CharacterControllerNewBoss _boss;
+    private readonly List<CharacterFactory> _characterFactories = new();
 
     //private Player _player;//?; пока хз, какой именно прослойкой соединять инпут и игрока - бутстрапом или другой какой-то, так что пусть пока лежит тут;
 
@@ -53,8 +58,6 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
 
     //private readonly Weapon[] weaponsPlayer = new Weapon[2]; //Нужно защитить массив от изменения элементов или подмены, не помню (видик Сакутина)
 
-    private UnityAction _saveButtonForDataSaveHandler;
-    private UnityAction _loadSavingButtonForDataLoadHandler;
     private UnityAction _attackCloseRangeButtonPressedForCloseRangeAttackHandler;
     private UnityAction _attackLongRangeButtonPressedForLongRangeAttackHandler;
 
@@ -72,16 +75,27 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
 
         EnableVisualSpawners();
 
-        _scoreController = FindAnyObjectByType<ScoreController>();
+        InitializeScore();
+
+        var soundPlayer = FindAnyObjectByType<SoundPlayer>();
+        var sceneLoading = new SceneLoading(soundPlayer != null ? soundPlayer.gameObject : null);
+
+        if (_enableSaving)
+        {
+            _sceneSaveState = new SceneSaveState(PlayerController, _flightLimiter);
+            _savingLoadingSystemBootstrap = new GameSaveLoadInteractor( //ПОКА БЕЗ КОНТРАКТА, ИБО НЕ ЗАВЕРШИЛ ПРОЕКТИРОВАНИЕ
+                new JsonPlayerRepository("player_save.json"),
+                new JsonCharacterRepository("characters_save.json"),
+                _scoreController,
+                _sceneSaveState,
+                sceneLoading.LoadLevelScene,
+                exception => Debug.LogException(exception, this));
+        }
 
         //PlayerUI.BossSpawned += EnableBossSpawner;
-        _scenePausing = new ScenePausing();
         //_sceneLoading = new SceneLoading(); //НЕ ИНИЧУ ПОКА ЧТО
-        _gameplayMenuUI = FindAnyObjectByType<GameplayMenuUI>();
         _inputController = GetComponent<InputController>(); //_inputController.Initialize(); //он инитится сам в себе, наверное плохо, но ничего сделать не могу; дает подсказку, ибо это надо переносить в абстрактный бутстрап;
 
-        _saveButtonForDataSaveHandler = delegate () { _savingLoadingSystemBootstrap.ExecuteSaveOperation(); };
-        _loadSavingButtonForDataLoadHandler = delegate () { _savingLoadingSystemBootstrap.ReloadFromSave(); };
 
         _attackCloseRangeButtonPressedForCloseRangeAttackHandler = delegate () { PlayerController.AttackCloseRange(PlayerController.GameObjectPivot.position, new Vector2(PlayerController.RenderAndSkeletonPivot.forward.x, PlayerController.RenderAndSkeletonPivot.forward.z)); };
         _attackLongRangeButtonPressedForLongRangeAttackHandler = delegate () { PlayerController.AttackLongRange(PlayerController.GameObjectPivot.position, new Vector2(PlayerController.RenderAndSkeletonPivot.forward.x, PlayerController.RenderAndSkeletonPivot.forward.z)); };
@@ -91,7 +105,11 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
 
 
         InstantiateMigratingBetweenSceneObjects(); //ВРЕМЕННО
-        _gameplayMenuUI.Initialize();
+        _uiController = new UIController(
+            FindAnyObjectByType<GameplayMenuUI>(),
+            _winUI != null ? _winUI : FindAnyObjectByType<WinUI>(),
+            FindAnyObjectByType<LoseUI>(),
+            _inputController, new ScenePausing(), sceneLoading, _scoreController, _savingLoadingSystemBootstrap);
         //InitPlayerWeapons();
         //InitCharacterWeapons();
         //InitNobodysWeapons();
@@ -105,19 +123,31 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         _spawner3.gameObject.SetActive(true);
     }*/
 
+    private void Start()
+    {
+        if (_savingLoadingSystemBootstrap != null)
+        {
+            _sceneSaveState.CaptureLevelStart();
+            _savingLoadingSystemBootstrap.ExecuteLoadOperation();
+        }
+    }
+
     private void OnEnable() 
     {
         if (PlayerController == null) //Приятно для других программистов, но насколько это прямо таки нужно? (При этом при отсутствии игрока на сцене бесконечный поток ошибок все равно есть, ибо я не вызывал события в InputController через вопросительный знак)
         {
             return;
         }
-        _savingLoadingSystemBootstrap = GetComponent<GameSaveLoadInteractor>(); //ПОКА БЕЗ КОНТРАКТА, ИБО НЕ ЗАВЕРШИЛ ПРОЕКТИРОВАНИЕ
-        
-        _gameplayMenuUI.ContinueButton.onClick.AddListener(_scenePausing.PauseOrResume);
-        _gameplayMenuUI.ContinueButton.onClick.AddListener(_gameplayMenuUI.OpenOrClose);
-        _gameplayMenuUI.ExitButton.onClick.AddListener(SceneLoading.LoadMainMenuScene);
-        _gameplayMenuUI.SaveButton.onClick.AddListener(_saveButtonForDataSaveHandler);
-        _gameplayMenuUI.LoadSavingButton.onClick.AddListener(_loadSavingButtonForDataLoadHandler);
+        _uiController.Bind();
+        PlayerController.Defeated += _uiController.ShowDefeat;
+        if (_boss != null)
+        {
+            _boss.Defeated += _uiController.ShowVictory;
+        }
+
+        _scoreController.ScoreChanged += PlayerController.PresentScore;
+        PlayerController.PresentScore(_scoreController.TotalScore);
+
 
         _inputController.LocomotionDirectionDirected += MovePlayer;
         _inputController.TransformButtonPressed += PlayerController.ToggleFighterForm;
@@ -127,11 +157,64 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         _inputController.AttackCloseRangeButtonPressed += _attackCloseRangeButtonPressedForCloseRangeAttackHandler;
         _inputController.AttackLongRangeButtonPressed += _attackLongRangeButtonPressedForLongRangeAttackHandler;
 
-        _inputController.OpeningGameplayeMenuButtonPressed += _scenePausing.PauseOrResume;
-        _inputController.OpeningGameplayeMenuButtonPressed += _gameplayMenuUI.OpenOrClose;
 
         _inputController.BlockButtonHolded += _blockHandler;
         _inputController.BlockButtonUnholded += _unblockHandler;
+    }
+
+    private void InitializeScore()
+    {
+        _scoreController = new ScoreController();
+        _boss = FindAnyObjectByType<CharacterControllerNewBoss>();
+        if (_boss != null)
+        {
+            _boss.PhasePairCompleted += _scoreController.RecordBossPhasePair;
+            _scoreController.ScoreChanged += UpdateBossVisibility;
+            UpdateBossVisibility(_scoreController.TotalScore);
+        }
+
+        foreach (var factory in FindObjectsByType<CharacterFactory>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+        {
+            if (factory.gameObject.scene == gameObject.scene)
+            {
+                factory.CharacterCreated += ConnectCharacter;
+                _characterFactories.Add(factory);
+            }
+        }
+    }
+
+    private void ConnectCharacter(CharacterControllerNew character)
+    {
+        if (character is CharacterControllerNewCloseRange || character is CharacterControllerNewLongRange)
+        {
+            character.Died += _scoreController.RecordRegularEnemyDefeat;
+        }
+    }
+
+    private void UpdateBossVisibility(int _)
+    {
+        if (_boss != null)
+        {
+            _boss.gameObject.SetActive(_scoreController.IsBossUnlocked);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        foreach (var factory in _characterFactories)
+        {
+            factory.CharacterCreated -= ConnectCharacter;
+        }
+
+        if (_boss != null)
+        {
+            _boss.PhasePairCompleted -= _scoreController.RecordBossPhasePair;
+        }
+
+        if (_scoreController != null)
+        {
+            _scoreController.ScoreChanged -= UpdateBossVisibility;
+        }
     }
 
     private void SwitchPlayerToIdle()
@@ -156,11 +239,15 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         {
             return;
         }
-        _gameplayMenuUI.ContinueButton.onClick.RemoveListener(_scenePausing.PauseOrResume);
-        _gameplayMenuUI.ContinueButton.onClick.RemoveListener(_gameplayMenuUI.OpenOrClose);
-        _gameplayMenuUI.ExitButton.onClick.RemoveListener(SceneLoading.LoadMainMenuScene);
-        _gameplayMenuUI.SaveButton.onClick.RemoveListener(_saveButtonForDataSaveHandler);
-        _gameplayMenuUI.LoadSavingButton.onClick.RemoveListener(_loadSavingButtonForDataLoadHandler);
+        _uiController.Unbind();
+        PlayerController.Defeated -= _uiController.ShowDefeat;
+        if (_boss != null)
+        {
+            _boss.Defeated -= _uiController.ShowVictory;
+        }
+
+        _scoreController.ScoreChanged -= PlayerController.PresentScore;
+
 
         _inputController.LocomotionDirectionDirected -= MovePlayer;
         _inputController.TransformButtonPressed -= PlayerController.ToggleFighterForm;
@@ -169,8 +256,6 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         _inputController.AttackCloseRangeButtonPressed -= _attackCloseRangeButtonPressedForCloseRangeAttackHandler;
         _inputController.AttackLongRangeButtonPressed -= _attackLongRangeButtonPressedForLongRangeAttackHandler;
 
-        _inputController.OpeningGameplayeMenuButtonPressed -= _scenePausing.PauseOrResume;
-        _inputController.OpeningGameplayeMenuButtonPressed -= _gameplayMenuUI.OpenOrClose;
 
         _inputController.BlockButtonHolded -= _blockHandler;
         _inputController.BlockButtonUnholded -= _unblockHandler;
@@ -221,7 +306,7 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
     private void PresentFighterForm(bool isFighter)
     {
         _inputController.SetFighterForm(isFighter);
-        _gameplayMenuUI.SetFighterForm(isFighter);
+        _uiController.SetFighterForm(isFighter);
     }
 }
 

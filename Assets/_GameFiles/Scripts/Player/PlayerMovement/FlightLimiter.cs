@@ -4,6 +4,7 @@ public sealed class FlightLimiter : MonoBehaviour
 {
     [SerializeField] private CharacterFactory _closeRangeSpawner;
     [SerializeField] private CharacterFactory _longRangeSpawner;
+    [SerializeField] private RoadEventWall _shipSpawnTrigger;
 
     private CharacterControllerNew _closeRangeEnemy;
     private CharacterControllerNew _longRangeEnemy;
@@ -24,6 +25,11 @@ public sealed class FlightLimiter : MonoBehaviour
         }
 
         player.LockFighterForm();
+        if (_shipSpawnTrigger != null)
+        {
+            _shipSpawnTrigger.StopShipSpawning();
+        }
+
         RestoreEnemies(true, true);
     }
 

@@ -6,7 +6,7 @@ public sealed class InputController : MonoBehaviour
 {
     private InputReader _reader; //можем ли мы подменить приватное поле созданного нами типа?
     private bool _hadMovementInput;
-    private bool _isGameplayMenuOpened;
+    private bool _isGameplayInputBlocked;
     private bool _isFighter;
     private bool _blockInputActive;
 
@@ -22,7 +22,7 @@ public sealed class InputController : MonoBehaviour
     public UnityAction<Vector2> LocomotionDirectionDirected;
 
     public bool IsRunning => _reader.MainCharacter.Running.IsPressed();
-    private bool GameplayInputEnabled => !_isGameplayMenuOpened && Time.timeScale > 0f;
+    private bool GameplayInputEnabled => !_isGameplayInputBlocked && Time.timeScale > 0f;
     private bool CombatInputEnabled => GameplayInputEnabled && !_isFighter;
 
     private void Awake()
@@ -99,10 +99,10 @@ public sealed class InputController : MonoBehaviour
         }
     }
 
-    public void OnOpeningGameplayMenuButtonPressed()
+    public void SetGameplayInputBlocked(bool isBlocked)
     {
-        _isGameplayMenuOpened = !_isGameplayMenuOpened;
-        if (_isGameplayMenuOpened)
+        _isGameplayInputBlocked = isBlocked;
+        if (_isGameplayInputBlocked)
         {
             ReleaseBlockInput();
         }

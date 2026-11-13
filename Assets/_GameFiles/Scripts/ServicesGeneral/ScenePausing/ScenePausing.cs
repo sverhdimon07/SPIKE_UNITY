@@ -14,12 +14,12 @@ public sealed class ScenePausing //пересмотреть по аналогии с SceneLoading
         }
     }
 
-    private void Pause()
+    public void Pause()
     {
         Time.timeScale = 0f;
     }
 
-    private void Resume()
+    public void Resume()
     {
         Time.timeScale = 1f;
     }

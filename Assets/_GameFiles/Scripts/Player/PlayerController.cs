@@ -53,11 +53,7 @@ public sealed class PlayerController : MonoBehaviour, IDamageable //, IAllRanges
 
     private Player _model; //не уверен, что так правильно; вообще есть 2 варика - ЛИБО сделать так, как здесь, с публичной для вызова публичных методов моделью и подписками вьюшки здесь, ЛИБО сделать модель приватной И соединять модель и вьюшку напрямую публичными методами. Мне впринципе 2й варик больше нравится;
 
-    private ScoreController _scoreController;
-
-    private ScenePausing _scenePausing;
-
-    private LoseUI _loseUI;
+    public event System.Action Defeated;
 
     //public UnityAction Died; //выходы для фабрик или классов более высокого уровня
 
@@ -78,22 +74,12 @@ public sealed class PlayerController : MonoBehaviour, IDamageable //, IAllRanges
 
     public Player Model => _model;
 
-    public ScoreController ScoreController => _scoreController;
-
     public float Health => _model.HealthController.Health.HealthValue;
     public bool IsKnifeEquipped => _knifeModel != null && _knifeModel.gameObject.activeSelf;
     public bool IsPistolEquipped => _pistolModel != null && _pistolModel.gameObject.activeSelf;
 
     private void Awake() //чекнуть конструкторы и деструкторы в монобехах
     {
-        _scenePausing = new ScenePausing();
-
-        _scoreController = FindAnyObjectByType<ScoreController>();
-
-        _loseUI = FindAnyObjectByType<LoseUI>();
-
-        _loseUI.Initialize();
-
         _view = new PlayerView(new PlayerUI(_healthBar, _weaponLongRangeCooldownBar, _livesBar, _deathMessageText, _counterText), new PlayerAnimator(_animator), _gameObjectPivot, _renderAndSkeletonPivot, _closeRangeWeaponEffect, _longRangeWeaponEffect, _closeRangeWeaponSound, _longRangeWeaponSound, _fighter, _hud, _thirdPersonCameraControllerPivot.GetComponent<CinemachinePositionComposer>(), _fighterCameraDistance, _transformIntoFighterSound, _transformIntoHumanSound, _fighterEngineSound);
         
         var weaponController = new PlayerWeaponController();
@@ -109,6 +95,16 @@ public sealed class PlayerController : MonoBehaviour, IDamageable //, IAllRanges
 
         Locomotion.FlightLimiterReached += limiter => limiter.Reach(this);
         Locomotion.AirborneMoved += _view.MoveAirborne;
+    }
+
+    private void NotifyDefeated()
+    {
+        Defeated?.Invoke();
+    }
+
+    public void PresentScore(int score)
+    {
+        _view.PresentScore(score);
     }
 
     private void Start()
@@ -129,49 +125,41 @@ public sealed class PlayerController : MonoBehaviour, IDamageable //, IAllRanges
     private void OnEnable()
     {
         _view.SetFighterAudio(IsFighter);
-        Player.Idled += _view.PresentIdle;
-        PlayerHealth.DamageTaken += _view.PresentDamageTake;
+        _model.Idled += _view.PresentIdle;
+        _model.HealthController.Health.DamageTaken += _view.PresentDamageTake;
         //PlayerHealth.DamageTaken += DamageTaken; //под расширение (мб замедление времени во время стана делать, и возможно это делается при помощи заморозки сцены)
         _model.HealthController.Health.Died += _view.PresentDeath; //надо дописать где-то вызов на выключение на старте, и включить объект в сцене
         //_model.HealthController.Health.Died += Died;
         _model.HealthController.Health.LivesChanged += _view.PresentLives;
         _model.HealthController.Health.Blocked += _view.PresentBlock;
-        PlayerLocomotion.Locomoted += _view.MoveCharacterModelInLocomotionForm;
-        PlayerLocomotion.Runned += _view.MoveCharacterModelInRunForm;
-        PlayerRotation.Rotated += _view.TurnCharacterModel;
+        Locomotion.Locomoted += _view.MoveCharacterModelInLocomotionForm;
+        Locomotion.Runned += _view.MoveCharacterModelInRunForm;
+        _model.MovementController.Rotation.Rotated += _view.TurnCharacterModel;
         _model.OffenseController.FirstAttackType.Attacked += async delegate { await _view.PresentCloseRangeAttack(); };
         _model.OffenseController.SecondAttackType.Attacked += async delegate { await _view.PresentLongRangeAttack(); };
-        ScoreController.ScoreChanged += _view.PresentScore;
 
-        _loseUI.MenuButton.onClick.AddListener(SceneLoading.LoadMainMenuScene);
-        _loseUI.LoadLevelButton.onClick.AddListener(SceneLoading.LoadLevelScene);
 
-        _model.HealthController.Health.Died += _loseUI.OpenOrClose;
-        _model.HealthController.Health.Died += _scenePausing.PauseOrResume;
+        _model.HealthController.Health.Died += NotifyDefeated;
     }
 
     private void OnDisable()
     {
         _view.SetFighterAudio(false);
-        Player.Idled -= _view.PresentIdle;
-        PlayerHealth.DamageTaken -= _view.PresentDamageTake;
+        _model.Idled -= _view.PresentIdle;
+        _model.HealthController.Health.DamageTaken -= _view.PresentDamageTake;
         //PlayerHealth.DamageTaken -= DamageTaken;
         _model.HealthController.Health.Died -= _view.PresentDeath;
         //_model.HealthController.Health.Died -= Died;
         _model.HealthController.Health.LivesChanged -= _view.PresentLives;
         _model.HealthController.Health.Blocked -= _view.PresentBlock;
-        PlayerLocomotion.Locomoted -= _view.MoveCharacterModelInLocomotionForm;
-        PlayerLocomotion.Runned -= _view.MoveCharacterModelInRunForm;
-        PlayerRotation.Rotated -= _view.TurnCharacterModel;
+        Locomotion.Locomoted -= _view.MoveCharacterModelInLocomotionForm;
+        Locomotion.Runned -= _view.MoveCharacterModelInRunForm;
+        _model.MovementController.Rotation.Rotated -= _view.TurnCharacterModel;
         _model.OffenseController.FirstAttackType.Attacked -= async delegate { await _view.PresentCloseRangeAttack(); };
         _model.OffenseController.SecondAttackType.Attacked -= async delegate { await _view.PresentLongRangeAttack(); };
-        ScoreController.ScoreChanged -= _view.PresentScore;
 
-        _loseUI.MenuButton.onClick.RemoveListener(SceneLoading.LoadMainMenuScene);
-        _loseUI.LoadLevelButton.onClick.RemoveListener(SceneLoading.LoadLevelScene);
 
-        _model.HealthController.Health.Died -= _loseUI.OpenOrClose;
-        _model.HealthController.Health.Died -= _scenePausing.PauseOrResume;
+        _model.HealthController.Health.Died -= NotifyDefeated;
     }
 
     public void SetLastPosition(Vector3 lastPosition)

@@ -11,6 +11,7 @@ public sealed class BootstrapMainMenuScene : Bootstrap
     private AudioSource _musicLayerAudioSource; //ПОКА БЕЗ ВЫДЕЛЕННОГО ДЛЯ ЭТОЙ ЗАДАЧИ СЕРВИСА (ПЕРЕДАЛАТЬ)
 
     private MainMenuUI _ui;
+    private SceneLoading _sceneLoading;
 
     public override void Awake()
     {
@@ -19,7 +20,7 @@ public sealed class BootstrapMainMenuScene : Bootstrap
         _musicLayerAudioSource = FindAnyObjectByType<AudioSource>();
         _ui = FindAnyObjectByType<MainMenuUI>();
 
-        SceneLoading.Initialize(_soundDesignObject); // НЕ СОЗДАЮ В ЭТОЙ СЦЕНЕ МИГРИРУЮЩИЕ ОБЪЕКТЫ
+        _sceneLoading = new SceneLoading(_soundDesignObject); // НЕ СОЗДАЮ В ЭТОЙ СЦЕНЕ МИГРИРУЮЩИЕ ОБЪЕКТЫ
         _ui.Initialize(0.1f); //пока вместо полноценного инита через сервис (я пиал это к тому, когда у нас слайдер детерминировался тем, что стоит в инспекторе) - НАДО ПОНЯТЬ, КТО КОГО ДЕТЕРМИНИРУЕТ
     }
 
@@ -51,7 +52,7 @@ public sealed class BootstrapMainMenuScene : Bootstrap
 
     private void LoadTestScene()
     {
-        SceneLoading.LoadLevelScene();
+        _sceneLoading.LoadLevelScene();
     }
 
     private void RefreshMusicLayerAudioSourceVolume(float volume)

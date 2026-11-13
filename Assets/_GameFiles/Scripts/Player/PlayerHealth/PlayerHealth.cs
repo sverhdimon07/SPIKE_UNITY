@@ -10,7 +10,7 @@ public /*тут надо поработать с абстракцией*/ sealed class PlayerHealth //Эта реа
 
     public UnityAction<int> LivesChanged;
 
-    public static UnityAction<float> DamageTaken;
+    public event UnityAction<float> DamageTaken;
 
     public UnityAction Blocked;
 
@@ -77,7 +77,7 @@ public /*тут надо поработать с абстракцией*/ sealed class PlayerHealth //Эта реа
             {
                 _healthValue -= damage;
 
-                DamageTaken.Invoke(_healthValue);
+                DamageTaken?.Invoke(_healthValue);
             }
         }
     }

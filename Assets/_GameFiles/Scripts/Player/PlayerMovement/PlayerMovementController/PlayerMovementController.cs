@@ -15,6 +15,7 @@ public sealed class PlayerMovementController
     }
 
     public PlayerLocomotion Locomotion => _locomotion;
+    public PlayerRotation Rotation => _rotation;
 
     public void Locomote(Transform cameraPoint, Vector2 inputDirection, Vector2 skeletonAndRenderDirection)
     {

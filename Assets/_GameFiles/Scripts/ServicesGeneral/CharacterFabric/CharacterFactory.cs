@@ -20,6 +20,8 @@ public class CharacterFactory : MonoBehaviour, ICharacterControllerNewFactory
     [SerializeField] private CharacterControllerNewLongRange _longRangePrefab;
     [SerializeField] private CharacterControllerNewBoss _bossPrefab;
 
+    public event System.Action<CharacterControllerNew> CharacterCreated;
+
     protected void SpawnConfiguredCharacters()
     {
         for (int i = 0; i < _spawnCount; i++)
@@ -40,7 +42,9 @@ public class CharacterFactory : MonoBehaviour, ICharacterControllerNewFactory
         {
             return null;
         }
-        return Instantiate(prefab, position, Quaternion.identity);
+        CharacterControllerNew character = Instantiate(prefab, position, Quaternion.identity);
+        CharacterCreated?.Invoke(character);
+        return character;
     }
 
     private Vector3 GetSpawnPosition(int index)

@@ -12,8 +12,9 @@ public class CharacterControllerNewBoss : CharacterControllerNew //, IAllRangesA
 
     [SerializeField] private Image _livesBar;
 
-    [SerializeField] private WinUI _winUI;
-    private ScenePausing _scenePausing;
+    public event System.Action Defeated;
+
+    public event System.Action PhasePairCompleted;
 
     public WeaponType WeaponType;
     public AttackType AttackType;
@@ -85,9 +86,6 @@ public class CharacterControllerNewBoss : CharacterControllerNew //, IAllRangesA
             _firstGun.SetActive(false);
             _secondGun.SetActive(true);
         }
-
-        _scenePausing = new ScenePausing();
-        _winUI.MenuButton.onClick.AddListener(SceneLoading.LoadMainMenuScene);
 
         Model.HealthController.Health.Died += OnBossDeath;
 
@@ -358,19 +356,19 @@ public class CharacterControllerNewBoss : CharacterControllerNew //, IAllRangesA
 
         if (_currentGlobalLife == 2)
         {
-            _scoreController.IncreaseScore();
+            PhasePairCompleted?.Invoke();
 
             _livesBar.fillAmount = 0.66f;
         }
         else if (_currentGlobalLife == 4)
         {
-            _scoreController.IncreaseScore();
+            PhasePairCompleted?.Invoke();
 
             _livesBar.fillAmount = 0.33f;
         }
         else if (_currentGlobalLife == 6)
         {
-            _scoreController.IncreaseScore();
+            PhasePairCompleted?.Invoke();
 
             _livesBar.fillAmount = 0f;
         }
@@ -393,8 +391,7 @@ public class CharacterControllerNewBoss : CharacterControllerNew //, IAllRangesA
         }
         else
         {
-            _winUI.OpenOrClose();
-            _scenePausing.PauseOrResume();
+            Defeated?.Invoke();
         }
     }
 

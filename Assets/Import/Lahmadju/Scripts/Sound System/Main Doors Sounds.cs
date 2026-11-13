@@ -9,6 +9,7 @@ public class MainDoorsSounds : MonoBehaviour
     [SerializeField] private AudioSource audioSource1;
     public void PlaySound(int number)
     {
-        audioSource1.PlayOneShot(sounds[number], 0.2f);
+        float volumeScale = number == 0 ? 1.9f : 0.9f;
+        audioSource1.PlayOneShot(sounds[number], volumeScale);
     }
 }

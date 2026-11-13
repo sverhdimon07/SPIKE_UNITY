@@ -109,6 +109,8 @@
     <Compile Include="Assets\_GameFiles\Scripts\Character\CharacterMovement\CharacterMovementController\CharacterMovementController.cs" />
     <Compile Include="Assets\Import\DODONPAScripts\Player Health Level UI.cs" />
     <Compile Include="Assets\_GameFiles\ECS\Scripts\StaminaComponentAuthoring.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\SaveAndLoad\NewSaveLoadSystem\Interfaces\ISceneSaveState.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\UIGeneral\UIController.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMechanicStateMachine\PlayerMechanicStates\Implemented PlayerMechanicState\PlayerMechanicDeathState.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\SaveAndLoad\OldSaveLoadSystem 1\Interactors\SavingLoadingPlayerInteractor.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\UIGeneral\LoseUI.cs" />
@@ -273,6 +275,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerMechanicStateMachine\PlayerMechanicStates\Implemented PlayerMechanicState\PlayerMechanicStunState.cs" />
+    <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\SaveAndLoad\NewSaveLoadSystem\SceneSaveState.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\ServicesGeneral\CharacterFabric\CharacterAutoSpawnFactory.cs" />
     <Compile Include="Assets\Import\Lahmadju\Imported Models\Ultimate 10 Plus Shaders\Scripts\U10PS_SnowOverTime.cs" />
     <Compile Include="Assets\_GameFiles\Scripts\Player\PlayerWeapon\PlayerWeaponPickup.cs" />

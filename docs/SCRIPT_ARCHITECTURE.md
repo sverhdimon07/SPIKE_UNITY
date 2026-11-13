@@ -2,17 +2,19 @@
 
 Документ описывает код в [`Assets/_GameFiles/Scripts`](../Assets/_GameFiles/Scripts) и его подключения в сценах и префабах SPIKE. Выводы основаны на статическом чтении C# и сериализованных ассетов Unity. Поведение в запущенной игре и сборка на Android требуют отдельной проверки. `ECS` находится вне области анализа. Игровые требования приведены в [ТЗ](GAME_DESIGN.md).
 
+Целевые границы слоёв и решения по рефакторингу зафиксированы в [описании луковичной архитектуры](ONION_ARCHITECTURE.md).
+
 ## Точки входа
 
 В [настройках сборки](../ProjectSettings/EditorBuildSettings.asset) включены две сцены. Порядок важен, поскольку `SceneLoading` загружает сцены по индексу.
 
 | Сцена | Подключение и назначение |
 | --- | --- |
-| [MainMenu](../Assets/_GameFiles/Scenes/MainMenu/MainMenu.unity), индекс `0` | `BootstrapMainMenuScene` находит `MainMenuUI` и `AudioSource`, подключает кнопку запуска, окно настроек и слайдер громкости. Метод `LoadTestScene` вызывает `SceneLoading.LoadLevelScene()`, который открывает `FirstLevel`. `SoundPlayer` сохраняет свой объект при смене сцены через `DontDestroyOnLoad`. |
-| [FirstLevel](../Assets/_GameFiles/Scenes/FirstLevel/FirstLevel.unity), индекс `1` | [Префаб Bootstrap](../Assets/_GameFiles/Prefabs/Bootstrap.prefab) содержит `BootstrapTestScene`, `InputController`, `GameSaveLoadInteractor`, `ScoreController` и визуализатор зон overlap. Сцена подставляет ссылки на игрока и другие объекты через переопределения префабов. `BootstrapTestScene` связывает управление, игрока, паузу и кнопки сохранения и загрузки. |
+| [MainMenu](../Assets/_GameFiles/Scenes/MainMenu/MainMenu.unity), индекс `0` | `BootstrapMainMenuScene` находит `MainMenuUI` и `AudioSource`, подключает кнопку запуска, окно настроек и слайдер громкости. Bootstrap создаёт `SceneLoading` со ссылкой на `SoundDesign`. Кнопка запуска через этот экземпляр открывает `FirstLevel`. `SoundPlayer` сохраняет свой объект при смене сцены через `DontDestroyOnLoad`. |
+| [FirstLevel](../Assets/_GameFiles/Scenes/FirstLevel/FirstLevel.unity), индекс `1` | [Префаб Bootstrap](../Assets/_GameFiles/Prefabs/Bootstrap.prefab) содержит `BootstrapTestScene`, `InputController` и визуализатор зон overlap. Сцена подставляет ссылки на игрока и другие объекты через переопределения префабов. `BootstrapTestScene` связывает управление, игрока, паузу и кнопки сохранения и загрузки. |
 | [Test](../Assets/_GameFiles/Scenes/Test/Test.unity), вне списка сборки | Отдельная сцена с собственными подключениями, включая компонент старой системы сохранений. Для проверки штатного маршрута от меню к миссии ориентируйся на `MainMenu` и `FirstLevel`. |
 
-При выходе из паузы в главное меню или возврате с экрана победы или поражения `SceneLoading.LoadMainMenuScene()` отключает и удаляет текущий `SoundDesign` перед загрузкой `MainMenu`. Музыку запускает новый `MusicLayer` из сцены меню. `LoadLevelScene()` сохраняет текущий источник музыки, в том числе при перезагрузке уровня.
+Bootstrap уровня находит переживший переход `SoundPlayer` и передаёт его объект своему экземпляру `SceneLoading`. Тот же экземпляр получает `UIController`, а интерактор сохранения получает его метод `LoadLevelScene`. При выходе из паузы в главное меню или возврате с экрана победы или поражения `SceneLoading.LoadMainMenuScene()` отключает и удаляет текущий `SoundDesign` перед загрузкой `MainMenu`. Музыку запускает новый `MusicLayer` из сцены меню. `LoadLevelScene()` сохраняет текущий источник музыки, в том числе при перезагрузке уровня.
 
 В [ProjectVersion.txt](../ProjectSettings/ProjectVersion.txt) записана Unity `6000.3.9f1`. В [manifest.json](../Packages/manifest.json) указаны URP `17.3.0`, Input System `1.18.0` и Cinemachine `3.1.6`. В [ProjectSettings.asset](../ProjectSettings/ProjectSettings.asset) записаны `AndroidMinSdkVersion: 25` и `AndroidTargetSdkVersion: 0`. Android 14 указан в ТЗ как целевая среда.
 
@@ -23,7 +25,7 @@
 Цепочка команд игрока проходит через `InputReader` → `InputController` → обработчики в `BootstrapTestScene` → `PlayerController` → `Player`.
 
 - [`InputController`](../Assets/_GameFiles/Scripts/ServicesGeneral/Input/InputController.cs) создаёт `InputReader`, читает направление в `Update` и публикует события движения, атаки, блока, трансформации и паузы. Состояние кнопки бега читается при обработке движения. `InputReader` генерируется из [InputActionMapSystemDefault.inputactions](../Assets/_GameFiles/InputActionMapSystems/InputActionMapSystemDefault.inputactions). В карте `MainCharacter` есть привязки клавиатуры, мыши и геймпада. Глобальный ассет действий в `EditorBuildSettings` — [InputActionMapSystemInEngine.inputactions](../Assets/_GameFiles/InputActionMapSystems/InputActionMapSystemInEngine.inputactions).
-- [`PlayerController`](../Assets/_GameFiles/Scripts/Player/PlayerController.cs) — компонент на [префабе игрока](../Assets/_GameFiles/Prefabs/MainCharacters/Player%20%28MainCharacter%29.prefab). В `Awake` он создаёт модель `Player`, контроллеры подсистем и `PlayerView` из сериализованных ссылок. Он передаёт команды модели и подключает события к представлению. `PlayerView` обновляет трансформы, `PlayerAnimator`, `PlayerUI`, звук и частицы.
+- [`PlayerController`](../Assets/_GameFiles/Scripts/Player/PlayerController.cs) — компонент на [префабе игрока](../Assets/_GameFiles/Prefabs/MainCharacters/Player%20%28MainCharacter%29.prefab). В `Awake` он создаёт модель `Player`, контроллеры подсистем и `PlayerView` из сериализованных ссылок. Он передаёт команды модели и подключает события к представлению. `PlayerView` обновляет трансформы, `PlayerAnimator`, `PlayerUI`, звук и частицы. `PlayerController` подписывает своё представление на уведомления экземпляров `Idled`, `Locomoted`, `Runned` и `Rotated` в `OnEnable` и снимает подписки в `OnDisable`. `PlayerMechanicIdleState` напрямую вызывает публичный делегат `player.Idled`.
 - [`Player`](../Assets/_GameFiles/Scripts/Player/Player.cs) передаёт команды в `PlayerMechanicStateMachine`. Допустимость перехода задаёт `TryExit` текущего состояния. Состояния лежат в `Player/PlayerMechanicStateMachine`. Контроллер вызывает `MechanicStateUpdate()` каждый кадр, а модель вызывает `DoWithinFrame` активного состояния.
 - Ходьба и бег используют `PlayerMovementController` и `PlayerLocomotion`. Направление движения и поворот учитывают поворот камеры. `PlayerLocomotion` хранит последнюю позицию, которую при загрузке обновляет `PlayerController.SetLastPosition`. Блок проходит через состояние `PlayerMechanicBlockState` в `PlayerHealth`. `PlayerDefenseController` пока пуст.
 - Экранная кнопка блока в `GameplayUI` отправляет `<Gamepad>/leftTrigger` в действие `MainCharacter/Block`. Для того же действия доступны пробел и `<Gamepad>/buttonSouth`. `InputController` передаёт нажатие и снимает блок при отпускании, открытии меню, трансформации или отключении боевого ввода.
@@ -42,11 +44,13 @@
 
 На объекте `FlightLimiter` в `FirstLevel` стоят триггер и кинематический `Rigidbody` для обработки касания игроком. `PlayerLocomotion` также проверяет пересечение триггера по всей траектории шага полёта и передаёт найденный ограничитель в `PlayerController`. Оба пути вызывают `FlightLimiter.Reach`. При первом касании он запрещает трансформацию через `PlayerController.LockFighterForm`, возвращает истребитель в форму человека и запускает появление рядовых противников.
 
+`Road Event Wall 1` использует кинематический `Rigidbody` и распознаёт игрока по `PlayerController`. Он запускает три компонента `ObjectSpawner1`, `ObjectsSpawner2` и `ObjectSpawner3` по ссылкам из сцены. Интервал между началами партий задаётся отдельно на каждом спавнере полем `Spawn Cooldown` и по умолчанию равен пяти секундам игрового времени. `FlightLimiter.Reach` отменяет следующие партии и запланированные корабли текущей партии. Восстановленный запрет полёта также блокирует запуск спавна за ограничителем.
+
 При загрузке `PlayerController.SetHealthValue()` обновляет здоровье и HUD без анимации попадания. В форме истребителя `PlayerController.Idle()` игнорирует события завершения человеческих анимаций. Явный выход из полёта переводит модель в `Idle` напрямую и снова включает проверку опоры.
 
 ## Противники и появление босса
 
-[`CharacterControllerNew`](../Assets/_GameFiles/Scripts/Character/CharacterControllerNew.cs) — базовый `MonoBehaviour` для противников. Он находит игрока и `ScoreController`, создаёт `Character`, `CharacterView` и контроллеры здоровья, движения и атак. Механические состояния задают допустимые действия, а конкретные контроллеры противников выбирают команды в `Update`.
+[`CharacterControllerNew`](../Assets/_GameFiles/Scripts/Character/CharacterControllerNew.cs) — базовый `MonoBehaviour` для противников. Он находит игрока, создаёт `Character`, `CharacterView` и контроллеры здоровья, движения и атак. Механические состояния задают допустимые действия, а конкретные контроллеры противников выбирают команды в `Update`.
 
 | Контроллер | Логика поведения |
 | --- | --- |
@@ -56,7 +60,7 @@
 
 В [`FirstLevel`](../Assets/_GameFiles/Scenes/FirstLevel/FirstLevel.unity) `FlightLimiter` ссылается на `SpawnerCharacterCloseRange` и `SpawnerCharacterLongRange`. Компонент `CharacterFactory` создаёт врага по явному вызову. Ограничитель создаёт по одному противнику на заданных в сцене точках. Защита от повторного спавна использует сохранённый в игроке запрет трансформации. В сцене `Test` для автоматического спавна используется `CharacterAutoSpawnFactory`.
 
-[`ScoreController`](../Assets/_GameFiles/Scripts/ServicesGeneral/Score/ScoreController.cs) находит сценовый экземпляр босса в `Awake` и отключает его. Смерть рядового противника вызывает `CharacterControllerNew.CheckScore()` и добавляет очко. При начислении очка и при загрузке счёта `ScoreController` активирует босса при счёте от двух очков.
+[`ScoreController`](../Assets/_GameFiles/Scripts/ServicesGeneral/Score/ScoreController.cs) — обычный C#-класс, который Bootstrap создаёт на время попытки. Фабрика публикует `CharacterCreated`, а Bootstrap связывает `Died` рядового и `PhasePairCompleted` босса со счётчиком. Счётчик определяет, доступен ли босс. Bootstrap применяет это состояние к объекту сцены, в том числе при восстановлении сохранения.
 
 ## Попадания, здоровье и фазы
 
@@ -69,11 +73,13 @@
 В `FirstLevel` группа `Weapon Pickups` возле спавна содержит четыре экземпляра префабов оружия. Каждый `PlayerWeaponPickup` использует сферический триггер и кинематический `Rigidbody`. При входе коллайдера игрока компонент выключает одну модель в его скелете и включает другую. Если игрок загружен внутри зоны подбора, эта зона снова переключит оружие при следующем входе после выхода. Каждая точка ссылается на свою пару моделей. `PlayerController` инициализирует атаки компонентами `SwordBasic` и `RocketLauncherBasic`. Атаки продолжают читать их характеристики при выключенных объектах `Sword` и `RocketLauncher`.
 4. `PlayerHealth` и `CharacterHealth` хранят текущее здоровье и флаг блока. В обеих реализациях `TakeDamage` вычитает урон в нескольких ветках одного вызова. Если меняется баланс, сначала стоит проверить фактическое снятие здоровья от одиночного попадания.
 
+При обычном попадании экземпляр `PlayerHealth` публикует `DamageTaken` с текущим здоровьем. `PlayerController` подключает `PlayerView.PresentDamageTake` в `OnEnable` и снимает подписку в `OnDisable`.
+
 [`PlayerHealth.Die()`](../Assets/_GameFiles/Scripts/Player/PlayerHealth/PlayerHealth.cs) начинает с `Lives = 3`. Пока счётчик больше нуля, метод восстанавливает здоровье, уменьшает счётчик и уведомляет HUD через `LivesChanged`. При вызове с уже нулевым счётчиком он отправляет `Died`. По этому коду экран поражения открывается при следующем исчерпании здоровья после перехода `1 → 0`.
 
 `PlayerMechanicStunState` отклоняет движение и боевые действия во время оглушения. Обычно событие `Idle` в клипе `Stun` возвращает управление. Если событие не сработало, состояние возвращает игрока в `Idle` через 1,35 секунды игрового времени с момента входа. Пауза останавливает отсчёт.
 
-У босса `_currentGlobalLife` считает исчерпанные полоски здоровья. Порог `globalLives` по умолчанию равен `6`. `OnBossDeath` при промежуточной потере полоски переключает фазу и восстанавливает здоровье. На отметках `2`, `4` и `6` начисляется очко и обновляется шкала глобальных жизней босса. При достижении порога вызывается `WinUI`. В просмотренных обработчиках жизней игрока и фаз босса отсутствует взаимное восстановление жизней из ТЗ.
+У босса `_currentGlobalLife` считает исчерпанные полоски здоровья. Порог `globalLives` по умолчанию равен `6`. `OnBossDeath` при промежуточной потере полоски переключает фазу и восстанавливает здоровье. На отметках `2`, `4` и `6` начисляется очко и обновляется шкала глобальных жизней босса. При достижении порога босс публикует `Defeated`. В просмотренных обработчиках жизней игрока и фаз босса отсутствует взаимное восстановление жизней из ТЗ.
 
 `ActivatePhaseTwo()` снимает блок, ищет свободную позицию рядом с игроком и после телепорта обновляет исходную позицию в `CharacterLocomotion`. Компонент [`Limiters`](../Assets/_GameFiles/Scripts/ServicesGeneral/Limiters.cs) центрирует границы по их `BoxCollider` между персонажами и при необходимости расширяет зону под обе капсулы. Босс отсоединяет ограничители от себя перед активацией. При возврате в открытую фазу он выключает их и снова прикрепляет к себе.
 
@@ -81,14 +87,13 @@
 
 ## Пауза, экраны и очки
 
-- [`GameplayMenuUI`](../Assets/_GameFiles/Scripts/UIGeneral/GameplayMenuUI/GameplayMenuUI.cs) отвечает за открытие панели и переключение обработчиков ввода. [`ScenePausing`](../Assets/_GameFiles/Scripts/ServicesGeneral/ScenePausing/ScenePausing.cs) переключает `Time.timeScale` между `0` и `1`. `BootstrapTestScene` подключает к меню продолжение, сохранение, загрузку и выход в главное меню.
-- [`PlayerController`](../Assets/_GameFiles/Scripts/Player/PlayerController.cs) подключает `LoseUI` к окончательной смерти игрока. Кнопка загрузки на экране поражения вызывает `SceneLoading.LoadLevelScene()`. После открытия `FirstLevel` сохранение читается при инициализации `GameSaveLoadInteractor`.
-- [`WinUI`](../Assets/_GameFiles/Scripts/UIGeneral/WinUI.cs) и [`LoseUI`](../Assets/_GameFiles/Scripts/UIGeneral/LoseUI.cs) выводят `ScoreController.Score`. Общий счёт включает очки за рядовых врагов и за пары фаз босса. `ScoreController.RegularEnemyScore` хранит очки для сохранения. HUD выводит общий счёт по `ScoreChanged` при начислении и загрузке.
+- [`UIController`](../Assets/_GameFiles/Scripts/UIGeneral/UIController.cs) связывает меню паузы, итоговые экраны, ввод и сохранение. Bootstrap подписывает его на `Defeated` игрока и босса. При победе событие приходит после начисления бонуса за последнюю пару фаз. Контроллер останавливает время, блокирует игровой ввод и передаёт итоговый счёт панели. Кнопки итоговых экранов используют `SceneLoading`.
+- `ScoreController` хранит очки за рядовых и бонусы за пары фаз босса. Босс публикует `PhasePairCompleted`, а счётчик начисляет бонус. Bootstrap подключает HUD к `ScoreChanged` и передаёт начальное значение. `WinUI` и `LoseUI` получают итоговое число при открытии. `GameSaveLoadInteractor` получает `ScoreController` от Bootstrap и сохраняет только очки за рядовых.
 - В основном меню подключён слайдер громкости музыки. В проверенных обработчиках и подключениях нет действия выхода из приложения, окна настроек в паузе и сохранения громкости между запусками.
 
 ## Сохранения
 
-Штатный маршрут `FirstLevel` проходит через [`GameSaveLoadInteractor`](../Assets/_GameFiles/Scripts/ServicesGeneral/SaveAndLoad/NewSaveLoadSystem/GameSaveLoadInteractor.cs). Он читает сохранение в `Start` после инициализации игрока и подписок. Кнопка «Сохранить» в паузе записывает два файла через `JsonUtility` в `Application.persistentDataPath`. Кнопка загрузки в паузе перезапускает уровень при наличии файла игрока. При открытии `WinUI` компонент удаляет оба файла и блокирует повторную запись в завершённой попытке.
+Штатный маршрут `FirstLevel` проходит через [`GameSaveLoadInteractor`](../Assets/_GameFiles/Scripts/ServicesGeneral/SaveAndLoad/NewSaveLoadSystem/GameSaveLoadInteractor.cs). Bootstrap в `Awake` создаёт `JsonPlayerRepository` для `player_save.json` и `JsonCharacterRepository` для `characters_save.json` и передаёт их интерактору вместе со счётчиком. Bootstrap создаёт `SceneSaveState` и интерактор в `Awake`, а в `Start` фиксирует начальную позицию игрока и явно запускает загрузку. Интерактор задаёт порядок восстановления, а адаптер собирает и применяет данные объектов Unity. Кнопка «Сохранить» в паузе записывает два файла через `JsonUtility` в `Application.persistentDataPath`. Кнопка загрузки в паузе перезапускает уровень при наличии файла игрока. При победе `UIController` вызывает очистку через интерактор. Интерактор удаляет оба файла и блокирует повторную запись в завершённой попытке.
 
 | Файл | Поля |
 | --- | --- |
@@ -105,7 +110,7 @@
 | --- | --- |
 | Управление на Android, кнопки, бег, блок | Карта `MainCharacter`, `InputController`, подписки в `BootstrapTestScene`, переходы в состояниях `Player`. В паузе `InputController` приостанавливает игровой ввод. |
 | Дальность, урон, кулдаун, варианты оружия | `PlayerOffenseController`, `CharacterOffenseController`, реализации атак, `EnvironmentAreaOverlapAnalyzer`, префабы оружия и переопределения в префабе игрока. `WeaponType` у противников переключает видимые варианты в `Awake`. `PlayerWeaponPickup` переключает модели игрока при входе в триггеры в `FirstLevel`. |
-| Появление босса, фазы, глобальные жизни | `FirstLevel`, `ScoreController`, `CharacterControllerNew.CheckScore`, `CharacterControllerNewBoss.OnBossDeath`, `PlayerHealth.Die` и обе шкалы жизней в сцене. |
+| Появление босса, фазы, глобальные жизни | `FirstLevel`, `ScoreController`, `CharacterControllerNew.Died`, `CharacterControllerNewBoss.OnBossDeath`, `PlayerHealth.Die` и обе шкалы жизней в сцене. |
 | Трансформация и полёт | Действие `Transform` в `MainCharacter`, `BootstrapTestScene`, `PlayerMechanicFlightState` и воздушное движение в `PlayerLocomotion`. |
 | Пауза, итоговые экраны и сохранения | `BootstrapTestScene`, `GameplayUI.prefab`, `WinUI`, `LoseUI`, `GameSaveLoadInteractor`, DTO и репозитории из `NewSaveLoadSystem`. Проверять восстановление в новой сессии, поскольку часть состояния статическая. |
 

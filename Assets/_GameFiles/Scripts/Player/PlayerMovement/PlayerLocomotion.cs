@@ -3,8 +3,8 @@ using UnityEngine.Events;
 
 public sealed class PlayerLocomotion
 {
-    public static UnityAction<Vector3> Locomoted;
-    public static UnityAction<Vector3> Runned;
+    public event UnityAction<Vector3> Locomoted;
+    public event UnityAction<Vector3> Runned;
 
     public event UnityAction<FlightLimiter> FlightLimiterReached;
     public event UnityAction<Vector3> AirborneMoved;
@@ -55,7 +55,7 @@ public sealed class PlayerLocomotion
 
         Vector3 nextPosition = _lastPosition += direction * _locomotionSpeed * Time.deltaTime;
 
-        Locomoted.Invoke(nextPosition);
+        Locomoted?.Invoke(nextPosition);
     }
 
     public void Run(Vector3 direction, Vector2 skeletonAndRenderDirection) //ИНКАПУСЛЯЦИЯ
@@ -69,7 +69,7 @@ public sealed class PlayerLocomotion
 
         Vector3 nextPosition = _lastPosition += direction * _runningSpeed * Time.deltaTime;
 
-        Runned.Invoke(nextPosition);
+        Runned?.Invoke(nextPosition);
     }
 
     public bool Fly(Vector3 direction)

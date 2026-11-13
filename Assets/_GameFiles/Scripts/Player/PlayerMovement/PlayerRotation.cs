@@ -3,13 +3,13 @@ using UnityEngine.Events;
 
 public sealed class PlayerRotation
 {
-    public static UnityAction<Quaternion> Rotated;
+    public event UnityAction<Quaternion> Rotated;
 
     public void Rotate(Vector3 direction) //хмйюосякъжхъ
     {
         Quaternion nextRotation = Quaternion.LookRotation(direction); //ядекюрэ онбнпнрш окюбмшлх
 
-        Rotated(nextRotation);
+        Rotated?.Invoke(nextRotation);
     }
 
     /*

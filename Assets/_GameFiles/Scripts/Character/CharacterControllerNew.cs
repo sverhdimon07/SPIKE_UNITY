@@ -13,7 +13,7 @@ public abstract class CharacterControllerNew : MonoBehaviour , IDamageable //т�
     [SerializeField] protected GameObject _secondSword;
     [SerializeField] protected GameObject _secondGun;
 
-    public static UnityAction Died; //выходы для фабрик или классов более высокого уровня
+    public event UnityAction Died; //выходы для фабрик или классов более высокого уровня
     //public UnityAction<float> DamageTaken;
 
     [Header("View References")]
@@ -61,8 +61,7 @@ public abstract class CharacterControllerNew : MonoBehaviour , IDamageable //т�
 
     private Character _model; //не уверен, что так правильно; вообще есть 2 варика - ЛИБО сделать так, как здесь, с публичной для вызова публичных методов моделью и подписками вьюшки здесь, ЛИБО сделать модель приватной И соединять модель и вьюшку напрямую публичными методами. Мне впринципе 2й варик больше нравится;
 
-    protected ScoreController _scoreController;
-    private bool _scoreAwarded;
+    private bool _hasDied;
 
     private PlayerController _playerController;
     private Canvas _healthCanvas;
@@ -81,7 +80,6 @@ public abstract class CharacterControllerNew : MonoBehaviour , IDamageable //т�
 
     public virtual void Awake() //чекнуть конструкторы и деструкторы в монобехах
     {
-        _scoreController = FindAnyObjectByType<ScoreController>();
         _playerController = FindAnyObjectByType<PlayerController>();
         _playerPoint = _playerController.transform;
         _healthCanvas = _healthBar.GetComponentInParent<Canvas>(true);
@@ -119,17 +117,14 @@ public abstract class CharacterControllerNew : MonoBehaviour , IDamageable //т�
         _model.HealthController.Health.DamageTaken += _view.PresentDamageTake;
         //_model.HealthController.Health.DamageTaken += DamageTaken; //под расширение (мб замедление времени во время стана делать, и возможно это делается при помощи заморозки сцены)
         //CharacterHealth.Died += _view.PresentDeath; //надо дописать где-то вызов на выключение на старте, и включить объект в сцене
-        _model.HealthController.Health.Died += () => Destroy();
+        _model.HealthController.Health.Died += HandleDeath;
         //_model.HealthController.Health.Died += OnDeath;
-        _model.HealthController.Health.Died += Died;
         _model.HealthController.Health.Blocked += _view.PresentBlock;
         _model.MovementController.Locomotion.Locomoted += _view.MoveCharacterModelInLocomotionForm;
         _model.MovementController.Locomotion.Runned += _view.MoveCharacterModelInRunForm;
         _model.MovementController.Rotation.Rotated += _view.TurnCharacterModel;
         _model.OffenseController.FirstAttackType.Attacked += async delegate { await _view.PresentCloseRangeAttack(); };
         _model.OffenseController.SecondAttackType.Attacked += async delegate { await _view.PresentLongRangeAttack(); };
-
-        _model.HealthController.Health.Died += delegate { CheckScore(); };
     }
 
     private void OnDisable()
@@ -139,16 +134,13 @@ public abstract class CharacterControllerNew : MonoBehaviour , IDamageable //т�
         _model.HealthController.Health.DamageTaken -= _view.PresentDamageTake;
         //_model.HealthController.Health.DamageTaken -= DamageTaken; //под расширение (мб замедление времени во время стана делать, и возможно это делается при помощи заморозки сцены)
         //CharacterHealth.Died -= _view.PresentDeath; //надо дописать где-то вызов на выключение на старте, и включить объект в сцене
-        _model.HealthController.Health.Died -= () => Destroy();
+        _model.HealthController.Health.Died -= HandleDeath;
         //_model.HealthController.Health.Died -= OnDeath;
-        _model.HealthController.Health.Died -= Died;
         _model.MovementController.Locomotion.Locomoted -= _view.MoveCharacterModelInLocomotionForm;
         _model.MovementController.Locomotion.Runned -= _view.MoveCharacterModelInRunForm;
         _model.MovementController.Rotation.Rotated -= _view.TurnCharacterModel;
         _model.OffenseController.FirstAttackType.Attacked -= async delegate { await _view.PresentCloseRangeAttack(); };
         _model.OffenseController.SecondAttackType.Attacked -= async delegate { await _view.PresentLongRangeAttack(); };
-
-        _model.HealthController.Health.Died -= delegate { CheckScore(); };
     }
 
     public void SetLastPosition(Vector3 lastPosition)
@@ -223,20 +215,15 @@ public abstract class CharacterControllerNew : MonoBehaviour , IDamageable //т�
         Destroy(gameObject);
     }
 
-    public void CheckScore()
+    private void HandleDeath()
     {
-        if (_scoreAwarded || gameObject.GetComponent<CharacterControllerNewBoss>() == true)
+        if (_hasDied || this is CharacterControllerNewBoss)
         {
             return;
         }
 
-        _scoreAwarded = true;
-        if (this is CharacterControllerNewCloseRange || this is CharacterControllerNewLongRange)
-        {
-            _scoreController.IncreaseRegularEnemyScore();
-            return;
-        }
-
-        _scoreController.IncreaseScore();
+        _hasDied = true;
+        Destroy();
+        Died?.Invoke();
     }
 }

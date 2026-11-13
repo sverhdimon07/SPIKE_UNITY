@@ -1,21 +1,21 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 //посмотреть, какой контракт создает статический класс - по идее то, что все его внутренние элементы были статическими (НО КОНСТАНТЫ НЕТ, ибо они не могут быть статическими)
-public static class SceneLoading //сделать синглтон-сервис (первая причина этому - тут нет метода инита (я добавил срочно надо потому что) И это не сущность, это чисто функциональный класс); НАВЕРНОЕ СТОИТ ПЕРЕИМЕНОВАТЬ В SceneLoading;
+public sealed class SceneLoading //сделать синглтон-сервис (первая причина этому - тут нет метода инита (я добавил срочно надо потому что) И это не сущность, это чисто функциональный класс); НАВЕРНОЕ СТОИТ ПЕРЕИМЕНОВАТЬ В SceneLoading;
 {
     private const int MAIN_MENU_SCENE_INDEX = 0;
     private const int LEVEL_SCENE_INDEX = 1;
 
     //private GameObject[] _migratingBetweenSceneObjects = new GameObject[1]; //над названием подумать
 
-    private static GameObject _migratingBetweenSceneObject;
+    private GameObject _migratingBetweenSceneObject;
 
-    public static void Initialize(GameObject obj)
+    public SceneLoading(GameObject soundDesignObject)
     {
-        _migratingBetweenSceneObject = obj;
+        _migratingBetweenSceneObject = soundDesignObject;
     }
 
-    public static void LoadMainMenuScene()
+    public void LoadMainMenuScene()
     {
         if (_migratingBetweenSceneObject != null)
         {
@@ -36,7 +36,7 @@ public static class SceneLoading //сделать синглтон-сервис (первая причина этому
         //SceneManager.MoveGameObjectToScene(_migratingBetweenSceneObject, SceneManager.GetSceneByBuildIndex(MAIN_MENU_SCENE_INDEX));
     }
 
-    public static void LoadLevelScene()
+    public void LoadLevelScene()
     {
         SceneManager.LoadScene(LEVEL_SCENE_INDEX);
         Time.timeScale = 1f;
@@ -50,7 +50,7 @@ public static class SceneLoading //сделать синглтон-сервис (первая причина этому
         //SceneManager.MoveGameObjectToScene(_migratingBetweenSceneObject, SceneManager.GetSceneByBuildIndex(TEST_SCENE_INDEX));
     }
 
-    public static GameObject GetMigratingBetweenSceneObject()
+    public GameObject GetMigratingBetweenSceneObject()
     {
         return _migratingBetweenSceneObject;
     }

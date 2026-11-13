@@ -14,17 +14,10 @@ public sealed class GameplayMenuUI : MonoBehaviour
     private bool[] _buttonsActiveBeforeFlight;
     private bool _isFighter;
 
-    private InputController _inputController;
-
     public Button ContinueButton => _continueButton;
     public Button ExitButton => _exitButton;
     public Button SaveButton => _saveButton;
     public Button LoadSavingButton => _loadSavingButton;
-
-    private void Awake()
-    {
-        _inputController = FindAnyObjectByType<InputController>();
-    }
 
     public void Initialize()
     {
@@ -58,27 +51,10 @@ public sealed class GameplayMenuUI : MonoBehaviour
         }
     }
 
-    public void OpenOrClose()
-    {
-        _inputController.OnOpeningGameplayMenuButtonPressed();
+    public bool IsOpen => gameObject.activeSelf;
 
-        if (gameObject.activeInHierarchy == false)
-        {
-            Open();
-        }
-        else if (gameObject.activeInHierarchy == true)
-        {
-            Close();
-        }
-    }
-
-    private void Open()
+    public void SetOpen(bool isOpen)
     {
-        gameObject.SetActive(true);
-    }
-
-    private void Close()
-    {
-        gameObject.SetActive(false);
+        gameObject.SetActive(isOpen);
     }
 }
