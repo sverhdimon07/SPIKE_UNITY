@@ -1,6 +1,11 @@
+using UnityEngine;
+
 public sealed class PlayerMechanicStunState : PlayerMechanicState
 {
+    private const float RecoveryTimeout = 1.35f;
+
     private readonly float _damage;
+    private double _recoveryDeadline;
 
     public PlayerMechanicStunState(float damage)
     {
@@ -10,6 +15,7 @@ public sealed class PlayerMechanicStunState : PlayerMechanicState
     public override void Enter(Player player, PlayerMechanicStateMachine stateMachine)
     {
         //
+        _recoveryDeadline = Time.timeAsDouble + RecoveryTimeout;
     }
 
     public override void Do(Player player, PlayerMechanicStateMachine stateMachine)
@@ -20,6 +26,10 @@ public sealed class PlayerMechanicStunState : PlayerMechanicState
     public override void DoWithinFrame(Player player, PlayerMechanicStateMachine stateMachine)
     {
         //
+        if (Time.timeAsDouble >= _recoveryDeadline)
+        {
+            player.Idle();
+        }
     }
 
     public override bool TryExit(Player player, PlayerMechanicStateMachine stateMachine, PlayerMechanicState nextState)

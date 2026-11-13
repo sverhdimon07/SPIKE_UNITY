@@ -1,14 +1,18 @@
 using UnityEngine;
 
 [System.Serializable]
-public class CharacterSaveData
+public class CharacterPositionData
 {
     public string CharacterType;
 
     public Vector3 Position;
 
     public Quaternion Rotation;
+}
 
+[System.Serializable]
+public class CharacterSaveData : CharacterPositionData
+{
     public float Health;
 }
 
@@ -16,4 +20,5 @@ public class CharacterSaveData
 public class SavedCharactersData
 {
     public CharacterSaveData[] Characters;
+    public CharacterPositionData Boss;
 }

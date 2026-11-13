@@ -22,4 +22,6 @@ public class JsonCharacterRepository : ICharacterRepository
         string json = File.ReadAllText(_filePath);
         return JsonUtility.FromJson<SavedCharactersData>(json);
     }
+
+    public void Delete() => File.Delete(_filePath);
 }

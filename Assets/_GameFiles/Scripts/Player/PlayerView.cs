@@ -17,6 +17,9 @@ public sealed class PlayerView //контракты на обновление UI
 
     private readonly AudioSource _closeRangeWeaponSound;
     private readonly AudioSource _longRangeWeaponSound;
+    private readonly AudioSource _transformIntoFighterSound;
+    private readonly AudioSource _transformIntoHumanSound;
+    private readonly AudioSource _fighterEngineSound;
 
     private readonly Transform _fighter;
     private readonly GameObject _hud;
@@ -27,7 +30,8 @@ public sealed class PlayerView //контракты на обновление UI
     private int _attackPresentationVersion;
 
     public PlayerView(PlayerUI ui, PlayerAnimator animator, Transform gameObjectPivot, Transform renderAndSkeletonPivot, ParticleSystem closeRangeWeaponEffect, ParticleSystem longRangeWeaponEffect, AudioSource closeRangeWeaponSound, AudioSource longRangeWeaponSound, Transform fighter, GameObject hud,
-        CinemachinePositionComposer cameraComposer, float fighterCameraDistance) //тут слишком конкретные классы лежат, надо их сделать общими сервисами для всех - и игрока, и врагов
+        CinemachinePositionComposer cameraComposer, float fighterCameraDistance,
+        AudioSource transformIntoFighterSound, AudioSource transformIntoHumanSound, AudioSource fighterEngineSound) //тут слишком конкретные классы лежат, надо их сделать общими сервисами для всех - и игрока, и врагов
     {
         _cameraComposer = cameraComposer;
         _humanCameraTargetOffset = cameraComposer != null ? cameraComposer.TargetOffset : Vector3.zero;
@@ -43,6 +47,9 @@ public sealed class PlayerView //контракты на обновление UI
         _longRangeWeaponEffect = longRangeWeaponEffect;
         _closeRangeWeaponSound = closeRangeWeaponSound;
         _longRangeWeaponSound = longRangeWeaponSound;
+        _transformIntoFighterSound = transformIntoFighterSound;
+        _transformIntoHumanSound = transformIntoHumanSound;
+        _fighterEngineSound = fighterEngineSound;
     }
 
     public void PresentLives(int value)
@@ -50,9 +57,9 @@ public sealed class PlayerView //контракты на обновление UI
         _ui.RefreshLivesBar(value);
     }
 
-    public void PresentScoreIncrease()
+    public void PresentScore()
     {
-        _ui.RefreshCounterText();
+        _ui.RefreshCounterText(ScoreController.Score);
     }
 
     public void PresentIdle()
@@ -61,9 +68,14 @@ public sealed class PlayerView //контракты на обновление UI
         _animator.PlayIdle();
     }
 
-    public void PresentDamageTake(float valueLevel)
+    public void PresentHealth(float valueLevel)
     {
         _ui.RefreshHealthBar(valueLevel);
+    }
+
+    public void PresentDamageTake(float valueLevel)
+    {
+        PresentHealth(valueLevel);
         _animator.PlayStun();
     }
 
@@ -98,7 +110,7 @@ public sealed class PlayerView //контракты на обновление UI
         _gameObjectPivot.position = position;
     }
 
-    public void SetFighterForm(bool isFighter, Vector3 cameraForward)
+    public void SetFighterForm(bool isFighter, Vector3 cameraForward, bool playTransformationSound)
     {
         if (_fighter == null || _hud == null)
         {
@@ -131,6 +143,39 @@ public sealed class PlayerView //контракты на обновление UI
         _fighter.gameObject.SetActive(isFighter);
         _renderAndSkeletonPivot.gameObject.SetActive(!isFighter);
         _hud.SetActive(!isFighter);
+
+        SetFighterAudio(isFighter, playTransformationSound);
+    }
+
+    public void SetFighterAudio(bool engineRunning, bool playTransformationSound = false)
+    {
+        if (_transformIntoFighterSound != null)
+        {
+            _transformIntoFighterSound.Stop();
+        }
+
+        if (_transformIntoHumanSound != null)
+        {
+            _transformIntoHumanSound.Stop();
+        }
+
+        if (_fighterEngineSound != null)
+        {
+            if (!engineRunning)
+            {
+                _fighterEngineSound.Stop();
+            }
+            else if (!_fighterEngineSound.isPlaying)
+            {
+                _fighterEngineSound.Play();
+            }
+        }
+
+        AudioSource transformation = engineRunning ? _transformIntoFighterSound : _transformIntoHumanSound;
+        if (playTransformationSound && transformation != null)
+        {
+            transformation.Play();
+        }
     }
 
     public void CancelAttackPresentation()

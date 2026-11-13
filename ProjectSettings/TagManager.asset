@@ -8,6 +8,7 @@ TagManager:
   - PlayerSwordTrigger
   - PlayerSword
   - PlayerGun
+  - PlayerBox
   layers:
   - Default
   - TransparentFX

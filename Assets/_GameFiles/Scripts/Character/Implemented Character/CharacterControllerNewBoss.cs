@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterControllerNewBoss : CharacterControllerNew, IAllRangesAttacker
+public class CharacterControllerNewBoss : CharacterControllerNew //, IAllRangesAttacker
 {
     private const float PhaseTwoCombatDuration = 10f;
     private const float PhaseTwoRecoveryDuration = 3f;

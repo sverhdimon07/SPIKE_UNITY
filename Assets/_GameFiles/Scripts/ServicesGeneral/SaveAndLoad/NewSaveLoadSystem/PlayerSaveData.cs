@@ -16,4 +16,6 @@ public class PlayerSaveData //хороший вопрос - как называ�
     public bool HasReachedFlightLimiter;
     public bool IsFalling;
     public float FallSpeed;
+    public bool IsKnifeEquipped;
+    public bool IsPistolEquipped;
 }

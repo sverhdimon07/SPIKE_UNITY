@@ -14,7 +14,7 @@ public enum WeaponType
     Second
 }
 
-public class CharacterControllerNewCloseRange : CharacterControllerNew, ICloseRangeAttacker
+public class CharacterControllerNewCloseRange : CharacterControllerNew //, ICloseRangeAttacker
 {
     public WeaponType WeaponType;
     public AttackType AttackType;

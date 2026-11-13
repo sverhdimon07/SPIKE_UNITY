@@ -46,6 +46,7 @@ public class WinUI : MonoBehaviour
             return;
         }
         gameObject.SetActive(true);
+        FindAnyObjectByType<GameSaveLoadInteractor>()?.ClearSaveAfterVictory();
         
         _statisticsText.text = "Очки: " + ScoreController.Score;
     }

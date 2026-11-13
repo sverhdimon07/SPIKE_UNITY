@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(CapsuleCollider))]
-public abstract class CharacterControllerNew : MonoBehaviour, IDamageable //тут прикол такой, что этот контроллер тоже может реализовывать интерфейсы модели, НО стоит ли реализовывать их и там, и там - или поставить только тут и все?
+public abstract class CharacterControllerNew : MonoBehaviour , IDamageable //тут прикол такой, что этот контроллер тоже может реализовывать интерфейсы модели, НО стоит ли реализовывать их и там, и там - или поставить только тут и все?
 {
     [SerializeField] protected GameObject _firstSword;
     [SerializeField] protected GameObject _firstGun;
@@ -170,6 +170,7 @@ public abstract class CharacterControllerNew : MonoBehaviour, IDamageable //ту
     public void SetHealthValue(float healthValue)
     {
         _model.HealthController.Health.SetHealthValue(healthValue);
+        _view.PresentHealth(healthValue);
     }
 
     public void Idle()
@@ -230,6 +231,12 @@ public abstract class CharacterControllerNew : MonoBehaviour, IDamageable //ту
         }
 
         _scoreAwarded = true;
+        if (this is CharacterControllerNewCloseRange || this is CharacterControllerNewLongRange)
+        {
+            _scoreController.IncreaseRegularEnemyScore();
+            return;
+        }
+
         _scoreController.IncreaseScore();
     }
 }

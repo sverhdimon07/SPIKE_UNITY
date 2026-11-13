@@ -5,10 +5,9 @@ using UnityEngine.Events;
 
 public class MainDoors : MonoBehaviour
 {
-    private const string PLAYER_TAG = "PlayerBox";
-
     [SerializeField] private Transform door1;
     [SerializeField] private Transform door2;
+    [SerializeField] private GameObject shipActivatedOnExit;
 
     private bool enterState = false;
     private bool exitState = true;
@@ -23,6 +22,14 @@ public class MainDoors : MonoBehaviour
 
     [SerializeField] private UnityEvent opened;
     [SerializeField] private UnityEvent closed;
+    private void Awake()
+    {
+        if (shipActivatedOnExit != null)
+        {
+            shipActivatedOnExit.SetActive(false);
+        }
+    }
+
     private void Start()
     {
         destination1 = door1.position + new Vector3(3f, 0, 0);
@@ -44,26 +51,34 @@ public class MainDoors : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collider)
     {
-        if (!collider.CompareTag(PLAYER_TAG))
+        if (!collider.TryGetComponent<PlayerController>(out _))
         {
             return;
         }
         opened.Invoke();
+        CancelInvoke(nameof(MakeDisabled));
         enterState = true;
         exitState = false;
         Invoke(nameof(MakeEnabled), 0.8f);
     }
     private void OnTriggerExit(Collider collider)
     {
-        if (!collider.CompareTag(PLAYER_TAG))
+        if (!collider.TryGetComponent<PlayerController>(out _))
         {
             return;
         }
+        if (shipActivatedOnExit != null)
+        {
+            shipActivatedOnExit.SetActive(true);
+        }
+
         closed.Invoke();
+        CancelInvoke(nameof(MakeEnabled));
         enterState = false;
         exitState = true;
         Invoke(nameof(MakeDisabled), 1.5f);
     }
+
     private void OpenDoors(float speed)
     {
         door1.position = Vector3.Lerp(door1.position, destination1, speed);

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CharacterControllerNewLongRange : CharacterControllerNew, ILongRangeAttacker
+public class CharacterControllerNewLongRange : CharacterControllerNew //, ILongRangeAttacker
 {
     public WeaponType WeaponType;
 

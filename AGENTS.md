@@ -39,3 +39,5 @@ unity command --project-path . scene list_open --proxy-disable --json
 ```
 
 Список доступных операций можно получить через `unity command --project-path . --detail compact --proxy-disable --json`, а параметры нужной операции — через фильтр `--query` с `--detail full`. Флаг `--proxy-disable` позволяет обращаться к локальному редактору напрямую. При ошибке доступа к локальному соединению запроси разрешение на выполнение команды с доступом к редактору.
+
+Если редактор открыт, а `unity status --proxy-disable --json` возвращает `STATUS_NO_INSTANCES`, запроси разрешение и повтори команду вне песочницы. В `data.instances` проверь путь проекта, состояние `ready` и текущий порт. Например, в одном сеансе Pipeline слушал порт `7800`. Затем выполни `unity command --project-path . scene list_open --proxy-disable --json` с тем же уровнем доступа. Если объект есть в файле сцены, проверь его наличие в загруженной сцене через `unity command --project-path . gameobject find --name "Имя объекта" --proxy-disable --json`.

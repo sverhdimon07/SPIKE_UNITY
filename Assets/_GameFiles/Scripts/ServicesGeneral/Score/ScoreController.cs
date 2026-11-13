@@ -7,7 +7,9 @@ public class ScoreController : MonoBehaviour
 
     public static int Score;
 
-    public static UnityAction ScoreIncreased;
+    public static UnityAction ScoreChanged;
+
+    public int RegularEnemyScore { get; private set; }
 
     private CharacterControllerNewBoss _boss;
 
@@ -27,9 +29,17 @@ public class ScoreController : MonoBehaviour
 
     public void SetScore(int score)
     {
+        RegularEnemyScore = score;
         _score = score;
         Score = score;
         UpdateBossVisibility();
+        ScoreChanged?.Invoke();
+    }
+
+    public void IncreaseRegularEnemyScore()
+    {
+        RegularEnemyScore += 1;
+        IncreaseScore();
     }
 
     public void IncreaseScore()
@@ -38,7 +48,7 @@ public class ScoreController : MonoBehaviour
         Score += 1;
 
         UpdateBossVisibility();
-        ScoreIncreased.Invoke();
+        ScoreChanged?.Invoke();
     }
 
     private void UpdateBossVisibility()

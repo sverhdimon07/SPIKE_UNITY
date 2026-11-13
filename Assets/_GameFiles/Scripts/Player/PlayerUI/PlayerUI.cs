@@ -75,7 +75,7 @@ public sealed class PlayerUI
         }
     }
 
-    public void RefreshCounterText()
+    public void RefreshCounterText(int score)
     {
         /*
         if (CharacterControllerNewBoss.Spawned == true)
@@ -83,11 +83,9 @@ public sealed class PlayerUI
             Debug.Log(_counterText.text);
             return;
         }*/
-        int counter = int.Parse(_counterText.text);
-        counter += 1;
         //Counter = counter;
 
-        _counterText.text = counter.ToString();
+        _counterText.text = score.ToString();
 
         /*
         if (_counterText.text == "3")

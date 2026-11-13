@@ -18,8 +18,12 @@ public class JsonPlayerRepository : IPlayerRepository
 
     public PlayerSaveData Load()
     {
-        if (!File.Exists(_filePath)) return null;
+        if (!Exists()) return null;
         string json = File.ReadAllText(_filePath);
         return JsonUtility.FromJson<PlayerSaveData>(json);
     }
+
+    public bool Exists() => File.Exists(_filePath);
+
+    public void Delete() => File.Delete(_filePath);
 }

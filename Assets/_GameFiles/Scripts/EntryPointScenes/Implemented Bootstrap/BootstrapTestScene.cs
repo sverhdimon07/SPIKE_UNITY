@@ -81,7 +81,7 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         _inputController = GetComponent<InputController>(); //_inputController.Initialize(); //он инитится сам в себе, наверное плохо, но ничего сделать не могу; дает подсказку, ибо это надо переносить в абстрактный бутстрап;
 
         _saveButtonForDataSaveHandler = delegate () { _savingLoadingSystemBootstrap.ExecuteSaveOperation(); };
-        _loadSavingButtonForDataLoadHandler = delegate () { _savingLoadingSystemBootstrap.ExecuteLoadOperation(); };
+        _loadSavingButtonForDataLoadHandler = delegate () { _savingLoadingSystemBootstrap.ReloadFromSave(); };
 
         _attackCloseRangeButtonPressedForCloseRangeAttackHandler = delegate () { PlayerController.AttackCloseRange(PlayerController.GameObjectPivot.position, new Vector2(PlayerController.RenderAndSkeletonPivot.forward.x, PlayerController.RenderAndSkeletonPivot.forward.z)); };
         _attackLongRangeButtonPressedForLongRangeAttackHandler = delegate () { PlayerController.AttackLongRange(PlayerController.GameObjectPivot.position, new Vector2(PlayerController.RenderAndSkeletonPivot.forward.x, PlayerController.RenderAndSkeletonPivot.forward.z)); };
@@ -117,8 +117,6 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         _gameplayMenuUI.ContinueButton.onClick.AddListener(_gameplayMenuUI.OpenOrClose);
         _gameplayMenuUI.ExitButton.onClick.AddListener(SceneLoading.LoadMainMenuScene);
         _gameplayMenuUI.SaveButton.onClick.AddListener(_saveButtonForDataSaveHandler);
-        _gameplayMenuUI.LoadSavingButton.onClick.AddListener(_scenePausing.PauseOrResume);
-        _gameplayMenuUI.LoadSavingButton.onClick.AddListener(_gameplayMenuUI.OpenOrClose);
         _gameplayMenuUI.LoadSavingButton.onClick.AddListener(_loadSavingButtonForDataLoadHandler);
 
         _inputController.LocomotionDirectionDirected += MovePlayer;
@@ -162,8 +160,6 @@ public sealed class BootstrapTestScene : Bootstrap //система 3х этапов (по итогу
         _gameplayMenuUI.ContinueButton.onClick.RemoveListener(_gameplayMenuUI.OpenOrClose);
         _gameplayMenuUI.ExitButton.onClick.RemoveListener(SceneLoading.LoadMainMenuScene);
         _gameplayMenuUI.SaveButton.onClick.RemoveListener(_saveButtonForDataSaveHandler);
-        _gameplayMenuUI.LoadSavingButton.onClick.RemoveListener(_scenePausing.PauseOrResume);
-        _gameplayMenuUI.LoadSavingButton.onClick.RemoveListener(_gameplayMenuUI.OpenOrClose);
         _gameplayMenuUI.LoadSavingButton.onClick.RemoveListener(_loadSavingButtonForDataLoadHandler);
 
         _inputController.LocomotionDirectionDirected -= MovePlayer;

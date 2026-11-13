@@ -1,5 +1,7 @@
-using UnityEngine;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
 
 public class GameSaveLoadInteractor : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class GameSaveLoadInteractor : MonoBehaviour
     private IPlayerRepository _playerRepository;
     private ICharacterRepository _characterRepository;
     private Vector3 _levelStartPosition;
+    private bool _hasWon;
 
     private const string PLAYER_FILE = "player_save.json";
     private const string CHARACTER_FILE = "characters_save.json";
@@ -18,8 +21,6 @@ public class GameSaveLoadInteractor : MonoBehaviour
     {
         _playerRepository = new JsonPlayerRepository(PLAYER_FILE);
         _characterRepository = new JsonCharacterRepository(CHARACTER_FILE);
-
-        Application.quitting += OnApplicationQuitting;
     }
 
     private void Start()
@@ -28,23 +29,45 @@ public class GameSaveLoadInteractor : MonoBehaviour
         ExecuteLoadOperation();
     }
 
-    private void OnDestroy()
+    public void ReloadFromSave()
     {
-        Application.quitting -= OnApplicationQuitting;
+        if (_playerRepository.Exists())
+        {
+            SceneLoading.LoadLevelScene();
+        }
     }
 
-    private void OnApplicationQuitting()
+    public void ClearSaveAfterVictory()
     {
-        ExecuteSaveOperation();
+        _hasWon = true;
+        DeleteSaveFile(_playerRepository.Delete);
+        DeleteSaveFile(_characterRepository.Delete);
+    }
+
+    private void DeleteSaveFile(Action delete)
+    {
+        try
+        {
+            delete();
+        }
+        catch (Exception exception) when (exception is IOException || exception is UnauthorizedAccessException)
+        {
+            Debug.LogException(exception, this);
+        }
     }
 
     public void ExecuteSaveOperation()
     {
+        if (_hasWon)
+        {
+            return;
+        }
+
         SavePlayer();
         SaveCharacters();
     }
 
-    public void ExecuteLoadOperation()
+    private void ExecuteLoadOperation()
     {
         PlayerSaveData player = _playerRepository.Load();
         if (player == null)
@@ -53,11 +76,13 @@ public class GameSaveLoadInteractor : MonoBehaviour
             return;
         }
 
-        CharacterSaveData[] characters = _characterRepository.Load()?.Characters;
+        SavedCharactersData characters = _characterRepository.Load();
         bool reachedFlightLimiter = HasReachedFlightLimiter(player);
-        int score = _flightLimiter == null || reachedFlightLimiter ? player.Score : 0;
+        int score = _flightLimiter == null || reachedFlightLimiter
+            ? Mathf.Clamp(player.Score, 0, ScoreController.BossSpawnScore)
+            : 0;
         LoadPlayer(player, reachedFlightLimiter, score);
-        RestoreEnemies(reachedFlightLimiter, score, characters);
+        RestoreEnemies(reachedFlightLimiter, score, characters?.Characters);
         LoadCharacters(characters);
     }
 
@@ -75,12 +100,14 @@ public class GameSaveLoadInteractor : MonoBehaviour
             Rotation = _playerController.transform.rotation,
             FormRotation = _playerController.FormRotation,
             Health = _playerController.Health,
-            Score = ScoreController.Score,
+            Score = _playerController.ScoreController.RegularEnemyScore,
             IsFighter = _playerController.IsFighter,
             IsFlightLocked = _playerController.IsFlightLocked,
             HasReachedFlightLimiter = _flightLimiter != null && _playerController.IsFlightLocked,
             IsFalling = _playerController.IsFalling,
-            FallSpeed = _playerController.FallSpeed
+            FallSpeed = _playerController.FallSpeed,
+            IsKnifeEquipped = _playerController.IsKnifeEquipped,
+            IsPistolEquipped = _playerController.IsPistolEquipped
         };
 
         _playerRepository.Save(data);
@@ -99,6 +126,13 @@ public class GameSaveLoadInteractor : MonoBehaviour
         _playerController.SetRenderAndSkeletonPivot(data.Rotation);
         bool flightLocked = _flightLimiter == null ? data.IsFlightLocked : reachedFlightLimiter;
         _playerController.RestoreForm(data.Position, data.FormRotation, data.IsFighter, data.IsFalling, data.FallSpeed, flightLocked);
+        _playerController.RestoreWeaponSelection(data.IsKnifeEquipped, data.IsPistolEquipped);
+        var playerCollider = _playerController.GetComponent<CapsuleCollider>();
+        foreach (var pickup in FindObjectsByType<PlayerWeaponPickup>(FindObjectsSortMode.None))
+        {
+            pickup.IgnorePlayerUntilExitIfOverlapping(playerCollider);
+        }
+
         _playerController.SetHealthValue(data.Health > 0f ? data.Health : 100f);
         _playerController.ScoreController.SetScore(score);
         Debug.Log("Player loaded");
@@ -112,7 +146,7 @@ public class GameSaveLoadInteractor : MonoBehaviour
         }
 
         bool beforeBoss = reachedFlightLimiter && score < ScoreController.BossSpawnScore;
-        bool onlyLongRange = System.Array.Exists(characters ?? System.Array.Empty<CharacterSaveData>(),
+        bool onlyLongRange = Array.Exists(characters ?? Array.Empty<CharacterSaveData>(),
             character => character?.CharacterType == nameof(CharacterControllerNewLongRange));
 
         _flightLimiter.RestoreEnemies(
@@ -125,9 +159,21 @@ public class GameSaveLoadInteractor : MonoBehaviour
         CharacterControllerNew[] allCharacters = FindObjectsByType<CharacterControllerNew>(FindObjectsSortMode.None);
 
         List<CharacterSaveData> charactersDataList = new List<CharacterSaveData>(allCharacters.Length);
+        var wrapper = new SavedCharactersData();
 
         foreach (var character in allCharacters)
         {
+            if (character is CharacterControllerNewBoss)
+            {
+                wrapper.Boss = new CharacterPositionData
+                {
+                    CharacterType = character.GetType().Name,
+                    Position = character.transform.position,
+                    Rotation = character.transform.rotation
+                };
+                continue;
+            }
+
             charactersDataList.Add(new CharacterSaveData
             {
                 CharacterType = character.GetType().Name,
@@ -137,12 +183,12 @@ public class GameSaveLoadInteractor : MonoBehaviour
             });
         }
 
-        SavedCharactersData wrapper = new SavedCharactersData { Characters = charactersDataList.ToArray() };
+        wrapper.Characters = charactersDataList.ToArray();
         _characterRepository.Save(wrapper);
-        Debug.Log($"Saved {charactersDataList.Count} characters");
+        Debug.Log($"Saved {allCharacters.Length} characters");
     }
 
-    private void LoadCharacters(CharacterSaveData[] characters)
+    private void LoadCharacters(SavedCharactersData characters)
     {
         if (characters == null)
         {
@@ -152,11 +198,16 @@ public class GameSaveLoadInteractor : MonoBehaviour
 
         CharacterControllerNew[] currentCharacters = FindObjectsByType<CharacterControllerNew>(FindObjectsSortMode.None);
 
-        var remaining = new List<CharacterSaveData>(characters);
-        int count = 0;
+        var remaining = new List<CharacterSaveData>(characters.Characters ?? Array.Empty<CharacterSaveData>());
         foreach (var character in currentCharacters)
         {
             string characterType = character.GetType().Name;
+            if (character is CharacterControllerNewBoss && characters.Boss?.CharacterType == characterType)
+            {
+                RestoreCharacterPosition(character, characters.Boss);
+                continue;
+            }
+
             int index = remaining.FindIndex(saved => saved?.CharacterType == characterType);
             if (index < 0)
             {
@@ -170,13 +221,18 @@ public class GameSaveLoadInteractor : MonoBehaviour
 
             CharacterSaveData data = remaining[index];
             remaining.RemoveAt(index);
-            character.RestoreSavedPosition(data.Position);
-            character.SetRenderAndSkeletonPivot(data.Rotation);
-            float maxHealth = character.Model.HealthController.Health.MaxHealthValue;
-            character.SetHealthValue(data.Health > 0f ? Mathf.Min(data.Health, maxHealth) : maxHealth);
-            count++;
+            RestoreCharacterPosition(character, data);
+            if (character is not CharacterControllerNewBoss)
+            {
+                float maxHealth = character.Model.HealthController.Health.MaxHealthValue;
+                character.SetHealthValue(data.Health > 0f ? Mathf.Min(data.Health, maxHealth) : maxHealth);
+            }
         }
+    }
 
-        Debug.Log($"Loaded {count} characters");
+    private static void RestoreCharacterPosition(CharacterControllerNew character, CharacterPositionData data)
+    {
+        character.RestoreSavedPosition(data.Position);
+        character.SetRenderAndSkeletonPivot(data.Rotation);
     }
 }

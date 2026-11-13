@@ -80,7 +80,7 @@ public sealed class PlayerLocomotion
             return false;
         }
 
-        ScanAirbornePath(direction, distance + CollisionSkin, QueryTriggerInteraction.Collide,
+        ScanAirbornePath(direction, distance + CollisionSkin, isFlight: true,
             out float obstacleDistance, out float limiterDistance, out FlightLimiter limiter);
         if (limiter != null && limiterDistance <= distance && limiterDistance <= obstacleDistance)
         {
@@ -152,11 +152,11 @@ public sealed class PlayerLocomotion
 
     private bool TryGetAirborneObstacle(Vector3 direction, float distance, out float hitDistance)
     {
-        ScanAirbornePath(direction, distance, QueryTriggerInteraction.Ignore, out hitDistance, out _, out _);
+        ScanAirbornePath(direction, distance, isFlight: false, out hitDistance, out _, out _);
         return hitDistance < float.PositiveInfinity;
     }
 
-    private void ScanAirbornePath(Vector3 direction, float distance, QueryTriggerInteraction triggers,
+    private void ScanAirbornePath(Vector3 direction, float distance, bool isFlight,
         out float obstacleDistance, out float limiterDistance, out FlightLimiter closestLimiter)
     {
         Transform capsuleTransform = _capsule.transform;
@@ -165,14 +165,17 @@ public sealed class PlayerLocomotion
         float halfSegment = Mathf.Max(0f, _capsule.height * Mathf.Abs(scale.y) * 0.5f - radius);
         Vector3 center = capsuleTransform.TransformPoint(_capsule.center);
         Vector3 axis = capsuleTransform.up * halfSegment;
+        Vector3 bottom = isFlight ? center : center - axis;
+        Vector3 top = center + axis;
         float castRadius = Mathf.Max(radius - CollisionSkin, radius * 0.5f);
+        QueryTriggerInteraction triggers = isFlight ? QueryTriggerInteraction.Collide : QueryTriggerInteraction.Ignore;
 
         RaycastHit[] hits = _airborneHits;
-        int count = Physics.CapsuleCastNonAlloc(center - axis, center + axis, castRadius,
+        int count = Physics.CapsuleCastNonAlloc(bottom, top, castRadius,
             direction, hits, distance, Physics.DefaultRaycastLayers, triggers);
         if (count == hits.Length)
         {
-            hits = Physics.CapsuleCastAll(center - axis, center + axis, castRadius,
+            hits = Physics.CapsuleCastAll(bottom, top, castRadius,
                 direction, distance, Physics.DefaultRaycastLayers, triggers);
             count = hits.Length;
         }

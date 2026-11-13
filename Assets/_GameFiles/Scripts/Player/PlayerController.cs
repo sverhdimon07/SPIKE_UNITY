@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(CapsuleCollider))]
-public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAttacker //тут прикол такой, что этот контроллер тоже может реализовывать интерфейсы модели, НО стоит ли реализовывать их и там, и там - или поставить только тут и все?
+public sealed class PlayerController : MonoBehaviour, IDamageable //, IAllRangesAttacker //тут прикол такой, что этот контроллер тоже может реализовывать интерфейсы модели, НО стоит ли реализовывать их и там, и там - или поставить только тут и все?
 {
     [Header("View References")]
     [SerializeField] private Image _healthBar; //хотел переносить эти поля в бутстрап, НО почему-бы все поля, не отвечающие за геймплейную логику, не хранить именно здесь (ибо бутстрап должен инитить ГЕЙМДИЗАЙНЕРСКИЕ ДАННЫЕ, зачем их мешать с ссылками на вспомогательные классы?)?
@@ -21,6 +21,9 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
     [SerializeField] private ParticleSystem _longRangeWeaponEffect;
     [SerializeField] private AudioSource _closeRangeWeaponSound;
     [SerializeField] private AudioSource _longRangeWeaponSound;
+    [SerializeField] private AudioSource _transformIntoFighterSound;
+    [SerializeField] private AudioSource _transformIntoHumanSound;
+    [SerializeField] private AudioSource _fighterEngineSound;
 
     [SerializeField] private Transform _fighter;
     [Min(0.1f)]
@@ -43,6 +46,8 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
     //Я СДЕЛАЛ ТАК, ЧТОБЫ МОЖНО БЫЛО ИНИТИТЬ ОТСЮДА ДАТУ ЛЮБОГО ТИПА ОРУЖИЯ (ТО ЕСТЬ, ЛЮБОЙ СУЩНОСТИ ОРУЖИЯ), но по идее же у каждого оружия уже изначально есть какая-то дата, но при этом она и не должна быть прямо в скрипте самого оружия проиничена, она должна быть сериализована и закинута в префаб - но тут в любом случае нужно придумать методологию создания скриптов для оружия
     [SerializeField] private Weapon _firstWeapon; //ПРОВЕРКА НА ОТСУТСТВИЕ ПАРАМЕТРОВ В ИНСПЕКТОРЕ (КАК ЭТО СДЕЛАНО СО ЗДОРОВЬЕМ (ИНКАПСУЛЯЦИЯ))
     [SerializeField] private Weapon _secondWeapon; //кое-чо важное написано в CharacterControllerNew
+    [SerializeField] private Transform _knifeModel;
+    [SerializeField] private Transform _pistolModel;
 
     private PlayerView _view; //вот та разница между моделью и представлением. Просто если бы это было свойством да еще и публичным, то его методами можно было бы пользоваться в классе более высокого уровня
 
@@ -76,6 +81,8 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
     public ScoreController ScoreController => _scoreController;
 
     public float Health => _model.HealthController.Health.HealthValue;
+    public bool IsKnifeEquipped => _knifeModel != null && _knifeModel.gameObject.activeSelf;
+    public bool IsPistolEquipped => _pistolModel != null && _pistolModel.gameObject.activeSelf;
 
     private void Awake() //чекнуть конструкторы и деструкторы в монобехах
     {
@@ -87,9 +94,19 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
 
         _loseUI.Initialize();
 
-        _view = new PlayerView(new PlayerUI(_healthBar, _weaponLongRangeCooldownBar, _livesBar, _deathMessageText, _counterText), new PlayerAnimator(_animator), _gameObjectPivot, _renderAndSkeletonPivot, _closeRangeWeaponEffect, _longRangeWeaponEffect, _closeRangeWeaponSound, _longRangeWeaponSound, _fighter, _hud,
-            _thirdPersonCameraControllerPivot.GetComponent<CinemachinePositionComposer>(), _fighterCameraDistance);
-        _model = new Player(new PlayerMechanicStateMachine(_model, new PlayerMechanicIdleState()), new PlayerHealthController(new PlayerHealth(_maxHealth, _health)), new PlayerMovementController(new PlayerLocomotion(new EnvironmentAreaOverlapAnalyzer<Collider, PlayerController>(), new Vector2(_renderAndSkeletonPivot.forward.x, _renderAndSkeletonPivot.forward.z), 0.3f, 0.5f, 2.5f, _locomotionSpeed, _runningSpeed, transform.position, GetComponent<CapsuleCollider>(), _flightSpeed), new PlayerRotation()), new PlayerOffenseController(_firstWeapon, _secondWeapon, transform.position, new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z)), new PlayerDefenseController()); //тут такой прикол, что любой человек сможет создавать объект этого класса в любой части программы, но как бы и работать он с ним не сможет без верхнеуровнего монобеховского слоя. Тут все норм, я бы только засинглтонил PlayerController и Player (про PlayerView - хз)
+        _view = new PlayerView(new PlayerUI(_healthBar, _weaponLongRangeCooldownBar, _livesBar, _deathMessageText, _counterText), new PlayerAnimator(_animator), _gameObjectPivot, _renderAndSkeletonPivot, _closeRangeWeaponEffect, _longRangeWeaponEffect, _closeRangeWeaponSound, _longRangeWeaponSound, _fighter, _hud, _thirdPersonCameraControllerPivot.GetComponent<CinemachinePositionComposer>(), _fighterCameraDistance, _transformIntoFighterSound, _transformIntoHumanSound, _fighterEngineSound);
+        
+        var weaponController = new PlayerWeaponController();
+        weaponController.Initialize(new PlayerWeaponCloseRange(), new PlayerWeaponLongRange(), _firstWeapon, _secondWeapon);
+
+        var attackDirection = new Vector2(_gameObjectPivot.forward.x, _gameObjectPivot.forward.z);
+        var closeRangeAttack = new PlayerAttackCloseRange();
+        var longRangeAttack = new PlayerAttackLongRange();
+        closeRangeAttack.Initialize(new EnvironmentAreaOverlapAnalyzer<IDamageable, PlayerController>(),transform.position, attackDirection, 0.15f, _firstWeapon.Range, 2.5f, new DamageCalculatorBasic()); //работа с конретной реализацией должна проводиться наверху, но с другой стороны мы создаем крепкий контрактна то, что в ячейку ближней атаки не заинитится дальняя атака (что по идее может прилететь с сервера спокойно)
+        longRangeAttack.Initialize(new EnvironmentAreaOverlapAnalyzer<IDamageable, PlayerController>(), transform.position, attackDirection, 0.15f, _secondWeapon.Range, 1.25f, new DamageCalculatorBasic()); //работа с конретной реализацией должна проводиться наверху, но с другой стороны мы создаем крепкий контрактна то, что в ячейку ближней атаки не заинитится дальняя атака (что по идее может прилететь с сервера спокойно)
+
+        _model = new Player(new PlayerMechanicStateMachine(_model, new PlayerMechanicIdleState()), new PlayerHealthController(new PlayerHealth(_maxHealth, _health)), new PlayerMovementController(new PlayerLocomotion(new EnvironmentAreaOverlapAnalyzer<Collider, PlayerController>(), new Vector2(_renderAndSkeletonPivot.forward.x, _renderAndSkeletonPivot.forward.z), 0.3f, 0.5f, 2.5f, _locomotionSpeed, _runningSpeed, transform.position, GetComponent<CapsuleCollider>(), _flightSpeed), new PlayerRotation()), new PlayerOffenseController(weaponController, closeRangeAttack, longRangeAttack), new PlayerDefenseController()); //тут такой прикол, что любой человек сможет создавать объект этого класса в любой части программы, но как бы и работать он с ним не сможет без верхнеуровнего монобеховского слоя. Тут все норм, я бы только засинглтонил PlayerController и Player (про PlayerView - хз)
+
         Locomotion.FlightLimiterReached += limiter => limiter.Reach(this);
         Locomotion.AirborneMoved += _view.MoveAirborne;
     }
@@ -111,6 +128,7 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
 
     private void OnEnable()
     {
+        _view.SetFighterAudio(IsFighter);
         Player.Idled += _view.PresentIdle;
         PlayerHealth.DamageTaken += _view.PresentDamageTake;
         //PlayerHealth.DamageTaken += DamageTaken; //под расширение (мб замедление времени во время стана делать, и возможно это делается при помощи заморозки сцены)
@@ -123,7 +141,7 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
         PlayerRotation.Rotated += _view.TurnCharacterModel;
         _model.OffenseController.FirstAttackType.Attacked += async delegate { await _view.PresentCloseRangeAttack(); };
         _model.OffenseController.SecondAttackType.Attacked += async delegate { await _view.PresentLongRangeAttack(); };
-        ScoreController.ScoreIncreased += _view.PresentScoreIncrease;
+        ScoreController.ScoreChanged += _view.PresentScore;
 
         _loseUI.MenuButton.onClick.AddListener(SceneLoading.LoadMainMenuScene);
         _loseUI.LoadLevelButton.onClick.AddListener(SceneLoading.LoadLevelScene);
@@ -134,6 +152,7 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
 
     private void OnDisable()
     {
+        _view.SetFighterAudio(false);
         Player.Idled -= _view.PresentIdle;
         PlayerHealth.DamageTaken -= _view.PresentDamageTake;
         //PlayerHealth.DamageTaken -= DamageTaken;
@@ -146,7 +165,7 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
         PlayerRotation.Rotated -= _view.TurnCharacterModel;
         _model.OffenseController.FirstAttackType.Attacked -= async delegate { await _view.PresentCloseRangeAttack(); };
         _model.OffenseController.SecondAttackType.Attacked -= async delegate { await _view.PresentLongRangeAttack(); };
-        ScoreController.ScoreIncreased -= _view.PresentScoreIncrease;
+        ScoreController.ScoreChanged -= _view.PresentScore;
 
         _loseUI.MenuButton.onClick.RemoveListener(SceneLoading.LoadMainMenuScene);
         _loseUI.LoadLevelButton.onClick.RemoveListener(SceneLoading.LoadLevelScene);
@@ -168,6 +187,22 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
     public void SetHealthValue(float healthValue)
     {
         _model.HealthController.Health.SetHealthValue(healthValue);
+        _view.PresentHealth(healthValue);
+    }
+
+    public void RestoreWeaponSelection(bool isKnifeEquipped, bool isPistolEquipped)
+    {
+        if (_knifeModel != null && _firstWeapon != null)
+        {
+            _firstWeapon.gameObject.SetActive(!isKnifeEquipped);
+            _knifeModel.gameObject.SetActive(isKnifeEquipped);
+        }
+
+        if (_pistolModel != null && _secondWeapon != null)
+        {
+            _secondWeapon.gameObject.SetActive(!isPistolEquipped);
+            _pistolModel.gameObject.SetActive(isPistolEquipped);
+        }
     }
 
     public void ToggleFighterForm()
@@ -216,7 +251,14 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
             _model.ResetToHuman();
         }
 
-        SetFighterForm(isFighter);
+        if (IsFighter == isFighter)
+        {
+            _view.SetFighterAudio(isFighter);
+        }
+        else
+        {
+            SetFighterForm(isFighter, playTransformationSound: false);
+        }
         if (Quaternion.Dot(rotation, rotation) > 0f)
         {
             _view.TurnCharacterModel(rotation);
@@ -228,14 +270,14 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
         }
     }
 
-    private void SetFighterForm(bool isFighter)
+    private void SetFighterForm(bool isFighter, bool playTransformationSound = true)
     {
         if (IsFighter == isFighter || (isFighter && !_model.TryEnterFighterForm()))
         {
             return;
         }
 
-        _view.SetFighterForm(isFighter, _thirdPersonCameraControllerPivot.forward);
+        _view.SetFighterForm(isFighter, _thirdPersonCameraControllerPivot.forward, playTransformationSound);
         if (!isFighter)
         {
             _model.Idle();
@@ -246,7 +288,10 @@ public sealed class PlayerController : MonoBehaviour, IDamageable, IAllRangesAtt
 
     public void Idle()
     {
-        _model.Idle();
+        if (!IsFighter)
+        {
+            _model.Idle();
+        }
     }
 
     public void TakeDamage(float damage)

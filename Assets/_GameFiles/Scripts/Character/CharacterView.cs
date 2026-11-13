@@ -66,8 +66,13 @@ public class CharacterView
 
     public void PresentDamageTake(float valueLevel)
     {
-        _ui.RefreshHealthBar(valueLevel);
+        PresentHealth(valueLevel);
         _animator.PlayStun();
+    }
+
+    public void PresentHealth(float valueLevel)
+    {
+        _ui.RefreshHealthBar(valueLevel);
     }
 
     public void PresentDeath() { }

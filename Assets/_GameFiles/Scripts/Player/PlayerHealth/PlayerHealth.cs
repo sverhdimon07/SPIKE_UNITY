@@ -49,8 +49,6 @@ public /*тут надо поработать с абстракцией*/ sealed class PlayerHealth //Эта реа
             throw new ArgumentOutOfRangeException();
         }
         _healthValue = healthValue;
-
-        DamageTaken.Invoke(_healthValue);
     }
 
     public void TakeDamage(float damage)
